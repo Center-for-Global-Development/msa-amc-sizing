@@ -1,1 +1,13 @@
 theme: beautiful-jekyll
+
+title: How to size an AMC
+description: A technical guide to estimating the appropriate size of an advance market commitment
+menu:
+  - name: Home
+    link: /
+  - name: Simple Sizing Graph
+    link: /simple_sizing_graph.html
+  - name: Needed Firm Entry
+    link: /needed_firm_entry_graph.html
+  - name: Complete Sizing Graph
+    link: /complete_sizing_graph.html
