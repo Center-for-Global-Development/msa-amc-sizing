@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Sizing Graph</title>
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #graph-container {
+            width: 800px;
+            margin: auto;
+        }
+        #slider-container {
+            width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+        #checkbox-container {
+            width: 800px;
+            margin: auto;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Complete Sizing Graph</h1>
+    <div id="slider-container">
+        <label for="p-slider">Per-attempt probability of success (p): <span id="p-value">3%</span></label><br>
+        <input type="range" id="p-slider" min="0.01" max="0.25" step="0.01" value="0.03" style="width: 100%;"><br>
+
+        <label for="eta-slider">Global Possibility Parameter (η): <span id="eta-value">100%</span></label><br>
+        <input type="range" id="eta-slider" min="0.5" max="1.0" step="0.05" value="1.0" style="width: 100%;"><br>
+
+        <label for="k-slider">Number of Firms (k): <span id="k-value">10</span></label><br>
+        <input type="range" id="k-slider" min="1" max="20" step="1" value="10" style="width: 100%;"><br>
+
+        <label for="gamma-slider">Per-Firm Possibility Parameter (γ): <span id="gamma-value">1.0</span></label><br>
+        <input type="range" id="gamma-slider" min="0.5" max="1.0" step="0.1" value="1.0" style="width: 100%;">
+    </div>
+    <div id="checkbox-container">
+        <label>
+            <input type="checkbox" id="axis-range-toggle"> Restrict range to 25-60%
+        </label>
+    </div>
+    <div id="graph-container">
+        <div id="graph"></div>
+    </div>
+
+    <script>
+        function calculateCost(theta, p) {
+            return Math.log(1 - theta) / (theta * Math.log(1 - p));
+        }
+
+        function calculateProbabilityExactZ(z, numFirmsMin, minProb, numFirmsMax, maxProb) {
+            let probability = 0;
+            for (let k = 0; k <= Math.min(z, numFirmsMin); k++) {
+                const j = z - k;
+                if (j >= 0 && j <= numFirmsMax) {
+                    const probMin = combination(numFirmsMin, k) * Math.pow(minProb, k) * Math.pow(1 - minProb, numFirmsMin - k);
+                    const probMax = combination(numFirmsMax, j) * Math.pow(maxProb, j) * Math.pow(1 - maxProb, numFirmsMax - j);
+                    probability += probMin * probMax;
+                }
+            }
+            return probability;
+        }
+
+        function marginalCostFunction(numFirmsMin, numFirmsMax, numAttemptsMin, numAttemptsSame, p, eta, gamma) {
+            const probMarginMatters = eta * gamma * p * Math.pow(1 - p, numAttemptsSame - 1);
+            const minProb = eta * gamma * (1 - Math.pow(1 - p, numAttemptsMin));
+            const maxProb = eta * gamma * (1 - Math.pow(1 - p, numAttemptsMin + 1));
+
+            let cumulativeValue = 0;
+            for (let z = 0; z <= numFirmsMin + numFirmsMax; z++) {
+                const probability = calculateProbabilityExactZ(z, numFirmsMin, minProb, numFirmsMax, maxProb);
+                const val = probability * (1 / (z + 1)) * probMarginMatters;
+                cumulativeValue += val;
+            }
+            return 1 / cumulativeValue;
+        }
+
+        function outputMarginalBenefit(theta, p, k, eta, gamma) {
+            if (theta / eta >= 1) return null;
+
+            const innerExpr = 1 - (1 - Math.pow(1 - theta / eta, 1 / k)) / gamma;
+            if (innerExpr <= 0 || innerExpr >= 1) return null;
+
+            const n = Math.log(innerExpr) / Math.log(1 - p);
+            const a = Math.floor(n);
+            const x = (a + 1) * k - n;
+            const y = n * k - a * k;
+            const ceilingProbability = y / k;
+
+            const val1 = ceilingProbability * marginalCostFunction(Math.floor(x), Math.max(Math.floor(y) - 1, 0), a, a + 1, p, eta, gamma);
+            const val2 = (1 - ceilingProbability) * marginalCostFunction(Math.max(Math.floor(x) - 1, 0), Math.floor(y), a, a, p, eta, gamma);
+
+            return val1 + val2;
+        }
+
+        function combination(n, r) {
+            if (r > n) return 0;
+            let result = 1;
+            for (let i = 0; i < r; i++) {
+                result *= (n - i) / (i + 1);
+            }
+            return result;
+        }
+
+        // Initial settings
+        const thetaValues = Array.from({ length: 100 }, (_, i) => 0.25 + i * 0.0074);
+        const pSlider = document.getElementById("p-slider");
+        const etaSlider = document.getElementById("eta-slider");
+        const kSlider = document.getElementById("k-slider");
+        const gammaSlider = document.getElementById("gamma-slider");
+        const axisToggle = document.getElementById("axis-range-toggle");
+        const graphDiv = document.getElementById("graph");
+
+        const pValue = document.getElementById("p-value");
+        const etaValue = document.getElementById("eta-value");
+        const kValue = document.getElementById("k-value");
+        const gammaValue = document.getElementById("gamma-value");
+
+        function updateGraph(p, eta, k, gamma, restrictRange) {
+            const marginalBenefits = thetaValues.map(theta => outputMarginalBenefit(theta, p, k, eta, gamma));
+            const costValues = thetaValues.map(theta => calculateCost(theta, p));
+
+            const traces = [
+                {
+                    x: thetaValues,
+                    y: marginalBenefits,
+                    mode: 'lines',
+                    line: { color: '#800000', width: 4 },
+                    name: 'Full Model'
+                },
+                {
+                    x: thetaValues,
+                    y: costValues,
+                    mode: 'lines',
+                    line: { color: '#737373', dash: 'dash' },
+                    name: 'Simple Model'
+                }
+            ];
+
+            const layout = {
+                title: 'Complete Sizing Graph',
+                xaxis: {
+                    title: 'Target Probability of Success',
+                    tickformat: '.0%',
+                    range: restrictRange ? [0.25, 0.6] : [0.25, 0.99],
+                    showline: true,
+                    linecolor: 'black',
+                    linewidth: 2
+                },
+                yaxis: {
+                    title: 'Needed pull size (as multiple of expected costs)',
+                    range: restrictRange ? [0, 200] : [0, 2000],
+                    showline: true,
+                    linecolor: 'black',
+                    linewidth: 2
+                },
+                plot_bgcolor: '#ffffff',
+                margin: { t: 50, b: 50 }
+            };
+
+            Plotly.newPlot(graphDiv, traces, layout);
+        }
+
+        // Initial graph
+        updateGraph(0.03, 1.0, 10, 1.0, false);
+
+        // Add event listeners
+        pSlider.addEventListener("input", () => {
+            pValue.textContent = `${Math.round(pSlider.value * 100)}%`;
+            updateGraph(parseFloat(pSlider.value), parseFloat(etaSlider.value), parseFloat(kSlider.value), parseFloat(gammaSlider.value), axisToggle.checked);
+        });
+
+        etaSlider.addEventListener("input", () => {
+            etaValue.textContent = `${Math.round(etaSlider.value * 100)}%`;
+            updateGraph(parseFloat(pSlider.value), parseFloat(etaSlider.value), parseFloat(kSlider.value), parseFloat(gammaSlider.value), axisToggle.checked);
+        });
+
+        kSlider.addEventListener("input", () => {
+            kValue.textContent = `${kSlider.value}`;
+            updateGraph(parseFloat(pSlider.value), parseFloat(etaSlider.value), parseFloat(kSlider.value), parseFloat(gammaSlider.value), axisToggle.checked);
+        });
+
+        gammaSlider.addEventListener("input", () => {
+            gammaValue.textContent = `${gammaSlider.value}`;
+            updateGraph(parseFloat(pSlider.value), parseFloat(etaSlider.value), parseFloat(kSlider.value), parseFloat(gammaSlider.value), axisToggle.checked);
+        });
+
+        axisToggle.addEventListener("change", () => {
+            updateGraph(parseFloat(pSlider.value), parseFloat(etaSlider.value), parseFloat(kSlider.value), parseFloat(gammaSlider.value), axisToggle.checked);
+        });
+    </script>
+</body>
+</html>
