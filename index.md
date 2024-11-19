@@ -57,6 +57,7 @@ First, we need to understand the costs that firms face. The higher the cost of i
     For example, consider an AMC to incentivize the development of a livestock vaccine. We can use past data on crop innovations to inform our estimates on the cost of development. The following comes from a 2014 paper estimating the costs to develop a vaccine for chicken in 2009. Any forward-looking estimates would need to adjust for inflation.
 </p>
 
+Table 1.1
 <table>
     <thead>
         <tr>
@@ -106,6 +107,7 @@ First, we need to understand the costs that firms face. The higher the cost of i
 <button class="see-more-btn" onclick="toggleDetails('rdsuccess-details')">See more details</button>
 <div id="rdsuccess-details" class="details-box">
 
+Table 2.1
 <table>
     <thead>
         <tr>
@@ -145,6 +147,7 @@ First, we need to understand the costs that firms face. The higher the cost of i
 
 We next need to decompose into annual costs and probabilities of failure so we can calculate expected costs.
 
+Table 2.2
 <table>
     <thead>
         <tr>
@@ -230,6 +233,142 @@ While the all-in cost of running from start to finish is \$3.4 million, because 
 
 **iii. Firm’s hurdle rate of return.** Firms expect to make a profit, and prefer investments that pay money today rather than in the future. Since AMCs and other pull mechanisms require firms to spend money in the present on the possibility of receiving funds in the future, funders need to compensate firms for that delay. In general, the more a funder wishes to delay funding, the greater the premium the funder must pay to induce entry. MSA currently uses annual discount rates of 8-10%, depending on the sector involved. For long-dated AMCs, i.e. AMCs for technological innovations that may take ten years or more to pay off, including hurdle rates can more than double nominal costs.
 
+<button class="see-more-btn" onclick="toggleDetails('discountratesizing-details')">How discounting affects AMC sizing</button>
+<div id="discountratesizing-details" class="details-box">
+
+In general, the more the funder delays payments, the larger the nominal payments need to be to compensate firms for that delay. Of note, hurdle rates tend to substantially exceed social discount rates, so the real value of the needed pull size will also rise as the delays grow. 
+
+Suppose, a firm has a 10% hurdle rate, while the funder has a discount rate of 3%. If the payout is delayed ten years, then the funder will need to pay $259 in year 10 to induce $100 in private spending in year 0. 
+
+
+  <table>
+    <thead>
+        <tr>
+            <th>Payout Year</th>
+            <th>0</th>
+            <th>5</th>
+            <th>10</th>
+            <th>15</th>
+            <th>20 </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Future payout needed for firms to have net present value &gt; 0</td>
+            <td>100</td>
+            <td>161</td>
+            <td>259</td>
+            <td>418</td>
+            <td>673 </td>
+        </tr>
+        <tr>
+            <td>Funder&#39;s present value of payout</td>
+            <td>100</td>
+            <td>139</td>
+            <td>193</td>
+            <td>268</td>
+            <td>372</td>
+        </tr>
+    </tbody>
+</table>
+
+Formally, if $r$ is the firm hurdle rate and $t$ is the number of years between upfront payment, the nominal value of  the pull commitment to induce \$1 in spending is $$(1+r)^t$$. 
+</div>
+
+
+
+<button class="see-more-btn" onclick="toggleDetails('discountratefirmcosts-details')">How discounting affects firm costs</button>
+<div id="discountratefirmcosts-details" class="details-box">
+Discounting reduces future costs, as firms value expenses incurred in the future less than they value expenses they incur in the present. For example, if we use an 8.05% discount rate (from Damadoran 2024), we get the following table for our livestock vaccine modeling.  
+
+  <table>
+    <thead>
+        <tr>
+            <th>Phase</th>
+            <th>Cost (2024 1000 $)</th>
+            <th>Unconditional Probability of Success</th>
+            <th>Probability of reaching step</th>
+            <th>Expected Cost (1000 $)</th>
+            <th>Discounted Present Value  </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R&amp;D</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>100%</td>
+            <td>955</td>
+            <td>955 </td>
+        </tr>
+        <tr>
+            <td>R&amp;D</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>58.40%</td>
+            <td>554</td>
+            <td>513 </td>
+        </tr>
+        <tr>
+            <td>R&amp;D</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>34.10%</td>
+            <td>321</td>
+            <td>275 </td>
+        </tr>
+        <tr>
+            <td>Patent</td>
+            <td>201</td>
+            <td>75%</td>
+            <td>19.50%</td>
+            <td>39</td>
+            <td>31 </td>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>153</td>
+            <td>44.70%</td>
+            <td>14.60%</td>
+            <td>22</td>
+            <td>16 </td>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>153</td>
+            <td>44.70%</td>
+            <td>6.60%</td>
+            <td>10</td>
+            <td>7 </td>
+        </tr>
+        <tr>
+            <td>Approval</td>
+            <td>71</td>
+            <td>90%</td>
+            <td>3.00%</td>
+            <td>2</td>
+            <td>1.3 </td>
+        </tr>
+        <tr>
+            <td>Release</td>
+            <td>-</td>
+            <td>100%</td>
+            <td>2.70%</td>
+            <td>-</td>
+            <td>0 </td>
+        </tr>
+        <tr>
+            <td>Sum</td>
+            <td>3,443</td>
+            <td>-</td>
+            <td>-</td>
+            <td>1,904</td>
+            <td>1,799</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
 
 
 
@@ -272,4 +411,4 @@ While the all-in cost of running from start to finish is \$3.4 million, because 
 
 ---
 
-© 2024 William Arnesen & Claire Mcmahon
+William Arnesen & Claire Mcmahon, 2024
