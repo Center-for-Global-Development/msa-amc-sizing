@@ -29,6 +29,14 @@ title: How to Size an AMC
     }
 </style>
 
+<script type="text/javascript">
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
 <script type="text/javascript" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
@@ -43,6 +51,7 @@ title: How to Size an AMC
         }
     }
 </script>
+
 
 
 # Introduction
@@ -66,6 +75,55 @@ The remainder of this section will explain how to estimate the costs and risks o
 First, we need to understand the costs that firms face. The higher the cost of innovation, the larger the pull size needs to be. Examples of costs worth considering include:
 
 **i. Cost of R&D and commercialization.** This includes the fixed and marginal costs to a firm to invent, produce, and deliver the desired product. For some problems, the main challenge is to incentivize firms to incur fixed costs on research and development. In other cases, there may also be significant costs in bringing it to market at an appropriate scale. This could also include costs associated with demonstrating success and overcoming regulatory hurdles. 
+
+<button class="see-more-btn" onclick="toggleDetails('simple-details')">See more details</button>
+<div id="rdcosts-details" class="details-box">
+    <p>
+    For example, consider an AMC to incentivize the development of a livestock vaccine. We can use past data on crop innovations to inform our estimates on the cost of development. The following comes from a 2014 paper estimating the costs to develop a vaccine for chicken in 2009. Any forward-looking estimates would need to adjust for inflation.
+</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0; text-align: left;">
+    <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="border: 1px solid #ddd; padding: 8px;">Phase</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Duration (Years)</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Reported Cost (1000 €)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">R&D</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">3</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">1,949</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">Patent</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">1</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">137</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">Test</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">2</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">208</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">Approval</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">1</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">48</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    Data from Jensen, J. D., Lund, M., & Fabricius, O. (2014). Economic analysis of developing a Campylobacter vaccine to poultry: a real options approach. Frederiksberg: Department of Food and Resource Economics, University of Copenhagen. <i>IFRO Report, No. 227</i>.
+</p>
+
+<p>
+    All-in costs would also need to factor in the cost of building a production facility, marketing, and distribution.
+</p>
+
+</div>
+
 
 **ii. Likelihood of technological success.** Innovation is inherently risky. There is no guarantee that firms that incur R&D and commercialization costs will succeed in developing an innovation and bringing it to market. The probability of success includes a firm's risk of technological failure such that they are unable to reach TPP. 
 
