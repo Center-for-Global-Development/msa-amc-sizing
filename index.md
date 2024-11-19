@@ -4,38 +4,6 @@ title: How to Size an AMC
 ---
 <link rel="stylesheet" href="style.css">
 
-<style>
-    .details-box {
-        display: none; /* Hide by default */
-        margin: 10px 0;
-        padding: 10px;
-        border: 1px solid #ddd;
-        background-color: #f9f9f9;
-    }
-
-    .see-more-btn {
-        display: inline-block;
-        margin-top: 10px;
-        padding: 10px 15px;
-        font-size: 1em;
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .see-more-btn:hover {
-        background-color: #0056b3;
-    }
-</style>
-
-<style>
-/* Change header colors to #800000 */
-h1, h2, h3, h4, h5, h6 {
-    color: #800000;
-}
-</style>
 
 <script type="text/javascript">
   MathJax = {
