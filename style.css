@@ -11,7 +11,7 @@ th, td {
 }
 
 header.page-header {
-    background: #800000; /* Replace with your desired color */
+    background: #800000; /* Chicago red */
 }
 
 .details-box {
@@ -36,5 +36,9 @@ header.page-header {
 
 .see-more-btn:hover {
     background-color: #0056b3;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #800000; /* Chicago red */
 }
 
