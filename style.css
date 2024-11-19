@@ -10,14 +10,6 @@ th, td {
     padding: 8px;
 }
 
-thead tr {
-    background-color: #800000;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: #800000;
-}
-
 .details-box {
     display: none; /* Hide by default */
     margin: 10px 0;
