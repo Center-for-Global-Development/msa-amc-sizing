@@ -1,3 +1,41 @@
+<style>
+    .details-box {
+        display: none; /* Hide by default */
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+    }
+
+    .see-more-btn {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 15px;
+        font-size: 1em;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .see-more-btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<script>
+    function toggleDetails(id) {
+        const details = document.getElementById(id);
+        if (details.style.display === "none" || details.style.display === "") {
+            details.style.display = "block";
+        } else {
+            details.style.display = "none";
+        }
+    }
+</script>
+
+
 ---
 layout: default
 title: How to Size an AMC
@@ -41,6 +79,15 @@ First, we need to understand the costs that firms face. The higher the cost of i
     height="650" 
     style="border: none;">
 </iframe>
+
+<button class="see-more-btn" onclick="toggleDetails('simple-details')">See more details</button>
+<div id="simple-details" class="details-box">
+    The Simple Sizing Graph is based on the following equation:
+    <p>
+        \( \text{Cost} = \frac{\ln(1 - \theta)}{\theta \cdot \ln(1 - p)} \)
+    </p>
+    This equation captures the relationship between the target probability of success (\( \theta \)) and the required cost as a multiple of the innovation cost.
+</div>
 
 ## Needed Firm Entry Graph
 
