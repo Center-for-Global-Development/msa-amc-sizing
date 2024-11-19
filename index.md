@@ -133,113 +133,121 @@ First, we need to understand the costs that firms face. The higher the cost of i
 <div id="rdsuccess-details" class="details-box">
 
 <table>
-    <tr>
-        <td>Phase</td>
-        <td>Duration (Years)</td>
-        <td>Reported Cost (1000 €)</td>
-        <td>Unconditional Probability of Success </td>
-    </tr>
-    <tr>
-        <td>R&amp;D</td>
-        <td>3</td>
-        <td>1,949 </td>
-        <td>20% </td>
-    </tr>
-    <tr>
-        <td>Patent</td>
-        <td>1</td>
-        <td>137</td>
-        <td>75% </td>
-    </tr>
-    <tr>
-        <td>Test</td>
-        <td>2</td>
-        <td>208</td>
-        <td>20% </td>
-    </tr>
-    <tr>
-        <td>Approval</td>
-        <td>1</td>
-        <td>48</td>
-        <td>90%</td>
-    </tr>
+    <thead>
+        <tr>
+            <th>Phase</th>
+            <th>Duration (Years)</th>
+            <th>Reported Cost (1000 €)</th>
+            <th>Unconditional Probability of Success </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R&amp;D</td>
+            <td>3</td>
+            <td>1,949 </td>
+            <td>20% </td>
+        </tr>
+        <tr>
+            <td>Patent</td>
+            <td>1</td>
+            <td>137</td>
+            <td>75% </td>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>2</td>
+            <td>208</td>
+            <td>20% </td>
+        </tr>
+        <tr>
+            <td>Approval</td>
+            <td>1</td>
+            <td>48</td>
+            <td>90%</td>
+        </tr>
+    </tbody>
 </table>
 
 We next need to decompose into annual costs and probabilities of failure so we can calculate expected costs.
 
 <table>
-    <tr>
-        <td>Phase</td>
-        <td>Reported Cost (1000 €)</td>
-        <td>Cost (2024 1000 $)</td>
-        <td>Unconditional Probability of Success</td>
-        <td>Probability of reaching step</td>
-        <td>Expected Cost (1000 $) </td>
-    </tr>
-    <tr>
-        <td>R&amp;D</td>
-        <td>649.7</td>
-        <td>955</td>
-        <td>58.40%</td>
-        <td>100%</td>
-        <td>955 </td>
-    </tr>
-    <tr>
-        <td>R&amp;D</td>
-        <td>649.7</td>
-        <td>955</td>
-        <td>58.40%</td>
-        <td>58.40%</td>
-        <td>554 </td>
-    </tr>
-    <tr>
-        <td>R&amp;D</td>
-        <td>649.7</td>
-        <td>955</td>
-        <td>58.40%</td>
-        <td>34.10%</td>
-        <td>321 </td>
-    </tr>
-    <tr>
-        <td>Patent</td>
-        <td>137</td>
-        <td>201</td>
-        <td>75%</td>
-        <td>19.50%</td>
-        <td>39 </td>
-    </tr>
-    <tr>
-        <td>Test</td>
-        <td>104</td>
-        <td>153</td>
-        <td>44.70%</td>
-        <td>14.60%</td>
-        <td>22 </td>
-    </tr>
-    <tr>
-        <td>Test</td>
-        <td>104</td>
-        <td>153</td>
-        <td>44.70%</td>
-        <td>6.60%</td>
-        <td>10 </td>
-    </tr>
-    <tr>
-        <td>Approval</td>
-        <td>48</td>
-        <td>71</td>
-        <td>90%</td>
-        <td>3.00%</td>
-        <td>2 </td>
-    </tr>
-    <tr>
-        <td>Release</td>
-        <td>-</td>
-        <td>-</td>
-        <td>100%</td>
-        <td>2.70%</td>
-        <td>-</td>
-    </tr>
+    <thead>
+        <tr>
+            <th>Phase</th>
+            <th>Reported Cost (1000 €)</th>
+            <th>Cost (2024 1000 $)</th>
+            <th>Unconditional Probability of Success</th>
+            <th>Probability of reaching step</th>
+            <th>Expected Cost (1000 $) </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R&amp;D</td>
+            <td>649.7</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>100%</td>
+            <td>955 </td>
+        </tr>
+        <tr>
+            <td>R&amp;D</td>
+            <td>649.7</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>58.40%</td>
+            <td>554 </td>
+        </tr>
+        <tr>
+            <td>R&amp;D</td>
+            <td>649.7</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>34.10%</td>
+            <td>321 </td>
+        </tr>
+        <tr>
+            <td>Patent</td>
+            <td>137</td>
+            <td>201</td>
+            <td>75%</td>
+            <td>19.50%</td>
+            <td>39 </td>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>104</td>
+            <td>153</td>
+            <td>44.70%</td>
+            <td>14.60%</td>
+            <td>22 </td>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>104</td>
+            <td>153</td>
+            <td>44.70%</td>
+            <td>6.60%</td>
+            <td>10 </td>
+        </tr>
+        <tr>
+            <td>Approval</td>
+            <td>48</td>
+            <td>71</td>
+            <td>90%</td>
+            <td>3.00%</td>
+            <td>2 </td>
+        </tr>
+        <tr>
+            <td>Release</td>
+            <td>-</td>
+            <td>-</td>
+            <td>100%</td>
+            <td>2.70%</td>
+            <td>-</td>
+        </tr>
+    </tbody>
 </table>
 
 While the all-in cost of running from start to finish is $3.4 million, because the innovator can stop whenever they fail, the expected cost at time of initiation is only $1.9 million.
