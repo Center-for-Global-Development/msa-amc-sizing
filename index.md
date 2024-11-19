@@ -32,11 +32,6 @@ title: How to Size an AMC
 
 </style>
 
-<style>
-  h1, h2, h3, h4, h5, h6 {
-    color: #800000;
-}
-</style>
 <script type="text/javascript">
   MathJax = {
     tex: {
