@@ -1,3 +1,8 @@
+---
+layout: default
+title: How to Size an AMC
+---
+
 <style>
     .details-box {
         display: none; /* Hide by default */
@@ -24,6 +29,10 @@
     }
 </style>
 
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 <script>
     function toggleDetails(id) {
         const details = document.getElementById(id);
@@ -35,11 +44,6 @@
     }
 </script>
 
-
----
-layout: default
-title: How to Size an AMC
----
 
 # Introduction
 
