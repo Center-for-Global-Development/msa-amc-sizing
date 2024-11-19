@@ -250,7 +250,7 @@ We next need to decompose into annual costs and probabilities of failure so we c
     </tbody>
 </table>
 
-While the all-in cost of running from start to finish is $3.4 million, because the innovator can stop whenever they fail, the expected cost at time of initiation is only $1.9 million.
+While the all-in cost of running from start to finish is \$3.4 million, because the innovator can stop whenever they fail, the expected cost at time of initiation is only \$1.9 million.
 
 </div>
 
