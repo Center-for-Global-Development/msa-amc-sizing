@@ -38,7 +38,7 @@ First, we need to understand the costs that firms face. The higher the cost of i
 <iframe 
     src="simple_sizing_graph.html" 
     width="100%" 
-    height="600" 
+    height="650" 
     style="border: none;">
 </iframe>
 
@@ -47,7 +47,7 @@ First, we need to understand the costs that firms face. The higher the cost of i
 <iframe 
     src="needed_attempts_graph.html" 
     width="100%" 
-    height="600" 
+    height="650" 
     style="border: none;">
 </iframe>
 
