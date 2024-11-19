@@ -38,12 +38,13 @@ header.page-header {
     background-color: #0056b3;
 }
 
-body h1, 
-body h2, 
-body h3, 
-body h4, 
-body h5, 
-body h6 {
-    color: #800000; /* Chicago red */
+.main-content h1, 
+.main-content h2, 
+.main-content h3, 
+.main-content h4, 
+.main-content h5, 
+.main-content h6 {
+    color: #800000; /* Change to your desired color */
 }
+
 
