@@ -11,6 +11,10 @@ th, td {
     padding: 8px;
 }
 
+th {
+    background-color: #a88376; /* Adds a light background color to headers */
+}
+
 header.page-header {
     background: #800000; /* Chicago red */
 }
