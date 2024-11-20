@@ -273,6 +273,7 @@ Suppose, a firm has a 10% hurdle rate, while the funder has a discount rate of 3
 </table>
 
 Formally, if $r$ is the firm hurdle rate and $t$ is the number of years between upfront payment, the nominal value of  the pull commitment to induce \$1 in spending is $$(1+r)^t$$. 
+<<<<<<< HEAD
 
  <div style = "text-align: left;">
     <embed style="border: none;" src="./time_penalty.html" dpi="300" width="100%" height="800px" />
@@ -282,6 +283,10 @@ Formally, if $r$ is the firm hurdle rate and $t$ is the number of years between 
 
  
 
+=======
+</div>
+
+>>>>>>> 6eec3b5ff70cf51a569de242153ec12fecd79921
 
 
 <button class="see-more-btn" onclick="toggleDetails('discountratefirmcosts-details')">How discounting affects firm costs</button>
