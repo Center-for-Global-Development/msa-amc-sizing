@@ -1,10 +1,11 @@
 table {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid #A9431E;
     margin: 20px 0;
     text-align: left;
+    table-layout: fixed; /* Ensures consistent column widths */
 }
+
 
 .main-content table th, 
 .main-content table td {
