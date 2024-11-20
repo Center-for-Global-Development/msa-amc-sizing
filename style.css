@@ -6,13 +6,14 @@ table {
     text-align: left;
 }
 
-th, td {
+.main-content table th, 
+.main-content table td {
     border: 1px solid #A9431E;
-    padding: 8px;
 }
 
+
 th {
-    background-color: #a88376; /* Adds a light background color to headers */
+    background-color: #ff8e66; /* Adds a light background color to headers */
 }
 
 header.page-header {
