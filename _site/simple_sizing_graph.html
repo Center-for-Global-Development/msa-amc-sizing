@@ -1,0 +1,99 @@
+<script> function calculateCost(theta, p) {
+    return Math.log(1 - theta) / (theta * Math.log(1 - p));
+}
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sizing an AMC</title>
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #graph-container {
+            width: 800px;
+            margin: auto;
+        }
+        #slider-container {
+            width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Sizing an AMC</h1>
+    <div id="slider-container">
+        <label for="p-slider">Per-attempt probability of success (p): <span id="p-value">1%</span></label><br>
+        <input type="range" id="p-slider" min="0.01" max="0.25" step="0.01" value="0.01" style="width: 100%;">
+    </div>
+    <div id="graph-container">
+        <div id="graph"></div>
+    </div>
+
+    <script>
+        // JavaScript function to calculate cost
+        function calculateCost(theta, p) {
+            return Math.log(1 - theta) / (theta * Math.log(1 - p));
+        }
+
+        // Initial settings
+        const thetaValues = Array.from({ length: 100 }, (_, i) => 0.5 + i * 0.005); // Range from 0.5 to 0.99
+        const pSlider = document.getElementById("p-slider");
+        const pValue = document.getElementById("p-value");
+        const graphDiv = document.getElementById("graph");
+
+        // Function to update the graph
+        function updateGraph(p) {
+            const costValues = thetaValues.map(theta => calculateCost(theta, p));
+            const trace = {
+                x: thetaValues,
+                y: costValues,
+                mode: 'lines',
+                line: { color: '#800000', width: 4 },
+                name: 'Cost'
+            };
+
+            const layout = {
+                title: 'Sizing an AMC',
+                xaxis: {
+                    title: 'Target Probability of Success',
+                    tickformat: '.0%',
+                    range: [0.5, 0.99],
+                    showline: true,
+                    linecolor: 'black',
+                    linewidth: 2
+                },
+                yaxis: {
+                    title: 'Cost (as a multiple of cost of innovation)',
+                    range: [0, 500],
+                    showline: true,
+                    linecolor: 'black',
+                    linewidth: 2
+                },
+                plot_bgcolor: '#ffffff',
+                margin: { t: 50, b: 50 }
+            };
+
+            Plotly.newPlot(graphDiv, [trace], layout);
+        }
+
+        // Initial graph
+        updateGraph(parseFloat(pSlider.value));
+
+        // Add event listener to slider
+        pSlider.addEventListener("input", () => {
+            const p = parseFloat(pSlider.value);
+            pValue.textContent = `${Math.round(p * 100)}%`;
+            updateGraph(p);
+        });
+    </script>
+</body>
+</html>

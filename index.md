@@ -1,0 +1,421 @@
+---
+layout: default
+title: How to Size an AMC
+---
+<link rel="stylesheet" href="style.css">
+
+<script type="text/javascript">
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    function toggleDetails(id) {
+        const details = document.getElementById(id);
+        if (details.style.display === "none" || details.style.display === "") {
+            details.style.display = "block";
+        } else {
+            details.style.display = "none";
+        }
+    }
+</script>
+
+
+
+# Introduction
+
+Pull funding mechanisms, such as prizes and advanced market commitments, can be powerful tools to incentivize the development and delivery of socially valuable innovations. They provide financial incentives to innovators, helping to bridge gaps in markets where public health or social benefits might otherwise be underfunded. However, a key challenge in designing effective pull funding is determining the appropriate size of the incentive.
+
+Over the past year, we have developed an evolving framework to determine the approximate size of a pull fund for our target innovations. We have used this approach to estimate the cost-effectiveness and investigate the impact of design choices.
+
+In this blog, we will present a simple framework for determining the size of pull funding for others interested in using these mechanisms. We simplify assumptions of market structure and competitive dynamics to have a generalized approach that can be applied to a wide variety of projects. The specifics of any market will add complexity that extends beyond this baseline framework. For additional considerations, refer to Section 5. 
+
+
+## Size of the incentive
+
+Pull mechanisms mimic market incentives by committing to provide sufficient returns to innovators of socially valuable goods. When firms evaluate participation in a pull mechanism, they consider whether expected revenues exceed expected costs. We expect firms to weigh the crucial questions of any innovation investments: what is the likelihood of technological success? How much will it cost to pursue it? What is the expected market size and timing of future revenue? How much competition do they expect to face?
+
+The design and size of the pull mechanism will dictate the answer to these questions and, hence, determine how many firms choose to invest in attempts at innovation. Increasing the expected number of firms that choose to participate in pull mechanisms increases the probability that the whole endeavor yields success. To determine the appropriate size of a pull mechanism, a designer needs to consider the tradeoff between increasing the probability of success and the cost of the endeavor. 
+ 
+The remainder of this section will explain how to estimate the costs and risks of development and how to size a pull mechanism that achieves a desired probability of success. 
+
+## Estimating Firms' Costs 
+First, we need to understand the costs that firms face. The higher the cost of innovation, the larger the pull size needs to be. Examples of costs worth considering include:
+
+**i. Cost of R&D and commercialization.** This includes the fixed and marginal costs to a firm to invent, produce, and deliver the desired product. For some problems, the main challenge is to incentivize firms to incur fixed costs on research and development. In other cases, there may also be significant costs in bringing it to market at an appropriate scale. This could also include costs associated with demonstrating success and overcoming regulatory hurdles. 
+
+<button class="see-more-btn" onclick="toggleDetails('rdcosts-details')">See more details</button>
+<div id="rdcosts-details" class="details-box">
+    <p>
+    For example, consider an AMC to incentivize the development of a livestock vaccine. We can use past data on crop innovations to inform our estimates on the cost of development. The following comes from a 2014 paper estimating the costs to develop a vaccine for chicken in 2009. Any forward-looking estimates would need to adjust for inflation.
+</p>
+
+Table 1.1
+<table>
+    <thead>
+        <tr>
+            <th>Phase</th>
+            <th>Duration (Years)</th>
+            <th>Reported Cost (1000 €)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R&D</td>
+            <td>3</td>
+            <td>1,949</td>
+        </tr>
+        <tr>
+            <td>Patent</td>
+            <td>1</td>
+            <td>137</td>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>2</td>
+            <td>208</td>
+        </tr>
+        <tr>
+            <td>Approval</td>
+            <td>1</td>
+            <td>48</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<p>
+    Data from Jensen, J. D., Lund, M., & Fabricius, O. (2014). Economic analysis of developing a Campylobacter vaccine to poultry: a real options approach. Frederiksberg: Department of Food and Resource Economics, University of Copenhagen. <i>IFRO Report, No. 227</i>.
+</p>
+
+<p>
+    All-in costs would also need to factor in the cost of building a production facility, marketing, and distribution.
+</p>
+
+</div>
+
+
+**ii. Likelihood of technological success.** Innovation is inherently risky. There is no guarantee that firms that incur R&D and commercialization costs will succeed in developing an innovation and bringing it to market. The probability of success includes a firm's risk of technological failure such that they are unable to reach TPP. 
+
+<button class="see-more-btn" onclick="toggleDetails('rdsuccess-details')">See more details</button>
+<div id="rdsuccess-details" class="details-box">
+
+Table 2.1
+<table>
+    <thead>
+        <tr>
+            <th>Phase</th>
+            <th>Duration (Years)</th>
+            <th>Reported Cost (1000 €)</th>
+            <th>Unconditional Probability of Success </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R&amp;D</td>
+            <td>3</td>
+            <td>1,949 </td>
+            <td>20% </td>
+        </tr>
+        <tr>
+            <td>Patent</td>
+            <td>1</td>
+            <td>137</td>
+            <td>75% </td>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>2</td>
+            <td>208</td>
+            <td>20% </td>
+        </tr>
+        <tr>
+            <td>Approval</td>
+            <td>1</td>
+            <td>48</td>
+            <td>90%</td>
+        </tr>
+    </tbody>
+</table>
+
+We next need to decompose into annual costs and probabilities of failure so we can calculate expected costs.
+
+Table 2.2
+<table>
+    <thead>
+        <tr>
+            <th>Phase</th>
+            <th>Reported Cost (1000 €)</th>
+            <th>Cost (2024 1000 $)</th>
+            <th>Unconditional Probability of Success</th>
+            <th>Probability of reaching step</th>
+            <th>Expected Cost (1000 $) </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R&amp;D</td>
+            <td>649.7</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>100%</td>
+            <td>955 </td>
+        </tr>
+        <tr>
+            <td>R&amp;D</td>
+            <td>649.7</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>58.40%</td>
+            <td>554 </td>
+        </tr>
+        <tr>
+            <td>R&amp;D</td>
+            <td>649.7</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>34.10%</td>
+            <td>321 </td>
+        </tr>
+        <tr>
+            <td>Patent</td>
+            <td>137</td>
+            <td>201</td>
+            <td>75%</td>
+            <td>19.50%</td>
+            <td>39 </td>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>104</td>
+            <td>153</td>
+            <td>44.70%</td>
+            <td>14.60%</td>
+            <td>22 </td>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>104</td>
+            <td>153</td>
+            <td>44.70%</td>
+            <td>6.60%</td>
+            <td>10 </td>
+        </tr>
+        <tr>
+            <td>Approval</td>
+            <td>48</td>
+            <td>71</td>
+            <td>90%</td>
+            <td>3.00%</td>
+            <td>2 </td>
+        </tr>
+        <tr>
+            <td>Release</td>
+            <td>-</td>
+            <td>-</td>
+            <td>100%</td>
+            <td>2.70%</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
+
+While the all-in cost of running from start to finish is \$3.4 million, because the innovator can stop whenever they fail, the expected cost at time of initiation is only \$1.9 million.
+
+</div>
+
+**iii. Firm’s hurdle rate of return.** Firms expect to make a profit, and prefer investments that pay money today rather than in the future. Since AMCs and other pull mechanisms require firms to spend money in the present on the possibility of receiving funds in the future, funders need to compensate firms for that delay. In general, the more a funder wishes to delay funding, the greater the premium the funder must pay to induce entry. MSA currently uses annual discount rates of 8-10%, depending on the sector involved. For long-dated AMCs, i.e. AMCs for technological innovations that may take ten years or more to pay off, including hurdle rates can more than double nominal costs.
+
+<button class="see-more-btn" onclick="toggleDetails('discountratesizing-details')">How discounting affects AMC sizing</button>
+<div id="discountratesizing-details" class="details-box">
+
+In general, the more the funder delays payments, the larger the nominal payments need to be to compensate firms for that delay. Of note, hurdle rates tend to substantially exceed social discount rates, so the real value of the needed pull size will also rise as the delays grow. 
+
+Suppose, a firm has a 10% hurdle rate, while the funder has a discount rate of 3%. If the payout is delayed ten years, then the funder will need to pay \$259 in year 10 to induce \$100 in private spending in year 0. 
+
+
+  <table>
+    <thead>
+        <tr>
+            <th>Payout Year</th>
+            <th>0</th>
+            <th>5</th>
+            <th>10</th>
+            <th>15</th>
+            <th>20 </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Future payout needed for firms to have net present value &gt; 0</td>
+            <td>100</td>
+            <td>161</td>
+            <td>259</td>
+            <td>418</td>
+            <td>673 </td>
+        </tr>
+        <tr>
+            <td>Funder&#39;s present value of payout</td>
+            <td>100</td>
+            <td>139</td>
+            <td>193</td>
+            <td>268</td>
+            <td>372</td>
+        </tr>
+    </tbody>
+</table>
+
+Formally, if $r$ is the firm hurdle rate and $t$ is the number of years between upfront payment, the nominal value of  the pull commitment to induce \$1 in spending is $$(1+r)^t$$. 
+
+ <div style = "text-align: left;">
+    <embed style="border: none;" src="./time_penalty.html" dpi="300" width="100%" height="800px" />
+  </div>
+
+</div>
+
+ 
+
+
+
+<button class="see-more-btn" onclick="toggleDetails('discountratefirmcosts-details')">How discounting affects firm costs</button>
+<div id="discountratefirmcosts-details" class="details-box">
+Discounting reduces future costs, as firms value expenses incurred in the future less than they value expenses they incur in the present. For example, if we use an 8.05% discount rate (from Damadoran 2024), we get the following table for our livestock vaccine modeling.  
+
+  <table>
+    <thead>
+        <tr>
+            <th>Phase</th>
+            <th>Cost (2024 1000 $)</th>
+            <th>Unconditional Probability of Success</th>
+            <th>Probability of reaching step</th>
+            <th>Expected Cost (1000 $)</th>
+            <th>Discounted Present Value  </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R&amp;D</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>100%</td>
+            <td>955</td>
+            <td>955 </td>
+        </tr>
+        <tr>
+            <td>R&amp;D</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>58.40%</td>
+            <td>554</td>
+            <td>513 </td>
+        </tr>
+        <tr>
+            <td>R&amp;D</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>34.10%</td>
+            <td>321</td>
+            <td>275 </td>
+        </tr>
+        <tr>
+            <td>Patent</td>
+            <td>201</td>
+            <td>75%</td>
+            <td>19.50%</td>
+            <td>39</td>
+            <td>31 </td>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>153</td>
+            <td>44.70%</td>
+            <td>14.60%</td>
+            <td>22</td>
+            <td>16 </td>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>153</td>
+            <td>44.70%</td>
+            <td>6.60%</td>
+            <td>10</td>
+            <td>7 </td>
+        </tr>
+        <tr>
+            <td>Approval</td>
+            <td>71</td>
+            <td>90%</td>
+            <td>3.00%</td>
+            <td>2</td>
+            <td>1.3 </td>
+        </tr>
+        <tr>
+            <td>Release</td>
+            <td>-</td>
+            <td>100%</td>
+            <td>2.70%</td>
+            <td>-</td>
+            <td>0 </td>
+        </tr>
+        <tr>
+            <td>Sum</td>
+            <td>3,443</td>
+            <td>-</td>
+            <td>-</td>
+            <td>1,904</td>
+            <td>1,799</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+
+
+
+
+## Explore the Simple Sizing Graph
+
+<iframe 
+    src="simple_sizing_graph.html" 
+    width="100%" 
+    height="650" 
+    style="border: none;">
+</iframe>
+
+<button class="see-more-btn" onclick="toggleDetails('simple-details')">See more details</button>
+<div id="simple-details" class="details-box">
+    The Simple Sizing Graph is based on the following equation:
+    <p>
+        \( \text{Cost} = \frac{\ln(1 - \theta)}{\theta \cdot \ln(1 - p)} \)
+    </p>
+    This equation captures the relationship between the target probability of success (\( \theta \)) and the required cost as a multiple of the innovation cost.
+</div>
+
+## Needed Firm Entry Graph
+
+<iframe 
+    src="needed_attempts_graph.html" 
+    width="100%" 
+    height="650" 
+    style="border: none;">
+</iframe>
+
+## Complete Sizing Graph
+
+<iframe 
+    src="complete_sizing_graph.html" 
+    width="100%" 
+    height="800" 
+    style="border: none;">
+</iframe>
+
+---
+
+William Arnesen & Claire Mcmahon, 2024
