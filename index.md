@@ -51,13 +51,12 @@ First, we need to understand the costs that firms face. The higher the cost of i
 
 **i. Cost of R&D and commercialization.** This includes the fixed and marginal costs to a firm to invent, produce, and deliver the desired product. For some problems, the main challenge is to incentivize firms to incur fixed costs on research and development. In other cases, there may also be significant costs in bringing it to market at an appropriate scale. This could also include costs associated with demonstrating success and overcoming regulatory hurdles. 
 
-<button class="see-more-btn" onclick="toggleDetails('rdcosts-details')">See more details</button>
+<button class="see-more-btn" onclick="toggleDetails('rdcosts-details')">Show example</button>
 <div id="rdcosts-details" class="details-box">
     <p>
     For example, consider an AMC to incentivize the development of a livestock vaccine. We can use past data on crop innovations to inform our estimates on the cost of development. The following comes from a 2014 paper estimating the costs to develop a vaccine for chicken in 2009. Any forward-looking estimates would need to adjust for inflation.
 </p>
 
-Table 1.1
 <table>
     <thead>
         <tr>
@@ -104,10 +103,11 @@ Table 1.1
 
 **ii. Likelihood of technological success.** Innovation is inherently risky. There is no guarantee that firms that incur R&D and commercialization costs will succeed in developing an innovation and bringing it to market. The probability of success includes a firm's risk of technological failure such that they are unable to reach TPP. 
 
-<button class="see-more-btn" onclick="toggleDetails('rdsuccess-details')">See more details</button>
+<button class="see-more-btn" onclick="toggleDetails('rdsuccess-details')">Show example</button>
 <div id="rdsuccess-details" class="details-box">
 
-Table 2.1
+Using the same data as before, we can assign probabilities to each step. 
+<br>
 <table>
     <thead>
         <tr>
@@ -145,9 +145,73 @@ Table 2.1
     </tbody>
 </table>
 
-We next need to decompose into annual costs and probabilities of failure so we can calculate expected costs.
+</div>
 
-Table 2.2
+**iii. Firm’s hurdle rate of return.** Firms expect to make a profit, and prefer investments that pay money today rather than in the future. Since AMCs and other pull mechanisms require firms to spend money in the present on the possibility of receiving funds in the future, funders need to compensate firms for that delay. In general, the more a funder wishes to delay funding, the greater the premium the funder must pay to induce entry. MSA currently uses annual discount rates of 8-10%, depending on the sector involved. For long-dated AMCs, i.e. AMCs for technological innovations that may take ten years or more to pay off, including hurdle rates can more than double nominal costs.
+
+<button class="see-more-btn" onclick="toggleDetails('discountratesizing-details')">How discounting affects AMC sizing</button>
+<div id="discountratesizing-details" class="details-box">
+
+In general, the more the funder delays payments, the larger the nominal payments need to be to compensate firms for that delay. Of note, hurdle rates tend to substantially exceed social discount rates, so the real value of the needed pull size will also rise as the delays grow. 
+
+Suppose, a firm has a 10% hurdle rate, while the funder has a discount rate of 3%. If the payout is delayed ten years, then the funder will need to pay \$259 in year 10 to induce \$100 in private spending in year 0. 
+
+
+  <table>
+    <thead>
+        <tr>
+            <th>Payout Year</th>
+            <th>0</th>
+            <th>5</th>
+            <th>10</th>
+            <th>15</th>
+            <th>20 </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Future payout needed for firms to have net present value &gt; 0</td>
+            <td>100</td>
+            <td>161</td>
+            <td>259</td>
+            <td>418</td>
+            <td>673 </td>
+        </tr>
+        <tr>
+            <td>Funder&#39;s present value of payout</td>
+            <td>100</td>
+            <td>139</td>
+            <td>193</td>
+            <td>268</td>
+            <td>372</td>
+        </tr>
+    </tbody>
+</table>
+
+Formally, if $r$ is the firm hurdle rate and $t$ is the number of years between upfront payment, the nominal value of  the pull commitment to induce \$1 in spending is $$(1+r)^t$$. 
+
+ <div style = "text-align: left;">
+    <embed style="border: none;" src="./time_penalty.html" dpi="300" width="100%" height="800px" />
+  </div>
+
+</div>
+
+## Calculating Firms' Expected Costs
+
+Innovation requires multiple steps, including research and development, testing, trials, and regulatory approval. Each step incurs its own set of costs. However, when sizing, it is important to remember that firms do not incur these costs all at once. Instead, if the project fails at any specific step, the firm simply stops and does not incur the costs of the subsequent stages. Instead, when sizing, one needs to calculate the expected cost at the time of entry, properly discounted by time.
+
+
+<button class="see-more-btn" onclick="toggleDetails('optionvalue-details')">Walking through an example</button>
+<div id="optionvalue-details" class="details-box">
+
+Development is a often staged process where you can bow out with any adverse result (but you cannot see the success of other firms), let us say the following: k is the number of innovation steps, and P is a vector representing the probability of success at reaching the next stage where $P = \{p_0,p_1,p_2, ... , p_k\}$. Reaching stage 1 has probability 1 so $p_0=1$. Let $C$ be a vector representing the cost at each stage $C = \{c_0,c_1,c_2, ... , c_k\}$. Initialization cost is 0 for $c_0=0$. 
+
+Without consideration of the time value of money, the cost of development is $$\sum_{i=1}^{k} c_i \prod_{j=1}^{i} p_{j-1}$$.
+
+
+
+Consider the case of the vaccine considered previously. We first need to decompose into annual costs and probabilities of failure so we can calculate expected costs.
+
 <table>
     <thead>
         <tr>
@@ -227,71 +291,12 @@ Table 2.2
     </tbody>
 </table>
 
+
 While the all-in cost of running from start to finish is \$3.4 million, because the innovator can stop whenever they fail, the expected cost at time of initiation is only \$1.9 million.
 
-</div>
+We now need to introduce the time value of money. Discounting reduces future costs, as firms value expenses incurred in the future less than they value expenses they incur in the present. For example, if we use an 8.05% discount rate (from <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/wacc.html" target="_blank" rel="noopener noreferrer">Damadoran 2024</a>), we get the following table for our livestock vaccine modeling.
+, we get the following table for our livestock vaccine modeling.
 
-**iii. Firm’s hurdle rate of return.** Firms expect to make a profit, and prefer investments that pay money today rather than in the future. Since AMCs and other pull mechanisms require firms to spend money in the present on the possibility of receiving funds in the future, funders need to compensate firms for that delay. In general, the more a funder wishes to delay funding, the greater the premium the funder must pay to induce entry. MSA currently uses annual discount rates of 8-10%, depending on the sector involved. For long-dated AMCs, i.e. AMCs for technological innovations that may take ten years or more to pay off, including hurdle rates can more than double nominal costs.
-
-<button class="see-more-btn" onclick="toggleDetails('discountratesizing-details')">How discounting affects AMC sizing</button>
-<div id="discountratesizing-details" class="details-box">
-
-In general, the more the funder delays payments, the larger the nominal payments need to be to compensate firms for that delay. Of note, hurdle rates tend to substantially exceed social discount rates, so the real value of the needed pull size will also rise as the delays grow. 
-
-Suppose, a firm has a 10% hurdle rate, while the funder has a discount rate of 3%. If the payout is delayed ten years, then the funder will need to pay \$259 in year 10 to induce \$100 in private spending in year 0. 
-
-
-  <table>
-    <thead>
-        <tr>
-            <th>Payout Year</th>
-            <th>0</th>
-            <th>5</th>
-            <th>10</th>
-            <th>15</th>
-            <th>20 </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Future payout needed for firms to have net present value &gt; 0</td>
-            <td>100</td>
-            <td>161</td>
-            <td>259</td>
-            <td>418</td>
-            <td>673 </td>
-        </tr>
-        <tr>
-            <td>Funder&#39;s present value of payout</td>
-            <td>100</td>
-            <td>139</td>
-            <td>193</td>
-            <td>268</td>
-            <td>372</td>
-        </tr>
-    </tbody>
-</table>
-
-Formally, if $r$ is the firm hurdle rate and $t$ is the number of years between upfront payment, the nominal value of  the pull commitment to induce \$1 in spending is $$(1+r)^t$$. 
-<<<<<<< HEAD
-
- <div style = "text-align: left;">
-    <embed style="border: none;" src="./time_penalty.html" dpi="300" width="100%" height="800px" />
-  </div>
-
-</div>
-
- 
-
-=======
-</div>
-
->>>>>>> 6eec3b5ff70cf51a569de242153ec12fecd79921
-
-
-<button class="see-more-btn" onclick="toggleDetails('discountratefirmcosts-details')">How discounting affects firm costs</button>
-<div id="discountratefirmcosts-details" class="details-box">
-Discounting reduces future costs, as firms value expenses incurred in the future less than they value expenses they incur in the present. For example, if we use an 8.05% discount rate (from Damadoran 2024), we get the following table for our livestock vaccine modeling.  
 
   <table>
     <thead>
@@ -379,13 +384,127 @@ Discounting reduces future costs, as firms value expenses incurred in the future
         </tr>
     </tbody>
 </table>
+
+Since the overwhelming majority of the costs fall in the first few years, discounting only reduces all-in costs from \$1.9 million to \$1.8 million. For human vaccines, where Stage III trials can get extremely expensive, this discounting can have a major effect on the present value of the incentive.
+</div>
+
+# Building the model
+
+Larger market sizes will incentivize more firms to participate. Designers should consider the number of firms they are seeking to attract and the eternal tradeoff: a larger AMC creates more chances for a successful innovation but also entails higher costs. For example, during the COVID-19 pandemic, it was important to attract firms with even a modest probability of success which contrasts from the classic case for an advance market commitment ([Ahuja et al 2021](https://www.aeaweb.org/articles?id=10.1257/pandp.20211103)). However, normally we do not want to attract a lot of firms who have a low probability of success — one of the benefits of pull is that firms with a high probability of success self-select into the R&D. Thinking through how many firms are likely to be attracted to compete for the pull mechanism or we want to see compete is a key ingredient in the costing analysis.
+
+<iframe 
+    src="needed_attempts_graph.html" 
+    width="100%" 
+    height="600" 
+    style="border: none;">
+</iframe>
+
+<button class="see-more-btn" onclick="toggleDetails('needed-attempts-math')">Show math</button>
+<div id="needed-attempts-math" class="details-box">
+    We make the following assumpions, many of which will be later relaxed.
+    <br>
+    <br>
+    <ol>
+    <li>All firms are risk-neutral and identical ex ante.</li>
+    <li>Firms face one choice: whether to commit a single innovation attempt. Although firms enter sequentially, all research progresses on the same timetable.</li>
+    <li>All innovation attempts are identical and independent.</li>
+    <li>If multiple firms succeed, they split the reward equally. For example, if one firm succeeds, that firm receives the entire prize $X$, while two successful firms would each receive $\frac{1}{2}X$. </li>
+    </ol>
+    <table>
+    <thead>
+        <tr>
+            <th>Variable Name</th>
+            <th>Description </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$\theta$</td>
+            <td>Target probability of success </td>
+        </tr>
+        <tr>
+            <td>$n$</td>
+            <td>Number of attempts </td>
+        </tr>
+        <tr>
+            <td>$p$</td>
+            <td>Per-attempt probability of success</td>
+        </tr>
+        <tr>
+            <td>$X$</td>
+            <td>Present value of pull incentive</td>
+        </tr>
+        <tr>
+            <td>$\mathbb{E}[c]$</td>
+            <td>Present value of expected cost per innovation attempt</td>
+        </tr>
+    </tbody>
+    </table>
+<!-- -->
+    Suppose we want to create a pull mechanism such that the probability of success of at least one firm is at least $\theta$. In other words, need to find an $n$ such that $1 - (1-p)^n \geq \theta$. Through simple re-arrangement, we can find that: 
+<!-- -->
+    $$ n \geq \frac{ln(1-\theta)}{ln(1-p)} $$
+<!-- -->
+    If the number of entrants exceeds that value, then the probability of success will exceed that target. As all firms are identical in all respects, the probability of receivng the reward conditional on entering is equal to the probability that any firm succeeds, divided by the number of firms entering. In other words, 
+<!-- -->
+    $$ \mathbb{P}(win|entry) = \frac{1-(1-p)^n}{n} $$
+<!-- -->
+    A firm will only enter if its expected revenue exceeds the expected costs ($\mathbb{E}[c]$). For a risk-neutral firm, the expected revenue is simply $\mathbb{P}(win|entry) \cdot X$. As a result, by plugging in the values for $\mathbb{P}(win|entry)$ and $n$ we found above, we find that the needed pull size becomes 
+<!-- -->
+    $$ X \geq \frac{ln(1-\theta)}{\theta \cdot ln(1-p)} \cdot \mathbb{E}[c]$$
+ <!-- -->
+    Future sections will relax some of these assumptions and build out a complete model.
+</div>
+
+The more firms that have already entered, the higher the marginal cost to induce an extra firm, because now firms face higher risk of splitting the prize. As the number of firms increases, the marginal cost approaches the cost of each additional attempt. For instance, if the probability of success per attempt is 5% and the present value cost of each attempt is \\$1,000,000 then a funder would need to increase the pull size by \\$580,000 to move from nine to ten attempts . In contrast, moving from 50 to 51 attempts requires an additional marginal cost of \$856,000.
+
+<iframe 
+    src="marginal_cost_to_induce_entry.html" 
+    width="100%" 
+    height="600" 
+    style="border: none;">
+</iframe>
+
+<button class="see-more-btn" onclick="toggleDetails('marginal-cost-entrant')">Show math</button>
+<div id="marginal-cost-entrant" class="details-box">
+    <table>
+    <thead>
+        <tr>
+            <th>Variable Name</th>
+            <th>Description </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$n$</td>
+            <td>Number of attempts </td>
+        </tr>
+        <tr>
+            <td>$p$</td>
+            <td>Per-attempt probability of success</td>
+        </tr>
+        <tr>
+            <td>$X$</td>
+            <td>Present value of pull incentive</td>
+        </tr>
+        <tr>
+            <td>$\mathbb{E}[c]$</td>
+            <td>Present value of expected cost per innovation attempt</td>
+        </tr>
+    </tbody>
+    </table>
+
+    From the previous section, we know that $X \cdot \frac{1-(1-p)^n}{n} \geq \mathbb{E}[c]$. Through re-arrangement we can find that
+    $$ X \geq \frac{n \cdot \mathbb{E}[c]}{1-(1-p)^n}$$
+
+    We need to simply take the derivative of that expression to find $\frac{\mathrm{d}X}{\mathrm{d}n}$, which we find as
+
+    $$\frac{\mathrm{d}X}{\mathrm{d}n}= \mathbb{E}[c] \cdot \frac{1-(1-p)^n + n \cdot (1-p)^n \cdot ln(1-p)}{(1-(1-p)^n)^2}$$
+
+
 </div>
 
 
-
-
-
-## Explore the Simple Sizing Graph
 
 <iframe 
     src="simple_sizing_graph.html" 
@@ -394,7 +513,11 @@ Discounting reduces future costs, as firms value expenses incurred in the future
     style="border: none;">
 </iframe>
 
-<button class="see-more-btn" onclick="toggleDetails('simple-details')">See more details</button>
+
+
+
+
+<button class="see-more-btn" onclick="toggleDetails('simple-details')">Show example</button>
 <div id="simple-details" class="details-box">
     The Simple Sizing Graph is based on the following equation:
     <p>
@@ -403,14 +526,9 @@ Discounting reduces future costs, as firms value expenses incurred in the future
     This equation captures the relationship between the target probability of success (\( \theta \)) and the required cost as a multiple of the innovation cost.
 </div>
 
-## Needed Firm Entry Graph
 
-<iframe 
-    src="needed_attempts_graph.html" 
-    width="100%" 
-    height="650" 
-    style="border: none;">
-</iframe>
+
+
 
 ## Complete Sizing Graph
 

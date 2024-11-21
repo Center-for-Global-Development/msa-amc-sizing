@@ -1,8 +1,3 @@
-<script>
-function calculateNeededAttempts(theta, p) {
-    return Math.log(1 - theta) / Math.log(1 - p);
-}
-</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,9 +79,6 @@ function calculateNeededAttempts(theta, p) {
         input[type="range"]:focus::-moz-range-thumb {
             box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
         }
-
-
-
     </style>
 </head>
 <body>
@@ -95,60 +87,25 @@ function calculateNeededAttempts(theta, p) {
         <div id="graph"></div>
     </div>
     <figcaption style="text-align: center; margin-top: 10px;">
-            If we assume each attempt is independent (an assumption we will weaken later) and each attempt has a 5% chance of success, one would need to induce 27 different attempts to have at least a 75% chance of at least one success.
+            If we assume each attempt is independent (an assumption we will weaken later) and each attempt has a 5% chance of success, the marginal cost to induce an extra attempt grows substantially. 
             </figcaption>
-
     <div id="slider-container">
         <input type="range" id="p-slider" min="0.01" max="0.25" step="0.01" value="0.05" style="width: 100%;">
         <label for="p-slider">Per-attempt probability of success (p): <span id="p-value">5%</span></label><br>
-
     </div>
-
     <script>
-        // JavaScript function to calculate needed attempts
-        function calculateNeededAttempts(theta, p) {
-            return Math.log(1 - theta) / Math.log(1 - p);
-        }
-
-        // Initial settings
-        const thetaValues = Array.from({ length: 100 }, (_, i) => 0.25 + i * 0.0074); // Range from 0.25 to 0.99
-        const pSlider = document.getElementById("p-slider");
-        const pValue = document.getElementById("p-value");
-        const graphDiv = document.getElementById("graph");
-
-        // Function to update the graph
-        function updateGraph(p) {
-            const neededAttempts = thetaValues.map(theta => calculateNeededAttempts(theta, p));
-            const trace = {
-                x: thetaValues,
-                y: neededAttempts,
-                mode: 'lines',
-                line: { color: '#800000', width: 4 },
-                name: 'Needed Attempts'
-            };
-
-            const layout = {
-                title: 'Number of independent attempts needed to reach a target probability of success',
-                xaxis: {
-                    title: 'Target Probability of Success',
-                    tickformat: '.0%',
-                    range: [0.25, 0.99],
-                    showline: true,
-                    linecolor: 'black',
-                    linewidth: 2
-                },
-                yaxis: {
-                    title: 'Number of Needed Attempts',
-                    range: [0, 150],
-                    showline: true,
-                    linecolor: 'black',
-                    linewidth: 2
-                },
-                plot_bgcolor: '#ffffff',
-                margin: { t: 50, b: 50 }
-            };
-
-            Plotly.newPlot(graphDiv, [trace], layout);
+        // JavaScript function to calculate marginal cost
+        function calculateMarginalCost(p, n) {
+            // Calculate the numerator
+            const numerator = (-(Math.pow(1 - p, n)) + 
+                n * Math.pow(1 - p, n) * Math.log(1 - p) + 
+                1
+            );
+            // Calculate the denominator
+            const denominator = Math.pow(1 - Math.pow(1 - p, n), 2);
+            // Calculate the result
+            const result = numerator / denominator;
+            return result;
         }
 
         // Function to update slider color
@@ -160,16 +117,55 @@ function calculateNeededAttempts(theta, p) {
             slider.style.setProperty('--slider-pos', percentage + '%');
         }
 
-        // Initial graph
+        // Initial settings
+        const nValues = Array.from({ length: 100 }, (_, i) => 1 + i); // Range from 1 to 100
+        const pSlider = document.getElementById("p-slider");
+        const pValue = document.getElementById("p-value");
+        const graphDiv = document.getElementById("graph");
+
+        // Function to update the graph
+        function updateGraph(p) {
+            const marginalCost = nValues.map(n => calculateMarginalCost(p,n));
+            const trace = {
+                x: nValues,
+                y: marginalCost,
+                mode: 'lines',
+                line: { color: '#800000', width: 4 },
+                name: 'Marginal cost to induce an extra attempt'
+            };
+            const layout = {
+                title: 'Marginal cost to induce an extra attempt',
+                xaxis: {
+                    title: 'Number of attempts',
+                    tickformat: '.0',
+                    range: [1, 100],
+                    showline: true,
+                    linecolor: 'black',
+                    linewidth: 2
+                },
+                yaxis: {
+                    title: 'Marginal cost (as multiple of expected costs)',
+                    range: [0, 1],
+                    showline: true,
+                    linecolor: 'black',
+                    linewidth: 2
+                },
+                plot_bgcolor: '#ffffff',
+                margin: { t: 50, b: 50 }
+            };
+            Plotly.newPlot(graphDiv, [trace], layout);
+        }
+
+        // Initial setup
         updateSliderColor(pSlider);
         updateGraph(parseFloat(pSlider.value));
 
         // Add event listener to slider
-        pSlider.addEventListener("input", () => {
+        pSlider.addEventListener("input", (e) => {
             const p = parseFloat(pSlider.value);
             pValue.textContent = `${Math.round(p * 100)}%`;
             updateGraph(p);
-            updateSliderColor(pSlider);
+            updateSliderColor(e.target);
         });
     </script>
 </body>

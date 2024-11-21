@@ -2,7 +2,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    text-align: left;
+    text-align: center;
     table-layout: fixed; /* Ensures consistent column widths */
 }
 

@@ -15,12 +15,71 @@
             margin: auto;
         }
         #slider-container {
-            width: 800px;
+            width: 700px;
             margin: auto;
             text-align: center;
         }
         .slider-label {
             margin: 10px 0;
+        }
+        /* Styling for the slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Slider Track */
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #800000 var(--slider-pos, 50%), #ddd var(--slider-pos, 50%));
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-track {
+            background: #ddd;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-progress {
+            background: #800000;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        /* Slider Thumb */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -6px;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            border: none;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        /* Focus styles */
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        input[type="range"]:focus::-webkit-slider-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+        }
+
+        input[type="range"]:focus::-moz-range-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -52,6 +111,14 @@
 
         function calculatePresentCost(r, f, t) {
             return 100 * Math.pow(1 + r, t) / Math.pow(1 + f, t);
+        }
+
+        function updateSliderColor(slider) {
+            const min = parseFloat(slider.min);
+            const max = parseFloat(slider.max);
+            const val = parseFloat(slider.value);
+            const percentage = ((val - min) * 100) / (max - min);
+            slider.style.setProperty('--slider-pos', percentage + '%');
         }
 
         const tValues = Array.from({ length: 20 }, (_, i) => i + 1);
@@ -102,13 +169,15 @@
 
             Plotly.newPlot(graphDiv, [traceNominal, tracePresent], layout);
         }
-
+        updateSliderColor(rSlider);
+        updateSliderColor(fSlider);
         updateGraph(parseFloat(rSlider.value), parseFloat(fSlider.value));
 
         rSlider.addEventListener("input", () => {
             const r = parseFloat(rSlider.value);
             const f = parseFloat(fSlider.value);
             rValue.textContent = `${Math.round(r * 100)}%`;
+            updateSliderColor(rSlider);
             updateGraph(r, f);
         });
 
@@ -116,6 +185,7 @@
             const r = parseFloat(rSlider.value);
             const f = parseFloat(fSlider.value);
             fValue.textContent = `${Math.round(f * 100)}%`;
+            updateSliderColor(fSlider);
             updateGraph(r, f);
         });
     </script>

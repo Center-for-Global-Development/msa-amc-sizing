@@ -8,7 +8,7 @@ function calculateNeededAttempts(theta, p) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Needed Firm Entry Graph</title>
+    <title></title>
     <!-- Include Plotly.js -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
@@ -25,16 +25,83 @@ function calculateNeededAttempts(theta, p) {
             margin: auto;
             text-align: center;
         }
+        /* Styling for the slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Slider Track */
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #800000 var(--slider-pos, 50%), #ddd var(--slider-pos, 50%));
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-track {
+            background: #ddd;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-progress {
+            background: #800000;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        /* Slider Thumb */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -6px;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            border: none;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        /* Focus styles */
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        input[type="range"]:focus::-webkit-slider-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+        }
+
+        input[type="range"]:focus::-moz-range-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+        }
+
+
+
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">Needed Firm Entry Graph</h1>
-    <div id="slider-container">
-        <label for="p-slider">Per-attempt probability of success (p): <span id="p-value">1%</span></label><br>
-        <input type="range" id="p-slider" min="0.01" max="0.25" step="0.01" value="0.01" style="width: 100%;">
-    </div>
+    <h1 style="text-align: center;"></h1>
     <div id="graph-container">
         <div id="graph"></div>
+    </div>
+    <figcaption style="text-align: center; margin-top: 10px;">
+            If we assume each attempt is independent (an assumption we will weaken later) and each attempt has a 5% chance of success, one would need to induce 27 different attempts to have at least a 75% chance of at least one success.
+            </figcaption>
+
+    <div id="slider-container">
+        <input type="range" id="p-slider" min="0.01" max="0.25" step="0.01" value="0.05" style="width: 100%;">
+        <label for="p-slider">Per-attempt probability of success (p): <span id="p-value">5%</span></label><br>
+
     </div>
 
     <script>
@@ -61,7 +128,7 @@ function calculateNeededAttempts(theta, p) {
             };
 
             const layout = {
-                title: 'Needed Firm Entry Graph',
+                title: 'Number of independent attempts needed to reach a target probability of success',
                 xaxis: {
                     title: 'Target Probability of Success',
                     tickformat: '.0%',
@@ -72,7 +139,7 @@ function calculateNeededAttempts(theta, p) {
                 },
                 yaxis: {
                     title: 'Number of Needed Attempts',
-                    range: [0, 200],
+                    range: [0, 150],
                     showline: true,
                     linecolor: 'black',
                     linewidth: 2
@@ -84,7 +151,17 @@ function calculateNeededAttempts(theta, p) {
             Plotly.newPlot(graphDiv, [trace], layout);
         }
 
+        // Function to update slider color
+        function updateSliderColor(slider) {
+            const min = parseFloat(slider.min);
+            const max = parseFloat(slider.max);
+            const val = parseFloat(slider.value);
+            const percentage = ((val - min) * 100) / (max - min);
+            slider.style.setProperty('--slider-pos', percentage + '%');
+        }
+
         // Initial graph
+        updateSliderColor(pSlider);
         updateGraph(parseFloat(pSlider.value));
 
         // Add event listener to slider
@@ -92,6 +169,7 @@ function calculateNeededAttempts(theta, p) {
             const p = parseFloat(pSlider.value);
             pValue.textContent = `${Math.round(p * 100)}%`;
             updateGraph(p);
+            updateSliderColor(pSlider);
         });
     </script>
 </body>
