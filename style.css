@@ -52,6 +52,7 @@ header.page-header {
 .main-content h5, 
 .main-content h6 {
     color: #800000; /* Change to your desired color */
+    font-weight: bold;
 }
 
 

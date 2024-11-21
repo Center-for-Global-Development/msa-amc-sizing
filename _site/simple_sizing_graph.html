@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sizing an AMC</title>
+    <title></title>
     <!-- Include Plotly.js -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
@@ -22,25 +22,102 @@
             margin: auto;
         }
         #slider-container {
-            width: 800px;
+            width: 700px;
             margin: auto;
             text-align: center;
+        }
+        .slider-label {
+            margin: 10px 0;
+        }
+        /* Styling for the slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Slider Track */
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #800000 var(--slider-pos, 50%), #ddd var(--slider-pos, 50%));
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-track {
+            background: #ddd;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-progress {
+            background: #800000;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        /* Slider Thumb */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -6px;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            border: none;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        /* Focus styles */
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        input[type="range"]:focus::-webkit-slider-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+        }
+
+        input[type="range"]:focus::-moz-range-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">Sizing an AMC</h1>
     <div id="graph-container">
-        <div id="graph"></div>
+        <figure>
+            <div id="graph"></div>
+            <figcaption style="text-align: center; margin-top: 10px;">
+            Unreflected in the chart is that changing the per-attempt probability of success will also affect the expected costs.
+            </figcaption>
+        </figure>
     </div>
     <div id="slider-container">
-        <input type="range" id="p-slider" min="0.01" max="0.25" step="0.01" value="0.01" style="width: 100%;">
-        <label for="p-slider">Per-attempt probability of success (p): <span id="p-value">1%</span></label><br>
+        <div class="slider-label">
+            <input type="range" id="p-slider" min="0.01" max="0.20" step="0.01" value="0.03" style="width: 100%;">
+            <label for="p-slider">Per-attempt probability of success: <span id="p-value">5%</span></label><br>
+        </div>
     </div>
+
     <script>
         // JavaScript function to calculate cost
         function calculateCost(theta, p) {
             return Math.log(1 - theta) / (theta * Math.log(1 - p));
+        }
+
+        function updateSliderColor(slider) {
+            const min = parseFloat(slider.min);
+            const max = parseFloat(slider.max);
+            const val = parseFloat(slider.value);
+            const percentage = ((val - min) * 100) / (max - min);
+            slider.style.setProperty('--slider-pos', percentage + '%');
         }
 
         // Initial settings
@@ -72,7 +149,7 @@
                 },
                 yaxis: {
                     title: 'Cost (as a multiple of cost of innovation)',
-                    range: [0, 500],
+                    range: [0, 300],
                     showline: true,
                     linecolor: 'black',
                     linewidth: 2
@@ -87,10 +164,13 @@
         // Initial graph
         updateGraph(parseFloat(pSlider.value));
 
+        updateSliderColor(pSlider);
+
         // Add event listener to slider
         pSlider.addEventListener("input", () => {
             const p = parseFloat(pSlider.value);
             pValue.textContent = `${Math.round(p * 100)}%`;
+            updateSliderColor(pSlider);
             updateGraph(p);
         });
     </script>

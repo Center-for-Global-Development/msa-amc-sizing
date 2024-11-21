@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #graph-container {
+            width: 800px;
+            margin: auto;
+        }
+        #slider-container {
+            width: 700px;
+            margin: auto;
+            text-align: center;
+        }
+        .slider-label {
+            margin: 10px 0;
+        }
+        /* Styling for the slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Slider Track */
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #800000 var(--slider-pos, 50%), #ddd var(--slider-pos, 50%));
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-track {
+            background: #ddd;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-progress {
+            background: #800000;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        /* Slider Thumb */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -6px;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            border: none;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        /* Focus styles */
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        input[type="range"]:focus::-webkit-slider-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+        }
+
+        input[type="range"]:focus::-moz-range-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;"></h1>
+    <div id="graph-container">
+        <div id="graph"></div>
+        <figure>
+            <div id="graph"></div>
+            <figcaption style="text-align: center; margin-top: 10px;">
+            Having only a single potential firm in the market will entail substantially higher costs, but the premium rapidly tails off as the number of firms rises. This factor is not worth considering if the number of potential entrants is more than two or three.
+            </figcaption>
+        </figure>
+    </div>
+    <div id="slider-container">
+        <label for="p-slider">Per-attempt probability of success (β): <span id="p-value">3%</span></label><br>
+        <input type="range" id="p-slider" min="0.01" max="0.25" step="0.01" value="0.03" style="width: 100%;"><br>
+
+        <label for="theta-slider">Target Probability of Success (θ): <span id="theta-value">80%</span></label><br>
+        <input type="range" id="theta-slider" min="0.25" max="0.99" step="0.01" value="0.80" style="width: 100%;"><br>
+    </div>
+
+    <script>
+        function updateSliderColor(slider) {
+            const min = parseFloat(slider.min);
+            const max = parseFloat(slider.max);
+            const val = parseFloat(slider.value);
+            const percentage = ((val - min) * 100) / (max - min);
+            slider.style.setProperty('--slider-pos', percentage + '%');
+        }
+
+        function calculateProbabilityExactZ(z, numFirmsMin, minProb, numFirmsMax, maxProb) {
+            let probability = 0;
+            for (let k = 0; k <= Math.min(z, numFirmsMin); k++) {
+                const j = z - k;
+                if (j >= 0 && j <= numFirmsMax) {
+                    const probMin = combination(numFirmsMin, k) * Math.pow(minProb, k) * Math.pow(1 - minProb, numFirmsMin - k);
+                    const probMax = combination(numFirmsMax, j) * Math.pow(maxProb, j) * Math.pow(1 - maxProb, numFirmsMax - j);
+                    probability += probMin * probMax;
+                }
+            }
+            return probability;
+        }
+
+        function marginalCostFunction(numFirmsMin, numFirmsMax, numAttemptsMin, numAttemptsSame, beta) {
+            const probMarginMatters = beta * Math.pow(1 - beta, numAttemptsSame - 1);
+            const minProb = 1 - Math.pow(1 - beta, numAttemptsMin);
+            const maxProb = 1 - Math.pow(1 - beta, numAttemptsMin + 1);
+
+            let cumulativeValue = 0;
+            for (let z = 0; z <= numFirmsMin + numFirmsMax; z++) {
+                const probability = calculateProbabilityExactZ(z, numFirmsMin, minProb, numFirmsMax, maxProb);
+                const val = probability * (1 / (z + 1)) * probMarginMatters;
+                cumulativeValue += val;
+            }
+            return 1 / cumulativeValue;
+        }
+
+        function outputMarginalBenefit(theta, beta, k) {
+            const n = Math.log(1 - (1 - Math.pow(1 - theta, 1 / k))) / Math.log(1 - beta);
+            const a = Math.floor(n);
+            const y = Math.ceil(k * (n-a));
+            const x = k-y;
+
+            const ceilingProbability = y / k;
+
+            const val1 = ceilingProbability * marginalCostFunction(x, Math.max(y - 1, 0), a, a + 1, beta);
+            const val2 = (1 - ceilingProbability) * marginalCostFunction(Math.max(x - 1, 0), y, a, a, beta);
+            console.log(theta,beta,k,val1+val2)
+
+            return val1 + val2;
+        }
+
+        function combination(n, r) {
+            if (r > n) return 0;
+            let result = 1;
+            for (let i = 0; i < r; i++) {
+                result *= (n - i) / (i + 1);
+            }
+            return result;
+        }
+
+        function updateGraph(beta, theta) {
+            const kValues = Array.from({ length: 30 }, (_, i) => i + 1);
+            const yValues = kValues.map(k => outputMarginalBenefit(theta, beta, k));
+
+            const trace = {
+                x: kValues,
+                y: yValues,
+                mode: 'lines',
+                line: { color: '#800000', width: 6 },
+                name: 'Marginal Benefit'
+            };
+
+            const layout = {
+                title: 'Pull size based on number of firms',
+                xaxis: {
+                    title: 'Number of firms',
+                    showline: true,
+                    linecolor: 'black',
+                    linewidth: 4
+                },
+                yaxis: {
+                    title: 'Needed pull size (as multiple of cost of innovation)',
+                    showline: true,
+                    range: [0, 200],
+                    linecolor: 'black',
+                    linewidth: 4
+                },
+                plot_bgcolor: '#ffffff',
+                margin: { t: 50, b: 60 }
+            };
+
+            Plotly.newPlot('graph', [trace], layout);
+        }
+
+        // Event listeners and initial graph rendering
+        const pSlider = document.getElementById('p-slider');
+        const thetaSlider = document.getElementById('theta-slider');
+        const pValue = document.getElementById('p-value');
+        const thetaValue = document.getElementById('theta-value');
+
+        pValue.textContent = `${Math.round(pSlider.value * 100)}%`;
+        thetaValue.textContent = `${Math.round(thetaSlider.value * 100)}%`;
+
+
+        function initialize() {
+            updateSliderColor(pSlider);
+            updateSliderColor(thetaSlider);
+            updateGraph(parseFloat(pSlider.value), parseFloat(thetaSlider.value));
+        }
+
+        pSlider.addEventListener('input', () => {
+            pValue.textContent = `${Math.round(pSlider.value * 100)}%`;
+            updateSliderColor(pSlider);
+            updateGraph(parseFloat(pSlider.value), parseFloat(thetaSlider.value));
+        });
+
+        thetaSlider.addEventListener('input', () => {
+            thetaValue.textContent = `${Math.round(thetaSlider.value * 100)}%`;
+            updateSliderColor(thetaSlider);
+            updateGraph(parseFloat(pSlider.value), parseFloat(thetaSlider.value));
+        });
+
+        initialize();
+    </script>
+</body>
+</html>

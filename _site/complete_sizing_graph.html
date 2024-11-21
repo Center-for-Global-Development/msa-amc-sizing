@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Sizing Graph</title>
+    <title></title>
     <!-- Include Plotly.js -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
@@ -26,33 +26,106 @@
             text-align: center;
             margin-top: 10px;
         }
+        /* Styling for the slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Slider Track */
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #800000 var(--slider-pos, 50%), #ddd var(--slider-pos, 50%));
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-track {
+            background: #ddd;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-progress {
+            background: #800000;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        /* Slider Thumb */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -6px;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            border: none;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        /* Focus styles */
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        input[type="range"]:focus::-webkit-slider-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+        }
+
+        input[type="range"]:focus::-moz-range-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
     <h1 style="text-align: center;">Complete Sizing Graph</h1>
+    <div id="graph-container">
+        <div id="graph"></div>
+        <figure>
+            <div id="graph"></div>
+            <figcaption style="text-align: center; margin-top: 10px;">
+            Incorporating correlations and firm count constraints will only modestly change values, unless one faces a very small market or high levels of correlation.
+            </figcaption>
+        </figure>
+    </div>
     <div id="slider-container">
         <label for="p-slider">Per-attempt probability of success (p): <span id="p-value">3%</span></label><br>
         <input type="range" id="p-slider" min="0.01" max="0.25" step="0.01" value="0.03" style="width: 100%;"><br>
 
-        <label for="eta-slider">Global Possibility Parameter (η): <span id="eta-value">100%</span></label><br>
-        <input type="range" id="eta-slider" min="0.5" max="1.0" step="0.05" value="1.0" style="width: 100%;"><br>
+        <label for="eta-slider">Global Possibility Parameter (η): <span id="eta-value">90%</span></label><br>
+        <input type="range" id="eta-slider" min="0.5" max="1.0" step="0.05" value="0.9" style="width: 100%;"><br>
 
         <label for="k-slider">Number of Firms (k): <span id="k-value">10</span></label><br>
         <input type="range" id="k-slider" min="1" max="20" step="1" value="10" style="width: 100%;"><br>
 
-        <label for="gamma-slider">Per-Firm Possibility Parameter (γ): <span id="gamma-value">1.0</span></label><br>
-        <input type="range" id="gamma-slider" min="0.5" max="1.0" step="0.1" value="1.0" style="width: 100%;">
+        <label for="gamma-slider">Per-Firm Possibility Parameter (γ): <span id="gamma-value">80%</span></label><br>
+        <input type="range" id="gamma-slider" min="0.5" max="1.0" step="0.1" value="0.8" style="width: 100%;">
     </div>
     <div id="checkbox-container">
         <label>
-            <input type="checkbox" id="axis-range-toggle"> Restrict range to 25-60%
+            <input type="checkbox" id="axis-range-toggle"> Restrict range to 25-75%
         </label>
-    </div>
-    <div id="graph-container">
-        <div id="graph"></div>
     </div>
 
     <script>
+        function updateSliderColor(slider) {
+            const min = parseFloat(slider.min);
+            const max = parseFloat(slider.max);
+            const val = parseFloat(slider.value);
+            const percentage = ((val - min) * 100) / (max - min);
+            slider.style.setProperty('--slider-pos', percentage + '%');
+        }
+
         function calculateCost(theta, p) {
             return Math.log(1 - theta) / (theta * Math.log(1 - p));
         }
@@ -70,10 +143,10 @@
             return probability;
         }
 
-        function marginalCostFunction(numFirmsMin, numFirmsMax, numAttemptsMin, numAttemptsSame, p, eta, gamma) {
-            const probMarginMatters = eta * gamma * p * Math.pow(1 - p, numAttemptsSame - 1);
-            const minProb = eta * gamma * (1 - Math.pow(1 - p, numAttemptsMin));
-            const maxProb = eta * gamma * (1 - Math.pow(1 - p, numAttemptsMin + 1));
+        function marginalCostFunction(numFirmsMin, numFirmsMax, numAttemptsMin, numAttemptsSame, beta) {
+            const probMarginMatters = beta * Math.pow(1 - beta, numAttemptsSame - 1);
+            const minProb = 1 - Math.pow(1 - beta, numAttemptsMin);
+            const maxProb = 1 - Math.pow(1 - beta, numAttemptsMin + 1);
 
             let cumulativeValue = 0;
             for (let z = 0; z <= numFirmsMin + numFirmsMax; z++) {
@@ -92,12 +165,12 @@
 
             const n = Math.log(innerExpr) / Math.log(1 - p);
             const a = Math.floor(n);
-            const x = (a + 1) * k - n;
-            const y = n * k - a * k;
+            const y = Math.ceil(k * (n-a));
+            const x = k-y;
             const ceilingProbability = y / k;
 
-            const val1 = ceilingProbability * marginalCostFunction(Math.floor(x), Math.max(Math.floor(y) - 1, 0), a, a + 1, p, eta, gamma);
-            const val2 = (1 - ceilingProbability) * marginalCostFunction(Math.max(Math.floor(x) - 1, 0), Math.floor(y), a, a, p, eta, gamma);
+            const val1 = ceilingProbability * marginalCostFunction(x, Math.max(y - 1, 0), a, a + 1, p, eta, gamma);
+            const val2 = (1 - ceilingProbability) * marginalCostFunction(Math.max(x - 1, 0), y, a, a, p, eta, gamma);
 
             return val1 + val2;
         }
@@ -147,18 +220,18 @@
             ];
 
             const layout = {
-                title: 'Complete Sizing Graph',
+                title: '',
                 xaxis: {
                     title: 'Target Probability of Success',
                     tickformat: '.0%',
-                    range: restrictRange ? [0.25, 0.6] : [0.25, 0.99],
+                    range: restrictRange ? [0.25, 0.75] : [0.25, 0.99],
                     showline: true,
                     linecolor: 'black',
                     linewidth: 4
                 },
                 yaxis: {
                     title: 'Needed pull size (as multiple of expected costs)',
-                    range: restrictRange ? [0, 200] : [0, 2000],
+                    range: restrictRange ? [0, 200] : [0, 500],
                     showline: true,
                     linecolor: 'black',
                     linewidth: 4
@@ -171,27 +244,44 @@
         }
 
         // Initial graph
+        updateSliderColor(pSlider);
+        updateSliderColor(etaSlider);
+        updateSliderColor(kSlider);
+        updateSliderColor(gammaSlider);
 
-        updateGraph(0.03, 1.0, 10, 1.0, false);
-
+        updateGraph(
+            parseFloat(pSlider.value),  // p
+            parseFloat(etaSlider.value),  // eta
+            parseFloat(kSlider.value),  // k
+            parseFloat(gammaSlider.value),  // gamma
+            axisToggle.checked // restrictRange
+        );
         // Add event listeners
         pSlider.addEventListener("input", () => {
             pValue.textContent = `${Math.round(pSlider.value * 100)}%`;
+            updateSliderColor(pSlider);
+
             updateGraph(parseFloat(pSlider.value), parseFloat(etaSlider.value), parseFloat(kSlider.value), parseFloat(gammaSlider.value), axisToggle.checked);
         });
 
         etaSlider.addEventListener("input", () => {
             etaValue.textContent = `${Math.round(etaSlider.value * 100)}%`;
+            updateSliderColor(etaSlider);
+
             updateGraph(parseFloat(pSlider.value), parseFloat(etaSlider.value), parseFloat(kSlider.value), parseFloat(gammaSlider.value), axisToggle.checked);
         });
 
         kSlider.addEventListener("input", () => {
             kValue.textContent = `${kSlider.value}`;
+            updateSliderColor(kSlider);
+
             updateGraph(parseFloat(pSlider.value), parseFloat(etaSlider.value), parseFloat(kSlider.value), parseFloat(gammaSlider.value), axisToggle.checked);
         });
 
         gammaSlider.addEventListener("input", () => {
-            gammaValue.textContent = `${gammaSlider.value}`;
+            gammaValue.textContent = `${Math.round(gammaSlider.value * 100)}%`;
+            updateSliderColor(gammaSlider);
+
             updateGraph(parseFloat(pSlider.value), parseFloat(etaSlider.value), parseFloat(kSlider.value), parseFloat(gammaSlider.value), axisToggle.checked);
         });
 
