@@ -1,20 +1,24 @@
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 20px 0; /* Reset to original */
     text-align: center;
     table-layout: fixed; /* Ensures consistent column widths */
 }
 
+/* Specific styles for tables within details-box */
+.details-box table {
+    width: 90%; /* Slightly narrower than full width for better appearance */
+    margin: 20px auto; /* Auto margins for horizontal centering */
+}
 
 .main-content table th, 
 .main-content table td {
     border: 1px solid #A9431E;
 }
 
-
 th {
-    background-color: #ff8e66; /* Adds a light background color to headers */
+    background-color: #FFA319; /* Adds a light background color to headers */
 }
 
 header.page-header {
@@ -26,7 +30,7 @@ header.page-header {
     margin: 10px 0;
     padding: 10px;
     border: 1px solid #ddd;
-    background-color: #FFF1E4;
+    background-color: #FFF5E6;
 }
 
 .see-more-btn {
@@ -54,5 +58,3 @@ header.page-header {
     color: #800000; /* Change to your desired color */
     font-weight: bold;
 }
-
-

@@ -78,7 +78,7 @@
 
 <h2>Introduction</h2>
 
-<p>Pull funding mechanisms, such as prizes and advanced market commitments, can be powerful tools to incentivize the development and delivery of socially valuable innovations. They provide financial incentives to innovators, helping to bridge gaps in markets where public health or social benefits might otherwise be underfunded. However, a key challenge in designing effective pull funding is determining the appropriate size of the incentive.</p>
+<p><a href="https://marketshaping.uchicago.edu/glossary/">Pull funding mechanisms</a>, which are any incentives that pays for results, outputs, or outcomes such as prizes and advanced market commitments, can be powerful tools to incentivize the development and delivery of socially valuable innovations. They provide financial incentives to innovators, helping to bridge gaps in markets where public health or social benefits might otherwise be underfunded. However, a key challenge in designing effective pull funding is determining the appropriate size of the incentive.</p>
 
 <p>Over the past year, we have developed an evolving framework to determine the approximate size of a pull fund for our target innovations. We have used this approach to estimate the cost-effectiveness and investigate the impact of design choices.</p>
 
@@ -86,21 +86,33 @@
 
 <h2>Size of the incentive</h2>
 
-<p>Pull mechanisms mimic market incentives by committing to provide sufficient returns to innovators of socially valuable goods. When firms evaluate participation in a pull mechanism, they consider whether expected revenues exceed expected costs. We expect firms to weigh the crucial questions of any innovation investments: what is the likelihood of technological success? How much will it cost to pursue it? What is the expected market size and timing of future revenue? How much competition do they expect to face?</p>
+<p>Pull mechanisms mimic market incentives by committing to provide sufficient returns to innovators of socially valuable goods. Roughly speaking, when firms evaluate whether to enter a market, they consider whether expected revenues exceed expected costs.When firms evaluate participation in a pull mechanism, they consider whether expected revenues exceed expected costs. To that end, firms will weigh the crucial questions of any innovation investment: what is the likelihood of technological success? How much will it cost to pursue innovation? What is the expected market size and timing of future revenue? How much competition do they expect to face?</p>
 
-<p>The design and size of the pull mechanism will dictate the answer to these questions and, hence, determine how many firms choose to invest in attempts at innovation. Increasing the expected number of firms that choose to participate in pull mechanisms increases the probability that the whole endeavor yields success. To determine the appropriate size of a pull mechanism, a designer needs to consider the tradeoff between increasing the probability of success and the cost of the endeavor.</p>
+<p>The size and structure of the pull mechanism will dictate the answer to these questions and, hence, determine how many firms try their hand at attempting to innovate. Increasing the amount of effort firms put into innovation or increasing the expected number of firms that choose to participate in pull mechanisms increases the probability that at least one attempt yields success. To determine the appropriate reward size, the designer of the pull mechanism therefore needs to consider the tradeoff between increasing the probabilitythat firms succeed at innovation and the cost of the endeavor.</p>
 
-<p>The remainder of this section will explain how to estimate the costs and risks of development and how to size a pull mechanism that achieves a desired probability of success.</p>
+<p>The remainder of this section will explain how to estimate the costs and risks of development and how to approximate the size a pull mechanism needed to achieve a desired probability of success.</p>
 
-<h2>Estimating Firms' Costs</h2>
-<p>First, we need to understand the costs that firms face. The higher the cost of innovation, the larger the pull size needs to be. Examples of costs worth considering include:</p>
+<p><button class="see-more-btn" onclick="toggleDetails('initial-assumptions-details')">Show baseline assumptions</button></p>
+<div id="initial-assumptions-details" class="details-box">
+    <p>We do make a few clarifying assumptions. Later sections will add more, or relax these assumptions.
+    <ol>
+        <li>All firms are rational and risk-neutral. Firms will enter if the expected benefits to the firm from entering exceed the expected costs.</li>
+        <li>Firms face one choice: whether to commit a single innovation attempt. Although firms enter sequentially, all research progresses on the same timetable.</li>
+        <li>All innovation attempts are identical and independent.</li>
+        <li>Benefits do not depend on the number of successful firms. The goal of the funder is to ensure at least one firm is successful. </li>
+    </ol>
+    </p>
+</div>
 
-<p><strong>i. Cost of R&amp;D and commercialization.</strong> This includes the fixed and marginal costs to a firm to invent, produce, and deliver the desired product. For some problems, the main challenge is to incentivize firms to incur fixed costs on research and development. In other cases, there may also be significant costs in bringing it to market at an appropriate scale. This could also include costs associated with demonstrating success and overcoming regulatory hurdles.</p>
+<h2>Collecting the data</h2>
+<p>First, we need to understand the costs that firms incur when trying to innovate. The higher the cost of innovation, the larger the pull size needs to be in order for firms to find investing in innovation worthwhile . Examples of costs worth considering include:</p>
+
+<p><strong>i. Cost of R&amp;D and commercialization.</strong> This category includes the fixed and marginal costs to a firm to invent, produce, and deliver the desired product. Costs associated with identifying promising leads,validating their efficacy, testing their safety, shepherding through regulatory approval, manufacturing, marketing, and distributing the final good all fall under this category.</p>
 
 <p><button class="see-more-btn" onclick="toggleDetails('rdcosts-details')">Show example</button></p>
 <div id="rdcosts-details" class="details-box">
     <p>
-    For example, consider an AMC to incentivize the development of a livestock vaccine. We can use past data on crop innovations to inform our estimates on the cost of development. The following comes from a 2014 paper estimating the costs to develop a vaccine for chicken in 2009. Any forward-looking estimates would need to adjust for inflation.
+    For example, consider an AMC to incentivize the development of a livestock vaccine. We can use past data on livestock vaccine innovations to inform our estimates on the cost of development. The following comes from a 2014 paper estimating the costs to develop a vaccine for chicken in 2009. Any forward-looking estimates would need to adjust for inflation.
 </p>
 
 <table>
@@ -113,7 +125,7 @@
     </thead>
     <tbody>
         <tr>
-            <td>R&amp;D</td>
+            <td>Research and Development</td>
             <td>3</td>
             <td>1,949</td>
         </tr>
@@ -123,7 +135,7 @@
             <td>137</td>
         </tr>
         <tr>
-            <td>Test</td>
+            <td>Testing</td>
             <td>2</td>
             <td>208</td>
         </tr>
@@ -164,7 +176,7 @@ Using the same data as before, we can assign probabilities to each step.
     </thead>
     <tbody>
         <tr>
-            <td>R&amp;D</td>
+            <td>Research and Development</td>
             <td>3</td>
             <td>1,949 </td>
             <td>20% </td>
@@ -190,9 +202,11 @@ Using the same data as before, we can assign probabilities to each step.
     </tbody>
 </table>
 
+Since estimates of success rates vary substantially, designers should be careful that the data source for success rates and costs are the same. Some sources may estimate a higher success rate, because they are excluding earlier stages. Or they may estimate the success rate of an entire research program, which includes multiple concurrent attempts, resulting in both a higher success rate but also a higher cost. These alternative approaches are not wrong, but one needs to be careful that the costs and success rates are coming from the same source.
+
 </div>
 
-<p><strong>iii. Firm’s hurdle rate of return.</strong> Firms expect to make a profit, and prefer investments that pay money today rather than in the future. Since AMCs and other pull mechanisms require firms to spend money in the present on the possibility of receiving funds in the future, funders need to compensate firms for that delay. In general, the more a funder wishes to delay funding, the greater the premium the funder must pay to induce entry. MSA currently uses annual discount rates of 8-10%, depending on the sector involved. For long-dated AMCs, i.e. AMCs for technological innovations that may take ten years or more to pay off, including hurdle rates can more than double nominal costs.</p>
+<p><strong>iii. Firm’s hurdle rate of return.</strong> Firms expect to make a profit and, all else equal, prefer investments that pay money today rather than in the future. Since AMCs and other pull mechanisms require firms to spend money in the present on the possibility of receiving funds in the future, funders need to compensate firms for that delay. In general, the more a funder wishes to delay funding, the greater the premium the funder must pay to induce entry. MSA currently uses annual discount rates of 8-10%, depending on the sector involved. For long-dated AMCs, i.e. AMCs for technological innovations that may take ten years or more to pay off, including hurdle rates can more than double nominal costs.</p>
 
 <p><button class="see-more-btn" onclick="toggleDetails('discountratesizing-details')">How discounting affects AMC sizing</button></p>
 <div id="discountratesizing-details" class="details-box">
@@ -236,14 +250,14 @@ Suppose, a firm has a 10% hurdle rate, while the funder has a discount rate of 3
 Formally, if $r$ is the firm hurdle rate and $t$ is the number of years between upfront payment, the nominal value of  the pull commitment to induce \$1 in spending is $$(1+r)^t$$. 
 
  <div style="text-align: left;">
-    <embed style="border: none;" src="./time_penalty.html" dpi="300" width="100%" height="800px" />
+    <embed style="border: none;" src="./time_penalty.html" dpi="300" width="105%" height="800px" />
   </div>
 
 </div>
 
 <h2>Calculating Firms' Expected Costs</h2>
 
-<p>Innovation requires multiple steps, including research and development, testing, trials, and regulatory approval. Each step incurs its own set of costs. However, when sizing, it is important to remember that firms do not incur these costs all at once. Instead, if the project fails at any specific step, the firm simply stops and does not incur the costs of the subsequent stages. Instead, when sizing, one needs to calculate the expected cost at the time of entry, properly discounted by time.</p>
+<p>Innovation requires multiple steps, including research and development, testing, trials, and regulatory approval. Each step incurs its own set of costs, and its own risks of failure. However, when sizing, it is important to remember that firms do not incur these costs all at once. Instead, if the project fails at any specific step, the firm simply stops and does not incur the costs of the subsequent stages. Instead, when sizing, one needs to calculate the expected cost at the time of entry, properly discounted by time.</p>
 
 <p><button class="see-more-btn" onclick="toggleDetails('optionvalue-details')">Walking through an example</button></p>
 <div id="optionvalue-details" class="details-box">
@@ -434,7 +448,7 @@ Since the overwhelming majority of the costs fall in the first few years, discou
 
 <h1 id="building-the-model">Building the model</h1>
 
-<p>Larger market sizes will incentivize more firms to participate. Designers should consider the number of firms they are seeking to attract and the eternal tradeoff: a larger AMC creates more chances for a successful innovation but also entails higher costs. For example, during the COVID-19 pandemic, it was important to attract firms with even a modest probability of success which contrasts from the classic case for an advance market commitment (<a href="https://www.aeaweb.org/articles?id=10.1257/pandp.20211103">Ahuja et al 2021</a>). However, normally we do not want to attract a lot of firms who have a low probability of success — one of the benefits of pull is that firms with a high probability of success self-select into the R&amp;D. Thinking through how many firms are likely to be attracted to compete for the pull mechanism or we want to see compete is a key ingredient in the costing analysis.</p>
+<p>Larger pull sizes will incentivize more firms to participate. Designers should consider the number of firms they are seeking to attract and the eternal tradeoff: a larger AMC creates more chances for a successful innovation but also entails higher costs. For example, during the COVID-19 pandemic, it was important to attract firms with even a modest probability of success which contrasts from the classic case for an advance market commitment because inducing as many attempts as possible was necessary to meet the urgency and magnitude of the crisis (<a href="https://www.aeaweb.org/articles?id=10.1257/pandp.20211103">Ahuja et al 2021</a>). However, normally we do not want to attract a lot of firms who have a low probability of success — one of the benefits of pull is that firms with a high probability of success self-select into the R&amp;D. Thinking through how many firms are likely to be attracted to compete for the pull mechanism or we want to see compete is a key ingredient in the costing analysis.</p>
 
 <iframe src="needed_attempts_graph.html" width="100%" height="600" style="border: none;">
 </iframe>
@@ -734,7 +748,7 @@ In practice, introducing correlation substantially increases the needed pull siz
 
 <hr />
 
-<p>William Arnesen &amp; Claire Mcmahon, 2024</p>
+<p>William Arnesen &amp; Claire McMahon, 2024</p>
 
 
       <footer class="site-footer">
