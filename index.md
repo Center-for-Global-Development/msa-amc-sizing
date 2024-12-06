@@ -40,7 +40,7 @@ In this blog, we will present a simple framework for determining the size of pul
 
 <h2>Size of the incentive</h2>
 
-Pull mechanisms mimic market incentives by committing to provide sufficient returns to innovators of socially valuable goods. Roughly speaking, when firms evaluate whether to enter a market, they consider whether expected revenues exceed expected costs.When firms evaluate participation in a pull mechanism, they consider whether expected revenues exceed expected costs. To that end, firms will weigh the crucial questions of any innovation investment: what is the likelihood of technological success? How much will it cost to pursue innovation? What is the expected market size and timing of future revenue? How much competition do they expect to face?
+Pull mechanisms mimic market incentives by committing to provide sufficient returns to innovators of socially valuable goods. Roughly speaking, when firms evaluate whether to enter a market, they consider whether expected revenues exceed expected costs. To that end, firms will weigh the crucial questions of any innovation investment: what is the likelihood of technological success? How much will it cost to pursue innovation? What is the expected market size and timing of future revenue? How much competition do they expect to face?
 
 The size and structure of the pull mechanism will dictate the answer to these questions and, hence, determine how many firms try their hand at attempting to innovate. Increasing the amount of effort firms put into innovation or increasing the expected number of firms that choose to participate in pull mechanisms increases the probability that at least one attempt yields success. To determine the appropriate reward size, the designer of the pull mechanism therefore needs to consider the tradeoff between increasing the probabilitythat firms succeed at innovation and the cost of the endeavor.
 
@@ -114,7 +114,7 @@ First, we need to understand the costs that firms incur when trying to innovate.
 </div>
 
 
-**ii. Likelihood of technological success.** Innovation is inherently risky. There is no guarantee that firms that incur R&D and commercialization costs will succeed in developing an innovation and bringing it to market. The probability of success includes a firm's risk of technological failure such that they are unable to reach TPP. 
+**ii. Likelihood of technological success.** Innovation is inherently risky. There is no guarantee that firms that incur R&D and commercialization costs will succeed in developing an innovation and bringing it to market. The probability of success includes a firm's risk of technological failure such that they are unable to fulfill the terms of the technical product parameters. 
 
 <button class="see-more-btn" onclick="toggleDetails('rdsuccess-details')">Show example</button>
 <div id="rdsuccess-details" class="details-box">
