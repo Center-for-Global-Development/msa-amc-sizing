@@ -58,3 +58,108 @@ header.page-header {
     color: #800000; /* Change to your desired color */
     font-weight: bold;
 }
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    background: white;
+}
+
+.sidebar {
+    width: 250px;
+    background: #FFF5E6; 
+    padding: 20px;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid #A9431E; 
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    flex: 1;
+    background: white;
+    max-width: calc(100% - 250px); 
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list li {
+    margin: 10px 0;
+}
+
+.nav-list a {
+    color: #800000; 
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.nav-list a:hover {
+    background: #DE7C00; /* Using your button hover color */
+    color: white; /* Making text white on hover for contrast */
+}
+
+#graph-container {
+    width: 800px;
+    max-width: 100%;
+    margin: auto;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.tooltip-word {
+    position: relative;
+    text-decoration: underline dotted #800000; 
+    display: inline-block
+    cursor: help;
+}
+
+.tooltip-word .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #FFF5E6; 
+    color: #800000;           
+    text-align: center;
+    border: 1px solid #A9431E;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-word:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .container {
+        flex-direction: column;
+    }
+}
