@@ -71,7 +71,7 @@ header.page-header {
     left: 0;
 }
 
-body > *:not(.sidebar) {
+body > *:not(.sidebar):not(.page-header) {
     max-width: 1200px;  
     margin: 0 auto;     /* Centers the content */
     padding: 20px 40px 20px 290px;  /* Top Right Bottom Left */
@@ -144,7 +144,7 @@ body > *:not(.sidebar) {
     opacity: 1;
 }
 
-.skip-navigation {
+.skip-to-content{
     display: none;
 }
 
