@@ -59,36 +59,21 @@ header.page-header {
     font-weight: bold;
 }
 
-.container {
-    display: flex;
-    min-height: 100vh;
-    background: white;
-}
-
 .sidebar {
     width: 250px;
-    background: #FFF5E6; 
+    background: #FFF5E6;
     padding: 20px;
     position: fixed;
     height: 100vh;
     overflow-y: auto;
     border-right: 1px solid #A9431E;
-    top: 0; 
+    top: 0;
     left: 0;
 }
 
-.main-content {
+body > *:not(.sidebar) {
     margin-left: 250px;
     padding: 20px;
-    flex: 1;
-    background: white;
-    max-width: calc(100% - 250px); 
-    margin-bottom: 1em; 
-}
-
-.main-content span {
-    display: inline-block;
-    margin-bottom: 1em;
 }
 
 .nav-list {
@@ -119,11 +104,6 @@ header.page-header {
     width: 800px;
     max-width: 100%;
     margin: auto;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
 }
 
 .tooltip-word {

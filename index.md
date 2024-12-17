@@ -27,8 +27,7 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
     }
 </script>
 
-<div class="container">
-    <nav class="sidebar">
+<nav class="sidebar">
         <ul class="nav-list">
             <li><a href="#introduction">Introduction</a></li>
             <li>
@@ -47,23 +46,20 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
             </ul>
         </li>
         </ul>
-    </nav>
-<main class="main-content">
- 
+</nav>
+
 <h2 id="introduction">Introduction</h2>
+<span class="tooltip-word">Pull funding<span class="tooltip-text">Pull funding: Incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technoligical success on the innovators.</span></span>, which conditions payment on successfully delivering results rather than upfront funding, can be a powerful tool to incentivize the development and delivery of socially valuable innovations. Through mechanisms such as prizes and <span class = "tooltip-word">advance market commitments<span class="tooltip-text">Advanced market commitments are agreements where governments or organizations commit to purchasing or subsidizing a product once it is successfully developed, guaranteeing a market for manufacturers.</span></span>, pull funding creates financial incentives that help correct market failures, particularly for innovations with large public benefits but insufficient private returns.  
+    
+However, these mechanisms face a critical design challenge: determining the right size of the incentive. If set too low, firms won't participate; if too high, the program wastes resources. How can funders determine the appropriate amount of pull funding needed to motivate private investment while ensuring cost-effectiveness? 
 
-<span class="tooltip-word">Pull funding<span class="tooltip-text">Pull funding: Incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technoligical success on the innovators.</span></span>, which conditions payment on successfully delivering results rather than upfront funding, can be a powerful tool to incentivize the development and delivery of socially valuable innovations. Through mechanisms such as prizes and <span class = "tooltip-word">advance market commitments<span class="tooltip-text">advanced market commitments: Agreements where governments or organizations commit to purchasing or subsidizing a product, like vaccines, once it is successfully developed, guaranteeing a market for manufacturers.</span></span>, pull funding creates financial incentives that help correct market failures, particularly for innovations with large public benefits but insufficient private returns.  
-
-However, these mechanisms face a critical design challenge: determining the right size of the incentive. If set too low, firms won't participate; if too high, the program wastes resources. How can funders determine the appropriate amount of pull funding needed to motivate private investment while ensuring cost-effectiveness?  
-
-We have developed a practical, simplified framework to answer this question. Our approach addresses three key factors that drive the required incentive size:  
+We have developed a practical, simplified framework to answer this question. Our approach addresses three key factors that drive the required incentive size: 
 1. The costs and risks that firms face during development, including R&D, testing, regulatory, and commercialization expenses adjusted for the probability of failure at each stage  
 2. The competitive dynamics between firms, recognizing that more competitors increase the chances of success but also raise the incentive size needed since firms must factor in the risk of splitting rewards  
 3. The time value of money, accounting for firms' hurdle rate of returns and the often lengthy development timelines for major innovations  
 
 By carefully modeling these components, we have used this framework to evaluate and design pull mechanisms, estimate their cost-effectiveness, and investigate how different design choices impact outcomes. In this blog post, we present a simplified version of our approach to help others interested in using or evaluating pull funding. We walk through each step of sizing a pull mechanism, from estimating development costs and probabilities of success to optimizing the number of entrants and determining the final incentive size. While the specifics of any market will add complexity beyond our baseline framework, this simplified model provides a practical starting point for funders considering pull mechanisms.    
-
-
+    
 <h2 id="size">Size of the incentive</h2>
 
 Pull mechanisms mimic market incentives by committing to provide sufficient returns to innovators of socially valuable goods. Roughly speaking, when firms evaluate whether to enter a market, they consider whether expected revenues exceed expected costs. To that end, firms will weigh the crucial questions of any innovation investment: what is the likelihood of technological success? How much will it cost to pursue innovation? What is the expected market size and timing of future revenue? How much competition do they expect to face?  
@@ -753,8 +749,6 @@ In practice, introducing correlation substantially increases the needed pull siz
     style="border: none;">
 </iframe>
 
-    </main>
-</div>
 
 ---
 
