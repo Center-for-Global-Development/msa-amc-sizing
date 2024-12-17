@@ -72,7 +72,9 @@ header.page-header {
     position: fixed;
     height: 100vh;
     overflow-y: auto;
-    border-right: 1px solid #A9431E; 
+    border-right: 1px solid #A9431E;
+    top: 0; 
+    left: 0;
 }
 
 .main-content {
@@ -81,6 +83,12 @@ header.page-header {
     flex: 1;
     background: white;
     max-width: calc(100% - 250px); 
+    margin-bottom: 1em; 
+}
+
+.main-content span {
+    display: inline-block;
+    margin-bottom: 1em;
 }
 
 .nav-list {
@@ -127,7 +135,7 @@ body {
 
 .tooltip-word .tooltip-text {
     visibility: hidden;
-    width: 200px;
+    width: 300px;
     background-color: #FFF5E6; 
     color: #800000;           
     text-align: center;
@@ -138,9 +146,11 @@ body {
     z-index: 1;
     bottom: 125%;
     left: 50%;
-    margin-left: -100px;
+    margin-left: -150px;
     opacity: 0;
     transition: opacity 0.3s;
+    font-size: 0.9em;
+    line-height: 1.4;
 }
 
 .tooltip-word:hover .tooltip-text {
