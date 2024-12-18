@@ -154,3 +154,28 @@ a#skip-to-content{
         left: 0;  /* Snap to left on smaller screens */
     }
 }
+
+.takeaways-box {
+    display: block;  /* Always visible, unlike details-box which is hidden */
+    margin: 20px 0;
+    padding: 20px;
+    border: 2px solid #800000;  /* Chicago red border */
+    background-color: #FFF5E6;  /* Your light background color */
+    border-radius: 8px;
+}
+
+.takeaways-box strong {
+    color: #800000;
+    display: block;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.takeaways-box ol {
+    margin-left: 20px;
+}
+
+.takeaways-box li {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
