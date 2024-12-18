@@ -37,7 +37,7 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
                 </ol>
             </li>
             <li>
-                <a href="#understanding_costs">Understanding innovation costs and risks</a>
+                <a href="#understanding_costs">Understanding Innovation Costs and Risks</a>
                 <ol>
                     <li><a href="#key_components">Key components</a></li>
                     <li><a href="#expected_costs">Calculating Firms' Expected Costs</a></li>
@@ -55,8 +55,8 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
         </ol>
 </nav>
 
-<div id="key_takeaways" class="takeaways-box">
-    <strong>KEY TAKEAWAYS</strong>
+<div class="takeaways-box">
+    <h3> KEY TAKEAWAYS</h3>
     <ol>
         <li><strong>Sizing innovation incentives is challenging but not guesswork.</strong> Careful economic analysis and a deep understanding of the target innovation developer market can allow funders to optimize the incentive size to suit their program goals.</li>
         <li><strong>The necessary size of the incentive to spur private investments depends on three core factors:</strong></li>
@@ -111,7 +111,7 @@ To make this analysis tractable, we make some simplifying assumptions:
 
 *Note: Throughout this post, we use "firm" to refer to any profit-motivated innovator - whether a large company, research institution, startup, or university spinoff.*
 
-<h2 id="understanding_costs">3. Understanding innovation costs and risks</h2>
+<h2 id="understanding_costs">3. Understanding Innovation Costs and Risks</h2>
 <h3 id="key_components">Key components</h3>
 First, we need to understand the costs and risks that firms incur when trying to innovate. The higher the cost of innovation, the larger the pull size needs to be in order for firms to find investing in innovation worthwhile. Account for the following elements:
 
