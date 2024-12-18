@@ -44,12 +44,14 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
                     <li><a href="#sourcing_parameters">Sourcing Parameter Estimates</a></li>
                 </ol>
             </li>
-        <li><a href="#incentive_size">Determining the optimal incentive size</a></li>
-        <li>
-            <a href="#other-considerations">Other considerations</a>
+        <li><a href="#program_size">Determining the Overall Program Size</a>
             <ol>
-                <li><a href="#pipeline">Within and across firm attempts</a></li>
-                <li><a href="#correlation-section">Correlated probabilities</a></li>
+            <li><a href="#other-considerations">Other Considerations</a>
+                <ol>
+                    <li><a href="#pipeline">Within and Across Firm Attempts</a></li>
+                    <li><a href="#correlation-section">Correlated Probabilities</a></li>
+                </ol>
+            </li>
             </ol>
         </li>
         </ol>
@@ -74,7 +76,7 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
     
 However, these mechanisms face a critical design challenge: determining the right size of the incentive. If set too low, firms won't participate; if too high, the program wastes resources. How can funders determine the appropriate amount of pull funding needed to motivate private investment?
 
-Despite its importance, determining the right incentive size remains challenging. In this guide, we present a systematic framework for sizing innovation incentives. We begin by examining the key components that drive incentive size: development costs, probability of success, competition, and time value of money. We then show how to build these elements into a practical framework for calculating minimum effective incentive sizes to achieve target probabilities of successful innovation. Throughout, we explore how program design choices – from payment timing to market structure – affect both costs and probability of success. Finally, we address how to adapt this framework to real-world conditions and complications.
+In this guide, we present a systematic framework for sizing innovation incentives. We begin by examining the key components that drive necesary incentive size: development costs, probability of success, competition, and time value of money. We then show how to build these elements into a practical framework for calculating minimum effective incentive sizes to achieve target probabilities of successful innovation. Finally, we explore how program design choices – from payment timing to market structure – affect both costs and probability of success.
 
 Our approach draws from our experience evaluating incentive programs across sectors. By breaking down this complex challenge into manageable steps, we aim to help program designers develop more effective and efficient innovation incentives.
 
@@ -115,7 +117,7 @@ To make this analysis tractable, we make some simplifying assumptions:
 <h3 id="key_components">Key components</h3>
 First, we need to understand the costs and risks that firms incur when trying to innovate. The higher the cost of innovation, the larger the pull size needs to be in order for firms to find investing in innovation worthwhile. Account for the following elements:
 
-**i. Cost of R&D and commercialization.** This category includes the fixed and marginal costs to a firm to invent, produce, and deliver the desired product. Costs associated with identifying promising leads,validating their efficacy, testing their safety, shepherding through regulatory approval, manufacturing, marketing, and distributing the final good all fall under this category. 
+**i. Cost of R&D and commercialization.** This category includes the fixed and marginal costs to a firm to invent, produce, and deliver the desired product. Costs associated with identifying promising leads, validating their efficacy, testing their safety, shepherding through regulatory approval, manufacturing, marketing, and distributing the final good all fall under this category. 
 
 <button class="see-more-btn" onclick="toggleDetails('rdcosts-details')">Show example</button>
 <div id="rdcosts-details" class="details-box">
@@ -459,7 +461,7 @@ Since the overwhelming majority of the costs fall in the first few years, discou
 <h3 id="sourcing_parameters">Sourcing Parameter Estimates</h3> 
 Data on the costs and risks of innovation can be difficult to know, but there are several types of sources we have found useful for information gathering:
 <ul>
-    <li>Academic literature and industry reports provide historical cost averages. </li>
+    <li>Academic literature and industry reports provide historical cost averages </li>
     <li>Government and regulatory filings often contain detailed development costs </li>
     <li>Interviews with industry veterans who can validate cost assumptions</li>
     <li>Similar completed projects provide comparable reference points</li>
@@ -470,9 +472,15 @@ When using these sources, it's important to be aware of their potential limitati
 
 Additionally, remember that we're trying to identify the threshold case — the point at which firms are just willing to participate. Firms with lower costs or higher probabilities of success than our estimates will find participation attractive, while those with higher costs or lower chances of success will not participate.
 
-<h2 id="incentive_size">4. Determining the optimal incentive size</h2>
+<h2 id="program_size">4. Determining the Overall Program Size</h2>
 
-Larger pull sizes will incentivize more firms to participate. Designers should consider the number of firms they are seeking to attract and the eternal tradeoff: a larger AMC creates more chances for a successful innovation but also entails higher costs. For example, during the COVID-19 pandemic, it was important to attract firms with even a modest probability of success which contrasts from the classic case for an advance market commitment because inducing as many attempts as possible was necessary to meet the urgency and magnitude of the crisis ([Ahuja et al 2021](https://www.aeaweb.org/articles?id=10.1257/pandp.20211103)). However, normally we do not want to attract a lot of firms who have a low probability of success — one of the benefits of pull is that firms with a high probability of success self-select into the R&D. Thinking through how many firms are likely to be attracted to compete for the pull mechanism or we want to see compete is a key ingredient in the costing analysis.
+We have seen how to calculate the expected costs firms face when pursuing innovation, but how do we move from understanding a single firm's costs to determining the total size of the pull incentive needed?
+
+The key is to recognize that each additional firm attempting innovation increases the overall chances of success. Consider a case where any single firm has a 10% chance of developing a successful innovation. With multiple firms participating, our chances of success improve, though attracting additional firms becomes increasingly expensive as they must consider sharing the reward if multiple succeed.
+
+This creates a fundamental tradeoff: the more firms that participate, the more likely we are to achieve the innovation's benefits—whether that's lives saved from a new vaccine or emissions reduced from clean technology—but increasing this probability becomes increasingly expensive. Setting a target probability of success means asking: what is the social value of increasing our chances of achieving these benefits? During the COVID-19 pandemic, the massive daily cost of delay meant even small increases in the probability of success had enormous value, justifying efforts to attract many firms ([Ahuja et al 2021](https://www.aeaweb.org/articles?id=10.1257/pandp.20211103)). However, this contrasts with other pull funding use cases where the funder only seeks to incentivize a few of the best-suited firms to participate.
+
+Thinking through how many firms are likely to be attracted to compete for the pull mechanism, or we want to see compete, is a key ingredient in the costing analysis.
 
 <iframe 
     src="needed_attempts_graph.html" 
@@ -634,11 +642,12 @@ Putting all of these components together, we can calculate the needed pull size 
     $$ \text{Present value of pull size} \geq \frac{\ln(1 - \theta)}{\theta \cdot \ln(1 - p)} \cdot \mathbb{E}[c] $$
 </div>
 
+*Note: While we analyze expected costs when considering firm participation, which can be substantially lower than the full actualized development costs. For instance, if full development costs are $20 million but have only a 5% chance of being incurred, the expected cost is $1 million, as stated in the example above. This is one of the reasons pull mechanisms appear very large relative to expected costs.*
 
 
-<h2 id="other-considerations">Other considerations</h2>
+<h3 id="other-considerations">Other Considerations</h3>
 
-<h3 id="pipeline">Within and across firm attempts: pipeline approaches to innovation</h3>
+<h4 id="pipeline">Within and across firm attempts: pipeline approaches to innovation</h4>
 
 The above analysis assumes a competitive market where each firm makes a single attempt. However, this assumption may be rather unrealistic, as the market may only have a finite number of firms capable of responding to the incentive. Suppose research trials have a 2% success rate and a pull designer desires a 50% probability of at least one success: the above formula suggests that the funder now needs to incentivize at least 35 attempts. But there may not be 35 firms capable of responding to the incentive.
 
@@ -713,7 +722,7 @@ In practice, this approach results in a higher needed pull size than the “one 
 
 </div>
 
-<h3 id="correlation-section">Correlated probabilities of success</h3>
+<h4 id="correlation-section">Correlated probabilities of success</h4>
 
 The above analysis assumes that all attempts are independent, akin to flipping a coin. Given enough attempts, the probability of a successful innovation approaches 100%. But this assumption is transparently unrealistic for two reasons. First, the innovation itself may be impossible (or at least impossible in the near future). No amount of separate attempts would allow ancient Roman scientists to construct a modern computer. Second, individual firms may have idiosyncratic failure modes. For instance, they may choose the wrong path or have ill-suited personnel, etc. Unfortunately, the level of correlation between attempts is unobservable, and designers should use their discretion to incorporate this factor.  In general, considering correlation between attempts will raise costs, generally on the magnitude of 10-50%. 
 
