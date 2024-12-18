@@ -55,11 +55,24 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
         </ol>
 </nav>
 
+<div id="key_takeaways" class="details-box">
+    <strong>KEY TAKEAWAYS</strong>
+    <ol>
+        <li><strong>Sizing innovation incentives is challenging but not guesswork.</strong> Careful economic analysis and a deep understanding of the target innovation developer market can allow funders to optimize the incentive size to suit their program goals.</li>
+        <li><strong>The necessary size of the incentive to spur private investments depends on three core factors:</strong></li>
+            <ol>
+                <li><strong>The costs and risks that firms face during development</strong>, including R&D, testing, regulatory, and commercialization expenses, adjusted for the probability of failure at each stage</li>
+                <li><strong>The competitive dynamics between firms</strong>, recognizing that more competitors increase the chances of at least one success but also raise the incentive size needed since firms must factor in the risk of splitting rewards</li>
+                <li><strong>The time value of money</strong>, accounting for firms' hurdle rate of returns and the often lengthy development timelines for major innovations</li>
+            </ol>
+        <li><strong>Larger pull funds can attract more firms and increase the chances of success, but they also increase total program costs.</strong></li>
+    </ol>
+</div>
 
 <h2 id="introduction">1. Introduction</h2>
 <span class="tooltip-word">Pull funding<span class="tooltip-text">"Pull funding" is incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technoligical success on the innovators.</span></span>, which conditions payment on successfully delivering results rather than upfront funding, can mobilize private investment to develop and deliver socially valuable innovations. Through mechanisms such as prizes and <span class = "tooltip-word">advance market commitments<span class="tooltip-text">Advanced market commitments are agreements where governments or organizations commit to purchasing or subsidizing a product once it is successfully developed, guaranteeing a market for manufacturers.</span></span>,  pull funding provides financial incentives to innovators, helping to correct common market failures that undermine innovation incentives for products with large public benefits but insufficient private returns. By linking payment to successful output, pull mechanisms require the innovator to bear the costs and risks of developing the target technology.  
     
-Yet the success and cost-effectiveness of pull funding hinges on a critical design choice: the size of the incentive. This decision directly impacts program costs, which often exceed hundreds of millions or billions of dollars. More importantly, getting the size wrong can doom the program from the start. Set too low, firms won't participate. Set too high, and limited public or philanthropic resources are wasted.
+However, these mechanisms face a critical design challenge: determining the right size of the incentive. If set too low, firms won't participate; if too high, the program wastes resources. How can funders determine the appropriate amount of pull funding needed to motivate private investment?
 
 Despite its importance, determining the right incentive size remains challenging. In this guide, we present a systematic framework for sizing innovation incentives. We begin by examining the key components that drive incentive size: development costs, probability of success, competition, and time value of money. We then show how to build these elements into a practical framework for calculating minimum effective incentive sizes to achieve target probabilities of successful innovation. Throughout, we explore how program design choices – from payment timing to market structure – affect both costs and probability of success. Finally, we address how to adapt this framework to real-world conditions and complications.
 
@@ -100,7 +113,7 @@ To make this analysis tractable, we make some simplifying assumptions:
 
 <h2 id="understanding_costs">3. Understanding innovation costs and risks</h2>
 <h3 id="key_components">Key components</h3>
-First, we need to understand the costs that firms incur when trying to innovate. The higher the cost of innovation, the larger the pull size needs to be in order for firms to find investing in innovation worthwhile . Examples of costs worth considering include:
+First, we need to understand the costs and risks that firms incur when trying to innovate. The higher the cost of innovation, the larger the pull size needs to be in order for firms to find investing in innovation worthwhile. Account for the following elements:
 
 **i. Cost of R&D and commercialization.** This category includes the fixed and marginal costs to a firm to invent, produce, and deliver the desired product. Costs associated with identifying promising leads,validating their efficacy, testing their safety, shepherding through regulatory approval, manufacturing, marketing, and distributing the final good all fall under this category. 
 
@@ -452,10 +465,10 @@ Data on the costs and risks of innovation can be difficult to know, but there ar
     <li>Similar completed projects provide comparable reference points</li>
 </ul>
 
-When using these sources, it's important to remember that published costs often represent successful attempts only. They may also be dated and need adjustment for inflation. Additionally, costs can vary significantly by sector, region, and specific technical challenges. Triangulating between multiple sources can provide a more complete picture. 
+When using these sources, it's important to be aware of their potential limitations and biases. Published costs often represent successful attempts only. They may also be dated and need adjustment for inflation. Additionally, costs can vary significantly by sector, region, and specific technical challenges. Triangulating between multiple sources can provide a more complete picture.
 
-Additionally,  when using these data sources to estimate costs, remember that we're trying to identify the threshold case — the point at which firms are just willing to participate. Firms with lower costs or higher probabilities of success than our estimates will find participation attractive, while those with higher costs or lower chances of success will not participate.
 
+Additionally, remember that we're trying to identify the threshold case — the point at which firms are just willing to participate. Firms with lower costs or higher probabilities of success than our estimates will find participation attractive, while those with higher costs or lower chances of success will not participate.
 
 <h2 id="incentive_size">4. Determining the optimal incentive size</h2>
 
