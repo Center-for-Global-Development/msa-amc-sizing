@@ -810,13 +810,12 @@ In practice, introducing correlation substantially increases the needed pull siz
 
 <h3 id="additional-costs">Additional Cost Considerations</h3>
 
-<button class="see-more-btn" onclick="toggleDetails('monitoring')">Monitoring and verification</button>
-<div id="monitoring" class="details-box">
-    Pull mechanisms involve paying for outcomes and outputs. This often requires being able to monitor outcomes and outputs (e.g. verifying sales, adoption, impact on outcome measures). In some cases, these costs will be significant and should be considered as part of the overall costs of the program in addition to the direct cost of the pull fund.
-</div>
-<button class="see-more-btn" onclick="toggleDetails('implementation_cost')">Costs of designing and implementing the pull fund</button>
-<div id="implementation_cost" class="details-box">
-    The institution designing and implementing the pull funding program will incur personel, administrative, and overhead costs. These are likely to be orders of magnitude smaller than the cost of incentivizing innovation.
+<ul>
+    <li><strong>Monitoring and verification.</strong> Pull mechanisms involve paying for outcomes and outputs. This often requires being able to monitor outcomes and outputs (e.g. verifying sales, adoption, impact on outcome measures). In some cases, these costs will be significant and should be considered as part of the overall costs of the program in addition to the direct cost of the pull fund. </li>
+    <li><strong>Costs of designing and implementing the pull fund.</strong> The institution designing and implementing the pull funding program will incur personel, administrative, and overhead costs. These are likely to be orders of magnitude smaller than the cost of incentivizing innovation. </li>
+    <li><strong>Third-party purchases. </strong> Innovations will differ in the extent to which the funder will need to make up the whole market. For some innovations, there will be significant private demand which can be subtracted from the overall market size to calculate the size of the pull fund needed.  Purchases from other agents are not part of the cost to the funder. However, costs paid by other agents that would be unlikely to occur in the absence of the pull mechanism should be considered when appraising the benefits and costs of the intervention. </li>
+</ul>
+ 
 </div>
 
 <h3 id="additional-costs">Cost Effectiveness</h3>
@@ -851,16 +850,40 @@ The Benefit Cost Ratio (BCR) provides a clear indication of the value generated 
                 <td>Funder's budget</td>
             </tr>
             <tr>
-                <td>$gamma$</td>
+                <td>\gamma</td>
                 <td>Social ROI of the funder's marginal alternate investment opportunity</td>
             </tr>
         </tbody>
     </table>
-
-    **Benefit-Cost Ratio (BCR):**
-    $$ \text{BCR} = \frac{p \cdot B + (1 - p) \cdot F \cdot gamma}{F} $$
+    <strong>Benefit-Cost Ratio (BCR):</strong>
+    $$ \text{BCR} = \frac{p \cdot B + (1 - p) \cdot F \cdot \gamma}{F} $$
 
 </div>
+
+The Net Present Value directly quantifies the net societal value created by the pull mechanism, accounting for the time value of money. A positive NPV indicates the intervention generates a net gain for society. To calculate overall net present value teams should multiple the probability of program success by the difference of the present value of benefits and costs
+
+<button class="see-more-btn" onclick="toggleDetails('npv-details')">Show BCR Equation</button>
+<div id="npv-details" class="details-box">
+    <table>
+        <thead>
+            <tr>
+                <th>Variable Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>$p$</td>
+                <td>Probability that at least one firm succeeds at innovation</td>
+            </tr>
+        </tbody>
+    </table>
+    <strong>Net Present Value (NPV):</strong>
+    $$ \text{NPV} = (p \cdot \text{Present Value of Benefits}) - \text{Present Value of Costs} $$
+
+</div>
+
+Together, the BCR and NPV provide a balanced assessment of the pull mechanism's cost-effectiveness. This allows funders to make informed decisions about whether to proceed with the investment and how to optimize the target probability of success for maximum impact.
 
 ---
 
