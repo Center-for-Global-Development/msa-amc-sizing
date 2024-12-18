@@ -55,6 +55,12 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
                     </li>
                 </ol>
             </li>
+            <li><a href="#total_costs">Total Costs and Cost Effectiveness</a>
+                <ol>
+                <li><a href="#additional_costs">Additional Cost Considerations</a></li>
+                <li><a href="#cost_effectiveness">Cost Effectiveness</a></li>
+                </ol>
+            </li>
         </ol>
 </nav>
 
@@ -806,9 +812,9 @@ In practice, introducing correlation substantially increases the needed pull siz
     style="border: none;">
 </iframe>
 
-<h2 id="total_costs">Total Costs and Cost Effectiveness</h2>
+<h2 id="total_costs">5. Total Costs and Cost Effectiveness</h2>
 
-<h3 id="additional-costs">Additional Cost Considerations</h3>
+<h3 id="additional_costs">Additional Cost Considerations</h3>
 
 <ul>
     <li><strong>Monitoring and verification.</strong> Pull mechanisms involve paying for outcomes and outputs. This often requires being able to monitor outcomes and outputs (e.g. verifying sales, adoption, impact on outcome measures). In some cases, these costs will be significant and should be considered as part of the overall costs of the program in addition to the direct cost of the pull fund. </li>
@@ -816,9 +822,8 @@ In practice, introducing correlation substantially increases the needed pull siz
     <li><strong>Third-party purchases. </strong> Innovations will differ in the extent to which the funder will need to make up the whole market. For some innovations, there will be significant private demand which can be subtracted from the overall market size to calculate the size of the pull fund needed.  Purchases from other agents are not part of the cost to the funder. However, costs paid by other agents that would be unlikely to occur in the absence of the pull mechanism should be considered when appraising the benefits and costs of the intervention. </li>
 </ul>
  
-</div>
 
-<h3 id="additional-costs">Cost Effectiveness</h3>
+<h3 id="cost_effectiveness">Cost Effectiveness</h3>
 To determine the overall cost-effectiveness of a pull mechanism, compare the total costs to a separate, rigorous assessment of the expected benefits of the target innovation.
 
 Pull mechanism are unique investment opportunities in that funders either receive the social return of successful innovation or, should no firm succeed at innovation, the chance to spend their funds on other opportunities at a later date. The money is not lost even if no innovation is ultimately successful.
@@ -879,7 +884,7 @@ The Net Present Value directly quantifies the net societal value created by the 
         </tbody>
     </table>
     <strong>Net Present Value (NPV):</strong>
-    $$ \text{NPV} = (p \cdot \text{Present Value of Benefits}) - \text{Present Value of Costs} $$
+    $$ \text{NPV} = p \cdot (\text{Present Value of Benefits} - \text{Present Value of Costs}) $$
 
 </div>
 
