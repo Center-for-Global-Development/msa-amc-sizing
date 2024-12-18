@@ -55,18 +55,6 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
         </ol>
 </nav>
 
-<div id="key_takeaways" class="details-box">
-    **KEY TAKEAWAYS**
-    <ol>
-        <li>Sizing innovation incentives is challenging but not guesswork. Careful economic analysis and a deep understanding of the target innovation developer market can allow funders to optimize the incentive size to suit their program goals.  </li>
-        <li>The necessary size of the incentive to spur private investments depends on three core factors:</li>
-            <ol>
-            <li>**The costs and risks that firms face during development**, including R&D, testing, regulatory, and commercialization expenses, adjusted for the probability of failure at each stage</li>
-            <li>**The competitive dynamics between firms**, recognizing that more competitors increase the chances of at least one success but also raise the incentive size needed since firms must factor in the risk of splitting rewards</li>
-            <li>**The time value of money**, accounting for firms' hurdle rate of returns and the often lengthy development timelines for major innovations</li>
-        <li>Larger pull funds can attract more firms and increase the chances of success, but they also increase total program costs.</li>
-    </ol>
-</div>
 
 <h2 id="introduction">1. Introduction</h2>
 <span class="tooltip-word">Pull funding<span class="tooltip-text">"Pull funding" is incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technoligical success on the innovators.</span></span>, which conditions payment on successfully delivering results rather than upfront funding, can mobilize private investment to develop and deliver socially valuable innovations. Through mechanisms such as prizes and <span class = "tooltip-word">advance market commitments<span class="tooltip-text">Advanced market commitments are agreements where governments or organizations commit to purchasing or subsidizing a product once it is successfully developed, guaranteeing a market for manufacturers.</span></span>,  pull funding provides financial incentives to innovators, helping to correct common market failures that undermine innovation incentives for products with large public benefits but insufficient private returns. By linking payment to successful output, pull mechanisms require the innovator to bear the costs and risks of developing the target technology.  
