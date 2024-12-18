@@ -824,7 +824,7 @@ In practice, introducing correlation substantially increases the needed pull siz
  
 
 <h3 id="cost_effectiveness">Cost Effectiveness</h3>
-To determine the overall cost-effectiveness of a pull mechanism, compare the total costs to a separate, rigorous assessment of the expected benefits of the target innovation.
+To determine the overall cost-effectiveness of a pull mechanism, compare the total costs to a separate, rigorous assessment of the expected benefits of the target innovation. 
 
 Pull mechanism are unique investment opportunities in that funders either receive the social return of successful innovation or, should no firm succeed at innovation, the chance to spend their funds on other opportunities at a later date. The money is not lost even if no innovation is ultimately successful.
 
@@ -855,7 +855,7 @@ The Benefit Cost Ratio (BCR) provides a clear indication of the value generated 
                 <td>Funder's budget</td>
             </tr>
             <tr>
-                <td>\gamma</td>
+                <td>$\gamma$</td>
                 <td>Social ROI of the funder's marginal alternate investment opportunity</td>
             </tr>
         </tbody>

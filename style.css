@@ -97,7 +97,6 @@ body > *:not(.sidebar):not(.page-header) {
     color: #800000; 
     text-decoration: none;
     display: block;
-    padding: 8px 12px;
     border-radius: 4px;
     transition: background-color 0.2s;
     font-size: 0.9em;
