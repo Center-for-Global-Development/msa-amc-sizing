@@ -645,7 +645,7 @@ Putting all of these components together, we can calculate the needed pull size 
     $$ \text{Present value of pull size} \geq \frac{\ln(1 - \theta)}{\theta \cdot \ln(1 - p)} \cdot \mathbb{E}[c] $$
 </div>
 
-*Note: While we analyze expected costs when considering firm participation, which can be substantially lower than the full actualized development costs. For instance, if full development costs are $20 million but have only a 5% chance of being incurred, the expected cost is \\$1 million, as stated in the example above. This is one of the reasons pull mechanisms appear very large relative to expected costs.*
+*Note: The expected cost of an attempt (used when considering firm participation) can be substantially lower than the full actualized development costs. For instance, if full development costs are $20 million but have only a 5% chance of being incurred, the expected cost is \\$1 million, as stated in the example above. This is one of the reasons pull mechanisms appear very large relative to expected costs.*
 
 
 <h3 id="other-considerations">Other Considerations</h3>
@@ -806,6 +806,61 @@ In practice, introducing correlation substantially increases the needed pull siz
     style="border: none;">
 </iframe>
 
+<h2 id="total_costs">Total Costs and Cost Effectiveness</h2>
+
+<h3 id="additional-costs">Additional Cost Considerations</h3>
+
+<button class="see-more-btn" onclick="toggleDetails('monitoring')">Monitoring and verification</button>
+<div id="monitoring" class="details-box">
+    Pull mechanisms involve paying for outcomes and outputs. This often requires being able to monitor outcomes and outputs (e.g. verifying sales, adoption, impact on outcome measures). In some cases, these costs will be significant and should be considered as part of the overall costs of the program in addition to the direct cost of the pull fund.
+</div>
+<button class="see-more-btn" onclick="toggleDetails('implementation_cost')">Costs of designing and implementing the pull fund</button>
+<div id="implementation_cost" class="details-box">
+    The institution designing and implementing the pull funding program will incur personel, administrative, and overhead costs. These are likely to be orders of magnitude smaller than the cost of incentivizing innovation.
+</div>
+
+<h3 id="additional-costs">Cost Effectiveness</h3>
+To determine the overall cost-effectiveness of a pull mechanism, compare the total costs to a separate, rigorous assessment of the expected benefits of the target innovation.
+
+Pull mechanism are unique investment opportunities in that funders either receive the social return of successful innovation or, should no firm succeed at innovation, the chance to spend their funds on other opportunities at a later date. The money is not lost even if no innovation is ultimately successful.
+
+Two useful metrics for considering cost-effectiveness are the benefit-cost ratio and net present value of the project.
+
+The Benefit Cost Ratio (BCR) provides a clear indication of the value generated per dollar spent by dividing the expected benefits by the total costs. A BCR greater than 1 signals that the benefits outweigh the costs, demonstrating the intervention's cost-effectiveness.
+
+<button class="see-more-btn" onclick="toggleDetails('bcr-details')">Show BCR Equation</button>
+<div id="bcr-details" class="details-box">
+    <table>
+        <thead>
+            <tr>
+                <th>Variable Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>$p$</td>
+                <td>Probability that at least one firm succeeds at innovation</td>
+            </tr>
+            <tr>
+                <td>$B$</td>
+                <td>Benefits if the innovation succeeds</td>
+            </tr>
+            <tr>
+                <td>$F$</td>
+                <td>Funder's budget</td>
+            </tr>
+            <tr>
+                <td>$gamma$</td>
+                <td>Social ROI of the funder's marginal alternate investment opportunity</td>
+            </tr>
+        </tbody>
+    </table>
+
+    **Benefit-Cost Ratio (BCR):**
+    $$ \text{BCR} = \frac{p \cdot B + (1 - p) \cdot F \cdot gamma}{F} $$
+
+</div>
 
 ---
 
