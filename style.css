@@ -101,7 +101,7 @@ body > *:not(.sidebar):not(.page-header) {
     border-radius: 4px;
     transition: background-color 0.2s;
     font-size: 0.9em;
-    line-height: 1.4
+    line-height: 1.4;
 }
 
 .nav-list a:hover {
