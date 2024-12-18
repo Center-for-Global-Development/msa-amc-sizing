@@ -45,7 +45,8 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
                 </ol>
             </li>
         <li><a href="#program_size">Determining the Overall Program Size</a>
-            <ol>
+            <ol> 
+            <li><a href="#number_of_attempts">Target Number of Attempts</a>
             <li><a href="#other-considerations">Other Considerations</a>
                 <ol>
                     <li><a href="#pipeline">Within and Across Firm Attempts</a></li>
@@ -476,6 +477,8 @@ Additionally, remember that we're trying to identify the threshold case — the 
 
 We have seen how to calculate the expected costs firms face when pursuing innovation, but how do we move from understanding a single firm's costs to determining the total size of the pull incentive needed?
 
+<h3 id="number_of_attempts">Target Number of Attempts</h3>
+
 The key is to recognize that each additional firm attempting innovation increases the overall chances of success. Consider a case where any single firm has a 10% chance of developing a successful innovation. With multiple firms participating, our chances of success improve, though attracting additional firms becomes increasingly expensive as they must consider sharing the reward if multiple succeed.
 
 This creates a fundamental tradeoff: the more firms that participate, the more likely we are to achieve the innovation's benefits—whether that's lives saved from a new vaccine or emissions reduced from clean technology—but increasing this probability becomes increasingly expensive. Setting a target probability of success means asking: what is the social value of increasing our chances of achieving these benefits? During the COVID-19 pandemic, the massive daily cost of delay meant even small increases in the probability of success had enormous value, justifying efforts to attract many firms ([Ahuja et al 2021](https://www.aeaweb.org/articles?id=10.1257/pandp.20211103)). However, this contrasts with other pull funding use cases where the funder only seeks to incentivize a few of the best-suited firms to participate.
@@ -642,7 +645,7 @@ Putting all of these components together, we can calculate the needed pull size 
     $$ \text{Present value of pull size} \geq \frac{\ln(1 - \theta)}{\theta \cdot \ln(1 - p)} \cdot \mathbb{E}[c] $$
 </div>
 
-*Note: While we analyze expected costs when considering firm participation, which can be substantially lower than the full actualized development costs. For instance, if full development costs are $20 million but have only a 5% chance of being incurred, the expected cost is $1 million, as stated in the example above. This is one of the reasons pull mechanisms appear very large relative to expected costs.*
+*Note: While we analyze expected costs when considering firm participation, which can be substantially lower than the full actualized development costs. For instance, if full development costs are $20 million but have only a 5% chance of being incurred, the expected cost is \\$1 million, as stated in the example above. This is one of the reasons pull mechanisms appear very large relative to expected costs.*
 
 
 <h3 id="other-considerations">Other Considerations</h3>
