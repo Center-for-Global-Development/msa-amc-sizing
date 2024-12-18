@@ -28,60 +28,90 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
 </script>
 
 <nav class="sidebar">
-        <ul class="nav-list">
+        <ol class="nav-list">
             <li><a href="#introduction">Introduction</a></li>
             <li>
-                <a href="#size">Size of the incentive</a>
-                <ul>
-                    <li><a href="#data">Collecting the data</a></li>
-                    <li><a href="#expected_costs">Calculating Firms' Expected Costs</a></li>
-                </ul>
+                <a href="#conceptual_framework">Conceptual Framework</a>
+                <ol>
+                    <li><a href="#model_setup">Model Setup</a></li>
+                </ol>
             </li>
-        <li><a href="#building-the-model">Building the model</a></li>
+            <li>
+                <a href="#understanding_costs">Understanding innovation costs and risks</a>
+                <ol>
+                    <li><a href="#key_components">Key components</a></li>
+                    <li><a href="#expected_costs">Calculating Firms' Expected Costs</a></li>
+                    <li><a href="#sourcing_parameters">Sourcing Parameter Estimates</a></li>
+                </ol>
+            </li>
+        <li><a href="#incentive_size">Determining the optimal incentive size</a></li>
         <li>
             <a href="#other-considerations">Other considerations</a>
-            <ul>
+            <ol>
                 <li><a href="#pipeline">Within and across firm attempts</a></li>
                 <li><a href="#correlation-section">Correlated probabilities</a></li>
-            </ul>
+            </ol>
         </li>
-        </ul>
+        </ol>
 </nav>
 
-<h2 id="introduction">Introduction</h2>
-<span class="tooltip-word">Pull funding<span class="tooltip-text">Pull funding: Incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technoligical success on the innovators.</span></span>, which conditions payment on successfully delivering results rather than upfront funding, can be a powerful tool to incentivize the development and delivery of socially valuable innovations. Through mechanisms such as prizes and <span class = "tooltip-word">advance market commitments<span class="tooltip-text">Advanced market commitments are agreements where governments or organizations commit to purchasing or subsidizing a product once it is successfully developed, guaranteeing a market for manufacturers.</span></span>, pull funding creates financial incentives that help correct market failures, particularly for innovations with large public benefits but insufficient private returns.  
-    
-However, these mechanisms face a critical design challenge: determining the right size of the incentive. If set too low, firms won't participate; if too high, the program wastes resources. How can funders determine the appropriate amount of pull funding needed to motivate private investment while ensuring cost-effectiveness? 
-
-We have developed a practical, simplified framework to answer this question. Our approach addresses three key factors that drive the required incentive size: 
-1. The costs and risks that firms face during development, including R&D, testing, regulatory, and commercialization expenses adjusted for the probability of failure at each stage  
-2. The competitive dynamics between firms, recognizing that more competitors increase the chances of success but also raise the incentive size needed since firms must factor in the risk of splitting rewards  
-3. The time value of money, accounting for firms' hurdle rate of returns and the often lengthy development timelines for major innovations  
-
-By carefully modeling these components, we have used this framework to evaluate and design pull mechanisms, estimate their cost-effectiveness, and investigate how different design choices impact outcomes. In this blog post, we present a simplified version of our approach to help others interested in using or evaluating pull funding. We walk through each step of sizing a pull mechanism, from estimating development costs and probabilities of success to optimizing the number of entrants and determining the final incentive size. While the specifics of any market will add complexity beyond our baseline framework, this simplified model provides a practical starting point for funders considering pull mechanisms.    
-    
-<h2 id="size">Size of the incentive</h2>
-
-Pull mechanisms mimic market incentives by committing to provide sufficient returns to innovators of socially valuable goods. Roughly speaking, when firms evaluate whether to enter a market, they consider whether expected revenues exceed expected costs. To that end, firms will weigh the crucial questions of any innovation investment: what is the likelihood of technological success? How much will it cost to pursue innovation? What is the expected market size and timing of future revenue? How much competition do they expect to face?  
-
-The size and structure of the pull mechanism will dictate the answer to these questions and, hence, determine how many firms try their hand at attempting to innovate. Increasing the amount of effort firms put into innovation or increasing the expected number of firms that choose to participate in pull mechanisms increases the probability that at least one attempt yields success. To determine the appropriate reward size, the designer of the pull mechanism therefore needs to consider the tradeoff between increasing the probabilitythat firms succeed at innovation and the cost of the endeavor.  
-
-The remainder of this section will explain how to estimate the costs and risks of development and how to approximate the size a pull mechanism needed to achieve a desired probability of success.  
-
-<button class="see-more-btn" onclick="toggleDetails('initial-assumptions-details')">Show baseline assumptions</button>
-<div id="initial-assumptions-details" class="details-box">
-    <p>We do make a few clarifying assumptions. Later sections will add more, or relax these assumptions.
+<div id="key_takeaways" class="details-box">
+    <h3>KEY TAKEAWAYS
     <ol>
-        <li>All firms are rational and risk-neutral. Firms will enter if the expected benefits to the firm from entering exceed the expected costs.</li>
-        <li>Firms face one choice: whether to commit a single innovation attempt. Although firms enter sequentially, all research progresses on the same timetable.</li>
-        <li>All innovation attempts are identical and independent.</li>
-        <li>Benefits do not depend on the number of successful firms. The goal of the funder is to ensure at least one firm is successful. </li>
+        <li>Sizing innovation incentives is challenging but not guesswork. Careful economic analysis and a deep understanding of the target innovation developer market can allow funders to optimize the incentive size to suit their program goals.  </li>
+        <li>The necessary size of the incentive to spur private investments depends on three core factors:</li>
+            <ol>
+            <li>**The costs and risks that firms face during development**, including R&D, testing, regulatory, and commercialization expenses, adjusted for the probability of failure at each stage</li>
+            <li>**The competitive dynamics between firms**, recognizing that more competitors increase the chances of at least one success but also raise the incentive size needed since firms must factor in the risk of splitting rewards</li>
+            <li>**The time value of money**, accounting for firms' hurdle rate of returns and the often lengthy development timelines for major innovations</li>
+        <li>Larger pull funds can attract more firms and increase the chances of success, but they also increase total program costs.</li>
     </ol>
-    </p>
 </div>
 
+<h2 id="introduction">1. Introduction</h2>
+<span class="tooltip-word">Pull funding<span class="tooltip-text">"Pull funding" is incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technoligical success on the innovators.</span></span>, which conditions payment on successfully delivering results rather than upfront funding, can mobilize private investment to develop and deliver socially valuable innovations. Through mechanisms such as prizes and <span class = "tooltip-word">advance market commitments<span class="tooltip-text">Advanced market commitments are agreements where governments or organizations commit to purchasing or subsidizing a product once it is successfully developed, guaranteeing a market for manufacturers.</span></span>,  pull funding provides financial incentives to innovators, helping to correct common market failures that undermine innovation incentives for products with large public benefits but insufficient private returns. By linking payment to successful output, pull mechanisms require the innovator to bear the costs and risks of developing the target technology.  
+    
+Yet the success and cost-effectiveness of pull funding hinges on a critical design choice: the size of the incentive. This decision directly impacts program costs, which often exceed hundreds of millions or billions of dollars. More importantly, getting the size wrong can doom the program from the start. Set too low, firms won't participate. Set too high, and limited public or philanthropic resources are wasted.
 
-<h3 id="data">Collecting the data</h3>
+Despite its importance, determining the right incentive size remains challenging. In this guide, we present a systematic framework for sizing innovation incentives. We begin by examining the key components that drive incentive size: development costs, probability of success, competition, and time value of money. We then show how to build these elements into a practical framework for calculating minimum effective incentive sizes to achieve target probabilities of successful innovation. Throughout, we explore how program design choices – from payment timing to market structure – affect both costs and probability of success. Finally, we address how to adapt this framework to real-world conditions and complications.
+
+Our approach draws from our experience evaluating incentive programs across sectors. By breaking down this complex challenge into manageable steps, we aim to help program designers develop more effective and efficient innovation incentives.
+
+    
+<h2 id="conceptual_framework">2. Conceptual Framework</h2>
+
+Pull mechanisms mimic market incentives by committing to provide sufficient returns to innovators of socially valuable goods. Roughly speaking, when firms evaluate whether to enter a market, they consider whether expected revenues exceed expected costs. To that end, firms will weigh the crucial questions of any innovation investment: what is the likelihood of technological success? How much will it cost to pursue innovation? What is the expected market size and timing of future revenue? How much competition do they expect to face?
+
+The size and structure of the pull mechanism will dictate the answer to these questions and, hence, determine how many firms try their hand at attempting to innovate. Increasing the amount of effort firms put into innovation or increasing the expected number of firms that choose to participate in pull mechanisms increases the probability that at least one attempt yields success. To determine the appropriate reward size, the designer of the pull mechanism, therefore, needs to consider the tradeoff between increasing the probability that firms succeed at innovation and the cost of the endeavor.
+
+<h3 id="model_setup">Model Setup</h3>
+When designing an innovation incentive, we need a systematic way to think about what motivates firms to participate. Let's start with a simplified view: Imagine a pharmaceutical company considering whether to develop a new vaccine. They know development will require significant upfront investment in research, clinical trials, and manufacturing capacity. They also know there's a high chance of failure at each stage, and other companies might succeed first.
+
+To decide whether to invest, firms weigh their expected costs against potential rewards. If successful, they'll receive the incentive payment — but they might have to share it with other successful developers. If they fail, they bear all the costs with no return.
+
+Our framework captures this decision-making process. We look at:
+<ul>
+    <li>The full development costs, from research through commercialization </li>
+    <li>The probability of success at each stage </li>
+    <li>The time value of money between when costs are incurred and payments are received </li>
+    <li>The impact of competition on expected returns </li>
+</ul>
+
+From the funder’s perspective, the optimal size of the pull mechanism depends on the number of firms they want to entice to invest in the target innovation. Hence, our model captures the estimated number of firms that a funder would expect to invest based on the size of the incentive offered.
+
+To make this analysis tractable, we make some simplifying assumptions:
+<ul>
+    <li>All firms are rational and risk-neutral: they participate only if expected benefits exceed costs. </li>
+    <li>Firms face one choice: whether to invest in a single innovation attempt. All firms make this decision and make progress on research on the same timetable. </li>
+    <li>All innovation attempts are identical and independent.</li>
+    <li>Successful firms share the reward equally.</li>
+    <li>Benefits do not depend on the number of successful firms. The goal of the funder is to ensure at least one firm is successful. </li>
+</ul>
+
+*Note: Throughout this post, we use "firm" to refer to any profit-motivated innovator - whether a large company, research institution, startup, or university spinoff.*
+
+<h2 id="understanding_costs">3. Understanding innovation costs and risks</h2>
+<h3 id="key_components">Key components</h3>
 First, we need to understand the costs that firms incur when trying to innovate. The higher the cost of innovation, the larger the pull size needs to be in order for firms to find investing in innovation worthwhile . Examples of costs worth considering include:
 
 **i. Cost of R&D and commercialization.** This category includes the fixed and marginal costs to a firm to invent, produce, and deliver the desired product. Costs associated with identifying promising leads,validating their efficacy, testing their safety, shepherding through regulatory approval, manufacturing, marketing, and distributing the final good all fall under this category. 
@@ -425,7 +455,21 @@ We now need to introduce the time value of money. Discounting reduces future cos
 Since the overwhelming majority of the costs fall in the first few years, discounting only reduces all-in costs from \$1.9 million to \$1.8 million. For human vaccines, where Stage III trials can get extremely expensive, this discounting can have a major effect on the present value of the incentive.
 </div>
 
-<h2 id="building-the-model">Building the model</h2>
+<h3 id="sourcing_parameters">Sourcing Parameter Estimates</h3> 
+Data on the costs and risks of innovation can be difficult to know, but there are several types of sources we have found useful for information gathering:
+<ul>
+    <li>Academic literature and industry reports provide historical cost averages. </li>
+    <li>Government and regulatory filings often contain detailed development costs </li>
+    <li>Interviews with industry veterans who can validate cost assumptions</li>
+    <li>Similar completed projects provide comparable reference points</li>
+</ul>
+
+When using these sources, it's important to remember that published costs often represent successful attempts only. They may also be dated and need adjustment for inflation. Additionally, costs can vary significantly by sector, region, and specific technical challenges. Triangulating between multiple sources can provide a more complete picture. 
+
+Additionally,  when using these data sources to estimate costs, remember that we're trying to identify the threshold case — the point at which firms are just willing to participate. Firms with lower costs or higher probabilities of success than our estimates will find participation attractive, while those with higher costs or lower chances of success will not participate.
+
+
+<h2 id="incentive_size">4. Determining the optimal incentive size</h2>
 
 Larger pull sizes will incentivize more firms to participate. Designers should consider the number of firms they are seeking to attract and the eternal tradeoff: a larger AMC creates more chances for a successful innovation but also entails higher costs. For example, during the COVID-19 pandemic, it was important to attract firms with even a modest probability of success which contrasts from the classic case for an advance market commitment because inducing as many attempts as possible was necessary to meet the urgency and magnitude of the crisis ([Ahuja et al 2021](https://www.aeaweb.org/articles?id=10.1257/pandp.20211103)). However, normally we do not want to attract a lot of firms who have a low probability of success — one of the benefits of pull is that firms with a high probability of success self-select into the R&D. Thinking through how many firms are likely to be attracted to compete for the pull mechanism or we want to see compete is a key ingredient in the costing analysis.
 

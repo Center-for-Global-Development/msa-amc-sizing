@@ -3,7 +3,7 @@ plugins:
   - jekyll-remote-theme
 
 title: "How Much to Offer? A Practical Guide to Sizing Innovation Incentives"
-description: "A framework estimating the appropriate size of an advance market commitment"
+description: "This guide provides the theorhetical framework and a technical step-by-step tutorial for estimating the appropriate size of pull mechanisms"
 menu:
   - name: "Home"
     link: "/"
