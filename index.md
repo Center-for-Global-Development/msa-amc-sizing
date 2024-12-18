@@ -56,7 +56,7 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
 </nav>
 
 <div id="key_takeaways" class="details-box">
-    <h3>KEY TAKEAWAYS
+    **KEY TAKEAWAYS**
     <ol>
         <li>Sizing innovation incentives is challenging but not guesswork. Careful economic analysis and a deep understanding of the target innovation developer market can allow funders to optimize the incentive size to suit their program goals.  </li>
         <li>The necessary size of the incentive to spur private investments depends on three core factors:</li>
