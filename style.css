@@ -166,6 +166,7 @@ a#skip-to-content{
 
 .takeaways-box strong {
     color: #A9431E;
+    display: inline;
 }
 
 .takeaways-box ol {
