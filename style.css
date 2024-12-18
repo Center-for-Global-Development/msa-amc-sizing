@@ -115,7 +115,7 @@ body > *:not(.sidebar):not(.page-header) {
 
 .tooltip-word {
     position: relative;
-    text-decoration: underline dotted #800000; 
+    text-decoration: underline #A9431E; 
     display: inline-block
     cursor: help;
 }
@@ -165,10 +165,9 @@ a#skip-to-content{
 }
 
 .takeaways-box strong {
-    color: #800000;
+    color: #A9431E;
     display: block;
-    margin-bottom: 15px;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .takeaways-box ol {
