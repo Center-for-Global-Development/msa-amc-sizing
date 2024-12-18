@@ -116,7 +116,7 @@ body > *:not(.sidebar):not(.page-header) {
 .tooltip-word {
     position: relative;
     text-decoration: underline #A9431E; 
-    display: inline-block
+    display: inline-block;
     cursor: help;
 }
 
