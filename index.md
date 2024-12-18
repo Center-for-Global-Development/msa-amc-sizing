@@ -44,17 +44,17 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
                     <li><a href="#sourcing_parameters">Sourcing Parameter Estimates</a></li>
                 </ol>
             </li>
-        <li><a href="#program_size">Determining the Overall Program Size</a>
-            <ol> 
-            <li><a href="#number_of_attempts">Target Number of Attempts</a>
-            <li><a href="#other-considerations">Other Considerations</a>
-                <ol>
-                    <li><a href="#pipeline">Within and Across Firm Attempts</a></li>
-                    <li><a href="#correlation-section">Correlated Probabilities</a></li>
+            <li><a href="#program_size">Determining the Overall Program Size</a>
+                <ol> 
+                    <li><a href="#number_of_attempts">Target Number of Attempts</a>
+                    <li><a href="#other-considerations">Other Considerations</a>
+                        <ol>
+                            <li><a href="#pipeline">Within and Across Firm Attempts</a></li>
+                            <li><a href="#correlation-section">Correlated Probabilities</a></li>
+                        </ol>
+                    </li>
                 </ol>
             </li>
-            </ol>
-        </li>
         </ol>
 </nav>
 
