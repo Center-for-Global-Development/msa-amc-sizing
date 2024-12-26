@@ -71,7 +71,7 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
         <li><strong>The optimal size of innovation incentives primarily depend on three factors:</strong></li>
             <ol>
                 <li><strong>the costs and risks that firms face during technology development</strong>,  including R&D, testing, regulatory, and commercialization expenses, adjusted for the probability of failure at each stage</li>
-                <li><strong>the competitive dynamics between firms</strong>—, recognizing that more competition increases the chances that at least one firm succeed but also raises the incentive size needed to incentivize firms to compete, as the payout is more likely to be split amoung them/li>
+                <li><strong>the competitive dynamics between firms</strong>—, recognizing that more competition increases the chances that at least one firm succeed but also raises the incentive size needed to incentivize firms to compete, as the payout is more likely to be split amoung them</li>
                 <li><strong>the time value of money</strong>, accounting for firms' discounting of future returns and the often lengthy development timelines for major innovations</li>
             </ol>
         <li><strong>Larger pull funds can attract more firms and increase the chances of success but also increase total program costs.</strong></li>
