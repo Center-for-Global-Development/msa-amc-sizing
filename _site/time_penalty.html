@@ -7,15 +7,21 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+          margin: 0; 
+          font-family: Arial, sans-serif;
         }
+        .wrapper {
+          max-width: 800px;
+          margin: 0 auto;   /* Center horizontally */
+          padding: 1rem;    /* Some internal padding */
+        }
+
         #graph-container {
-            width: 800px;
+            width: 100%;
             margin: auto;
         }
         #slider-container {
-            width: 700px;
+            width: 90%;
             margin: auto;
             text-align: center;
         }
@@ -84,6 +90,7 @@
     </style>
 </head>
 <body>
+    <div class = "wrapper">
     <h1 style="text-align: center;"></h1>
     <div id="graph-container">
         <figure>
@@ -167,7 +174,8 @@
                 margin: { t: 50, b: 60}
             };
 
-            Plotly.newPlot(graphDiv, [traceNominal, tracePresent], layout);
+            Plotly.newPlot(graphDiv, [traceNominal, tracePresent], layout, { responsive: true });
+
         }
         updateSliderColor(rSlider);
         updateSliderColor(fSlider);
@@ -189,5 +197,6 @@
             updateGraph(r, f);
         });
     </script>
+    </div>
 </body>
 </html>

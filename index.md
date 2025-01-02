@@ -4,6 +4,9 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
 ---
 <link rel="stylesheet" href="style.css">
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
 <script type="text/javascript">
   MathJax = {
     tex: {
@@ -27,7 +30,21 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
     }
 </script>
 
-<nav class="sidebar">
+<script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      // Toggle 'sidebar-hidden' class on each click
+      if (sidebar.classList.contains('sidebar-hidden')) {
+        sidebar.classList.remove('sidebar-hidden');
+      } else {
+        sidebar.classList.add('sidebar-hidden');
+      }
+    }
+  </script>
+
+<button class="hamburger-btn" onclick="toggleSidebar()">☰ Menu</button>
+
+<nav class="sidebar sidebar-hidden" id="sidebar">
         <ol class="nav-list">
             <li><a href="#introduction">Introduction</a></li>
             <li>

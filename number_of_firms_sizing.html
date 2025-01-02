@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +9,14 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0px;
         }
         #graph-container {
-            width: 800px;
+            width: 90%;
             margin: auto;
         }
         #slider-container {
-            width: 700px;
+            width: 80%;
             margin: auto;
             text-align: center;
         }
@@ -175,7 +176,7 @@
             };
 
             const layout = {
-                title: 'Pull size based on number of firms',
+                title: 'Pull size based <br> on number of firms',
                 xaxis: {
                     title: 'Number of firms',
                     showline: true,
@@ -190,7 +191,8 @@
                     linewidth: 4
                 },
                 plot_bgcolor: '#ffffff',
-                margin: { t: 50, b: 60 }
+                margin: { t: 40, b: 40, l: 40, r: 20 }
+
             };
 
             Plotly.newPlot('graph', [trace], layout);

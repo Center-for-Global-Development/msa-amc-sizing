@@ -1,15 +1,29 @@
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0; /* Reset to original */
-    text-align: center;
-    table-layout: fixed; /* Ensures consistent column widths */
+  width: 100%;
+  max-width: 100%;
+  table-layout: auto; /* Let columns size themselves naturally */
+  border-collapse: collapse;
+  margin: 1em 0;
 }
 
-/* Specific styles for tables within details-box */
+table th, table td {
+  white-space: normal;      /* Let text wrap onto multiple lines */
+  word-wrap: break-word;    /* If you have especially long text/URLs */
+  padding: 0.5em;           /* Some padding for readability */
+}
+
+
+@media screen and (max-width: 768px) {
+  table {
+    display: block;        /* Let the table shrink to the container */
+    overflow-x: auto;      /* Horizontal scroll if needed */
+    white-space: nowrap;   /* Keep cells on one line to avoid squishing */
+  }
+}
+
 .details-box table {
-    width: 90%; /* Slightly narrower than full width for better appearance */
-    margin: 20px auto; /* Auto margins for horizontal centering */
+    width: 90%;
+    margin: 20px auto;
 }
 
 .main-content table th, 
@@ -24,6 +38,14 @@ th {
 header.page-header {
     background: #800000; /* Chicago red */
     padding: 0px 0px 0px 250px
+}
+
+@media screen and (max-width: 900px) {
+  header.page-header {
+    /* Mobile-friendly padding */
+    padding: 10px; 
+    text-align: center; /* optional if you want your title centered */
+  }
 }
 
 .details-box {
@@ -109,10 +131,11 @@ body > *:not(.sidebar):not(.page-header) {
 }
 
 #graph-container {
-    width: 800px;
-    max-width: 100%;
-    margin: auto;
+    width: 100%;         /* Fill mobile screens by default */
+    max-width: 800px;    /* Don’t exceed 800px on big desktops */
+    margin: 0 auto;      /* Center it in the page */
 }
+
 
 .tooltip-word {
     position: relative;
@@ -176,4 +199,82 @@ a#skip-to-content{
 .takeaways-box li {
     margin-bottom: 10px;
     line-height: 1.4;
+}
+
+/* ======================================
+   HAMBURGER BUTTON
+====================================== */
+.hamburger-btn {
+  display: none;               /* Hidden by default (desktop) */
+  background-color: #800000;   /* Chicago maroon or your color choice */
+  color: #fff;
+  border: none;
+  font-size: 1.2em;
+  padding: 10px 15px;
+  cursor: pointer;
+  position: fixed;   /* Make it stay in the same spot when scrolling */
+  top: 10px;         /* Tweak based on your header or design */
+  left: 10px;        /* Tweak as needed */
+  z-index: 9999;     /* Ensure it’s on top of other elements */
+  border-radius: 4px;
+}
+
+/* Show the hamburger button and hide the sidebar under 900px */
+@media screen and (max-width: 900px) {
+  .hamburger-btn {
+    display: block;  /* Show hamburger on mobile */
+  }
+  .sidebar {
+    display: none;   /* Hide sidebar by default on mobile */
+    position: fixed; /* If you want a “drawer” that slides over content */
+    top: 50px;       /* Just below the hamburger button, if you like */
+    left: 0;
+    width: 200px;    
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+    background: #fff;
+    border-right: 1px solid #A9431E;
+    z-index: 9998;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%); /* Initially slide it off the screen */
+  }
+  .sidebar.sidebar-hidden {
+    /* Additional or overriding styles that ensure it's hidden */
+    transform: translateX(-100%);
+  }
+  .sidebar:not(.sidebar-hidden) {
+    /* When not hidden, slide it in */
+    transform: translateX(0);
+    display: block; 
+  }
+
+  /* Remove big left padding from main content on mobile */
+  body > *:not(.sidebar):not(.page-header):not(.hamburger-btn) {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 100%;
+  }
+}
+
+/* On desktop (above 900px), keep the old behavior */
+@media screen and (min-width: 901px) {
+  .sidebar {
+    display: block;
+    position: fixed;
+    width: 250px;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid #A9431E;
+    transform: translateX(0);
+  }
+  /* Hide the hamburger button on desktop */
+  .hamburger-btn {
+    display: none;
+  }
+}
+
+iframe {
+  max-width: 100%;
 }

@@ -8,20 +8,25 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+          margin: 0; 
+          font-family: Arial, sans-serif;
+        }
+        .wrapper {
+          max-width: 800px;
+          margin: 0 auto;   /* Center horizontally */
+          padding: 1rem;    /* Some internal padding */
         }
         #graph-container {
-            width: 800px;
+            width: 100%;
             margin: auto;
         }
         #slider-container {
-            width: 800px;
+            width: 100%;
             margin: auto;
             text-align: center;
         }
         #checkbox-container {
-            width: 800px;
+            width: 100%;
             margin: auto;
             text-align: center;
             margin-top: 10px;
@@ -88,6 +93,8 @@
     </style>
 </head>
 <body>
+    <div class = "wrapper">
+
     <h1 style="text-align: center;">Complete pull sizing model</h1>
     <div id="graph-container">
         <div id="graph"></div>
@@ -237,10 +244,20 @@
                     linewidth: 4
                 },
                 plot_bgcolor: '#ffffff',
-                margin: { t: 50, b: 50 }
+                  margin: { t: 80, b: 50, l: 60, r: 30 },
+                  legend: {
+                    orientation: 'h',
+                    xanchor: 'center',
+                    x: 0.5,
+                    yanchor: 'bottom',
+                    y: 1.15
+                  }
             };
 
-            Plotly.newPlot(graphDiv, traces, layout);
+          // Make the chart respond to window size changes
+          const config = { responsive: true };
+
+          Plotly.newPlot(graphDiv, traces, layout, config);
         }
 
         // Initial graph
@@ -289,5 +306,6 @@
             updateGraph(parseFloat(pSlider.value), parseFloat(etaSlider.value), parseFloat(kSlider.value), parseFloat(gammaSlider.value), axisToggle.checked);
         });
     </script>
+</div>
 </body>
 </html>

@@ -13,15 +13,20 @@ function calculateNeededAttempts(theta, p) {
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+          margin: 0; 
+          font-family: Arial, sans-serif;
+        }
+        .wrapper {
+          max-width: 800px;
+          margin: 0 auto;   /* Center horizontally */
+          padding: 1rem;    /* Some internal padding */
         }
         #graph-container {
-            width: 800px;
+            width: 100%;
             margin: auto;
         }
         #slider-container {
-            width: 800px;
+            width: 100%;
             margin: auto;
             text-align: center;
         }
@@ -90,6 +95,7 @@ function calculateNeededAttempts(theta, p) {
     </style>
 </head>
 <body>
+    <div class = "wrapper">
     <h1 style="text-align: center;"></h1>
     <div id="graph-container">
         <div id="graph"></div>
@@ -128,7 +134,7 @@ function calculateNeededAttempts(theta, p) {
             };
 
             const layout = {
-                title: 'Number of independent attempts needed to reach a target probability of success',
+                title: 'Number of independent attempts <br> needed to reach a target <br> probability of success',
                 xaxis: {
                     title: 'Target Probability of Success',
                     tickformat: '.0%',
@@ -145,10 +151,11 @@ function calculateNeededAttempts(theta, p) {
                     linewidth: 2
                 },
                 plot_bgcolor: '#ffffff',
-                margin: { t: 50, b: 50 }
+                margin: { t: 40, b: 40, l: 40, r: 20 }
+
             };
 
-            Plotly.newPlot(graphDiv, [trace], layout);
+            Plotly.newPlot(graphDiv, [trace], layout, { responsive: true });
         }
 
         // Function to update slider color
@@ -172,5 +179,6 @@ function calculateNeededAttempts(theta, p) {
             updateSliderColor(pSlider);
         });
     </script>
+</div>
 </body>
 </html>

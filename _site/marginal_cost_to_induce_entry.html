@@ -8,16 +8,22 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+          margin: 0; 
+          font-family: Arial, sans-serif;
         }
+        .wrapper {
+          max-width: 800px;
+          margin: 0 auto;   /* Center horizontally */
+          padding: 1rem;    /* Some internal padding */
+        }
+
+
         #graph-container {
-            width: 800px;
-            margin: auto;
+            width: 100%;
+            margin: 0 auto;
         }
         #slider-container {
-            width: 800px;
-            margin: auto;
+            width: 100%;
             text-align: center;
         }
         /* Styling for the slider */
@@ -82,6 +88,7 @@
     </style>
 </head>
 <body>
+    <div class = "wrapper">
     <h1 style="text-align: center;"></h1>
     <div id="graph-container">
         <div id="graph"></div>
@@ -134,7 +141,7 @@
                 name: 'Marginal cost to induce an extra attempt'
             };
             const layout = {
-                title: 'Marginal cost to induce an extra attempt',
+                title: 'Marginal cost to <br> induce an extra attempt',
                 xaxis: {
                     title: 'Number of attempts',
                     tickformat: '.0',
@@ -151,9 +158,9 @@
                     linewidth: 2
                 },
                 plot_bgcolor: '#ffffff',
-                margin: { t: 50, b: 50 }
+                margin: { t: 40, b: 40, l: 40, r: 20 }
             };
-            Plotly.newPlot(graphDiv, [trace], layout);
+            Plotly.newPlot(graphDiv, [trace], layout, { responsive: true });
         }
 
         // Initial setup
@@ -168,5 +175,6 @@
             updateSliderColor(e.target);
         });
     </script>
+</div>
 </body>
 </html>
