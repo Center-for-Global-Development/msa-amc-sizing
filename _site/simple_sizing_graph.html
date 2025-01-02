@@ -1,6 +1,8 @@
-<script> function calculateCost(theta, p) {
-    return Math.log(1 - theta) / (theta * Math.log(1 - p));
-}
+<script> 
+  // Re-define your calculateCost function if you need it here for reference
+  function calculateCost(theta, p) {
+      return Math.log(1 - theta) / (theta * Math.log(1 - p));
+  }
 </script>
 
 <!DOCTYPE html>
@@ -25,7 +27,7 @@
         .wrapper {
           max-width: 800px;
           margin: 0 auto;   /* Center horizontally */
-          padding: 1rem;    /* Some internal padding */
+          padding: 1rem;   /* Some internal padding */
         }
         #graph-container {
             width: 100%;
@@ -101,20 +103,33 @@
     </style>
 </head>
 <body>
-    <div class = "wrapper">
-    <div id="graph-container">
+    <div class="wrapper">
+      <div id="graph-container">
         <figure>
             <div id="graph"></div>
             <figcaption style="text-align: center; margin-top: 10px;">
-            Unreflected in the chart is that changing the per-attempt probability of success will also affect the expected costs.
+              Unreflected in the chart is that changing the per-attempt probability of success 
+              will also affect the expected costs.
             </figcaption>
         </figure>
-    </div>
-    <div id="slider-container">
+      </div>
+
+      <!-- Add a Flip Axes button -->
+      <div style="text-align:center; margin: 1rem 0;">
+        <button id="flip-button" 
+                style="padding: 0.5rem 1rem; background-color: #800000; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+          Flip Axes
+        </button>
+      </div>
+
+      <div id="slider-container">
         <div class="slider-label">
-            <input type="range" id="p-slider" min="0.01" max="0.20" step="0.01" value="0.03" style="width: 100%;">
-            <label for="p-slider">Per-attempt probability of success: <span id="p-value">5%</span></label><br>
+          <input type="range" id="p-slider" min="0.01" max="0.20" step="0.01" value="0.03" style="width: 100%;">
+          <label for="p-slider">
+            Per-attempt probability of success: <span id="p-value">5%</span>
+          </label><br>
         </div>
+      </div>
     </div>
 
     <script>
@@ -131,65 +146,117 @@
             slider.style.setProperty('--slider-pos', percentage + '%');
         }
 
-        // Initial settings
-        const thetaValues = Array.from({ length: 100 }, (_, i) => 0.5 + i * 0.005); // Range from 0.5 to 0.99
+        // Global arrays and state
+        let thetaValues = Array.from({ length: 100 }, (_, i) => 0.5 + i * 0.005); 
+        let costValues = []; // will be populated dynamically
+        let isFlipped = false; // tracks if axes are flipped
+
         const pSlider = document.getElementById("p-slider");
         const pValue = document.getElementById("p-value");
         const graphDiv = document.getElementById("graph");
+        const flipButton = document.getElementById("flip-button");
 
-        // Function to update the graph
+        // Calculate and plot
         function updateGraph(p) {
-            const costValues = thetaValues.map(theta => calculateCost(theta, p));
-            const trace = {
-                x: thetaValues,
-                y: costValues,
-                mode: 'lines',
-                line: { color: '#800000', width: 4 },
-                name: 'Cost'
-            };
+            // Recompute cost values
+            costValues = thetaValues.map(theta => calculateCost(theta, p));
 
-            const layout = {
-              title: 'Sizing an AMC',
-              xaxis: {
-                title: 'Target Probability of Success',
-                tickformat: '.0%',
-                range: [0.5, 0.99],
-                showline: true,
-                linecolor: 'black',
-                linewidth: 2
-              },
-              yaxis: {
-                title: {
-                  text: 'Cost (as a multiple of cost of innovation)',
-                  standoff: 5 // << Increase this number for more spacing
+            // If not flipped, plot (theta on x, cost on y)
+            if (!isFlipped) {
+              Plotly.newPlot(
+                graphDiv,
+                [{
+                  x: thetaValues,
+                  y: costValues,
+                  mode: 'lines',
+                  line: { color: '#800000', width: 4 },
+                  name: 'Cost'
+                }],
+                {
+                  title: 'Sizing an AMC',
+                  xaxis: {
+                    title: 'Target Probability of Success',
+                    tickformat: '.0%',
+                    range: [0.5, 0.99],
+                    showline: true,
+                    linecolor: 'black',
+                    linewidth: 2
+                  },
+                  yaxis: {
+                    title: {
+                      text: 'Cost (as a multiple of cost of innovation)',
+                      standoff: 5
+                    },
+                    range: [0, 200],
+                    showline: true,
+                    linecolor: 'black',
+                    linewidth: 2,
+                    automargin: true
+                  },
+                  plot_bgcolor: '#ffffff',
+                  margin: { t: 40, b: 40, l: 40, r: 20 }
                 },
-                range: [0, 300],
-                showline: true,
-                linecolor: 'black',
-                linewidth: 2,
-                automargin: true // Important for the standoff to work correctly
-              },
-              plot_bgcolor: '#ffffff',
-              margin: { t: 40, b: 40, l: 40, r: 20 }
-            };
-
-
-            Plotly.newPlot(graphDiv, [trace], layout, { responsive: true });
+                { responsive: true }
+              );
+            } else {
+              // If flipped, plot (cost on x, theta on y)
+              Plotly.newPlot(
+                graphDiv,
+                [{
+                  x: costValues,
+                  y: thetaValues,
+                  mode: 'lines',
+                  line: { color: '#800000', width: 4 },
+                  name: 'Cost'
+                }],
+                {
+                  title: 'Sizing an AMC',
+                  xaxis: {
+                    title: 'Cost (as a multiple of cost of innovation)',
+                    range: [0, 200],
+                    showline: true,
+                    linecolor: 'black',
+                    linewidth: 2
+                  },
+                  yaxis: {
+                    title: {
+                      text: 'Target Probability of Success',
+                      standoff: 5
+                    },
+                    tickformat: '.0%',
+                    range: [0.5, 0.99],
+                    showline: true,
+                    linecolor: 'black',
+                    linewidth: 2,
+                    automargin: true
+                  },
+                  plot_bgcolor: '#ffffff',
+                  margin: { t: 40, b: 40, l: 40, r: 20 }
+                },
+                { responsive: true }
+              );
+            }
         }
 
-        // Initial graph
+        // Initial graph with default p
         updateGraph(parseFloat(pSlider.value));
-
         updateSliderColor(pSlider);
 
-        // Add event listener to slider
+        // Slider event listener
         pSlider.addEventListener("input", () => {
             const p = parseFloat(pSlider.value);
             pValue.textContent = `${Math.round(p * 100)}%`;
             updateSliderColor(pSlider);
             updateGraph(p);
         });
+
+        // Flip Axes button event listener
+        flipButton.addEventListener("click", () => {
+          // Toggle the isFlipped flag
+          isFlipped = !isFlipped;
+          // Re-plot with the same p but flipped axes
+          updateGraph(parseFloat(pSlider.value));
+        });
     </script>
-</div>
 </body>
 </html>
