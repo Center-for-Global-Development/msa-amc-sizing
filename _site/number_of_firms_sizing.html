@@ -184,11 +184,16 @@
                     linewidth: 4
                 },
                 yaxis: {
-                    title: 'Needed pull size (as multiple of cost of innovation)',
+                    title: {
+                        text: 'Needed pull size (as multiple of cost of innovation)',
+                        standoff: 5
+                    },
                     showline: true,
                     range: [0, 200],
                     linecolor: 'black',
-                    linewidth: 4
+                    linewidth: 4,    
+                    automargin: true // Important for the standoff to work correctly
+
                 },
                 plot_bgcolor: '#ffffff',
                 margin: { t: 40, b: 40, l: 40, r: 20 }

@@ -84,14 +84,14 @@ title: A Practical Guide to Sizing Innovation Incentives
 <div class="takeaways-box">
     <h3> KEY TAKEAWAYS</h3>
     <ol>
-        <li><strong>Economic modeling and market analysis can help funders approximate the optimal innovation incentive size to suit their program goals.</strong></li>
+        <li><strong>Financial incentives can induce companies to invest in socially valuable research and development efforts. But funders need to be careful: larger incentives can attract more firms and increase the chances of success but also increase total program costs.</strong></li>
         <li><strong>The optimal size of innovation incentives primarily depend on three factors:</strong></li>
             <ol>
-                <li><strong>the costs and risks that firms face during technology development</strong>,  including R&D, testing, regulatory, and commercialization expenses, adjusted for the probability of failure at each stage</li>
-                <li><strong>the competitive dynamics between firms</strong>, recognizing that more competition increases the chances that at least one firm succeed but also raises the incentive size needed to incentivize firms to compete, as the payout is more likely to be split amoung them</li>
+                <li><strong>The costs and risks that firms face during technology development</strong>,  including R&D, testing, regulatory, and commercialization expenses, adjusted for the probability of failure at each stage</li>
+                <li><strong>The riskiness of the innovation:</strong>, more technologically distant innovations require larger incentives to compensate firms for the high chance their R&D fails to yield any successful product. </li>
                 <li><strong>the time value of money</strong>, accounting for firms' discounting of future returns and the often lengthy development timelines for major innovations</li>
             </ol>
-        <li><strong>Larger pull funds can attract more firms and increase the chances of success but also increase total program costs.</strong></li>
+        <li><strong>Other subtle factors can also affect the needed incentive size, including the level of firms in the underlying market: concentrated industries require larger payments to induce large investments in R&D</strong></li>
     </ol>
 </div>
 
