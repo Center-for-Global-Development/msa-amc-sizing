@@ -14,12 +14,12 @@ function calculateNeededAttempts(theta, p) {
     <style>
         body {
           margin: 0; 
-          font-family: Arial, sans-serif;
+          font-family: Georgia;
         }
         .wrapper {
           max-width: 800px;
-          margin: 0 auto;   /* Center horizontally */
-          padding: 1rem;    /* Some internal padding */
+          margin: 0 auto;
+          padding: 1rem;
         }
         #graph-container {
             width: 100%;
@@ -29,6 +29,8 @@ function calculateNeededAttempts(theta, p) {
             width: 100%;
             margin: auto;
             text-align: center;
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
         /* Styling for the slider */
         input[type="range"] {
@@ -89,35 +91,32 @@ function calculateNeededAttempts(theta, p) {
         input[type="range"]:focus::-moz-range-thumb {
             box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
         }
-
-
-
     </style>
 </head>
 <body>
-    <div class = "wrapper">
-    <h1 style="text-align: center;"></h1>
-    <div id="graph-container">
-        <div id="graph"></div>
-    </div>
-    <figcaption style="text-align: center; margin-top: 10px;">
-            If we assume each attempt is independent (an assumption we will weaken later) and each attempt has a 10% chance of success, one would need to induce 13 different attempts to have at least a 75% chance of at least one success.
-            </figcaption>
+    <div class="wrapper">
+      <h1 style="text-align: center;"></h1>
+      <div id="graph-container">
+          <div id="graph"></div>
+      </div>
 
-    <div id="slider-container">
-        <input type="range" id="p-slider" min="0.01" max="0.25" step="0.01" value="0.1" style="width: 100%;">
-        <label for="p-slider">Per-attempt probability of success: <span id="p-value">10%</span></label><br>
+      <div id="slider-container">
+          <input type="range" id="p-slider" min="0.01" max="0.25" step="0.01" value="0.1" style="width: 100%;">
+          <label for="p-slider">Probability of success for a single attempt: <span id="p-value">10%</span></label><br>
+      </div>
 
-    </div>
+      <figcaption style="text-align: center; margin-top: 10px; font-size: smaller;">
+        If we assume each attempt is independent (an assumption we will weaken later) and each attempt has a 10% chance of success, one would need to induce 13 different attempts to have at least a 75% chance of at least one success.
+      </figcaption>
 
-    <script>
+      <script>
         // JavaScript function to calculate needed attempts
         function calculateNeededAttempts(theta, p) {
             return Math.log(1 - theta) / Math.log(1 - p);
         }
 
         // Initial settings
-        const thetaValues = Array.from({ length: 100 }, (_, i) => 0.25 + i * 0.0074); // Range from 0.25 to 0.99
+        const thetaValues = Array.from({ length: 100 }, (_, i) => 0.25 + i * 0.0074); 
         const pSlider = document.getElementById("p-slider");
         const pValue = document.getElementById("p-value");
         const graphDiv = document.getElementById("graph");
@@ -134,25 +133,56 @@ function calculateNeededAttempts(theta, p) {
             };
 
             const layout = {
-                title: 'Number of independent attempts <br> needed to reach a target <br> probability of success',
+                // Apply Georgia font & black color globally
+                font: {
+                  family: 'Georgia',
+                  color: 'black'
+                },
+                title: {
+                  text: 'Number of independent attempts <br> needed to reach a target <br> probability of success',
+                  font: {
+                    family: 'Georgia',
+                    size: 24,
+                    color: 'black'
+                  }
+                },
                 xaxis: {
-                    title: 'Target Probability of Success',
+                    title: {
+                      text: 'Target Probability of Success',
+                      font: {
+                        family: 'Georgia',
+                        color: 'black'
+                      }
+                    },
                     tickformat: '.0%',
                     range: [0.25, 0.99],
                     showline: true,
                     linecolor: 'black',
-                    linewidth: 2
+                    linewidth: 2,
+                    tickfont: {
+                      family: 'Georgia',
+                      color: 'black'
+                    }
                 },
                 yaxis: {
-                    title: 'Number of Needed Attempts',
+                    title: {
+                      text: 'Number of Needed Attempts',
+                      font: {
+                        family: 'Georgia',
+                        color: 'black'
+                      }
+                    },
                     range: [0, 120],
                     showline: true,
                     linecolor: 'black',
-                    linewidth: 2
+                    linewidth: 2,
+                    tickfont: {
+                      family: 'Georgia',
+                      color: 'black'
+                    }
                 },
                 plot_bgcolor: '#ffffff',
                 margin: { t: 40, b: 40, l: 40, r: 20 }
-
             };
 
             Plotly.newPlot(graphDiv, [trace], layout, { responsive: true });
@@ -178,7 +208,7 @@ function calculateNeededAttempts(theta, p) {
             updateGraph(p);
             updateSliderColor(pSlider);
         });
-    </script>
-</div>
+      </script>
+    </div>
 </body>
 </html>

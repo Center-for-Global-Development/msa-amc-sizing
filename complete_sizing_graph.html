@@ -9,7 +9,7 @@
   <style>
     body {
       margin: 0; 
-      font-family: Arial, sans-serif;
+      font-family: Georgia;
     }
     .wrapper {
       max-width: 800px;
@@ -93,12 +93,6 @@
     <div id="graph-container">
       <!-- Plotly graph will go here -->
       <div id="graph"></div>
-      <figure>
-        <div id="graph"></div>
-        <figcaption style="text-align: center; margin-top: 10px;">
-          Incorporating correlations and firm count constraints will only modestly change values, unless one faces a very small market or high levels of correlation.
-        </figcaption>
-      </figure>
     </div>
 
     <!-- Flip Axes button -->
@@ -110,7 +104,7 @@
     </div>
 
     <div id="slider-container">
-      <label for="p-slider">Per-attempt probability of success (p): <span id="p-value">3%</span></label><br />
+      <label for="p-slider">Probability of success for a single attempt (p): <span id="p-value">3%</span></label><br />
       <input type="range" id="p-slider" min="0.01" max="0.25" step="0.01" value="0.03" style="width: 100%;" /><br />
 
       <label for="eta-slider">Global Possibility Parameter (η): <span id="eta-value">90%</span></label><br />
@@ -129,6 +123,13 @@
         Restrict range to 25-75%
       </label>
     </div>
+
+    <figure>
+        <!-- CHANGED: Make the caption text smaller -->
+        <figcaption style="text-align: center; margin-top: 10px; font-size: smaller;">
+          The global possibility parameter represents the maximum probability of success, i.e. what is the chance this innovation is even possible? The per-firm possibility parameter represents the extent to which attempts within a firm are correlated. See the "Show Math" button above for more details
+        </figcaption>
+      </figure>
 
     <script>
       /***** Helper functions *****/
@@ -162,7 +163,7 @@
         }
         return probability;
       }
-      // This is just an example function from your code; you might need to adapt:
+      // Example function
       function marginalCostFunction(numFirmsMin, numFirmsMax, numAttemptsMin, numAttemptsSame, beta) {
         const probMarginMatters = beta * Math.pow(1 - beta, numAttemptsSame - 1);
         const minProb = 1 - Math.pow(1 - beta, numAttemptsMin);
@@ -252,20 +253,33 @@
 
           layout = {
             title: "",
+            /* CHANGED: Apply Georgia font and black color globally */
+            font: {
+              family: "Georgia",
+              color: "black"
+            },
             xaxis: {
-              title: "Target Probability of Success",
+              title: {
+                text: "Target Probability of Success",
+                /* If you need extra specificity: */
+                font: { family: "Georgia", color: "black" }
+              },
               tickformat: ".0%",
               range: restrictRange ? [0.25, 0.75] : [0.25, 0.99],
               showline: true,
               linecolor: "black",
-              linewidth: 4
+              linewidth: 4,
             },
             yaxis: {
-              title: "Needed pull size (as multiple of expected costs)",
+              title: {
+                text: "Needed pull size (as multiple of expected costs)",
+                /* If you need extra specificity: */
+                font: { family: "Georgia", color: "black" }
+              },
               range: restrictRange ? [0, 200] : [0, 400],
               showline: true,
               linecolor: "black",
-              linewidth: 4
+              linewidth: 4,
             },
             plot_bgcolor: "#ffffff",
             margin: { t: 80, b: 50, l: 60, r: 30 },
@@ -279,8 +293,6 @@
           };
         } else {
           // Flipped orientation:
-          // "Full Model": (x=marginalBenefits, y=theta)
-          // "Simple Model": (x=costValues, y=theta)
           trace1 = {
             x: marginalBenefits,
             y: thetaValues,
@@ -296,20 +308,29 @@
             name: "Simple Model"
           };
 
-          // Adjust axis titles and ranges:
-          // Because cost/marginalBenefits can get large, use the same range logic on the new x-axis
           const xRange = restrictRange ? [0, 200] : [0, 400];
           layout = {
             title: "",
+            /* CHANGED: Apply Georgia font and black color globally */
+            font: {
+              family: "Georgia",
+              color: "black"
+            },
             xaxis: {
-              title: "Needed pull size (as multiple of expected costs)",
+              title: {
+                text: "Needed pull size (as multiple of expected costs)",
+                font: { family: "Georgia", color: "black" }
+              },
               range: xRange,
               showline: true,
               linecolor: "black",
               linewidth: 4
             },
             yaxis: {
-              title: "Target Probability of Success",
+              title: {
+                text: "Target Probability of Success",
+                font: { family: "Georgia", color: "black" }
+              },
               tickformat: ".0%",
               range: restrictRange ? [0.25, 0.75] : [0.25, 0.99],
               showline: true,
@@ -333,10 +354,8 @@
       }
 
       /***** Initial draw *****/
-      // Color the sliders
       [pSlider, etaSlider, kSlider, gammaSlider].forEach(updateSliderColor);
 
-      // Initial chart
       updateGraph(
         parseFloat(pSlider.value),
         parseFloat(etaSlider.value),
@@ -404,7 +423,6 @@
         );
       });
 
-      // Flip Axes button toggles the isFlipped flag and re-plots
       flipButton.addEventListener("click", () => {
         isFlipped = !isFlipped;
         updateGraph(

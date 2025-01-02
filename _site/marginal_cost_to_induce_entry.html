@@ -9,7 +9,7 @@
     <style>
         body {
           margin: 0; 
-          font-family: Arial, sans-serif;
+          font-family: Georgia;
         }
         .wrapper {
           max-width: 800px;
@@ -93,13 +93,15 @@
     <div id="graph-container">
         <div id="graph"></div>
     </div>
-    <figcaption style="text-align: center; margin-top: 10px;">
-           The marginal cost for the funder to induce an extra attempt grows asymptotically towards the cost of an individual attempt. The higher the probability of success, the more quickly it approaches that asymptote. 
-            </figcaption>
     <div id="slider-container">
         <input type="range" id="p-slider" min="0.01" max="0.25" step="0.01" value="0.05" style="width: 100%;">
-        <label for="p-slider">Per-attempt probability of success (p): <span id="p-value">5%</span></label><br>
+        <label for="p-slider">Probability of success for a single attempt (p): <span id="p-value">5%</span></label><br>
     </div>
+
+    <figcaption style="text-align: center; margin-top: 10px; font-size: smaller;">
+           The marginal cost for the funder to induce an extra attempt grows asymptotically towards the cost of an individual attempt. The higher the probability of success, the more quickly it approaches that asymptote. 
+    </figcaption>
+
     <script>
         // JavaScript function to calculate marginal cost
         function calculateMarginalCost(p, n) {
@@ -111,7 +113,7 @@
             // Calculate the denominator
             const denominator = Math.pow(1 - Math.pow(1 - p, n), 2);
             // Calculate the result
-            const result = numerator / denominator;
+            const result = 100 * numerator / denominator;
             return result;
         }
 
@@ -141,9 +143,23 @@
                 name: 'Marginal cost to induce an extra attempt'
             };
             const layout = {
-                title: 'Marginal cost to <br> induce an extra attempt',
+                title: {
+                text: 'Marginal cost to <br> induce an extra attempt',
+                font: {
+                  family: 'Georgia',
+                  size: 24,                // Make the title bigger
+                  color: 'black'
+                }
+                },
                 xaxis: {
-                    title: 'Number of attempts',
+                    title: {
+                      text: 'Number of attempts',
+                      standoff: 5,
+                      font: {
+                        family: 'Georgia',
+                        color: 'black'
+                      }
+                    },
                     tickformat: '.0',
                     range: [1, 100],
                     showline: true,
@@ -151,8 +167,15 @@
                     linewidth: 2
                 },
                 yaxis: {
-                    title: 'Marginal cost (as multiple of expected costs)',
-                    range: [0, 1],
+                    title: {
+                      text: 'Marginal cost (as % of cost of innovation)',
+                      standoff: 5,
+                      font: {
+                        family: 'Georgia',
+                        color: 'black'
+                      }
+                    },
+                    range: [50, 100],
                     showline: true,
                     linecolor: 'black',
                     linewidth: 2
