@@ -278,3 +278,20 @@ a#skip-to-content{
 iframe {
   max-width: 100%;
 }
+
+/* Force MathJax to wrap or scroll on narrow screens */
+@media (max-width: 768px) {
+  mjx-container[jax="CHTML"][display="true"] {
+    /* Force block display, so it doesn't push horizontally */
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+
+    /* Let it scroll horizontally instead of overflowing */
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+  }
+}
+
+

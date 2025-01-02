@@ -1,6 +1,6 @@
 ---
 layout: default
-title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
+title: A Practical Guide to Sizing Innovation Incentives
 ---
 <link rel="stylesheet" href="style.css">
 
@@ -559,7 +559,7 @@ Thinking through how many firms are likely to be attracted to compete for the pu
 <!-- -->
     Suppose we want to create a pull mechanism such that the probability of success of at least one firm is at least $\theta$. In other words, need to find an $n$ such that $1 - (1-p)^n \geq \theta$. Through simple re-arrangement, we can find that: 
 <!-- -->
-    $$ n \geq \frac{ln(1-\theta)}{ln(1-p)} $$
+    $$ n \geq \frac{\ln(1-\theta)}{\ln(1-p)} $$
 <!-- -->
     If the number of entrants exceeds that value, then the probability of success will exceed that target. As all firms are identical in all respects, the probability of receivng the reward conditional on entering is equal to the probability that any firm succeeds, divided by the number of firms entering. In other words, 
 <!-- -->
@@ -567,7 +567,7 @@ Thinking through how many firms are likely to be attracted to compete for the pu
 <!-- -->
     A firm will only enter if its expected revenue exceeds the expected costs ($\mathbb{E}[c]$). For a risk-neutral firm, the expected revenue is simply $\mathbb{P}(win|entry) \cdot X$. As a result, by plugging in the values for $\mathbb{P}(win|entry)$ and $n$ we found above, we find that the needed pull size becomes 
 <!-- -->
-    $$ X \geq \frac{ln(1-\theta)}{\theta \cdot ln(1-p)} \cdot \mathbb{E}[c]$$
+    $$ X \geq \frac{\ln(1-\theta)}{\theta \cdot \ln(1-p)} \cdot \mathbb{E}[c]$$
  <!-- -->
     Future sections will relax some of these assumptions and build out a complete model.
 </div>
@@ -615,7 +615,7 @@ The more firms that have already entered, the higher the marginal cost to induce
 
     We need to simply take the derivative of that expression to find $\frac{\mathrm{d}X}{\mathrm{d}n}$, which we find as
 
-    $$\frac{\mathrm{d}X}{\mathrm{d}n}= \mathbb{E}[c] \cdot \frac{1-(1-p)^n + n \cdot (1-p)^n \cdot ln(1-p)}{(1-(1-p)^n)^2}$$
+    $$\frac{\mathrm{d}X}{\mathrm{d}n} = \mathbb{E}[c] \cdot \frac{1 + (1-p)^n \cdot (n \cdot \ln(1-p) - 1)}{(1-(1-p)^n)^2} $$
 
     $$ lim_{n \to \infty}(\frac{\mathrm{d}X}{\mathrm{d}n}) = \mathbb{E}[c] $$
 
@@ -665,7 +665,7 @@ Putting all of these components together, we can calculate the needed pull size 
         </tr>
     </tbody>
     </table>
-    $$ \text{Present value of pull size} \geq \frac{\ln(1 - \theta)}{\theta \cdot \ln(1 - p)} \cdot \mathbb{E}[c] $$
+    $$ \text{Pull size present value} \geq \frac{\ln(1 - \theta)}{\theta \cdot \ln(1 - p)} \cdot \mathbb{E}[c] $$
 </div>
 
 *Note: The expected cost of an attempt (used when considering firm participation) can be substantially lower than the full actualized development costs. For instance, if full development costs are $20 million but have only a 5% chance of being incurred, the expected cost is \\$1 million, as stated in the example above. This is one of the reasons pull mechanisms appear very large relative to expected costs.*
@@ -717,7 +717,7 @@ Consider an extreme case of a monopoly firm. The monopolist receives no addition
 
 $$ X \cdot p \cdot (1-p)^{n-1} \geq \mathbb{E}[c]$$
 
-The number of attempts needed to achieve at least a $\theta$ probability of success does not change. As a result, we plug $n \geq \frac{ln(1-\theta)}{ln(1-p)}$ into the above equation, producing:
+The number of attempts needed to achieve at least a $\theta$ probability of success does not change. As a result, we plug $n \geq \frac{\ln(1-\theta)}{\ln(1-p)}$ into the above equation, producing:
 
 $$ X \geq \frac{1-p}{p \cdot (1-\theta)} \cdot \mathbb{E}[c]$$
 
@@ -807,15 +807,15 @@ Set aside the global parameter for now and let us focus our efforts on the withi
 
 $$\mathbb{P}_{firm}(success \geq 1) = \gamma \cdot (1-(1-p)^m) $$
 
-The probability that all of a firm's attempts fail is the sum of the probability that the approach is fundamentally infeasible ($1 - \gamma$) and the probability that the approach is feasible ($\gamma$) but all of the attempts fail regardless ($(1-p)^m$). Putting together, one gets $\mathbb{P}_{firm}(success \geq 1) = 1 - [(1-\gamma) + \gamma \cdot (1-p)^m]$, which simplifies to Equation 4.1.
+The probability that all of a firm's attempts fail is the sum of the probability that the approach is fundamentally infeasible ($1 - \gamma$) and the probability that the approach is feasible ($\gamma$) but all of the attempts fail regardless ($(1-p)^m$). Putting together, one gets $$\mathbb{P}_{firm}(success \geq 1) = 1 - [(1-\gamma) + \gamma \cdot (1-p)^m]$$
 
-Now to introduce the global possibility parameter $\eta$.
+This equation simplifies to the previous equation. Now to introduce the global possibility parameter $\eta$.
 
 $$\mathbb{P}_{all}(success \geq 1) = \eta \cdot (1 - [1-\gamma \cdot (1-(1-p)^m)]^k) \geq \theta$$
 
 The goal is to get the probability of success to exceed the target threshold. With the new global possibility parameter, the probability that at least one firm succeeds is the probability that any given firm succeeds conditional on the innovation being possible (from Equation 4.1) multiplied by the possibility $\eta$ that the innovation is at all possible.
 
-$$m \geq \frac{ln(1-\frac{1-(1-\frac{\theta}{\eta})^{\frac{1}{k}}}{\gamma})}{ln(1-p)}$$
+$$m \geq \frac{\ln(1-\frac{1-(1-\frac{\theta}{\eta})^{\frac{1}{k}}}{\gamma})}{\ln(1-p)}$$
 
 Algebraic rearrangement of the second equation produces the third. There is no simplified form for the necessary pull size. Instead, one can insert the value of $m$ into the equation for the finite firms, replacing the $\frac{n}{k}$ term that represnts attempts per firm with the value for $m$ found in Equation 4.3.
 
