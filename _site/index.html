@@ -124,6 +124,7 @@
                 <ol>
                 <li><a href="#additional_costs">Additional Cost Considerations</a></li>
                 <li><a href="#cost_effectiveness">Cost Effectiveness</a></li>
+                <li><a href="#complete_example">Complete Example</a></li>
                 </ol>
             </li>
         </ol>
@@ -149,7 +150,7 @@
 
 <p>In general, innovation incentives can fall into two categories: push and pull. Push incentives pay for research inputs; two canonical examples of the push incentive are the research grant and “cost-plus contracting”. A large literature exists on the design of these programs. <span class="tooltip-word">Pull funding<span class="tooltip-text">“Pull funding” is incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span>, by contrast, pay for research outputs or outcomes, and are thus conditional on the successful delivery of results. <span class="tooltip-word">Pull incentives<span class="tooltip-text">“Pull incentives” are incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span>, which include prizes and <span class="tooltip-word">advance market commitments<span class="tooltip-text">Advanced market commitments are agreements where governments or organizations commit to purchasing or subsidizing a product once it is successfully developed, guaranteeing a market for manufacturers.</span></span>, thus require the innovator to bear the costs and risks of developing the target technology.</p>
 
-<p>The framework in this piece focuses exclusively on filling in the gaps in the literature on how to size pull incentives specifically. Our approach draws from our experience evaluating incentive programs across sectors. By breaking the sizing problem  into a series of manageable steps, we aim to help funders and program designers develop more cost-effective and efficient innovation incentives.</p>
+<p>The framework in this piece focuses exclusively on filling in the gaps in the literature on how to size pull incentives specifically. Our approach draws from our experience evaluating incentive programs across sectors. By breaking the sizing problem  into a series of manageable steps, we aim to help funders and program designers develop more cost-effective and efficient innovation incentives. The end of this piece offers a <a href="#complete_example">complete walkthrough</a> of a case study the MSA has worked on over the last year to illustrate how to apply the framework in the real world.</p>
 
 <h2 id="conceptual_framework">2. Conceptual Framework</h2>
 
@@ -231,7 +232,7 @@
 
 
 <p>
-    Data from Jensen, J. D., Lund, M., &amp; Fabricius, O. (2014). Economic analysis of developing a Campylobacter vaccine to poultry: a real options approach. Frederiksberg: Department of Food and Resource Economics, University of Copenhagen. <i>IFRO Report, No. 227</i>.
+    <small>Data from <a href="https://curis.ku.dk/ws/portalfiles/portal/106806762/IFRO_Report_227.pdf">Jensen, J. D., Lund, M., &amp; Fabricius, O. (2014). Economic analysis of developing a Campylobacter vaccine to poultry: a real options approach. Frederiksberg: Department of Food and Resource Economics, University of Copenhagen. <i>IFRO Report, No. 227</i></a></small>.
 </p>
 
 <p>
@@ -871,7 +872,7 @@ Algebraic rearrangement of the second equation produces the third. There is no s
 
 <p>The benefit-cost ratio (BCR) indicates the social value generated per dollar spent. It is computed by dividing the expected benefits by the total costs. A BCR greater than 1 signals that the benefits outweigh the costs.</p>
 
-<p><button class="see-more-btn" onclick="toggleDetails('bcr-details')">Show BCR Equation</button></p>
+<p><button class="see-more-btn" onclick="toggleDetails('bcr-details')">Show BCR equation</button></p>
 <div id="bcr-details" class="details-box">
     <table>
         <thead>
@@ -906,7 +907,7 @@ Algebraic rearrangement of the second equation produces the third. There is no s
 
 <p>The net present value (NPV) directly quantifies the net societal value created by the pull mechanism, accounting for the time value of money. A positive NPV indicates the intervention generates a net gain for society. To calculate overall net present value teams should multiple the probability of program success by the difference of the present value of benefits and costs</p>
 
-<p><button class="see-more-btn" onclick="toggleDetails('npv-details')">Show BCR Equation</button></p>
+<p><button class="see-more-btn" onclick="toggleDetails('npv-details')">Show NPV equation</button></p>
 <div id="npv-details" class="details-box">
     <table>
         <thead>
@@ -928,6 +929,248 @@ Algebraic rearrangement of the second equation produces the third. There is no s
 </div>
 
 <p>Together, the BCR and NPV provide a balanced assessment of the pull mechanism’s cost-effectiveness. This allows funders to make informed decisions about whether to proceed with the investment and how to optimize the target probability of success for maximum impact.</p>
+
+<h3 id="complete_example">A full example</h3>
+
+<p>The following button will walk the reader through a complete example from start to finish, using the case study of vaccines to reduce enteric methane emissions from cattle that the MSA has worked on over the last year.</p>
+
+<p><button class="see-more-btn" onclick="toggleDetails('complete-example-details')">Show complete example</button></p>
+<div id="complete-example-details" class="details-box">
+
+<strong>Step 1 - Expected Costs and Risks</strong>
+
+<p>
+In previous examples, we used this table from <a href="https://curis.ku.dk/ws/portalfiles/portal/106806762/IFRO_Report_227.pdf">Jensen 2014</a>  to find the expected cost and risk per innovation attempt. Even though the all-in cost of seeing an attempt through from initiation to success is \$3.4 million, because the supermajority of attempts fail far before the test and approval phases, the expected cost at time of initiation is only \$1.904 million. After discounting using an 8.05% discount rate (to recognize the fact that costs borne in future years count “less” than costs incurred in the present, the “expected cost per attempt” becomes \$1,799,000 with a probability of success of 2.7%.
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Phase</th>
+            <th>Cost (2024 1000 $)</th>
+            <th>Unconditional Probability of Success</th>
+            <th>Probability of reaching step</th>
+            <th>Expected Cost (1000 $)</th>
+            <th>Discounted Present Value  </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R&amp;D</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>100%</td>
+            <td>955</td>
+            <td>955 </td>
+        </tr>
+        <tr>
+            <td>R&amp;D</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>58.40%</td>
+            <td>554</td>
+            <td>513 </td>
+        </tr>
+        <tr>
+            <td>R&amp;D</td>
+            <td>955</td>
+            <td>58.40%</td>
+            <td>34.10%</td>
+            <td>321</td>
+            <td>275 </td>
+        </tr>
+        <tr>
+            <td>Patent</td>
+            <td>201</td>
+            <td>75%</td>
+            <td>19.50%</td>
+            <td>39</td>
+            <td>31 </td>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>153</td>
+            <td>44.70%</td>
+            <td>14.60%</td>
+            <td>22</td>
+            <td>16 </td>
+        </tr>
+        <tr>
+            <td>Test</td>
+            <td>153</td>
+            <td>44.70%</td>
+            <td>6.60%</td>
+            <td>10</td>
+            <td>7 </td>
+        </tr>
+        <tr>
+            <td>Approval</td>
+            <td>71</td>
+            <td>90%</td>
+            <td>3.00%</td>
+            <td>2</td>
+            <td>1.3 </td>
+        </tr>
+        <tr>
+            <td>Release</td>
+            <td>-</td>
+            <td>100%</td>
+            <td>2.70%</td>
+            <td>-</td>
+            <td>0 </td>
+        </tr>
+        <tr>
+            <td><strong>Overall</strong></td>
+            <td><strong>3,443</strong></td>
+            <td>-</td>
+            <td><strong>2.70%</strong></td>
+            <td><strong>1,904</strong></td>
+            <td><strong>1,799</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<strong>Step 2 - Calculating Needed Pull Size</strong>
+
+<p>
+$$ X \geq \frac{\ln(1-\theta)}{\theta \cdot \ln(1-p)} \cdot \mathbb{E}[c]$$
+
+We can now plug in these numbers to our formulas shown above, using \$1,799,000 as $\mathbb{E}[c]$ and 0.027 as $p$. The target probability of success $\theta$ is a choice of art, and the following chart shows the needed pull size depending on the choice of the target probability of success.
+
+</p>
+
+<div style="text-align: center;">
+    <embed style="border: none;" src="./example_sizing.html" dpi="300" width="90%" height="550px" />
+  </div>
+
+<strong>Step 3 - Adding in Complications</strong>
+<p>
+
+$$m \geq \frac{\ln(1-\frac{1-(1-\frac{\theta}{\eta})^{\frac{1}{k}}}{\gamma})}{\ln(1-p)}$$
+
+If one wishes, one can now add in some of the complications from before, such as reasonable guesses about the number of participating firms and the extent to which this innovation is even “possible”. Both of these terms are highly subjective, and should be informed by interviews with industry experts. For this example, let us assume there are at most six firms in the market, with a global possibility parameter of 75% ($\eta$) and a within-firm possibility parameter of 66.67% ($\gamma$) (in other words, there exists only a three-quarters chance that this innovation is possible and, conditional on the innovation being possible, there is only a two-thirds chance that any given pathway to achieve that innovation could work). 
+</p>
+
+<em>Note: As a side note, when one adds in these correlations, we do need to adjust the value of the probability of success $p$ conditional on the innovation being possible. If our data says (e.g.) that these trials succeed 2.7% of the time, then the probability that the trials succeed conditional on being possible at all (using our parameters) becomes </em> $0.027 \div \frac{3}{4} \div \frac{2}{3} = 0.054 = 5.4\%$
+
+<p></p>
+<strong>Step 4 - Converting into Nominal Terms</strong>
+
+<p>
+The above formula gives only the present value to the firm. But it does not tell us exactly how much money one needs to raise. To do so, we need to understand how long this innovation might take. More distant innovations will result in longer lags between research investment and ultimate payout, and thus require larger rewards in order to induce entry. Industry literature and expert interviews can give some bounds on this estimate. In this case, let us assume that research takes eight years from start to finish.
+</p>
+
+<p>
+The structure of the pull incentive affects the next step. In the case of a prize, once the research target has been achieved, the firm can receive all of the reward. In the case of an advance market commitment (AMC), the payments are structured as per-unit subsidies. For this example, let us assume the incentive is an AMC that lasts for ten years and payments occur contemporaneously with sales. 
+</p>
+
+<p>
+In this case, we would need to have a rough model of rollout, which can be informed by the rollout of other products in the space. This payment structure will further increase costs, because sales growth tends to take time, which further increases the wedge between initial investment and ultimate payout. 
+</p>
+
+<div style="text-align: center;">
+    <embed style="border: none;" src="./vaccine_rollout.html" dpi="300" width="90%" height="500px" />
+  </div>
+
+<p>
+At this step, one also needs to include marginal costs of production and add those to the needed subsidy, while subtracting out any private willingness-to-pay. In the case of our methane-reducing vaccines, both the cost of production and private willingness-to-pay might be extremely low (e.g. \$2.25/dose and \$0, respectively). 
+</p>
+
+<p>
+Consider the above logistic chart of potential rollout. Cognizant that sales made in later years are less valuable to the company in present-value terms than sales made earlier, we can use computers to find the value of a per-unit subsidy such that the present value of all of these future payments exceeds \$207.8 million. To do so, one takes the number of doses projected to be sold each year and discount them (using the firm’s 8.05% discount rate) into “effective number of doses in current-year terms”. 
+</p>
+
+<table border="1" cellspacing="0" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Projected Vaccinations (millions)</th>
+      <th>Discount Factor</th>
+      <th>Effective Present Vaccinations (millions)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0-8</td>
+      <td>0</td>
+      <td>0.538</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>0.302</td>
+      <td>0.498</td>
+      <td>0.15</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>0.797</td>
+      <td>0.461</td>
+      <td>0.367</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2</td>
+      <td>0.427</td>
+      <td>0.854</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>4.518</td>
+      <td>0.395</td>
+      <td>1.785</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>8.4</td>
+      <td>0.365</td>
+      <td>3.066</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>12.28</td>
+      <td>0.338</td>
+      <td>4.15</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>14.8</td>
+      <td>0.313</td>
+      <td>4.63</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>16</td>
+      <td>0.29</td>
+      <td>4.64</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>16.5</td>
+      <td>0.268</td>
+      <td>4.422</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>16.69</td>
+      <td>0.248</td>
+      <td>4.139</td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td><strong>92.287</strong></td>
+      <td></td>
+      <td><strong>28.203</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>
+Then divide the total needed present value (\$207.8 million) by the “effective present value of doses” and add in the \$2.25 to offset the cost of production to get a final answer of \$9.62/dose. We now have a total nominal price tag of \$887 million (multiplying the total subsidized doses by the total nominal cost). If we assume that the funder can earn a risk-free 2% interest rate on the money they put in escrow, the total amount of money they need to commit becomes <strong>\$653.8 million</strong>. Why is this value so much greater than the original \$207.8 million we found? Because the time value of money to the firm (8.05%) far exceeds the interest that the funder can get on the money they put in escrow (2%).
+</p>
+
+</div>
 
 <hr />
 

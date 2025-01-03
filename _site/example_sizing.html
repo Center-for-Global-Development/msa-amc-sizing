@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fixed p Plotly Example</title>
+
+  <!-- Include Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <style>
+    figure {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0; 
+      font-family: 'Georgia';
+    }
+
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;   /* Center horizontally */
+      padding: 1rem;   /* Some internal padding */
+    }
+
+    #graph-container {
+      width: 100%;
+      margin: auto;
+    }
+
+    /* (Optional) styling for the Flip Axes button */
+    #flip-button {
+      padding: 0.5rem 1rem; 
+      background-color: #800000; 
+      color: #fff; 
+      border: none; 
+      border-radius: 4px; 
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div id="graph-container">
+      <figure>
+        <div id="graph"></div>
+      </figure>
+    </div>
+    <div style="text-align:center; margin: 1rem 0;">
+      <button id="flip-button">Flip Axes</button>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript function to calculate cost
+    function calculateCost(theta, p) {
+      // cost(theta, p) = ln(1 - theta) / [ theta * ln(1 - p) ]
+      return 1.799 * Math.log(1 - theta) / (theta * Math.log(1 - p));
+    }
+
+    // Fixed probability
+    const p = 0.027; // 2.7%
+
+    // Generate theta values from 0.5 to 0.995 in steps of 0.005
+    // (Adjust if you want a different range or resolution)
+    let thetaValues = Array.from({ length: 100 }, (_, i) => 0.5 + i * 0.005);
+
+    // Calculate the cost values for each theta
+    let costValues = thetaValues.map(theta => calculateCost(theta, p));
+
+    let graphDiv = document.getElementById("graph");
+    let flipButton = document.getElementById("flip-button");
+
+    // State to keep track of whether axes are flipped
+    let isFlipped = false;
+
+    // Define the layout for the unflipped axes
+    const layoutUnflipped = {
+      title: {
+        text: 'Needed pull size by target probability',
+        font: { family: 'Georgia', size: 24, color: 'black' }
+      },
+      font: { family: 'Georgia' },
+      xaxis: {
+        title: { text: 'Target Probability of Success', font: { color: 'black' } },
+        tickformat: '.0%',
+        range: [0.5, 0.99],
+        showline: true,
+        linecolor: 'black',
+        linewidth: 2,
+        tickfont: { color: 'black' }
+      },
+      yaxis: {
+        title: { 
+          text: 'Million USD, present value', 
+          font: { color: 'black' } ,
+          standoff: 15
+        },
+        range: [0, 200],
+        showline: true,
+        linecolor: 'black',
+        linewidth: 2,
+        tickfont: { color: 'black' },
+        automargin: true
+      },
+      plot_bgcolor: '#ffffff',
+      margin: { t: 40, b: 40, l: 40, r: 20 }
+    };
+
+    // Define the layout for the flipped axes
+    const layoutFlipped = {
+      title: {
+        text: 'Probability of successful innovation by pull size',
+        font: { family: 'Georgia', size: 24, color: 'black' }
+      },
+      font: { family: 'Georgia' },
+      xaxis: {
+        title: { 
+          text: 'Pull incentive size (million USD, present value)', 
+          font: { color: 'black' } 
+        },
+        range: [0, 200],
+        showline: true,
+        linecolor: 'black',
+        linewidth: 2,
+        tickfont: { color: 'black' }
+      },
+      yaxis: {
+        title: { text: 'Target Probability of Success', font: { color: 'black' }, standoff: 15},
+        tickformat: '.0%',
+        range: [0.5, 0.99],
+        showline: true,
+        linecolor: 'black',
+        linewidth: 2,
+        tickfont: { color: 'black' },
+        automargin: true
+      },
+      plot_bgcolor: '#ffffff',
+      margin: { t: 40, b: 40, l: 40, r: 20 }
+    };
+
+    // Plot function (draws either the unflipped or flipped version)
+    function updateGraph() {
+      if (!isFlipped) {
+        Plotly.newPlot(
+          graphDiv,
+          [{
+            x: thetaValues,
+            y: costValues,
+            mode: 'lines',
+            line: { color: '#800000', width: 4 },
+            name: 'Cost'
+          }],
+          layoutUnflipped,
+          { responsive: true }
+        );
+      } else {
+        Plotly.newPlot(
+          graphDiv,
+          [{
+            x: costValues,
+            y: thetaValues,
+            mode: 'lines',
+            line: { color: '#800000', width: 4 },
+            name: 'Cost'
+          }],
+          layoutFlipped,
+          { responsive: true }
+        );
+      }
+    }
+
+    // Initial plot
+    updateGraph();
+
+    // Flip Axes button event listener
+    flipButton.addEventListener("click", () => {
+      isFlipped = !isFlipped;
+      updateGraph();
+    });
+  </script>
+</body>
+</html>

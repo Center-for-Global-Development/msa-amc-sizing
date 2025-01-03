@@ -35,6 +35,10 @@ th {
     background-color: #FFA319; /* Adds a light background color to headers */
 }
 
+td {
+    text-align: center;
+    vertical-align: middle;
+}
 header.page-header {
     background: #800000; /* Chicago red */
     padding: 0px 0px 0px 250px

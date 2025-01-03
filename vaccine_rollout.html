@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Logistic Curve (New Vaccinations) Example</title>
+
+  <!-- Include Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <style>
+    figure {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0; 
+      font-family: 'Georgia';
+    }
+
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;   /* Center horizontally */
+      padding: 1rem;   /* Some internal padding */
+    }
+
+    #graph-container {
+      width: 100%;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div id="graph-container">
+      <figure>
+        <div id="graph"></div>
+      </figure>
+    </div>
+  </div>
+
+  <script>
+    // 1) Define the logistic function
+    //    logistic(x, max_logistic, speed_logistic, midpoint_logistic)
+    function logistic(x, max_logistic, speed_logistic, midpoint_logistic) {
+      return max_logistic / (1 + Math.exp(-speed_logistic * (x - midpoint_logistic)));
+    }
+
+    // 2) Define a function to generate the new vaccinations per year
+    //    analogous to the R function generate_new_vaccinations_per_year
+    function generateNewVaccinationsPerYear(num_years, time_to_develop, max_logistic) {
+      const speed_logistic = 1;
+      const midpoint_logistic = 5;
+      
+      // We'll push 0 for the development period
+      // then push logistic(x) for the remaining years
+      const adoptionCurve = [];
+      for (let i = 1; i <= time_to_develop; i++) {
+        adoptionCurve.push(0);
+      }
+      for (let x = 1; x <= num_years - time_to_develop; x++) {
+        adoptionCurve.push(logistic(x, max_logistic, speed_logistic, midpoint_logistic));
+      }
+      return adoptionCurve;
+    }
+
+    // 3) We want to replicate the usage in R:
+    //      new_vaccinations_per_year = new_cattle_per_year_usa * adoption_curve
+    //    and then we eventually plot new_vaccinations_per_year / 33.6e6
+    const new_cattle_per_year_usa = 33.6e6;
+
+    // 4) Generate data with the same parameters used in the R snippet
+    //    num_years = 30, time_to_develop = 8, max_logistic = 16800000
+    const num_years = 30;
+    const time_to_develop = 8;
+    const max_logistic = 16.8;
+
+    const rawAdoptionValues = generateNewVaccinationsPerYear(num_years, time_to_develop, max_logistic);
+
+    // Multiply by new_cattle_per_year_usa
+    const newVaccinationsPerYear = rawAdoptionValues.map(val => val * new_cattle_per_year_usa);
+
+    // 5) Construct Plotly data arrays:
+    //    x-values: 1..num_years
+    //    y-values: (vaccinations / 33.6e6)
+    const years = Array.from({length: num_years}, (_, i) => i + 1);
+    const fractionVaccinated = newVaccinationsPerYear.map(val => val / new_cattle_per_year_usa);
+
+    // 6) Define the trace for Plotly
+    const trace = {
+      x: years,
+      y: fractionVaccinated,
+      mode: 'lines',
+      line: { color: '#800000', width: 3 },
+      name: 'Share Vaccinated'
+    };
+
+    // 7) Add vertical dashed lines at year=8 and year=18.
+    //    We place them using "shapes" in the layout.
+    //    We'll also add annotation text near them.
+    const shapes = [
+      // Vertical line at x=8
+      {
+        type: 'line',
+        x0: 8,
+        x1: 8,
+        y0: 0,
+        y1: 17,
+        line: {
+          color: '#767676',
+          width: 2,
+          dash: 'dash'
+        }
+      },
+      // Vertical line at x=18
+      {
+        type: 'line',
+        x0: 18,
+        x1: 18,
+        y0: 0,
+        y1: 17,
+        line: {
+          color: '#767676',
+          width: 2,
+          dash: 'dash'
+        }
+      }
+    ];
+
+    // 8) Add annotations for these lines
+    const annotations = [
+      {
+        x: 8,
+        y: 0.95,
+        xref: 'x',
+        yref: 'paper',
+        text: 'Product Invention, AMC starts',
+        showarrow: false,
+        font: { color: '#767676' },
+        textangle: 90,
+        xanchor: 'left'
+      },
+      {
+        x: 18,
+        y: 0.95,
+        xref: 'x',
+        yref: 'paper',
+        text: 'AMC ends',
+        showarrow: false,
+        font: { color: '#767676' },
+        textangle: 90,
+        xanchor: 'left'
+      }
+    ];
+
+    // 9) Define Plotly layout
+    const layout = {
+      title: {
+        text: 'Modeled Growth of Methane Vaccine Market',
+        font: { family: 'Georgia', size: 20, color: 'black' }
+      },
+      font: { family: 'Georgia' },
+      xaxis: {
+        title: {
+          text: 'Years since AMC announcement',
+          font: { color: 'black' }
+        },
+        range: [0, 31],
+        showline: true,
+        linecolor: 'black',
+        linewidth: 2,
+        tickfont: { color: 'black' }
+      },
+      yaxis: {
+        title: {
+          text: 'Number of calves vaccinated per year (million)',
+          font: { color: 'black' }
+        },
+        range: [0, 17],
+        showline: true,
+        linecolor: 'black',
+        linewidth: 2,
+        tickfont: { color: 'black' }
+      },
+      plot_bgcolor: '#ffffff',
+      margin: { t: 50, b: 40, l: 60, r: 20 },
+      shapes: shapes,
+      annotations: annotations
+    };
+
+    // 10) Draw the plot
+    Plotly.newPlot('graph', [trace], layout, { responsive: true });
+  </script>
+</body>
+</html>
