@@ -1064,7 +1064,7 @@ $$ V(X,k) \cdot p \cdot (1-p)^{\frac{n}{k} - 1} \geq \mathbb{E}[c]$$
 
 $$\mathbb{V}(X, k) = \sum_{i=0}^{k-1} \frac{1}{i+1} \cdot \mathbb{P}(\text{successes} = i) \cdot X $$
 
-$$\mathbb{P}(\text{successes} = i) = \binom{k-1}{i} \cdot \left(1 - (1-p)^{\frac{n}{k}}\right)^i \cdot \left((1-p)^{\frac{n}{k}}\right)^{k-1-i}$$
+$$\mathbb{P}(\text{successes} = i) = \binom{k-1}{i} \cdot \left(p)^{\frac{n}{k}}\right^i \cdot \left((1-p)^{\frac{n}{k}}\right)^{k-1-i}$$
 
 $$m \geq \frac{\ln(1-\frac{1-(1-\frac{\theta}{\eta})^{\frac{1}{k}}}{\gamma})}{\ln(1-p)}$$
 
