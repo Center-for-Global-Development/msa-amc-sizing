@@ -301,9 +301,9 @@ Innovation requires multiple steps, including research and development, testing,
 <button class="see-more-btn" onclick="toggleDetails('optionvalue-details')">Walking through an example</button>
 <div id="optionvalue-details" class="details-box">
 
-Development is a often staged process where you can bow out with any adverse result (but you cannot see the success of other firms), let us say the following: k is the number of innovation steps, and P is a vector representing the probability of success at reaching the next stage where $P = \{p_0,p_1,p_2, ... , p_k\}$. Reaching stage 1 has probability 1 so $p_0=1$. Let $C$ be a vector representing the cost at each stage $C = \{c_0,c_1,c_2, ... , c_k\}$. Initialization cost is 0 for $c_0=0$. 
+Research and development is typically a staged process in which your idea may fail at any given step, allowing one to terminate the process. Let us say the following: k is the number of innovation steps, and P is a vector representing the probability of advancing from one stage to the next where $P = \{p_0,p_1,p_2, ... , p_k\}$. Let $C$ be a vector representing the cost at each stage $C = \{c_0,c_1,c_2, ... , c_k\}$.
 
-Without consideration of the time value of money, the cost of development is $$\sum_{i=1}^{k} c_i \prod_{j=1}^{i} p_{j-1}$$.
+Without consideration of the time value of money, the cost of development is $$\sum_{i=1}^{k} c_i \prod_{j=1}^{i} p_{j-1}$$
 
 
 Consider the case of the vaccine considered previously. We first need to decompose into annual costs and probabilities of failure so we can calculate expected costs.
@@ -390,8 +390,8 @@ Consider the case of the vaccine considered previously. We first need to decompo
 
 While the all-in cost of running from start to finish is \$3.4 million, because the innovator stops incurring costs upon failure, the expected cost at time of initiation is only $1.9 million.
 
+
 We now need to introduce the time value of money. Discounting reduces future costs, as firms value expenses incurred in the future less than they value expenses they incur in the present. For example, if we use an 8.05% discount rate (from <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/wacc.html" target="_blank" rel="noopener noreferrer">Damadoran 2024</a>), we get the following table for our livestock vaccine modeling.
-, we get the following table for our livestock vaccine modeling.
 
 
   <table>
@@ -402,7 +402,7 @@ We now need to introduce the time value of money. Discounting reduces future cos
             <th>Unconditional Probability of Success</th>
             <th>Probability of reaching step</th>
             <th>Expected Cost (1000 $)</th>
-            <th>Discounted Present Value  </th>
+            <th>Discounted Present Value (1000 $)  </th>
         </tr>
     </thead>
     <tbody>
@@ -516,15 +516,14 @@ This creates a fundamental tradeoff: the more firms that participate, the more l
 
 <button class="see-more-btn" onclick="toggleDetails('needed-attempts-math')">Show math</button>
 <div id="needed-attempts-math" class="details-box">
-    We make the following assumpions, many of which will be later relaxed.
+    Recall that we made the following assumptions, many of which will be later relaxed.
     <br>
     <br>
     <ol>
-    <li>All firms are risk-neutral and identical ex ante.</li>
-    <li>Firms face one choice: whether to commit a single innovation attempt. Although firms enter sequentially, all research progresses on the same timetable.</li>
-    <li>All innovation attempts are identical and independent.</li>
-    <li>If multiple firms succeed, they split the reward equally. For example, if one firm succeeds, that firm receives the entire prize $X$, while two successful firms would each receive $\frac{1}{2}X$. </li>
-    </ol>
+    <li>All firms are rational and risk-neutral: they participate if (and only if) expected benefits exceed costs. </li>
+    <li>Firms face one choice: whether to invest in a single innovation attempt. All firms make this decision and progress on research on the same timetable. </li>
+    <li>All innovation attempts are <span class="tooltip-word">identical<span class="tooltip-text">By identical, we mean that each attempt has the same probability of success, not that they are all pursuing the same method or approach</span></span> and <span class="tooltip-word">independent<span class="tooltip-text">By independence, we mean that each attempt is uncorrelated with any other attempt, much like how whether a flipped coin comes up heads does not depend on the outcome of the previous flip. We relax this assumption later by allowing different attempts to become correlated with each other</span></span>.</li>
+    <li>Successful firms share the reward <span class="tooltip-word">equally<span class="tooltip-text">For example, if only one firm succeeds, they receive the entire award. If two firms succeed, they each receive half the reward</span></span>.</li>
     <table>
     <thead>
         <tr>
@@ -556,15 +555,15 @@ This creates a fundamental tradeoff: the more firms that participate, the more l
     </tbody>
     </table>
 <!-- -->
-    Suppose we want to create a pull mechanism such that the probability of success of at least one firm is at least $\theta$. In other words, need to find an $n$ such that $1 - (1-p)^n \geq \theta$. Through simple re-arrangement, we can find that: 
+    Suppose we want to create a pull mechanism such that the probability that at least one firm succeeds is at least $\theta$. In other words, need to find an $n$ such that $1 - (1-p)^n \geq \theta$. We can rearrange this inequality to express the minimum number of firm entrants needed to reach this probability: 
 <!-- -->
     $$ n \geq \frac{\ln(1-\theta)}{\ln(1-p)} $$
 <!-- -->
-    If the number of entrants exceeds that value, then the probability of success will exceed that target. As all firms are identical in all respects, the probability of receivng the reward conditional on entering is equal to the probability that any firm succeeds, divided by the number of firms entering. In other words, 
+    If the number of entrants $n$ exceeds that value, then the probability of success will exceed that target. As all firms are identical in all respects, the probability of receivng the reward conditional on entering is equal to the probability that any firm succeeds, divided by the number of firms entering. In other words, 
 <!-- -->
     $$ \mathbb{P}(win|entry) = \frac{1-(1-p)^n}{n} $$
 <!-- -->
-    A firm will only enter if its expected revenue exceeds the expected costs ($\mathbb{E}[c]$). For a risk-neutral firm, the expected revenue is simply $\mathbb{P}(win|entry) \cdot X$. As a result, by plugging in the values for $\mathbb{P}(win|entry)$ and $n$ we found above, we find that the needed pull size becomes 
+    A firm will only enter if its expected revenue exceeds the expected costs ($\mathbb{E}[c]$). For a risk-neutral firm, the expected revenue is simply $\mathbb{P}(win|entry) \cdot X$. As a result, by plugging in the values for $\mathbb{P}(win|entry)$ and $n$ we found above, we find that the required pull size is 
 <!-- -->
     $$ X \geq \frac{\ln(1-\theta)}{\theta \cdot \ln(1-p)} \cdot \mathbb{E}[c]$$
  <!-- -->
