@@ -563,6 +563,7 @@ Since the overwhelming majority of the costs fall in the first few years, discou
     <li>Firms face one choice: whether to invest in a single innovation attempt. All firms make this decision and progress on research on the same timetable. </li>
     <li>All innovation attempts are <span class="tooltip-word">identical<span class="tooltip-text">By identical, we mean that each attempt has the same probability of success, not that they are all pursuing the same method or approach</span></span> and <span class="tooltip-word">independent<span class="tooltip-text">By independence, we mean that each attempt is uncorrelated with any other attempt, much like how whether a flipped coin comes up heads does not depend on the outcome of the previous flip. We relax this assumption later by allowing different attempts to become correlated with each other</span></span>.</li>
     <li>Successful firms share the reward <span class="tooltip-word">equally<span class="tooltip-text">For example, if only one firm succeeds, they receive the entire award. If two firms succeed, they each receive half the reward</span></span>.</li>
+</ol>
     <table>
     <thead>
         <tr>
@@ -607,14 +608,14 @@ Since the overwhelming majority of the costs fall in the first few years, discou
     $$ X \geq \frac{\ln(1-\theta)}{\theta \cdot \ln(1-p)} \cdot \mathbb{E}[c]$$
  <!-- -->
     Future sections will relax some of these assumptions and build out a complete model.
-&lt;/div&gt;
+</div>
 
-The more firms that have already entered, the higher the marginal cost to induce an extra firm, because now firms face higher risk of splitting the prize. As the number of firms increases, the marginal cost approaches the cost of each additional attempt. For instance, if the probability of success per attempt is 5% and the present value cost of each attempt is \\$1,000,000 then a funder would need to increase the pull size by \\$580,000 to move from nine to ten attempts. In contrast, moving from 50 to 51 attempts requires an additional marginal cost of \$856,000.
+<p>The more firms that have already entered, the higher the marginal cost to induce an extra firm, because now firms face higher risk of splitting the prize. As the number of firms increases, the marginal cost approaches the cost of each additional attempt. For instance, if the probability of success per attempt is 5% and the present value cost of each attempt is \$1,000,000 then a funder would need to increase the pull size by \$580,000 to move from nine to ten attempts. In contrast, moving from 50 to 51 attempts requires an additional marginal cost of $856,000.</p>
 
 <iframe src="marginal_cost_to_induce_entry.html" width="100%" height="600" style="border: none;">
 </iframe>
 
-<button class="see-more-btn" onclick="toggleDetails('marginal-cost-entrant')">Show math</button>
+<p><button class="see-more-btn" onclick="toggleDetails('marginal-cost-entrant')">Show math</button></p>
 <div id="marginal-cost-entrant" class="details-box">
     <table>
     <thead>
@@ -655,12 +656,11 @@ The more firms that have already entered, the higher the marginal cost to induce
 
 </div>
 
- Now we can calculate the reward size needed in order to induce a given level of firm entry. The following graph shows the pull size as a function of the multiple of the cost of innovation, if there was no time delay between private investment and receiving payment. In the real world, including the cost of time will increase costs substantially: as we saw in the previous section, the nominal value will be far higher if revenues are delayed substantially. For example, if an <span class="tooltip-word">innovation attempt<span class="tooltip-text">Remember that an “attempt” in this case does not refer to the cost of an entire research program, which can often involve dozens of research attempts. The cost also only refers to the expected cost of a new attempt at the time of initiating, and not the full cost of seeing an attempt all the way through to completion, since most attempts fail well-before incurring the costs of, e.g. late-stage safety &amp; efficacy trials</span></span> costs \\$1 million and each attempt has only a 5% chance of success, then the present value of the incentive needs to be at least \\$66 million to get at least an 80% chance of success. If the payments occurred ten years after the research begins (a realistic timeframe for novel drugs or vaccines) and firms have an 8% discount rate, then the nominal value of the incentive will have to be at least $142 million. 
+<p>Now we can calculate the reward size needed in order to induce a given level of firm entry. The following graph shows the pull size as a function of the multiple of the cost of innovation, if there was no time delay between private investment and receiving payment. In the real world, including the cost of time will increase costs substantially: as we saw in the previous section, the nominal value will be far higher if revenues are delayed substantially. For example, if an <span class="tooltip-word">innovation attempt<span class="tooltip-text">Remember that an “attempt” in this case does not refer to the cost of an entire research program, which can often involve dozens of research attempts. The cost also only refers to the expected cost of a new attempt at the time of initiating, and not the full cost of seeing an attempt all the way through to completion, since most attempts fail well-before incurring the costs of, e.g. late-stage safety &amp; efficacy trials</span></span> costs \$1 million and each attempt has only a 5% chance of success, then the present value of the incentive needs to be at least \$66 million to get at least an 80% chance of success. If the payments occurred ten years after the research begins (a realistic timeframe for novel drugs or vaccines) and firms have an 8% discount rate, then the nominal value of the incentive will have to be at least $142 million.</p>
 
+<p><em>Note: The expected cost of an attempt (used when considering firm participation) can be substantially lower than the full actualized development costs. For instance, if full development costs are $20 million but have only a 5% chance of being incurred, the expected cost is \$1 million, as stated in the example above. This is one of the reasons pull mechanisms appear very large relative to expected costs.</em></p>
 
-*Note: The expected cost of an attempt (used when considering firm participation) can be substantially lower than the full actualized development costs. For instance, if full development costs are $20 million but have only a 5% chance of being incurred, the expected cost is \\$1 million, as stated in the example above. This is one of the reasons pull mechanisms appear very large relative to expected costs.*
-
-<button class="see-more-btn" onclick="toggleDetails('push-pull-details')">Some notes on push v. pull</button>
+<p><button class="see-more-btn" onclick="toggleDetails('push-pull-details')">Some notes on push v. pull</button></p>
 <div id="push-pull-details" class="details-box">
     These large costs seem to beg the question: why not simply pay upfront for innovation (i.e. why not use “push” funding?). After all, paying upfront allows the funder to avoid needing to compensate firms for time delay. This piece is not the venue to get into the complete debate about push versus pull. Suffice to say there are several reasons why pull might be more effective, despite seeming more expensive:
 <p></p>
@@ -677,11 +677,7 @@ The complete push v. pull debate deserves far more space than this dropdown can 
 <iframe src="simple_sizing_graph.html" width="100%" height="650" style="border: none;">
 </iframe>
 
-
-
-
-
-<button class="see-more-btn" onclick="toggleDetails('simple-details')">Show math</button>
+<p><button class="see-more-btn" onclick="toggleDetails('simple-details')">Show math</button></p>
 <div id="simple-details" class="details-box">
     <table>
     <thead>
@@ -712,16 +708,15 @@ The complete push v. pull debate deserves far more space than this dropdown can 
     $$ \text{Pull size present value} \geq \frac{\ln(1 - \theta)}{\theta \cdot \ln(1 - p)} \cdot \mathbb{E}[c] $$
 </div>
 
-
 <h3 id="other-considerations">Other Considerations</h3>
 
 <h4 id="pipeline">Within and across firm attempts: pipeline approaches to innovation</h4>
 
-The above analysis assumes a competitive market where each firm makes a single attempt. However, this assumption may be unrealistic, as in reality firms tend to make multiple attempts; why go through all the effort hiring researchers and expensive equipment only to make a single attempt?  Suppose research trials have a 2% success rate and a pull designer desires a 50% probability of at least one success: the above formula suggests that the funder now needs to incentivize at least 35 attempts. The notion that 35 attempts will be satisfied by 35 different firms seems unlikely: maybe five firms conducting seven attempts each is more plausible.
+<p>The above analysis assumes a competitive market where each firm makes a single attempt. However, this assumption may be unrealistic, as in reality firms tend to make multiple attempts; why go through all the effort hiring researchers and expensive equipment only to make a single attempt?  Suppose research trials have a 2% success rate and a pull designer desires a 50% probability of at least one success: the above formula suggests that the funder now needs to incentivize at least 35 attempts. The notion that 35 attempts will be satisfied by 35 different firms seems unlikely: maybe five firms conducting seven attempts each is more plausible.</p>
 
-As a result, we can consider how the model changes if one imposes constraints on the number of firms that are <span class="tooltip-word">capable of responding<span class="tooltip-text">In reality, there is no “hard cap” on the number of firms that exist in a market. After all, a large incentive can induce new firms to enter. We impose this limit not as a reflection of reality but rather to tractably illustrate the principle</span></span>. Intuitively, this restriction requires firms to initiate multiple attempts each. The marginal cost to the funder to induce that additional attempt will be higher than under the previous one-attempt-per-firm model as a firm now faces a risk of self-competition. Intuitively, the fewer possible firms in the market, the greater the premium the funder must pay. 
+<p>As a result, we can consider how the model changes if one imposes constraints on the number of firms that are <span class="tooltip-word">capable of responding<span class="tooltip-text">In reality, there is no “hard cap” on the number of firms that exist in a market. After all, a large incentive can induce new firms to enter. We impose this limit not as a reflection of reality but rather to tractably illustrate the principle</span></span>. Intuitively, this restriction requires firms to initiate multiple attempts each. The marginal cost to the funder to induce that additional attempt will be higher than under the previous one-attempt-per-firm model as a firm now faces a risk of self-competition. Intuitively, the fewer possible firms in the market, the greater the premium the funder must pay.</p>
 
-<button class="see-more-btn" onclick="toggleDetails('monopoly-constraints')">Show math</button>
+<p><button class="see-more-btn" onclick="toggleDetails('monopoly-constraints')">Show math</button></p>
 <div id="monopoly-constraints" class="details-box">
 
 <table>
@@ -792,11 +787,11 @@ In practice, this approach results in a higher needed pull size than the “one 
 
 <h4 id="correlation-section">Correlated probabilities of success</h4>
 
-The above analysis assumes that all attempts are independent, that is, that different innovation attempts are not related to each other and do not affect each other’s chances of succeeding. This assumption is transparently unrealistic, for two reasons. First, the innovation itself may be impossible (or at least impossible in the near future). No amount of separate attempts would allow ancient Roman scientists to construct a modern computer. This is akin to saying that there is an upper bound on the total probability that at least one attempt succeeds. Second, different attempts all made by the same firm are likely more correlated to each other than they are to attempts made by other firms.
+<p>The above analysis assumes that all attempts are independent, that is, that different innovation attempts are not related to each other and do not affect each other’s chances of succeeding. This assumption is transparently unrealistic, for two reasons. First, the innovation itself may be impossible (or at least impossible in the near future). No amount of separate attempts would allow ancient Roman scientists to construct a modern computer. This is akin to saying that there is an upper bound on the total probability that at least one attempt succeeds. Second, different attempts all made by the same firm are likely more correlated to each other than they are to attempts made by other firms.</p>
 
-Unfortunately, the level of correlation between attempts is unobservable, and designers should use their discretion to incorporate this factor. In general, considering correlation between attempts will raise costs, generally on the magnitude of 10-50%. 
+<p>Unfortunately, the level of correlation between attempts is unobservable, and designers should use their discretion to incorporate this factor. In general, considering correlation between attempts will raise costs, generally on the magnitude of 10-50%.</p>
 
-<button class="see-more-btn" onclick="toggleDetails('correlation')">Show math</button>
+<p><button class="see-more-btn" onclick="toggleDetails('correlation')">Show math</button></p>
 <div id="correlation" class="details-box">
 <table>
     <thead>
@@ -865,7 +860,7 @@ Algebraic rearrangement of the second equation produces the third. There is no s
 
 </div>
 
-In practice, introducing correlation substantially increases the needed pull size, as the number of attempts needed to reach the same probability of success increases dramatically. 
+<p>In practice, introducing correlation substantially increases the needed pull size, as the number of attempts needed to reach the same probability of success increases dramatically.</p>
 
 <iframe src="complete_sizing_graph.html" width="100%" height="900" style="border: none;">
 </iframe>
@@ -874,26 +869,24 @@ In practice, introducing correlation substantially increases the needed pull siz
 
 <h3 id="additional_costs">Additional Cost Considerations</h3>
 
-Any complete analysis of an innovation incentive program will need to include other necessary costs, beyond those necessary to induce adequate firm entry. In some cases, these additional factors may lower the total necessary cost of the program. These include:
+<p>Any complete analysis of an innovation incentive program will need to include other necessary costs, beyond those necessary to induce adequate firm entry. In some cases, these additional factors may lower the total necessary cost of the program. These include:</p>
 
 <ul>
     <li><strong>Monitoring and verification.</strong> Pull mechanisms involve paying for success. This requires being able to monitor one’s outcome of interest (e.g. verifying sales, adoption, impact on outcome measures). In some cases, these costs will be significant and should be considered as part of the overall costs of the program in addition to the direct cost of the pull reward. </li>
     <li><strong>Costs of designing and implementing the pull fund.</strong> The institution designing and implementing the pull funding program will incur personnel, administrative, and overhead costs. These are likely to be orders of magnitude smaller than the cost of incentivizing innovation. </li>
     <li><strong>Third-party purchases. </strong> Innovations will differ to the extent to which the funder will need to make up the whole market. For some innovations, there will be significant private demand which can be subtracted from the overall market size to calculate the size of the pull fund needed.  Purchases from other agents are not part of the cost to the funder. However, costs paid by other agents that would be unlikely to occur in the absence of the pull mechanism should be considered when appraising the benefits and costs of the intervention. For example, suppose one needs a \$1 billion market (present value) to create at least a 50% probability that a new diagnostic will be invented but there is only \$600 million in private demand. In this case, the needed pull size will only need to be \$400 million.</li>
 </ul>
- 
 
 <h3 id="cost_effectiveness">Cost Effectiveness</h3>
-To determine the overall cost-effectiveness of a pull mechanism, we compare the total costs to the expected benefits of the target innovation.
+<p>To determine the overall cost-effectiveness of a pull mechanism, we compare the total costs to the expected benefits of the target innovation.</p>
 
-Pull mechanisms are unique investments in that funders either receive the social return of successful innovation or, should no firm succeed at innovation, the chance to spend their funds on other opportunities at a later date. The money does not disappear if no one succeeds at innovation.
+<p>Pull mechanisms are unique investments in that funders either receive the social return of successful innovation or, should no firm succeed at innovation, the chance to spend their funds on other opportunities at a later date. The money does not disappear if no one succeeds at innovation.</p>
 
-Two useful metrics for considering cost-effectiveness are the benefit-cost ratio and net present value of the project.
+<p>Two useful metrics for considering cost-effectiveness are the benefit-cost ratio and net present value of the project.</p>
 
-The benefit-cost ratio (BCR) indicates the social value generated per dollar spent. It is computed by dividing the expected benefits by the total costs. A BCR greater than 1 signals that the benefits outweigh the costs.
+<p>The benefit-cost ratio (BCR) indicates the social value generated per dollar spent. It is computed by dividing the expected benefits by the total costs. A BCR greater than 1 signals that the benefits outweigh the costs.</p>
 
-
-<button class="see-more-btn" onclick="toggleDetails('bcr-details')">Show BCR equation</button>
+<p><button class="see-more-btn" onclick="toggleDetails('bcr-details')">Show BCR equation</button></p>
 <div id="bcr-details" class="details-box">
     <table>
         <thead>
@@ -926,9 +919,9 @@ The benefit-cost ratio (BCR) indicates the social value generated per dollar spe
 
 </div>
 
-The net present value (NPV) directly quantifies the net societal value created by the pull mechanism, accounting for the time value of money. A positive NPV indicates the intervention generates a net gain for society. To calculate overall net present value teams should multiple the probability of program success by the difference of the present value of benefits and costs
+<p>The net present value (NPV) directly quantifies the net societal value created by the pull mechanism, accounting for the time value of money. A positive NPV indicates the intervention generates a net gain for society. To calculate overall net present value teams should multiple the probability of program success by the difference of the present value of benefits and costs</p>
 
-<button class="see-more-btn" onclick="toggleDetails('npv-details')">Show NPV equation</button>
+<p><button class="see-more-btn" onclick="toggleDetails('npv-details')">Show NPV equation</button></p>
 <div id="npv-details" class="details-box">
     <table>
         <thead>
@@ -949,13 +942,13 @@ The net present value (NPV) directly quantifies the net societal value created b
 
 </div>
 
-Together, the BCR and NPV provide a balanced assessment of the pull mechanism's cost-effectiveness. This allows funders to make informed decisions about whether to proceed with the investment and how to optimize the target probability of success for maximum impact.
+<p>Together, the BCR and NPV provide a balanced assessment of the pull mechanism’s cost-effectiveness. This allows funders to make informed decisions about whether to proceed with the investment and how to optimize the target probability of success for maximum impact.</p>
 
 <h3 id="complete_example">A full example</h3>
 
-The following button will walk the reader through a complete example from start to finish, using the case study of vaccines to reduce enteric methane emissions from cattle that the MSA has worked on over the last year.
+<p>The following button will walk the reader through a complete example from start to finish, using the case study of vaccines to reduce enteric methane emissions from cattle that the MSA has worked on over the last year.</p>
 
-<button class="see-more-btn" onclick="toggleDetails('complete-example-details')">Show complete example</button>
+<p><button class="see-more-btn" onclick="toggleDetails('complete-example-details')">Show complete example</button></p>
 <div id="complete-example-details" class="details-box">
 
 <strong>Step 1 - Expected Costs and Risks</strong>
@@ -1199,33 +1192,9 @@ Then divide the total needed present value (\$207.8 million) by the “effective
 
 </div>
 
+<hr />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-William Arnesen &amp; Claire McMahon, 2024
-</ol></div>
+<p>William Arnesen &amp; Claire McMahon, 2024</p>
 
 
       <footer class="site-footer">

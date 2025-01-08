@@ -524,6 +524,7 @@ This creates a fundamental tradeoff: the more firms that participate, the more l
     <li>Firms face one choice: whether to invest in a single innovation attempt. All firms make this decision and progress on research on the same timetable. </li>
     <li>All innovation attempts are <span class="tooltip-word">identical<span class="tooltip-text">By identical, we mean that each attempt has the same probability of success, not that they are all pursuing the same method or approach</span></span> and <span class="tooltip-word">independent<span class="tooltip-text">By independence, we mean that each attempt is uncorrelated with any other attempt, much like how whether a flipped coin comes up heads does not depend on the outcome of the previous flip. We relax this assumption later by allowing different attempts to become correlated with each other</span></span>.</li>
     <li>Successful firms share the reward <span class="tooltip-word">equally<span class="tooltip-text">For example, if only one firm succeeds, they receive the entire award. If two firms succeed, they each receive half the reward</span></span>.</li>
+</ol>
     <table>
     <thead>
         <tr>
