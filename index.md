@@ -307,7 +307,7 @@ Innovation often requires multiple steps, including research and development, te
 
 When sizing the pull mechanism, we consider the firm's perspective at the time of entry — the “prospective cost,” not the total cost of a successful innovation. The prospective costs faced by the firm at the time of entry are the cumulative, probability-weighted costs across all development phases, properly discounted for the time value of money. 
 
-For example, a livestock vaccine might have an all-in development cost of \$3.4 million, but the investment in an early-stage vaccine candidate in R&D would have a prospective cost of \$1.8 million because if the vaccine fails during R&D, the later costs of testing and approval are not incurred (see drop down example for more detail). 
+For example, a livestock vaccine might have an all-in development cost of $3.4 million, but the investment in an early-stage vaccine candidate in R&D would have a prospective cost of $1.8 million because if the vaccine fails during R&D, the later costs of testing and approval are not incurred (see drop down example for more detail). 
 
 
 <button class="see-more-btn" onclick="toggleDetails('optionvalue-details')">Walking through an example</button>
