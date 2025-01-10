@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>A Practical Guide to Sizing Innovation Incentives | How Much to Offer? A Practical Guide to Sizing Innovation Incentives</title>
+<title>How Much to Offer? A Practical Guide to Sizing Innovation Incentives | This guide provides the theoretical framework and a technical step-by-step tutorial for estimating the appropriate size of pull mechanisms</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="A Practical Guide to Sizing Innovation Incentives" />
+<meta property="og:title" content="How Much to Offer? A Practical Guide to Sizing Innovation Incentives" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This guide provides the theoretical framework and a technical step-by-step tutorial for estimating the appropriate size of pull mechanisms" />
 <meta property="og:description" content="This guide provides the theoretical framework and a technical step-by-step tutorial for estimating the appropriate size of pull mechanisms" />
@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="How Much to Offer? A Practical Guide to Sizing Innovation Incentives" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="A Practical Guide to Sizing Innovation Incentives" />
+<meta property="twitter:title" content="How Much to Offer? A Practical Guide to Sizing Innovation Incentives" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"This guide provides the theoretical framework and a technical step-by-step tutorial for estimating the appropriate size of pull mechanisms","headline":"A Practical Guide to Sizing Innovation Incentives","name":"How Much to Offer? A Practical Guide to Sizing Innovation Incentives","url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","description":"This guide provides the theoretical framework and a technical step-by-step tutorial for estimating the appropriate size of pull mechanisms","headline":"How Much to Offer? A Practical Guide to Sizing Innovation Incentives","name":"How Much to Offer? A Practical Guide to Sizing Innovation Incentives","url":"http://0.0.0.0:4000/"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -42,7 +42,7 @@
     <a id="skip-to-content" href="#content">Skip to the content.</a>
 
     <header class="page-header" role="banner">
-      <h1 class="project-name">A Practical Guide to Sizing Innovation Incentives</h1>
+      <h1 class="project-name">How Much to Offer? A Practical Guide to Sizing Innovation Incentives</h1>
       <h2 class="project-tagline">This guide provides the theoretical framework and a technical step-by-step tutorial for estimating the appropriate size of pull mechanisms</h2>
       
         <a href="https://github.com/williamjackarnesen/msa-amc-sizing" class="btn">View on GitHub</a>
@@ -105,26 +105,31 @@
                 <a href="#understanding_costs">Understanding Innovation Costs and Risks</a>
                 <ol>
                     <li><a href="#key_components">Key components</a></li>
-                    <li><a href="#expected_costs">Calculating Firms' Expected Costs</a></li>
+                    <li><a href="#prospective_costs">Calculating Firms' Prospective Costs</a></li>
                     <li><a href="#sourcing_parameters">Sourcing Parameter Estimates</a></li>
                 </ol>
             </li>
             <li><a href="#program_size">Determining the Overall Program Size</a>
                 <ol> 
                     <li><a href="#number_of_attempts">Target Number of Attempts</a></li>
-                    <li><a href="#other-considerations">Other Considerations</a>
-                        <ol>
-                            <li><a href="#pipeline">Within and Across Firm Attempts</a></li>
-                            <li><a href="#correlation-section">Correlated Probabilities</a></li>
-                        </ol>
-                    </li>
+                    <li><a href="#cost_of_multiple_attempts">The Cost of Incentivizng Multiple Attempts</a></li>
                 </ol>
             </li>
             <li><a href="#total_costs">Total Costs and Cost Effectiveness</a>
                 <ol>
                 <li><a href="#additional_costs">Additional Cost Considerations</a></li>
                 <li><a href="#cost_effectiveness">Cost Effectiveness</a></li>
+                </ol>
+            </li>
+            <li><a href="#appendix">Appendix</a>
+                <ol>
                 <li><a href="#complete_example">Complete Example</a></li>
+                <li><a href="#other-considerations">Other Sizing Considerations</a>
+                        <ol>
+                            <li><a href="#pipeline">Within and Across Firm Attempts</a></li>
+                            <li><a href="#correlation-section">Correlated Probabilities</a></li>
+                        </ol>
+                    </li>
                 </ol>
             </li>
         </ol>
@@ -133,32 +138,35 @@
 <div class="takeaways-box">
     <h3> KEY TAKEAWAYS</h3>
     <ol>
-        <li><strong>Financial incentives can induce companies to invest in socially valuable research and development efforts. But funders need to be careful: larger incentives can attract more firms and increase the chances of success but also increase total program costs.</strong></li>
-        <li><strong>The most important factor in determining the optimal size of an innovation incentive is the social value of the innovation, which provides a ceiling on willingness-to-pay and determines the relative desirability of different funding opportunities. The optimal size of innovation incentives further depends on three additional factors:</strong></li>
+        <li><strong>When designing pull funding mechanisms, determining the right incentive size is critical. Larger incentives attract more firms and increase the chances of success, but too large an incentive wastes resources that could fund other valuable projects. This guide provides a practical framework for making this decision.</strong></li>
+        <li><strong>TThe incentive size needed to motivate firm participation depends on:</strong></li>
             <ol>
                 <li><strong>The costs and risks that firms face during technology development</strong>,  including R&amp;D, testing, regulatory, and commercialization expenses, adjusted for the probability of failure at each stage</li>
-                <li><strong>The riskiness of the innovation:</strong>, more technologically distant innovations require larger incentives to compensate firms for the high chance their R&amp;D fails to yield any successful product. </li>
+                <li><strong>The riskiness of the innovation</strong>: more technologically distant innovations require larger incentives to compensate firms for the high chance their R&amp;D fails to yield any successful product. </li>
                 <li><strong>The time value of money</strong>, accounting for firms' discounting of future returns and the often lengthy development timelines for major innovations</li>
             </ol>
-        <li><strong>Other subtle factors can also affect the needed incentive size, including the level of firms in the underlying market: concentrated industries require larger payments to induce large investments in R&amp;D</strong></li>
+        <li><strong>The most important factor in determining the optimal size of an innovation incentive is the social value of the innovation, which provides a ceiling on willingness to pay and determines the relative desirability of different funding opportunities. </strong></li>
+        <li><strong>While headline numbers for pull mechanisms often appear large, they reflect that firms must bear both the risks of development failure and the opportunity costs of capital over long development timelines. Understanding these components helps funders right-size their commitments. </strong></li>
     </ol>
 </div>
 
 <h2 id="introduction">1. Introduction</h2>
 
-<p>In this guide, we present a practical framework for analyzing the appropriate size of financial incentives for innovation. We begin by examining the key components that affect the optimal incentive size: development costs, probability of success, competition, and time value of money. We then show how to build these elements into a practical framework for calculating the minimum incentive size needed to achieve a target probability of successful innovation, balancing the need to set the payments high enough to encourage firms to make meaningful investments with the need to avoid waste. Finally, we explore how program design choices – from payment timing to market structure – affect both costs and probability of success.</p>
+<p>Funders using pull mechanisms face a crucial practical question: how large of an incentive should they offer? This guide provides a practical framework for answering that question, breaking down the complex factors that determine the optimal incentive size to attract serious development efforts.</p>
 
-<p>In general, innovation incentives can fall into two categories: push and pull. Push incentives pay for research inputs; two canonical examples of the push incentive are the research grant and “cost-plus contracting”. A large literature exists on the design of these programs. <span class="tooltip-word">Pull funding<span class="tooltip-text">“Pull funding” is incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span>, by contrast, pay for research outputs or outcomes, and are thus conditional on the successful delivery of results. <span class="tooltip-word">Pull incentives<span class="tooltip-text">“Pull incentives” are incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span>, which include prizes and <span class="tooltip-word">advance market commitments<span class="tooltip-text">Advanced market commitments are agreements where governments or organizations commit to purchasing or subsidizing a product once it is successfully developed, guaranteeing a market for manufacturers.</span></span>, thus require the innovator to bear the costs and risks of developing the target technology.</p>
+<p><span class="tooltip-word">Pull mechanisms<span class="tooltip-text">“Pull funding” is incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span> are funding tools that pay for successful outcomes. Unlike push funding, which pays for research inputs upfront, pull funding only pays out when specified goals are achieved - for instance, when a working technology is demonstrated or a product reaches the market. Pull mechanisms, which include prizes and <span class="tooltip-word">advance market commitments<span class="tooltip-text">Advanced market commitments are agreements where governments or organizations commit to purchasing or subsidizing a product once it is successfully developed, guaranteeing a market for manufacturers.</span></span>, thus require the innovator to bear the costs and risks of developing the target technology.</p>
 
-<p>The framework in this piece focuses exclusively on filling in the gaps in the literature on how to size pull incentives specifically. Our approach draws from our experience evaluating incentive programs across sectors, and builds on literature about pull incentives starting with <a href="https://www.aeaweb.org/articles?id=10.1257/pandp.20211103">Ahuja et. al 2021</a> and  <a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2021.4163">Kremer, Levin and Snyder 2022 </a>, among others.  By breaking the sizing problem  into a series of manageable steps, we aim to help funders and program designers develop more cost-effective and efficient innovation incentives. The end of this piece offers a <a href="#complete_example">complete walkthrough</a> of a case study the MSA has worked on over the last year to illustrate how to apply the framework in the real world.</p>
+<p>The framework in this piece focuses on providing an assessible guide to size pull mechanisms. Our approach draws from our experience evaluating incentive programs across sectors and builds on literature about pull incentives starting with <a href="https://www.aeaweb.org/articles?id=10.1257/pandp.20211103">Ahuja et. al 2021</a> and  <a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2021.4163">Kremer, Levin and Snyder 2022 </a>, among others.  While this approach continues to evolve as we learn from new applications, we believe it provides a useful starting point for funders considering pull mechanisms. The framework helps funders systematically assess development costs, technical risks, and market dynamics to determine appropriate incentive levels. For technical teams, we provide detailed mathematical models and real-world examples showing how to apply these principles to specific cases.</p>
+
+<p>By breaking the sizing problem into a series of manageable steps, we aim to help funders and program designers develop more cost-effective and efficient innovation incentives. We begin with a conceptual framework for analyzing firm participation in pull mechanisms (<a href="#conceptual_framework">Section 2</a>), then examine how to estimate the key components of firms’ costs and risks when pursuing innovation (<a href="#understanding_costs">Section 3</a>). Building on this foundation, we show how to determine optimal program size by analyzing incentives needed for different target probabilities of success (<a href="program_size">Section 4</a>). We then discuss how to evaluate cost-effectiveness and assess total program costs (<a href="total_costs">Section 5</a>). The appendix provides a detailed <a href="#complete_example">case study</a> of sizing an advance market commitment for methane-reducing livestock vaccines and extends our framework analysis to address important considerations like multiple attempts within firms and correlated probabilities of success.</p>
 
 <h2 id="conceptual_framework">2. Conceptual Framework</h2>
 
-<p><span class="tooltip-word">Pull mechanisms<span class="tooltip-text">“Pull incentives” are incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span> mimic market incentives by committing to reward innovators of socially valuable goods. As a rule of thumb, when firms evaluate whether to enter a market, they consider whether expected revenues will exceed expected costs. To answer that question, firms need to assess: What is the likelihood of technological success? How much will it cost to pursue innovation? What is the expected market size and timing of future revenue? And how much competition do they expect to face?</p>
+<p><span class="tooltip-word">Pull mechanisms<span class="tooltip-text">“Pull incentives” are incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span> mimic market incentives by committing to reward innovators of socially valuable goods. At first approximation, when firms evaluate whether to enter a market, they consider whether expected revenues will exceed expected costs. To answer that question, firms need to assess: What is the likelihood of technological success? How much will it cost to pursue innovation? What is the expected market size and timing of future revenue? And how much competition do they expect to face?</p>
 
-<p>The size and structure of the <span class="tooltip-word">pull mechanism<span class="tooltip-text">“Pull incentives” are incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span> will dictate the answer to these questions and, hence, determine how many firms try their hand at innovation. Increasing the amount of effort firms put into innovation or increasing the expected number of firms that choose to participate in pull mechanisms increases the probability that at least one attempt yields success. To determine the appropriate reward size, the designer of the <span class="tooltip-word">pull mechanism<span class="tooltip-text">“Pull incentives” are incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span>, therefore, needs to consider the tradeoff between increasing the probability that firms succeed at innovation and the cost of the endeavor.</p>
+<p>The size and structure of the <span class="tooltip-word">pull mechanism<span class="tooltip-text">“Pull incentives” are incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span> will dictate the answer to these questions and, hence, determine how many firms try their hand at innovation. Increasing the amount of effort firms put into innovation or increasing the expected number of firms that choose to participate in pull mechanisms increases the probability that at least one attempt yields success. To determine the appropriate reward size, the designer of the <span class="tooltip-word">pull mechanism<span class="tooltip-text">“Pull incentives” are incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span>, therefore, needs to consider the tradeoff between increasing the probability that firms succeed at innovation and the cost of the pull mechanism.</p>
 
-<h3 id="model_setup">Model Setup</h3>
+<h3 id="model_setup">a. Model Setup</h3>
 <p>When designing an innovation incentive, we need a systematic way to think about what motivates firms to participate. Let’s start with a simplified view.</p>
 
 <p>Imagine a pharmaceutical company considering whether to develop a new vaccine. They know development will require significant upfront investment in research, clinical trials, and manufacturing capacity. They also know there’s a high chance of failure at each stage, and that other companies might succeed first.</p>
@@ -187,7 +195,7 @@
 <p><em>Note: Throughout this post, we use “firm” to refer to any profit-motivated innovator - whether a large company, research institution, startup, or university spinoff.</em></p>
 
 <h2 id="understanding_costs">3. Understanding Innovation Costs and Risks</h2>
-<h3 id="key_components">Key components</h3>
+<h3 id="key_components">a. Key components</h3>
 <p>First, we need to understand the costs and risks that firms incur when trying to innovate. The higher the cost of innovation, the larger the pull size needs to be in order for firms to find investing in innovation worthwhile. Account for the following elements:</p>
 
 <p><strong>i. Cost of R&amp;D and commercialization.</strong> This category includes the fixed and marginal costs to a firm to invent, produce, and deliver the desired product. Costs associated with identifying promising leads, validating their efficacy, testing their safety, shepherding through regulatory approval, manufacturing, marketing, and distributing the final good all fall under this category.</p>
@@ -337,9 +345,13 @@ Formally, if $r$ is the firm hurdle rate and $t$ is the number of years between 
 
 </div>
 
-<h3 id="expected_costs">Calculating Firms' Expected Costs</h3>
+<h3 id="prospective_costs">b. Calculating Firms' Prospective Costs</h3>
 
-<p>Innovation requires multiple steps, including research and development, testing, trials, and regulatory approval. Each step incurs its own set of costs and its own risk of failure. However, it is important to remember that firms do not incur these costs all at once. Rather, if the project fails at any given step, the firm will not incur the costs of subsequent stages. As a result, when sizing a pull mechanism, one needs to consider expected costs of firms at the time of entry, properly discounted by time.</p>
+<p>Innovation often requires multiple steps, including research and development, testing, trials, and regulatory approval. Each step incurs its own set of costs and its own risk of failure. However, firms do not incur all costs upfront. Instead, if the project fails at any stage, the firm simply stops and does not incur the costs of subsequent stages.</p>
+
+<p>When sizing the pull mechanism, we consider the firm’s perspective at the time of entry — the “prospective cost,” not the total cost of a successful innovation. The prospective costs faced by the firm at the time of entry are the cumulative, probability-weighted costs across all development phases, properly discounted for the time value of money.</p>
+
+<p>For example, a livestock vaccine might have an all-in development cost of <span>$</span>3.4 million, but the investment in an early-stage vaccine candidate in R&amp;D would have a prospective cost of <span>$</span>1.8 million because if the vaccine fails during R&amp;D, the later costs of testing and approval are not incurred (see drop down example for more detail).</p>
 
 <p><button class="see-more-btn" onclick="toggleDetails('optionvalue-details')">Walking through an example</button></p>
 <div id="optionvalue-details" class="details-box">
@@ -431,7 +443,7 @@ Consider the case of the vaccine considered previously. We first need to decompo
 </table>
 
 
-While the all-in cost of running from start to finish is \$3.4 million, because the innovator stops incurring costs upon failure, the expected cost at time of initiation is only $1.9 million.
+While the all-in cost of running from start to finish is \$3.4 million, because the innovator stops incurring costs upon failure, the expected cost at time of initiation is only \$1.9 million.
 
 
 We now need to introduce the time value of money. Discounting reduces future costs, as firms value expenses incurred in the future less than they value expenses they incur in the present. For example, if we use an 8.05% discount rate (from <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/wacc.html" target="_blank" rel="noopener noreferrer">Damadoran 2024</a>), we get the following table for our livestock vaccine modeling.
@@ -527,7 +539,9 @@ We now need to introduce the time value of money. Discounting reduces future cos
 Since the overwhelming majority of the costs fall in the first few years, discounting only reduces all-in costs from \$1.9 million to \$1.8 million. For human vaccines, where Stage III trials can get extremely expensive, this discounting can have a major effect on the present value of the incentive.
 </div>
 
-<h3 id="sourcing_parameters">Sourcing Parameter Estimates</h3>
+<p>We use the prospective cost of the innovation attempt to be able to compare to the present value of the expected reward from the pull incentive, which is also discounted by time and the probability of success. That is, we are estimating the expected costs and returns from the firm’s perspective at the time of entry.</p>
+
+<h3 id="sourcing_parameters">c. Sourcing Parameter Estimates</h3>
 <p>Data on the costs and risks of innovation can be difficult to find, but there are several types of sources we have found useful for gathering this information:</p>
 <ul>
     <li><span class="tooltip-word">Academic literature<span class="tooltip-text">One example: <a href="https://curis.ku.dk/ws/portalfiles/portal/106806762/IFRO_Report_227.pdf">DiMasi, Grabowski and Hansen 2016</a></span></span> and industry reports provide historical cost averages </li>
@@ -536,7 +550,7 @@ Since the overwhelming majority of the costs fall in the first few years, discou
     <li>Similar completed projects that provide comparable reference points</li>
 </ul>
 
-<p>When using these sources, it’s important to be aware of their potential limitations and biases. Published costs often only represent successful attempts. They may also be dated and need adjustment for inflation. Additionally, costs can vary significantly by sector, region, and specific technical challenges. Triangulating between multiple sources can provide a more complete picture.</p>
+<p>When using these sources, it is important to be aware of their potential limitations and biases. Published costs often only represent successful attempts. They may also be dated and need adjustment for inflation. Additionally, costs can vary significantly by sector, region, and specific technical challenges. Triangulating between multiple sources can provide a more complete picture.</p>
 
 <p>Additionally, remember that we’re trying to identify the threshold case — the point at which firms are just willing to participate. Firms with lower costs or higher probabilities of success than our estimates will find participation attractive, while those with higher costs or lower chances of success will not participate.</p>
 
@@ -544,9 +558,17 @@ Since the overwhelming majority of the costs fall in the first few years, discou
 
 <p>We now have a framework for calculating the expected costs firms face when pursuing innovation. How, then, do we use this to determine the total size of the pull incentive needed?</p>
 
-<h3 id="number_of_attempts">Target Number of Attempts</h3>
+<p>First, consider perhaps the simplest case: aiming to set an incentive size large enough to motivate one firm to attempt innovation. To accomplish this, the pull incentive needs to provide an expected reward greater than or equal to a firm’s prospective cost of an innovation attempt.  In the case of a singular firm, the probability of receiving the pull incentive payout is the same as the probability of innovation success (we will discuss competition risk in the next section).  Therefore, the present value of the pull incentive would equal the firm’s prospective costs multiplied by the reciprocal of their probability of success.</p>
 
-<p>The key is to recognize that each additional firm attempting innovation increases the overall chances of success. Consider a case where any individual firm has a 10% chance of successfully developing a targeted product. With multiple firms participating, our chances of success improve. At the same time, attracting additional firms becomes increasingly expensive as they risk sharing the reward if several of them succeed.</p>
+<p>For example, for a livestock vaccine with a firm’s prospective cost of <span>$</span>1.8 million and a 2.7% chance of success, a pull incentive would need to have a present value of <span>$</span>66.7 million. While it may be shocking that <span>$</span>66.7 million is more than an order of magnitude larger firm’s prospective costs, remember that pull mechanisms are shifting the risks of development from the funder to the innovator. In this case, rather than the funder giving a <span>$</span>1.8 million grant up front with only a 2.7% chance of successful innovation, the funder commits to paying <span>$</span>66.7 million only if the innovation is successful. The funder has a 2.7% chance of paying <span>$</span>66.7 million; in the 97.3% of times the innovator is unsuccessful, the funder can repurpose those funds for other projects.</p>
+
+<p>In many cases, the funder may want to create a pull fund that is large enough to incentivize multiple attempts simultaneously in order to have a higher probability of at least one successful innovation. In the next section, we discuss how to choose the target number of attempts.</p>
+
+<h3 id="number_of_attempts">a. Target Number of Attempts</h3>
+
+<p>The key is to recognize that each additional firm attempting innovation increases the overall chances of success. Consider a case where any individual firm has a 10% chance of successfully developing a targeted product. If two firms make an attempt, the overall probability of at least one success increases to 19%, and with three firms, it increases to 27.1%. With multiple firms participating, our chances of success improve.</p>
+
+<p>At the same time, attracting additional firms becomes increasingly expensive as they risk sharing the reward if several of them succeed. At the same time, attracting additional firms becomes increasingly expensive as they risk sharing the reward if several of them succeed. Consider the example where each attempt costs \$1 million and has a 10% chance of success. For a single firm to participate, the reward needs to be at least \$10 million (to offset the 10% chance of success). For two firms to participate, the reward needs to be higher - around \$10.5 million - because each firm now faces the risk of having to split the reward if both succeed. For three firms, the required reward increases to about \$11.1 million. This pattern continues: each additional firm requires a larger incentive to participate than the last because of the increasing risk of having to share the reward.</p>
 
 <p>This creates a fundamental tradeoff: the more firms that participate, the more likely we are to achieve the innovation’s benefits—whether that’s lives saved by a new vaccine or emissions reduced by green technologies—but increasing this probability becomes increasingly expensive. As a result, setting the right reward size means asking: what is the social value of increasing our chances of achieving these benefits, and how do these compare to the costs? During the COVID-19 pandemic, the massive daily cost of delay meant even small increases in the probability of success had enormous value, justifying efforts to attract many firms (<a href="https://www.aeaweb.org/articles?id=10.1257/pandp.20211103">Ahuja et al 2021</a>). However, in other cases, the funder may only seek to incentivize a few of the best-suited firms to participate.</p>
 
@@ -609,6 +631,8 @@ Since the overwhelming majority of the costs fall in the first few years, discou
  <!-- -->
     Future sections will relax some of these assumptions and build out a complete model.
 </div>
+
+<h3 id="cost_of_multiple_attempts">b. The Cost of Incentivizing Multiple Attempts</h3>
 
 <p>The more firms that have already entered, the higher the marginal cost to induce an extra firm, because now firms face higher risk of splitting the prize. As the number of firms increases, the marginal cost approaches the cost of each additional attempt. For instance, if the probability of success per attempt is 5% and the present value cost of each attempt is \$1,000,000 then a funder would need to increase the pull size by \$580,000 to move from nine to ten attempts. In contrast, moving from 50 to 51 attempts requires an additional marginal cost of $856,000.</p>
 
@@ -708,166 +732,9 @@ The complete push v. pull debate deserves far more space than this dropdown can 
     $$ \text{Pull size present value} \geq \frac{\ln(1 - \theta)}{\theta \cdot \ln(1 - p)} \cdot \mathbb{E}[c] $$
 </div>
 
-<h3 id="other-considerations">Other Considerations</h3>
-
-<h4 id="pipeline">Within and across firm attempts: pipeline approaches to innovation</h4>
-
-<p>The above analysis assumes a competitive market where each firm makes a single attempt. However, this assumption may be unrealistic, as in reality firms tend to make multiple attempts; why go through all the effort hiring researchers and expensive equipment only to make a single attempt?  Suppose research trials have a 2% success rate and a pull designer desires a 50% probability of at least one success: the above formula suggests that the funder now needs to incentivize at least 35 attempts. The notion that 35 attempts will be satisfied by 35 different firms seems unlikely: maybe five firms conducting seven attempts each is more plausible.</p>
-
-<p>As a result, we can consider how the model changes if one imposes constraints on the number of firms that are <span class="tooltip-word">capable of responding<span class="tooltip-text">In reality, there is no “hard cap” on the number of firms that exist in a market. After all, a large incentive can induce new firms to enter. We impose this limit not as a reflection of reality but rather to tractably illustrate the principle</span></span>. Intuitively, this restriction requires firms to initiate multiple attempts each. The marginal cost to the funder to induce that additional attempt will be higher than under the previous one-attempt-per-firm model as a firm now faces a risk of self-competition. Intuitively, the fewer possible firms in the market, the greater the premium the funder must pay.</p>
-
-<p><button class="see-more-btn" onclick="toggleDetails('monopoly-constraints')">Show math</button></p>
-<div id="monopoly-constraints" class="details-box">
-
-<table>
-    <thead>
-        <tr>
-            <th>Variable Name</th>
-            <th>Description </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>$\theta$</td>
-            <td>Target probability of success </td>
-        </tr>
-        <tr>
-            <td>$n$</td>
-            <td>Number of attempts </td>
-        </tr>
-        <tr>
-            <td>$p$</td>
-            <td>Per-attempt probability of success</td>
-        </tr>
-        <tr>
-            <td>$X$</td>
-            <td>Present value of pull incentive</td>
-        </tr>
-        <tr>
-            <td>$\mathbb{E}[c]$</td>
-            <td>Present value of expected cost per innovation attempt</td>
-        </tr>
-    </tbody>
-</table>
-
-Consider an extreme case of a monopoly firm. The monopolist receives no additional reward for having multiple successes. As a result, a marginal attempt is only valuable when all other attempts fail (with probability $(1-p)^{n-1}$), but that one additional attempt succeeds (with probability $p$). Thus, we get the value equation of
-
-$$ X \cdot p \cdot (1-p)^{n-1} \geq \mathbb{E}[c]$$
-
-The number of attempts needed to achieve at least a $\theta$ probability of success does not change. As a result, we plug $n \geq \frac{\ln(1-\theta)}{\ln(1-p)}$ into the above equation, producing:
-
-$$ X \geq \frac{1-p}{p \cdot (1-\theta)} \cdot \mathbb{E}[c]$$
-
-We can see that for all $\theta &gt; p$, the needed pull size for a monopolist exceeds the pull size for a competitive market (when $\theta \leq p$, one only needs to induce one attempt so the two cases are identical).
-<br />
-<br />
-In reality, neither a monopolist nor a perfectly fragmented market is likely. Some in-between world is far more probable. The extent of the premium rapidly declines as the number of firms increases. The following section details the math, though one is encouraged to skip to the charts and tables for the intuition.
-
-Assume $k$ firms in the market. Because of the homogeneity assumption, each firm will now undertake $\frac{n}{k}$ attempts. Let us now define $\mathbb{V}(X,k)$ as the present value of the pull size given the number of firms in the market. 
-
-$$ V(X,k) \cdot p \cdot (1-p)^{\frac{n}{k} - 1} \geq \mathbb{E}[c]$$
-
-In the above, a firm's marginal additional attempt is only valuable if the marginal attempt succeeds ($p$) and all other attempts by that firm ($(1-p)^{\frac{n}{k}-1}$) fails.
-
-$$\mathbb{V}(X, k) = \sum_{i=0}^{k-1} \frac{1}{i+1} \cdot \mathbb{P}(\text{successes} = i) \cdot X $$
-
-In other words, thev value of winning depends on the number of other firms that are successful. The term $\frac{1}{i+1}$ represents the share of $X$ received by the firm given $i$ other successful firms.
-
-$$\mathbb{P}(\text{successes} = i) = \binom{k-1}{i} \cdot \left(p)^{\frac{n}{k}}\right^i \cdot \left((1-p)^{\frac{n}{k}}\right)^{k-1-i}$$
-
-The above equation is simply an expansion of the binomial formula where the number of attempts per firm is $\frac{n}{k}$ and is equivalent to calculating the probability of any specific number of heads when one flips a weighted coin $k-1$ times when the probability of any given flip resolving as heads if $(1-p)^{\frac{n}{k}}$. In cases where the number of attempts is not divisible by the number of firms, we split proportionately. For example, if there are 27 desired attempts and only five firms, three firms will conduct five attempts each, while two firms will conduct six.
-
-In practice, this approach results in a higher needed pull size than the “one attempt per firm” model, but a lower pull size than the monopolist case. Intuitively, the more attempts per firm, the larger the price premium grows. That said, the result tails off so quickly after the monopolist case that this factor is rarely worth considering. For example, if the probability of success per attempt was 6% and the target probability was 50%, having only four firms results in a pull size 8.8% larger than if there were enough firms to have one attempt per firm, but 25% cheaper than if there were only a single firm. However, if the target probability was 66.67% instead, a four firm world requires a 15.8% premium over the one-firm-per-attempt, but a 59.3% discount from a monopolist situation. 
-
- <div style="text-align: left;">
-    <embed style="border: none;" src="./number_of_firms_sizing.html" dpi="300" width="100%" height="800px" />
-  </div>
-
-</div>
-
-<h4 id="correlation-section">Correlated probabilities of success</h4>
-
-<p>The above analysis assumes that all attempts are independent, that is, that different innovation attempts are not related to each other and do not affect each other’s chances of succeeding. This assumption is transparently unrealistic, for two reasons. First, the innovation itself may be impossible (or at least impossible in the near future). No amount of separate attempts would allow ancient Roman scientists to construct a modern computer. This is akin to saying that there is an upper bound on the total probability that at least one attempt succeeds. Second, different attempts all made by the same firm are likely more correlated to each other than they are to attempts made by other firms.</p>
-
-<p>Unfortunately, the level of correlation between attempts is unobservable, and designers should use their discretion to incorporate this factor. In general, considering correlation between attempts will raise costs, generally on the magnitude of 10-50%.</p>
-
-<p><button class="see-more-btn" onclick="toggleDetails('correlation')">Show math</button></p>
-<div id="correlation" class="details-box">
-<table>
-    <thead>
-        <tr>
-            <th>Variable Name</th>
-            <th>Description </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>$\theta$</td>
-            <td>Target probability of success </td>
-        </tr>
-        <tr>
-            <td>$n$</td>
-            <td>Number of attempts </td>
-        </tr>
-        <tr>
-            <td>$p$</td>
-            <td>Per-attempt probability of success</td>
-        </tr>
-        <tr>
-            <td>$X$</td>
-            <td>Present value of pull incentive</td>
-        </tr>
-        <tr>
-            <td>$\mathbb{E}[c]$</td>
-            <td>Present value of expected cost per innovation attempt</td>
-        </tr>
-        <tr>
-            <td>$\eta$</td>
-            <td>Global possibility parameter</td>
-        </tr>
-        <tr>
-            <td>$\gamma$</td>
-            <td>In-firm possibility parameter</td>
-        </tr>
-        <tr>
-            <td>$m$</td>
-            <td>Number of attempts per firm</td>
-        </tr>
-    </tbody>
-</table>
-
-We can thus introduce two sources of correlation: a global parameter that reflects the maximum probability of success given an arbitrarily large number of firms and attempts, and a local parameter that reflects the possibility that any given firm could possibly succeed. These changes effectively add an “impossibility ceiling” on the probability of success.
-
-In practice, introducing this two-stage correlation structure has two effects on the total pull size: 1) the marginal cost of increasing the target probability of success rises dramatically and 2) the marginal cost for having a concentrated market with few firms rises concurrently. 
-
-In the following equations, let  represent the global possibility parameter and  be the intra-firm possibility parameter. m is the number of attempts per firm.
-
-Set aside the global parameter for now and let us focus our efforts on the within-firm possibility parameter $\gamma$. 
-
-$$\mathbb{P}_{firm}(success \geq 1) = \gamma \cdot (1-(1-p)^m) $$
-
-The probability that all of a firm's attempts fail is the sum of the probability that the approach is fundamentally infeasible ($1 - \gamma$) and the probability that the approach is feasible ($\gamma$) but all of the attempts fail regardless ($(1-p)^m$). Putting together, one gets $$\mathbb{P}_{firm}(success \geq 1) = 1 - [(1-\gamma) + \gamma \cdot (1-p)^m]$$
-
-This equation simplifies to the previous equation. Now to introduce the global possibility parameter $\eta$.
-
-$$\mathbb{P}_{all}(success \geq 1) = \eta \cdot (1 - [1-\gamma \cdot (1-(1-p)^m)]^k) \geq \theta$$
-
-The goal is to get the probability of success to exceed the target threshold. With the new global possibility parameter, the probability that at least one firm succeeds is the probability that any given firm succeeds conditional on the innovation being possible (from Equation 4.1) multiplied by the possibility $\eta$ that the innovation is at all possible.
-
-$$m \geq \frac{\ln(1-\frac{1-(1-\frac{\theta}{\eta})^{\frac{1}{k}}}{\gamma})}{\ln(1-p)}$$
-
-Algebraic rearrangement of the second equation produces the third. There is no simplified form for the necessary pull size. Instead, one can insert the value of $m$ into the equation for the finite firms, replacing the $\frac{n}{k}$ term that represnts attempts per firm with the value for $m$ found in Equation 4.3.
-
-</div>
-
-<p>In practice, introducing correlation substantially increases the needed pull size, as the number of attempts needed to reach the same probability of success increases dramatically.</p>
-
-<iframe src="complete_sizing_graph.html" width="100%" height="900" style="border: none;">
-</iframe>
-
 <h2 id="total_costs">5. Total Costs and Cost Effectiveness</h2>
 
-<h3 id="additional_costs">Additional Cost Considerations</h3>
+<h3 id="additional_costs">a. Additional Cost Considerations</h3>
 
 <p>Any complete analysis of an innovation incentive program will need to include other necessary costs, beyond those necessary to induce adequate firm entry. In some cases, these additional factors may lower the total necessary cost of the program. These include:</p>
 
@@ -877,7 +744,7 @@ Algebraic rearrangement of the second equation produces the third. There is no s
     <li><strong>Third-party purchases. </strong> Innovations will differ to the extent to which the funder will need to make up the whole market. For some innovations, there will be significant private demand which can be subtracted from the overall market size to calculate the size of the pull fund needed.  Purchases from other agents are not part of the cost to the funder. However, costs paid by other agents that would be unlikely to occur in the absence of the pull mechanism should be considered when appraising the benefits and costs of the intervention. For example, suppose one needs a \$1 billion market (present value) to create at least a 50% probability that a new diagnostic will be invented but there is only \$600 million in private demand. In this case, the needed pull size will only need to be \$400 million.</li>
 </ul>
 
-<h3 id="cost_effectiveness">Cost Effectiveness</h3>
+<h3 id="cost_effectiveness">b. Cost Effectiveness</h3>
 <p>To determine the overall cost-effectiveness of a pull mechanism, we compare the total costs to the expected benefits of the target innovation.</p>
 
 <p>Pull mechanisms are unique investments in that funders either receive the social return of successful innovation or, should no firm succeed at innovation, the chance to spend their funds on other opportunities at a later date. The money does not disappear if no one succeeds at innovation.</p>
@@ -943,6 +810,8 @@ Algebraic rearrangement of the second equation produces the third. There is no s
 </div>
 
 <p>Together, the BCR and NPV provide a balanced assessment of the pull mechanism’s cost-effectiveness. This allows funders to make informed decisions about whether to proceed with the investment and how to optimize the target probability of success for maximum impact.</p>
+
+<h2 id="appendix">Appendix</h2>
 
 <h3 id="complete_example">A full example</h3>
 
@@ -1064,7 +933,9 @@ $$ V(X,k) \cdot p \cdot (1-p)^{\frac{n}{k} - 1} \geq \mathbb{E}[c]$$
 
 $$\mathbb{V}(X, k) = \sum_{i=0}^{k-1} \frac{1}{i+1} \cdot \mathbb{P}(\text{successes} = i) \cdot X $$
 
-$$\mathbb{P}(\text{successes} = i) = \binom{k-1}{i} \cdot \left(p)^{\frac{n}{k}}\right^i \cdot \left((1-p)^{\frac{n}{k}}\right)^{k-1-i}$$
+$$
+\mathbb{P}(\text{successes} = i) = \binom{k-1}{i} \cdot \left(p^{\frac{n}{k}}\right)^i \cdot \left((1-p)^{\frac{n}{k}}\right)^{k-1-i}
+$$
 
 $$m \geq \frac{\ln(1-\frac{1-(1-\frac{\theta}{\eta})^{\frac{1}{k}}}{\gamma})}{\ln(1-p)}$$
 
@@ -1191,6 +1062,165 @@ Then divide the total needed present value (\$207.8 million) by the “effective
 </p>
 
 </div>
+
+<h3 id="other-considerations">b. Other Considerations</h3>
+
+<h4 id="pipeline">Within and across firm attempts: pipeline approaches to innovation</h4>
+
+<p>The above analysis assumes a competitive market where each firm makes a single attempt. However, this assumption may be unrealistic, as in reality firms tend to make multiple attempts; why go through all the effort hiring researchers and expensive equipment only to make a single attempt?  Suppose research trials have a 2% success rate and a pull designer desires a 50% probability of at least one success: the above formula suggests that the funder now needs to incentivize at least 35 attempts. The notion that 35 attempts will be satisfied by 35 different firms seems unlikely: maybe five firms conducting seven attempts each is more plausible.</p>
+
+<p>As a result, we can consider how the model changes if one imposes constraints on the number of firms that are <span class="tooltip-word">capable of responding<span class="tooltip-text">In reality, there is no “hard cap” on the number of firms that exist in a market. After all, a large incentive can induce new firms to enter. We impose this limit not as a reflection of reality but rather to tractably illustrate the principle</span></span>. Intuitively, this restriction requires firms to initiate multiple attempts each. The marginal cost to the funder to induce that additional attempt will be higher than under the previous one-attempt-per-firm model as a firm now faces a risk of self-competition. Intuitively, the fewer possible firms in the market, the greater the premium the funder must pay.</p>
+
+<p><button class="see-more-btn" onclick="toggleDetails('monopoly-constraints')">Show math</button></p>
+<div id="monopoly-constraints" class="details-box">
+
+<table>
+    <thead>
+        <tr>
+            <th>Variable Name</th>
+            <th>Description </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$\theta$</td>
+            <td>Target probability of success </td>
+        </tr>
+        <tr>
+            <td>$n$</td>
+            <td>Number of attempts </td>
+        </tr>
+        <tr>
+            <td>$p$</td>
+            <td>Per-attempt probability of success</td>
+        </tr>
+        <tr>
+            <td>$X$</td>
+            <td>Present value of pull incentive</td>
+        </tr>
+        <tr>
+            <td>$\mathbb{E}[c]$</td>
+            <td>Present value of expected cost per innovation attempt</td>
+        </tr>
+    </tbody>
+</table>
+
+Consider an extreme case of a monopoly firm. The monopolist receives no additional reward for having multiple successes. As a result, a marginal attempt is only valuable when all other attempts fail (with probability $(1-p)^{n-1}$), but that one additional attempt succeeds (with probability $p$). Thus, we get the value equation of
+
+$$ X \cdot p \cdot (1-p)^{n-1} \geq \mathbb{E}[c]$$
+
+The number of attempts needed to achieve at least a $\theta$ probability of success does not change. As a result, we plug $n \geq \frac{\ln(1-\theta)}{\ln(1-p)}$ into the above equation, producing:
+
+$$ X \geq \frac{1-p}{p \cdot (1-\theta)} \cdot \mathbb{E}[c]$$
+
+We can see that for all $\theta &gt; p$, the needed pull size for a monopolist exceeds the pull size for a competitive market (when $\theta \leq p$, one only needs to induce one attempt so the two cases are identical).
+<br />
+<br />
+In reality, neither a monopolist nor a perfectly fragmented market is likely. Some in-between world is far more probable. The extent of the premium rapidly declines as the number of firms increases. The following section details the math, though one is encouraged to skip to the charts and tables for the intuition.
+
+Assume $k$ firms in the market. Because of the homogeneity assumption, each firm will now undertake $\frac{n}{k}$ attempts. Let us now define $\mathbb{V}(X,k)$ as the present value of the pull size given the number of firms in the market. 
+
+$$ V(X,k) \cdot p \cdot (1-p)^{\frac{n}{k} - 1} \geq \mathbb{E}[c]$$
+
+In the above, a firm's marginal additional attempt is only valuable if the marginal attempt succeeds ($p$) and all other attempts by that firm ($(1-p)^{\frac{n}{k}-1}$) fails.
+
+$$\mathbb{V}(X, k) = \sum_{i=0}^{k-1} \frac{1}{i+1} \cdot \mathbb{P}(\text{successes} = i) \cdot X $$
+
+In other words, thev value of winning depends on the number of other firms that are successful. The term $\frac{1}{i+1}$ represents the share of $X$ received by the firm given $i$ other successful firms.
+
+$$
+\mathbb{P}(\text{successes} = i) = \binom{k-1}{i} \cdot \left(p^{\frac{n}{k}}\right)^i \cdot \left((1-p)^{\frac{n}{k}}\right)^{k-1-i}
+$$
+
+The above equation is simply an expansion of the binomial formula where the number of attempts per firm is $\frac{n}{k}$ and is equivalent to calculating the probability of any specific number of heads when one flips a weighted coin $k-1$ times when the probability of any given flip resolving as heads if $(1-p)^{\frac{n}{k}}$. In cases where the number of attempts is not divisible by the number of firms, we split proportionately. For example, if there are 27 desired attempts and only five firms, three firms will conduct five attempts each, while two firms will conduct six.
+
+In practice, this approach results in a higher needed pull size than the “one attempt per firm” model, but a lower pull size than the monopolist case. Intuitively, the more attempts per firm, the larger the price premium grows. That said, the result tails off so quickly after the monopolist case that this factor is rarely worth considering. For example, if the probability of success per attempt was 6% and the target probability was 50%, having only four firms results in a pull size 8.8% larger than if there were enough firms to have one attempt per firm, but 25% cheaper than if there were only a single firm. However, if the target probability was 66.67% instead, a four firm world requires a 15.8% premium over the one-firm-per-attempt, but a 59.3% discount from a monopolist situation. 
+
+ <div style="text-align: left;">
+    <embed style="border: none;" src="./number_of_firms_sizing.html" dpi="300" width="100%" height="800px" />
+  </div>
+
+</div>
+
+<h4 id="correlation-section">Correlated probabilities of success</h4>
+
+<p>The above analysis assumes that all attempts are independent, that is, that different innovation attempts are not related to each other and do not affect each other’s chances of succeeding. This assumption is transparently unrealistic, for two reasons. First, the innovation itself may be impossible (or at least impossible in the near future). No amount of separate attempts would allow ancient Roman scientists to construct a modern computer. This is akin to saying that there is an upper bound on the total probability that at least one attempt succeeds. Second, different attempts all made by the same firm are likely more correlated to each other than they are to attempts made by other firms.</p>
+
+<p>Unfortunately, the level of correlation between attempts is unobservable, and designers should use their discretion to incorporate this factor. In general, considering correlation between attempts will raise costs, generally on the magnitude of 10-50%.</p>
+
+<p><button class="see-more-btn" onclick="toggleDetails('correlation')">Show math</button></p>
+<div id="correlation" class="details-box">
+<table>
+    <thead>
+        <tr>
+            <th>Variable Name</th>
+            <th>Description </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$\theta$</td>
+            <td>Target probability of success </td>
+        </tr>
+        <tr>
+            <td>$n$</td>
+            <td>Number of attempts </td>
+        </tr>
+        <tr>
+            <td>$p$</td>
+            <td>Per-attempt probability of success</td>
+        </tr>
+        <tr>
+            <td>$X$</td>
+            <td>Present value of pull incentive</td>
+        </tr>
+        <tr>
+            <td>$\mathbb{E}[c]$</td>
+            <td>Present value of expected cost per innovation attempt</td>
+        </tr>
+        <tr>
+            <td>$\eta$</td>
+            <td>Global possibility parameter</td>
+        </tr>
+        <tr>
+            <td>$\gamma$</td>
+            <td>In-firm possibility parameter</td>
+        </tr>
+        <tr>
+            <td>$m$</td>
+            <td>Number of attempts per firm</td>
+        </tr>
+    </tbody>
+</table>
+
+We can thus introduce two sources of correlation: a global parameter that reflects the maximum probability of success given an arbitrarily large number of firms and attempts, and a local parameter that reflects the possibility that any given firm could possibly succeed. These changes effectively add an “impossibility ceiling” on the probability of success.
+
+In practice, introducing this two-stage correlation structure has two effects on the total pull size: 1) the marginal cost of increasing the target probability of success rises dramatically and 2) the marginal cost for having a concentrated market with few firms rises concurrently. 
+
+In the following equations, let  represent the global possibility parameter and  be the intra-firm possibility parameter. m is the number of attempts per firm.
+
+Set aside the global parameter for now and let us focus our efforts on the within-firm possibility parameter $\gamma$. 
+
+$$\mathbb{P}_{firm}(success \geq 1) = \gamma \cdot (1-(1-p)^m) $$
+
+The probability that all of a firm's attempts fail is the sum of the probability that the approach is fundamentally infeasible ($1 - \gamma$) and the probability that the approach is feasible ($\gamma$) but all of the attempts fail regardless ($(1-p)^m$). Putting together, one gets $$\mathbb{P}_{firm}(success \geq 1) = 1 - [(1-\gamma) + \gamma \cdot (1-p)^m]$$
+
+This equation simplifies to the previous equation. Now to introduce the global possibility parameter $\eta$.
+
+$$\mathbb{P}_{all}(success \geq 1) = \eta \cdot (1 - [1-\gamma \cdot (1-(1-p)^m)]^k) \geq \theta$$
+
+The goal is to get the probability of success to exceed the target threshold. With the new global possibility parameter, the probability that at least one firm succeeds is the probability that any given firm succeeds conditional on the innovation being possible (from Equation 4.1) multiplied by the possibility $\eta$ that the innovation is at all possible.
+
+$$m \geq \frac{\ln(1-\frac{1-(1-\frac{\theta}{\eta})^{\frac{1}{k}}}{\gamma})}{\ln(1-p)}$$
+
+Algebraic rearrangement of the second equation produces the third. There is no simplified form for the necessary pull size. Instead, one can insert the value of $m$ into the equation for the finite firms, replacing the $\frac{n}{k}$ term that represnts attempts per firm with the value for $m$ found in Equation 4.3.
+
+</div>
+
+<p>In practice, introducing correlation substantially increases the needed pull size, as the number of attempts needed to reach the same probability of success increases dramatically.</p>
+
+<iframe src="complete_sizing_graph.html" width="100%" height="900" style="border: none;">
+</iframe>
 
 <hr />
 

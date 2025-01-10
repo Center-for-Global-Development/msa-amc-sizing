@@ -907,7 +907,9 @@ $$ V(X,k) \cdot p \cdot (1-p)^{\frac{n}{k} - 1} \geq \mathbb{E}[c]$$
 
 $$\mathbb{V}(X, k) = \sum_{i=0}^{k-1} \frac{1}{i+1} \cdot \mathbb{P}(\text{successes} = i) \cdot X $$
 
-$$\mathbb{P}(\text{successes} = i) = \binom{k-1}{i} \cdot \left(p)^{\frac{n}{k}}\right^i \cdot \left((1-p)^{\frac{n}{k}}\right)^{k-1-i}$$
+$$
+\mathbb{P}(\text{successes} = i) = \binom{k-1}{i} \cdot \left(p^{\frac{n}{k}}\right)^i \cdot \left((1-p)^{\frac{n}{k}}\right)^{k-1-i}
+$$
 
 $$m \geq \frac{\ln(1-\frac{1-(1-\frac{\theta}{\eta})^{\frac{1}{k}}}{\gamma})}{\ln(1-p)}$$
 
@@ -1100,7 +1102,9 @@ $$\mathbb{V}(X, k) = \sum_{i=0}^{k-1} \frac{1}{i+1} \cdot \mathbb{P}(\text{succe
 
 In other words, thev value of winning depends on the number of other firms that are successful. The term $\frac{1}{i+1}$ represents the share of $X$ received by the firm given $i$ other successful firms.
 
-$$\mathbb{P}(\text{successes} = i) = \binom{k-1}{i} \cdot \left(p)^{\frac{n}{k}}\right^i \cdot \left((1-p)^{\frac{n}{k}}\right)^{k-1-i}$$
+$$
+\mathbb{P}(\text{successes} = i) = \binom{k-1}{i} \cdot \left(p^{\frac{n}{k}}\right)^i \cdot \left((1-p)^{\frac{n}{k}}\right)^{k-1-i}
+$$
 
 The above equation is simply an expansion of the binomial formula where the number of attempts per firm is $\frac{n}{k}$ and is equivalent to calculating the probability of any specific number of heads when one flips a weighted coin $k-1$ times when the probability of any given flip resolving as heads if $(1-p)^{\frac{n}{k}}$. In cases where the number of attempts is not divisible by the number of firms, we split proportionately. For example, if there are 27 desired attempts and only five firms, three firms will conduct five attempts each, while two firms will conduct six.
 
