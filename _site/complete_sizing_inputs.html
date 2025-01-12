@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Complete pull sizing model (Text Inputs)</title>
+  <!-- Include Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body {
+      margin: 0; 
+      font-family: Georgia;
+    }
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;   /* Center horizontally */
+      padding: 1rem;    /* Some internal padding */
+    }
+    #graph-container {
+      width: 100%;
+      margin: auto;
+    }
+    figure {
+      margin: 0;
+      padding: 0;
+    }
+    .label-input-container {
+      display: flex;
+      align-items: center;
+      margin: 1rem 0;
+      font-family: 'Georgia';
+    }
+    .label-input-container label {
+      margin-right: 0.5rem;
+      font-weight: bold;
+    }
+    .label-input-container input {
+      padding: 0.25rem;
+      font-size: 1rem;
+      width: 5rem;
+      font-family: 'Georgia';
+    }
+
+    /* Hide spinner UI for numeric inputs (optional) */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    /* Buttons container */
+    .buttons-container {
+      text-align: center;
+      margin: 1rem 0;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #800000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Georgia';
+      margin-right: 1rem;
+    }
+
+    /* Error message styling */
+    #error-message {
+      color: red;
+      font-weight: bold;
+      font-family: 'Georgia';
+      margin: 1rem 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1 style="text-align: center;">Complete pull sizing model</h1>
+
+    <!-- Graph container -->
+    <div id="graph-container">
+      <div id="graph"></div>
+    </div>
+
+    <!-- Flip and checkbox row -->
+    <div class="buttons-container">
+      <button id="flip-button">Flip Axes</button>
+      <label style="display:inline-block; margin-left:1rem;">
+        <input type="checkbox" id="axis-range-toggle" />
+        Restrict range to 25-75%
+      </label>
+    </div>
+
+    <!-- Text inputs for p, eta, k, gamma -->
+    <div class="label-input-container">
+      <label for="p-input">Probability of success per attempt (%):</label>
+      <input 
+        type="number" 
+        id="p-input" 
+        step="any" 
+        value="3"
+        placeholder="3 => 0.03"
+      />
+    </div>
+    <div class="label-input-container">
+      <label for="eta-input">Global Possibility (η, %):</label>
+      <input 
+        type="number" 
+        id="eta-input" 
+        step="any" 
+        value="90"
+        placeholder="90 => 0.9"
+      />
+    </div>
+    <div class="label-input-container">
+      <label for="k-input">Number of Firms (k):</label>
+      <input 
+        type="number" 
+        id="k-input" 
+        step="1" 
+        value="10" 
+        placeholder="1..20"
+      />
+    </div>
+    <div class="label-input-container">
+      <label for="gamma-input">Per-Firm Possibility (γ, %):</label>
+      <input 
+        type="number" 
+        id="gamma-input" 
+        step="any"
+        value="80"
+        placeholder="80 => 0.8"
+      />
+    </div>
+
+    <!-- Submit button + Error display -->
+    <div class="buttons-container">
+      <button id="submit-button">Submit</button>
+    </div>
+    <div id="error-message"></div>
+
+    <figure>
+      <figcaption style="text-align: center; margin-top: 10px; font-size: smaller;">
+        The global possibility parameter represents the maximum probability of success, i.e. what is the chance this innovation is even possible? The per-firm possibility parameter represents the extent to which attempts within a firm are correlated. See the "Show Math" button above for more details
+      </figcaption>
+    </figure>
+
+    <script>
+      function combination(n, r) {
+  if (r > n) return 0;
+  let result = 1;
+  for (let i = 0; i < r; i++) {
+    result *= (n - i) / (i + 1);
+  }
+  return result;
+}
+
+function calculateCost(theta, p) {
+  return Math.log(1 - theta) / (theta * Math.log(1 - p));
+}
+
+function calculateProbabilityExactZ(z, numFirmsMin, minProb, numFirmsMax, maxProb) {
+  let probability = 0;
+  for (let k = 0; k <= Math.min(z, numFirmsMin); k++) {
+    const j = z - k;
+    if (j >= 0 && j <= numFirmsMax) {
+      const probMin = combination(numFirmsMin, k) * Math.pow(minProb, k) * Math.pow(1 - minProb, numFirmsMin - k);
+      const probMax = combination(numFirmsMax, j) * Math.pow(maxProb, j) * Math.pow(1 - maxProb, numFirmsMax - j);
+      probability += probMin * probMax;
+    }
+  }
+  return probability;
+}
+
+/**
+ * 7-argument version:
+ *   marginalCostFunction(
+ *       numFirmsMin,      // x
+ *       numFirmsMax,      // Math.max(y - 1, 0)
+ *       numAttemptsMin,   // a
+ *       numAttemptsSame,  // a + 1
+ *       p,
+ *       eta,
+ *       gamma
+ *   )
+ */
+function marginalCostFunction(numFirmsMin, numFirmsMax, numAttemptsMin, numAttemptsSame, p, eta, gamma) {
+  // If your real logic depends on eta/gamma, incorporate them here.
+  // For illustration, let's keep the same structure but rename `beta` -> `p`.
+  // Right now, this uses only `p`, ignoring `eta` & `gamma`.
+
+  // Probability that the "margin" attempt matters:
+  const probMarginMatters = p * Math.pow(1 - p, numAttemptsSame - 1);
+
+  // Possibly incorporate `eta` or `gamma` if your model requires it:
+  //   e.g., if the "true" minProb depends on p and gamma,
+  //   or if there's a maximum effect from eta, etc.
+  // For now, we do not change the logic except to rename beta => p.
+  const minProb = 1 - Math.pow(1 - p, numAttemptsMin);
+  const maxProb = 1 - Math.pow(1 - p, numAttemptsMin + 1);
+
+  let cumulativeValue = 0;
+  for (let z = 0; z <= numFirmsMin + numFirmsMax; z++) {
+    const probability = calculateProbabilityExactZ(z, numFirmsMin, minProb, numFirmsMax, maxProb);
+    const val = probability * (1 / (z + 1)) * probMarginMatters;
+    cumulativeValue += val;
+  }
+  return 1 / cumulativeValue;
+}
+
+function outputMarginalBenefit(theta, p, k, eta, gamma) {
+  // Safeguards against out-of-bounds
+  if (theta / eta >= 1) return null;
+
+  // Inner expression for your model:
+  const innerExpr = 1 - (1 - Math.pow(1 - theta / eta, 1 / k)) / gamma;
+  if (innerExpr <= 0 || innerExpr >= 1) return null;
+
+  // The logic below attempts to decide how many attempts are needed (n, a, etc.).
+  const n = Math.log(innerExpr) / Math.log(1 - p);
+  const a = Math.floor(n);
+  const y = Math.ceil(k * (n - a));
+  const x = k - y;
+  const ceilingProbability = y / k;
+
+  // Now pass p, eta, gamma to marginalCostFunction.
+  // 1) first call: (x, Math.max(y - 1, 0), a, a+1, p, eta, gamma)
+  const val1 = ceilingProbability * marginalCostFunction(
+    x,
+    Math.max(y - 1, 0),
+    a,
+    a + 1,
+    p,
+    eta,
+    gamma
+  );
+
+  // 2) second call: (Math.max(x - 1, 0), y, a, a, p, eta, gamma)
+  const val2 = (1 - ceilingProbability) * marginalCostFunction(
+    Math.max(x - 1, 0),
+    y,
+    a,
+    a,
+    p,
+    eta,
+    gamma
+  );
+
+  return val1 + val2;
+}
+
+
+      /**********************************
+       * Global Data & DOM Elements
+       **********************************/
+      // Theta range
+      const thetaValues = Array.from({ length: 100 }, (_, i) => 0.25 + i * 0.0074);
+
+      // We track flipping the axes
+      let isFlipped = false;
+
+      // Grabbing DOM elements
+      const graphDiv         = document.getElementById("graph");
+      const flipButton       = document.getElementById("flip-button");
+      const axisToggle       = document.getElementById("axis-range-toggle");
+
+      const pInput           = document.getElementById("p-input");
+      const etaInput         = document.getElementById("eta-input");
+      const kInput           = document.getElementById("k-input");
+      const gammaInput       = document.getElementById("gamma-input");
+      const submitButton     = document.getElementById("submit-button");
+      const errorMessageDiv  = document.getElementById("error-message");
+
+      /**********************************
+       * Main plotting function
+       **********************************/
+      function updateGraph(p, eta, k, gamma, restrictRange) {
+        // Build data
+        const marginalBenefits = thetaValues.map(t => outputMarginalBenefit(t, p, k, eta, gamma));
+        const costValues       = thetaValues.map(t => calculateCost(t, p));
+
+        // Two lines: "Full Model" & "Simple Model"
+        let trace1, trace2, layout;
+
+        if (!isFlipped) {
+          // Normal orientation
+          trace1 = {
+            x: thetaValues,
+            y: marginalBenefits,
+            mode: "lines",
+            line: { color: "#800000", width: 6 },
+            name: "Full Model"
+          };
+          trace2 = {
+            x: thetaValues,
+            y: costValues,
+            mode: "lines",
+            line: { color: "#FFAA319FF", dash: "dash", width: 6 },
+            name: "Simple Model"
+          };
+
+          layout = {
+            title: "",
+            font: { family: "Georgia", color: "black" },
+            xaxis: {
+              title: { text: "Target Probability of Success", font: { family: "Georgia", color: "black" } },
+              tickformat: ".0%",
+              range: restrictRange ? [0.25, 0.75] : [0.25, 0.99],
+              showline: true,
+              linecolor: "black",
+              linewidth: 4
+            },
+            yaxis: {
+              title: { 
+                text: "Needed pull size ($ million)",
+                font: { family: "Georgia", color: "black" }
+              },
+              showline: true,
+              linecolor: "black",
+              linewidth: 4,
+              rangemode: 'tozero',
+
+            },
+            plot_bgcolor: "#ffffff",
+            margin: { t: 80, b: 50, l: 60, r: 30 },
+            legend: {
+              orientation: "h",
+              xanchor: "center",
+              x: 0.5,
+              yanchor: "bottom",
+              y: 1.15
+            }
+          };
+        } else {
+          // Flipped orientation
+          trace1 = {
+            x: marginalBenefits,
+            y: thetaValues,
+            mode: "lines",
+            line: { color: "#800000", width: 6 },
+            name: "Full Model"
+          };
+          trace2 = {
+            x: costValues,
+            y: thetaValues,
+            mode: "lines",
+            line: { color: "#FFAA319FF", dash: "dash", width: 6 },
+            name: "Simple Model"
+          };
+
+          layout = {
+            title: "",
+            font: { family: "Georgia", color: "black" },
+            xaxis: {
+              title: { 
+                text: "Needed pull size (as multiple of expected costs)",
+                font: { family: "Georgia", color: "black" }
+              },
+              showline: true,
+              linecolor: "black",
+              linewidth: 4
+            },
+            yaxis: {
+              title: {
+                text: "Target Probability of Success",
+                font: { family: "Georgia", color: "black" }
+              },
+              tickformat: ".0%",
+              range: restrictRange ? [0.25, 0.75] : [0.25, 0.99],
+              showline: true,
+              linecolor: "black",
+              linewidth: 4,
+              rangemode: 'tozero',
+
+            },
+            plot_bgcolor: "#ffffff",
+            margin: { t: 80, b: 50, l: 60, r: 30 },
+            legend: {
+              orientation: "h",
+              xanchor: "center",
+              x: 0.5,
+              yanchor: "bottom",
+              y: 1.15
+            }
+          };
+        }
+
+        const config = { responsive: true };
+        Plotly.newPlot(graphDiv, [trace1, trace2], layout, config);
+      }
+
+      /**********************************
+       * Validate & parse user input
+       **********************************/
+      function parseInputs() {
+        // Probability: user enters % in [1..25], e.g. "3" => p=0.03
+        const rawP = parseFloat(pInput.value);
+        if (isNaN(rawP) || rawP < 1 || rawP > 25) return null;
+        const p = rawP / 100; // convert to decimal
+
+        // Eta: user enters % in [50..100], e.g. "90" => eta=0.9
+        const rawEta = parseFloat(etaInput.value);
+        if (isNaN(rawEta) || rawEta < 50 || rawEta > 100) return null;
+        const eta = rawEta / 100;
+
+        // K: user enters integer in [1..20]
+        const rawK = parseFloat(kInput.value);
+        if (isNaN(rawK) || rawK < 1 || rawK > 20) return null;
+        const k = Math.round(rawK); // integer
+
+        // Gamma: user enters % in [50..100], e.g. "80" => gamma=0.8
+        const rawGamma = parseFloat(gammaInput.value);
+        if (isNaN(rawGamma) || rawGamma < 50 || rawGamma > 100) return null;
+        const gamma = rawGamma / 100;
+
+        // Checkbox for range restriction
+        const restrictRange = axisToggle.checked;
+
+        return { p, eta, k, gamma, restrictRange };
+      }
+
+      /**********************************
+       * Event Handlers
+       **********************************/
+      // Flip Axes
+      flipButton.addEventListener("click", () => {
+        // Flip the boolean
+        isFlipped = !isFlipped;
+
+        // Re-plot with the *current* (and hopefully valid) inputs
+        const inputs = parseInputs();
+        if (inputs) {
+          errorMessageDiv.innerText = "";
+          updateGraph(inputs.p, inputs.eta, inputs.k, inputs.gamma, inputs.restrictRange);
+        } else {
+          errorMessageDiv.innerText = "Please enter valid numbers before flipping axes.";
+        }
+      });
+
+      // Checkbox toggle for range
+      axisToggle.addEventListener("change", () => {
+        const inputs = parseInputs();
+        if (inputs) {
+          errorMessageDiv.innerText = "";
+          updateGraph(inputs.p, inputs.eta, inputs.k, inputs.gamma, inputs.restrictRange);
+        } else {
+          errorMessageDiv.innerText = "Please enter valid numbers before toggling the range.";
+        }
+      });
+
+      // Submit button => parse & validate => update or show error
+      submitButton.addEventListener("click", () => {
+        const inputs = parseInputs();
+        if (!inputs) {
+          // show error
+          errorMessageDiv.innerText = "Please enter valid numbers in the required ranges.";
+        } else {
+          // clear error & update
+          errorMessageDiv.innerText = "";
+          updateGraph(inputs.p, inputs.eta, inputs.k, inputs.gamma, inputs.restrictRange);
+        }
+      });
+
+      /**********************************
+       * Initial Plot (if defaults valid)
+       **********************************/
+      const initialInputs = parseInputs();
+      if (initialInputs) {
+        updateGraph(
+          initialInputs.p,
+          initialInputs.eta,
+          initialInputs.k,
+          initialInputs.gamma,
+          initialInputs.restrictRange
+        );
+      } else {
+        errorMessageDiv.innerText = "Invalid default inputs — please adjust and submit.";
+      }
+    </script>
+  </div>
+</body>
+</html>

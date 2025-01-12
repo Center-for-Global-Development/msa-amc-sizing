@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Numeric Input for Probability</title>
+  <!-- Include Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    figure {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      margin: 0;
+      font-family: 'Georgia';
+    }
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;   /* Center horizontally */
+      padding: 1rem;   /* Some internal padding */
+    }
+    #graph-container {
+      width: 100%;
+      margin: auto;
+    }
+    .label-input-container {
+      display: flex;
+      align-items: center;
+      margin: 1rem 0;
+      font-family: 'Georgia';
+    }
+    .label-input-container label {
+      margin-right: 0.5rem;
+      font-weight: bold;
+    }
+    .label-input-container input {
+      padding: 0.25rem;
+      font-size: 1rem;
+      width: 5rem;
+      font-family: 'Georgia';
+    }
+
+    /* Hide spinner UI for numeric inputs */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    .buttons-container {
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    /* Button styles */
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #800000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Georgia';
+      margin-right: 1rem;
+    }
+
+    /* Error message styling */
+    #error-message {
+      color: red;
+      font-weight: bold;
+      font-family: 'Georgia';
+      margin: 1rem 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div id="graph-container">
+      <figure>
+        <div id="graph"></div>
+      </figure>
+    </div>
+
+    <!-- Probability input -->
+    <div class="label-input-container">
+      <label for="p-input">Success rate per attempt (%): </label>
+      <input 
+        type="number"
+        id="p-input"
+        step="any" 
+        value="3"
+        placeholder="3 => 0.03"
+      />
+    </div>
+
+    <!-- Cost per attempt input -->
+    <div class="label-input-container">
+      <label for="c-input">Expected cost per attempt ($ million): </label>
+      <input 
+        type="number"
+        id="c-input"
+        step="any"
+        value="1"
+        placeholder="1"
+      />
+    </div>
+
+    <!-- Buttons: Submit and Flip -->
+    <div class="buttons-container">
+      <button id="submit-button">Submit</button>
+      <button id="flip-button">Flip Axes</button>
+    </div>
+
+    <!-- Error message display -->
+    <div id="error-message"></div>
+  </div>
+
+  <script>
+    // ------------------
+    // Global variables
+    // ------------------
+    // Create 100 points for theta from 0.5 to 0.995 in increments of 0.005
+    let thetaValues = Array.from({ length: 100 }, (_, i) => 0.5 + i * 0.005); 
+
+    // We'll store the cost line values and the c/p line values
+    let costValues = [];
+    let cOverPValues = [];
+
+    // Axis flip state
+    let isFlipped = false;
+
+    // Grabbing elements
+    const pInput = document.getElementById("p-input");
+    const cInput = document.getElementById("c-input");
+    const graphDiv = document.getElementById("graph");
+    const flipButton = document.getElementById("flip-button");
+    const submitButton = document.getElementById("submit-button");
+    const errorMessageDiv = document.getElementById("error-message");
+
+    // ------------------
+    // Calculations
+    // ------------------
+    // Cost function: cost = [ c * ln(1 - theta ) ] / [ theta * ln(1 - p) ]
+    function calculateCost(theta, p, c) {
+      return (c * Math.log(1 - theta)) / (theta * Math.log(1 - p));
+    }
+
+    // c / p (constant line)
+    function calculateCOverP(p, c) {
+      return c / p;
+    }
+
+    // Main function to update the graph with new p and c
+    function updateGraph(p, c) {
+      // For each theta, compute cost
+      costValues = thetaValues.map(theta => calculateCost(theta, p, c));
+      // For each theta, c/p is constant, so just fill an array with the same value
+      let cOverPConstant = calculateCOverP(p, c);
+      cOverPValues = thetaValues.map(() => cOverPConstant);
+
+      // Layout for unflipped axes (theta on x)
+      const layoutUnflipped = {
+        title: {
+          text: 'Sizing an AMC',
+          font: { family: 'Georgia', size: 24, color: 'black' }
+        },
+        font: { family: 'Georgia' },
+        xaxis: {
+          title: { text: 'Target Probability of Success', font: { color: 'black' } },
+          tickformat: '.0%',
+          range: [0.5, 0.99],
+          showline: true,
+          linecolor: 'black',
+          linewidth: 2,
+          tickfont: { color: 'black' }
+        },
+        yaxis: {
+          title: { 
+            text: 'Cost ($ million)', 
+            font: { color: 'black' },
+            standoff: 25
+          },
+          showline: true,
+          linecolor: 'black',
+          linewidth: 2,
+          tickfont: { color: 'black' },
+          rangemode: 'tozero',
+          autorange: true
+        },
+        plot_bgcolor: '#ffffff',
+        margin: { t: 40, b: 80, l: 45, r: 20 },
+        // Move legend to bottom
+        legend: {
+          orientation: 'h',
+          yanchor: 'top',
+          xanchor: 'center',
+          x: 0.5,
+          y: -0.2
+        }
+      };
+
+      // Layout for flipped axes (cost on x)
+      const layoutFlipped = {
+        title: {
+          text: 'Sizing an AMC',
+          font: { family: 'Georgia', size: 24, color: 'black' }
+        },
+        font: { family: 'Georgia' },
+        xaxis: {
+          title: { 
+            text: 'Cost ($ million)',
+            font: { color: 'black' }
+          },
+          showline: true,
+          linecolor: 'black',
+          linewidth: 2,
+          tickfont: { color: 'black' }
+        },
+        yaxis: {
+          title: { 
+            text: 'Target Probability of Success', 
+            font: { color: 'black' },
+            standoff: 25
+          },
+          tickformat: '.0%',
+          range: [0.5, 0.99],
+          showline: true,
+          linecolor: 'black',
+          linewidth: 2,
+          tickfont: { color: 'black' },
+          rangemode: 'tozero',
+          autorange: true
+        },
+        plot_bgcolor: '#ffffff',
+        margin: { t: 40, b: 80, l: 45, r: 20 },
+        // Move legend to bottom
+        legend: {
+          orientation: 'h',
+          yanchor: 'top',
+          xanchor: 'center',
+          x: 0.5,
+          y: -0.2
+        }
+      };
+
+      // Data traces
+      let traceCost;
+      let traceCOverP;
+
+      if (!isFlipped) {
+        // (theta, cost) and (theta, c/p)
+        traceCost = {
+          x: thetaValues,
+          y: costValues,
+          mode: 'lines',
+          line: { color: '#800000', width: 4 },
+          name: 'Cost'
+        };
+        traceCOverP = {
+          x: thetaValues,
+          y: cOverPValues,
+          mode: 'lines',
+          line: { color: 'gray', width: 3, dash: 'dash' },
+          name: 'Cost to incentivize one attempt'
+        };
+        Plotly.newPlot(
+          graphDiv,
+          [traceCost, traceCOverP],
+          layoutUnflipped,
+          { responsive: true }
+        );
+      } else {
+        // (cost, theta) and (cOverP, theta)
+        traceCost = {
+          x: costValues,
+          y: thetaValues,
+          mode: 'lines',
+          line: { color: '#800000', width: 4 },
+          name: 'Cost'
+        };
+        traceCOverP = {
+          x: cOverPValues,
+          y: thetaValues,
+          mode: 'lines',
+          line: { color: 'gray', width: 3, dash: 'dash' },
+          name: 'Cost to incentivize one attempt'
+        };
+        Plotly.newPlot(
+          graphDiv,
+          [traceCost, traceCOverP],
+          layoutFlipped,
+          { responsive: true }
+        );
+      }
+    }
+
+    // ------------------
+    // Event Handlers
+    // ------------------
+    // Flip Axes button
+    flipButton.addEventListener("click", () => {
+      isFlipped = !isFlipped;
+
+      // We'll re-plot with the *most recently valid* inputs (stored in the fields)
+      // But only if they are still valid
+      const inputsValid = parseInputs();
+      if (inputsValid) {
+        const { p, c } = inputsValid;
+        updateGraph(p, c);
+      }
+    });
+
+    // Submit button => parse & validate inputs, update or show error
+    submitButton.addEventListener("click", () => {
+      // Parse the user inputs
+      const inputsValid = parseInputs();
+      if (!inputsValid) {
+        // show error
+        errorMessageDiv.innerText = "Not a valid number";
+      } else {
+        // clear error & update
+        errorMessageDiv.innerText = "";
+        const { p, c } = inputsValid;
+        updateGraph(p, c);
+      }
+    });
+
+    // ------------------
+    // Helper: parse user inputs
+    // ------------------
+    function parseInputs() {
+      // 1) Probability input
+      //    must be within [0.01, 99.9], then we'll interpret pInput as p/100
+      const rawP = parseFloat(pInput.value);
+      if (isNaN(rawP) || rawP < 0.1 || rawP > 99.9) {
+        return null; // invalid
+      }
+      const p = rawP / 100; // convert to decimal (e.g., 3 => 0.03)
+
+      // 2) Cost input
+      //    must be within [0.01, 10000]
+      const rawC = parseFloat(cInput.value);
+      if (isNaN(rawC) || rawC < 0.01 || rawC > 10000) {
+        return null; // invalid
+      }
+      const c = rawC; // no conversion needed for cost
+
+      // If all valid, return both as an object
+      return { p, c };
+    }
+
+    // ------------------
+    // Initial plot
+    // ------------------
+    // We'll start with the default values in the boxes if they're valid
+    const inputsValid = parseInputs();
+    if (inputsValid) {
+      updateGraph(inputsValid.p, inputsValid.c);
+    } else {
+      errorMessageDiv.innerText = "Not a valid number";
+    }
+  </script>
+</body>
+</html>

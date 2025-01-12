@@ -1,0 +1,313 @@
+<script> 
+  function calculateCost(theta, p) {
+      return p * Math.log(1 - theta) / (theta * Math.log(1 - p));
+  }
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <style>
+       figure {
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          margin: 0; 
+          font-family: 'Georgia'; 
+        }
+        .wrapper {
+          max-width: 800px;
+          margin: 0 auto;   /* Center horizontally */
+          padding: 1rem;   /* Some internal padding */
+        }
+        #graph-container {
+            width: 100%;
+            margin: auto;
+        }
+        #slider-container {
+            width: 90%;
+            margin: auto;
+            text-align: center;
+        }
+        .slider-label {
+            margin: 3px 0;
+        }
+        /* Add the new font for the p-slider label */
+        .slider-label label {
+            font-family: 'Georgia'; 
+            color: black;
+        }
+
+        /* Styling for the slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Slider Track */
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #800000 var(--slider-pos, 50%), #ddd var(--slider-pos, 50%));
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-track {
+            background: #ddd;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-progress {
+            background: #800000;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        /* Slider Thumb */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -6px;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            border: none;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        /* Focus styles */
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        input[type="range"]:focus::-webkit-slider-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+        }
+
+        input[type="range"]:focus::-moz-range-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+      <div id="graph-container">
+        <figure>
+            <div id="graph"></div>
+        </figure>
+      </div>
+
+      <div id="slider-container">
+        <div class="slider-label">
+          <input type="range" id="p-slider" min="0.01" max="0.20" step="0.01" value="0.03" style="width: 100%;">
+          <label for="p-slider">
+            Probability of success for a single attempt: <span id="p-value">5%</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  <div style="text-align:center; margin: 1rem 0;">
+    <button id="flip-button" 
+            style="padding: 0.5rem 1rem; background-color: #800000; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+      Flip Axes
+    </button>
+  </div>
+
+    <script>
+        // JavaScript function to calculate cost
+        function calculateCost(theta, p) {
+            return p * Math.log(1 - theta) / (theta * Math.log(1 - p));
+        }
+
+        function updateSliderColor(slider) {
+            const min = parseFloat(slider.min);
+            const max = parseFloat(slider.max);
+            const val = parseFloat(slider.value);
+            const percentage = ((val - min) * 100) / (max - min);
+            slider.style.setProperty('--slider-pos', percentage + '%');
+        }
+
+        // Global arrays and state
+        let thetaValues = Array.from({ length: 100 }, (_, i) => 0.5 + i * 0.005); 
+        let costValues = []; // will be populated dynamically
+        let isFlipped = false; // tracks if axes are flipped
+
+        const pSlider = document.getElementById("p-slider");
+        const pValue = document.getElementById("p-value");
+        const graphDiv = document.getElementById("graph");
+        const flipButton = document.getElementById("flip-button");
+
+        // Calculate and plot
+        function updateGraph(p) {
+            // Recompute cost values
+            costValues = thetaValues.map(theta => calculateCost(theta, p));
+
+            const layoutUnflipped = {
+              title: {
+                text: 'Sizing an AMC',
+                font: {
+                  family: 'Georgia',
+                  size: 24,                // Make the title bigger
+                  color: 'black'
+                }
+              },
+              font: {
+                family: 'Georgia'
+              },
+              xaxis: {
+                title: {
+                  text: 'Target Probability of Success',
+                  font: {
+                    color: 'black'
+                  }
+                },
+                tickformat: '.0%',
+                range: [0.5, 0.99],
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                tickfont: {
+                  color: 'black'          // Axes tick labels in black
+                }
+              },
+              yaxis: {
+                title: {
+                  text: 'Cost (as a multiple of paying for one attempt)',
+                  standoff: 5,
+                  font: {
+                    color: 'black'
+                  }
+                },
+                range: [0, 5],
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                automargin: true,
+                tickfont: {
+                  color: 'black'
+                }
+              },
+              plot_bgcolor: '#ffffff',
+              margin: { t: 40, b: 40, l: 40, r: 20 }
+            };
+
+            const layoutFlipped = {
+              title: {
+                text: 'Sizing an AMC',
+                font: {
+                  family: 'Georgia',
+                  size: 24,                // Make the title bigger
+                  color: 'black'
+                }
+              },
+              font: {
+                family: 'Georgia'
+              },
+              xaxis: {
+                title: {
+                  text: 'Cost (as a multiple of paying for one attempt)',
+                  font: {
+                    color: 'black'
+                  }
+                },
+                range: [0, 5],
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                tickfont: {
+                  color: 'black'
+                }
+              },
+              yaxis: {
+                title: {
+                  text: 'Target Probability of Success',
+                  standoff: 5,
+                  font: {
+                    color: 'black'
+                  }
+                },
+                tickformat: '.0%',
+                range: [0.5, 0.99],
+                showline: true,
+                linecolor: 'black',
+                linewidth: 2,
+                automargin: true,
+                tickfont: {
+                  color: 'black'
+                }
+              },
+              plot_bgcolor: '#ffffff',
+              margin: { t: 40, b: 40, l: 40, r: 20 }
+            };
+
+            // If not flipped, plot (theta on x, cost on y)
+            if (!isFlipped) {
+              Plotly.newPlot(
+                graphDiv,
+                [{
+                  x: thetaValues,
+                  y: costValues,
+                  mode: 'lines',
+                  line: { color: '#800000', width: 4 },
+                  name: 'Cost'
+                }],
+                layoutUnflipped,
+                { responsive: true }
+              );
+            } else {
+              // If flipped, plot (cost on x, theta on y)
+              Plotly.newPlot(
+                graphDiv,
+                [{
+                  x: costValues,
+                  y: thetaValues,
+                  mode: 'lines',
+                  line: { color: '#800000', width: 4 },
+                  name: 'Cost'
+                }],
+                layoutFlipped,
+                { responsive: true }
+              );
+            }
+        }
+
+        // Initial graph with default p
+        updateGraph(parseFloat(pSlider.value));
+        updateSliderColor(pSlider);
+
+        // Slider event listener
+        pSlider.addEventListener("input", () => {
+            const p = parseFloat(pSlider.value);
+            pValue.textContent = `${Math.round(p * 100)}%`;
+            updateSliderColor(pSlider);
+            updateGraph(p);
+        });
+
+        // Flip Axes button event listener
+        flipButton.addEventListener("click", () => {
+          // Toggle the isFlipped flag
+          isFlipped = !isFlipped;
+          // Re-plot with the same p but flipped axes
+          updateGraph(parseFloat(pSlider.value));
+        });
+    </script>
+</body>
+</html>

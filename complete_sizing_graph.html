@@ -163,7 +163,6 @@
         }
         return probability;
       }
-      // Example function
       function marginalCostFunction(numFirmsMin, numFirmsMax, numAttemptsMin, numAttemptsSame, beta) {
         const probMarginMatters = beta * Math.pow(1 - beta, numAttemptsSame - 1);
         const minProb = 1 - Math.pow(1 - beta, numAttemptsMin);
