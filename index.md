@@ -670,7 +670,7 @@ The complete push v. pull debate deserves far more space than this dropdown can 
 <iframe 
     src="simple_with_text_box_input.html" 
     width="100%" 
-    height="650" 
+    height="750" 
     style="border: none;">
 </iframe>
 
