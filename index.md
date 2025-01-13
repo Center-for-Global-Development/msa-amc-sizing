@@ -57,7 +57,7 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
                 <a href="#understanding_costs">Understanding Innovation Costs and Risks</a>
                 <ol>
                     <li><a href="#key_components">Key components</a></li>
-                    <li><a href="#prospective_costs">Calculating Firms' Prospective Costs</a></li>
+                    <li><a href="#expected_costs">Calculating Firms' Expected Costs</a></li>
                     <li><a href="#sourcing_parameters">Sourcing Parameter Estimates</a></li>
                 </ol>
             </li>
@@ -301,13 +301,13 @@ Formally, if $r$ is the firm hurdle rate and $t$ is the number of years between 
 
 </div>
 
-<h3 id="prospective_costs">b. Calculating Firms' Prospective Costs</h3>
+<h3 id="expected_costs">b. Calculating Firms' Expected Costs</h3>
 
 Innovation often requires multiple steps, including research and development, testing, trials, and regulatory approval. Each step incurs its own set of costs and its own risk of failure. However, firms do not incur all costs upfront. Instead, if the project fails at any stage, the firm simply stops and does not incur the costs of subsequent stages. 
 
-When sizing the pull mechanism, we consider the firm's perspective at the time of entry — the “prospective cost,” not the total cost of a successful innovation. The prospective costs faced by the firm at the time of entry are the cumulative, probability-weighted costs across all development phases, properly discounted for the time value of money. 
+When sizing the pull mechanism, we consider the firm's perspective of expected costs at the time of entry, not the total cost of a successful innovation. The expected costs faced by the firm at the time of entry are the cumulative, probability-weighted costs across all development phases, properly discounted for the time value of money. 
 
-For example, a livestock vaccine might have an all-in development cost of <span>&#36;</span>3.4 million, but the investment in an early-stage vaccine candidate in R&D would have a prospective cost of <span>&#36;</span>1.8 million because if the vaccine fails during R&D, the later costs of testing and approval are not incurred (see drop down example for more detail). 
+For example, a livestock vaccine might have an all-in development cost of \\$3.4 million, but the investment in an early-stage vaccine candidate in R&D would have a expected cost of \\$1.8 million because if the vaccine fails during R&D, the later costs of testing and approval are not incurred (see drop down example for more detail). 
 
 
 <button class="see-more-btn" onclick="toggleDetails('optionvalue-details')">Walking through an example</button>
@@ -496,7 +496,7 @@ We now need to introduce the time value of money. Discounting reduces future cos
 Since the overwhelming majority of the costs fall in the first few years, discounting only reduces all-in costs from \$1.9 million to \$1.8 million. For human vaccines, where Stage III trials can get extremely expensive, this discounting can have a major effect on the present value of the incentive.
 </div>
 
-We use the prospective cost of the innovation attempt to be able to compare to the present value of the expected reward from the pull incentive, which is also discounted by time and the probability of success. That is, we are estimating the expected costs and returns from the firm's perspective at the time of entry.
+We use the <p class="italic-text">expected</p>  cost of the innovation attempt to be able to compare to the present value of the <p class="italic-text">expected</p> reward from the pull incentive, which is also discounted by time and the probability of success. That is, we are estimating the expected costs and returns from the firm's perspective at the time of entry.
 
 <h3 id="sourcing_parameters">c. Sourcing Parameter Estimates</h3> 
 Data on the costs and risks of innovation can be difficult to find, but there are several types of sources we have found useful for gathering this information:
@@ -515,9 +515,9 @@ Additionally, remember that we're trying to identify the threshold case — the 
 
 We now have a framework for calculating the expected costs firms face when pursuing innovation. How, then, do we use this to determine the total size of the pull incentive needed?
 
-First, consider perhaps the simplest case: aiming to set an incentive size large enough to motivate one firm to attempt innovation. To accomplish this, the pull incentive needs to provide an expected reward greater than or equal to a firm’s prospective cost of an innovation attempt.  In the case of a singular firm, the probability of receiving the pull incentive payout is the same as the probability of innovation success (we will discuss competition risk in the next section).  Therefore, the present value of the pull incentive would equal the firm’s prospective costs multiplied by the reciprocal of their probability of success. 
+First, consider perhaps the simplest case: aiming to set an incentive size large enough to motivate one firm to attempt innovation. To accomplish this, the pull incentive needs to provide an expected reward greater than or equal to a firm’s expected cost of an innovation attempt.  In the case of a singular firm, the probability of receiving the pull incentive payout is the same as the probability of innovation success (we will discuss competition risk in the next section).  Therefore, the present value of the pull incentive would equal the firm’s expected costs multiplied by the reciprocal of their probability of success. 
 
-For example, for a livestock vaccine with a firm’s prospective cost of <span>&#36;</span>1.8 million and a 2.7% chance of success, a pull incentive would need to have a present value of <span>&#36;</span>66.7 million. While it may be shocking that <span>&#36;</span>66.7 million is more than an order of magnitude larger firm’s prospective costs, remember that pull mechanisms are shifting the risks of development from the funder to the innovator. In this case, rather than the funder giving a <span>&#36;</span>1.8 million grant up front with only a 2.7% chance of successful innovation, the funder commits to paying <span>&#36;</span>66.7 million only if the innovation is successful. The funder has a 2.7% chance of paying <span>&#36;</span>66.7 million; in the 97.3% of times the innovator is unsuccessful, the funder can repurpose those funds for other projects.
+For example, for a livestock vaccine with a firm’s expected cost of \\$1.8 million and a 2.7% chance of success, a pull incentive would need to have a present value of \\$66.7 million. While it may be shocking that \\$66.7 million is more than an order of magnitude larger firm’s expected costs, remember that pull mechanisms are shifting the risks of development from the funder to the innovator. In this case, rather than the funder giving a \\$1.8 million grant up front with only a 2.7% chance of successful innovation, the funder commits to paying \\$66.7 million only if the innovation is successful. The funder has a 2.7% chance of paying \\$66.7 million; in the 97.3% of times the innovator is unsuccessful, the funder can repurpose those funds for other projects.
 
 In many cases, the funder may want to create a pull fund that is large enough to incentivize multiple attempts simultaneously in order to have a higher probability of at least one successful innovation. In the next section, we discuss how to choose the target number of attempts.
 
@@ -665,7 +665,7 @@ The complete push v. pull debate deserves far more space than this dropdown can 
 </div>
 
 <iframe 
-    src="simple_sizing_graph.html" 
+    src="simple_with_text_box_input.html" 
     width="100%" 
     height="650" 
     style="border: none;">
