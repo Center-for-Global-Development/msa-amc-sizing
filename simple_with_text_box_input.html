@@ -185,7 +185,7 @@
         },
         yaxis: {
           title: { 
-            text: 'Cost ($ million)', 
+            text: 'Cost of Pull Mechanism ($ million)', 
             font: { color: 'black' },
             standoff: 25
           },
@@ -217,7 +217,7 @@
         font: { family: 'Georgia' },
         xaxis: {
           title: { 
-            text: 'Cost ($ million)',
+            text: 'Cost of Pull Mechanism ($ million)',
             font: { color: 'black' }
           },
           showline: true,
@@ -263,14 +263,14 @@
           y: costValues,
           mode: 'lines',
           line: { color: '#800000', width: 4 },
-          name: 'Cost'
+          name: 'Cost of pull mechanism'
         };
         traceCOverP = {
           x: thetaValues,
           y: cOverPValues,
           mode: 'lines',
           line: { color: 'gray', width: 3, dash: 'dash' },
-          name: 'Cost to incentivize one attempt'
+          name: 'Cost of pull mechanism to incentivize one attempt'
         };
         Plotly.newPlot(
           graphDiv,
@@ -285,14 +285,14 @@
           y: thetaValues,
           mode: 'lines',
           line: { color: '#800000', width: 4 },
-          name: 'Cost'
+          name: 'Cost of pull mechanism '
         };
         traceCOverP = {
           x: cOverPValues,
           y: thetaValues,
           mode: 'lines',
           line: { color: 'gray', width: 3, dash: 'dash' },
-          name: 'Cost to incentivize one attempt'
+          name: 'Cost of pull mechanism  to incentivize one attempt'
         };
         Plotly.newPlot(
           graphDiv,
