@@ -92,7 +92,7 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
     <h3> KEY TAKEAWAYS</h3>
     <ol>
         <li><strong>When designing pull funding mechanisms, determining the right incentive size is critical. Larger incentives attract more firms and increase the chances of success, but too large an incentive wastes resources that could fund other valuable projects. This guide provides a practical framework for making this decision.</strong></li>
-        <li><strong>TThe incentive size needed to motivate firm participation depends on:</strong></li>
+        <li><strong>The incentive size needed to motivate firm participation depends on:</strong></li>
             <ol>
                 <li><strong>The costs and risks that firms face during technology development</strong>,  including R&D, testing, regulatory, and commercialization expenses, adjusted for the probability of failure at each stage</li>
                 <li><strong>The riskiness of the innovation</strong>: more technologically distant innovations require larger incentives to compensate firms for the high chance their R&D fails to yield any successful product. </li>
@@ -596,7 +596,7 @@ This creates a fundamental tradeoff: the more firms that participate, the more l
 
 <h3 id="cost_of_multiple_attempts">b. The Cost of Incentivizing Multiple Attempts</h3>
 
-The more firms that have already entered, the higher the marginal cost to induce an extra firm, because now firms face higher risk of splitting the prize. As the number of firms increases, the marginal cost approaches the cost of each additional attempt. For instance, if the probability of success per attempt is 5% and the present value cost of each attempt is \\$1,000,000 then a funder would need to increase the pull size by \\$580,000 to move from nine to ten attempts. In contrast, moving from 50 to 51 attempts requires an additional marginal cost of \$856,000. The plot below shows the marginal cost of additional attempts as a percentage of the cost of an AMC aimed to incentivize a single entry, as discussed in (<a href="expected_costs">Section 4a</a>).
+The more firms that have already entered, the higher the marginal cost to induce an extra firm, because now firms face higher risk of splitting the prize. As the number of firms increases, the marginal cost approaches the cost of each additional attempt. For instance, if the probability of success per attempt is 5% and the present value cost of each attempt is \\$1,000,000 then a funder would need to increase the pull size by \\$580,000 to move from nine to ten attempts. In contrast, moving from 50 to 51 attempts requires an additional marginal cost of \$856,000. The plot below shows the marginal cost of additional attempts as a percentage of the cost of a pull mechanism aimed to incentivize a single attempt.
 
 <iframe 
     src="marginal_cost_scaled_to_one_attempt.html" 
@@ -787,7 +787,7 @@ The net present value (NPV) directly quantifies the net societal value created b
 
 Together, the BCR and NPV provide a balanced assessment of the pull mechanism's cost-effectiveness. This allows funders to make informed decisions about whether to proceed with the investment and how to optimize the target probability of success for maximum impact.
 
-<h2 id="conclusion">1. Conclusion</h2>
+<h2 id="conclusion">6. Conclusion</h2>
 Determining the right size for a pull mechanism involves carefully balancing multiple factors to create effective innovation incentives while ensuring the efficient use of resources. This guide has laid out a framework for systematically analyzing the key components that drive pull mechanism sizing in the context of pure pull funding programs. The core analysis can be summarized in a series of steps:
 
 **Step 1: Gather Information on Innovation Costs and Risks**
@@ -840,7 +840,7 @@ While our framework provides a structured approach to sizing decisions, we've ma
     <li>Our model does not capture knowledge spillovers between attempts and firms nor the value of having multiple successful innovations rather than just one. </li>
     </ul>
 
-Additional resources about pull mechanisms are available on the Market Shaping Acceleerator's website. We also encourage practitioners to contact us to discuss specific applications, as each situation requires careful consideration of context-specific factors that may influence optimal incentive design.
+Additional resources about pull mechanisms are available on the Market Shaping Acceleerator's website. We also welcome practitioners to contact us to discuss specific applications, as each situation requires careful consideration of context-specific factors that may influence optimal incentive design.
 
 
 <h2 id="appendix">Appendix</h2>
