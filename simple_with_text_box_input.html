@@ -120,6 +120,10 @@
     <div id="error-message"></div>
   </div>
 
+  <figcaption style="text-align: center; margin-top: 10px; font-size: smaller;">
+    The expected cost is the cumulative, probability-weighted costs across all development phases, properly discounted for the time value of money. See Section 3b for instructions on how to calculate the expected cost. The red line shows the cost of a pull mechanism to induce sufficient firm entry to reach a target probability of at least one success. The dash grey line shows the cost of a pull mechanism that would induce a single attempt. The probability of success of a single-entry pull mechanism is equal to the success rate of a single attempt.
+  </figcaption> 
+
   <script>
     // ------------------
     // Global variables
@@ -166,7 +170,7 @@
       // Layout for unflipped axes (theta on x)
       const layoutUnflipped = {
         title: {
-          text: 'Sizing an AMC',
+          text: 'Sizing an Pull Mechanism',
           font: { family: 'Georgia', size: 24, color: 'black' }
         },
         font: { family: 'Georgia' },
@@ -207,7 +211,7 @@
       // Layout for flipped axes (cost on x)
       const layoutFlipped = {
         title: {
-          text: 'Sizing an AMC',
+          text: 'Sizing a Pull Mechanism',
           font: { family: 'Georgia', size: 24, color: 'black' }
         },
         font: { family: 'Georgia' },
