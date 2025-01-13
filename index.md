@@ -73,6 +73,7 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
                 <li><a href="#cost_effectiveness">Cost Effectiveness</a></li>
                 </ol>
             </li>
+            <li><a href="#conclusion">Conclusion</a></li>
             <li><a href="#appendix">Appendix</a>
                 <ol>
                 <li><a href="#complete_example">Complete Example</a></li>
@@ -307,7 +308,7 @@ Innovation often requires multiple steps, including research and development, te
 
 When sizing the pull mechanism, we consider the firm's perspective of expected costs at the time of entry, not the total cost of a successful innovation. The expected costs faced by the firm at the time of entry are the cumulative, probability-weighted costs across all development phases, properly discounted for the time value of money. 
 
-For example, a livestock vaccine might have an all-in development cost of \\$3.4 million, but the investment in an early-stage vaccine candidate in R&D would have a expected cost of \\$1.8 million because if the vaccine fails during R&D, the later costs of testing and approval are not incurred (see drop down example for more detail). 
+For example, a livestock vaccine might have an all-in development cost of \\$3.4 million, but the investment in an early-stage vaccine candidate in R&D would have an expected cost of \\$1.8 million because if the vaccine fails during R&D, the later costs of testing and approval are not incurred (see drop down example for more detail). 
 
 
 <button class="see-more-btn" onclick="toggleDetails('optionvalue-details')">Walking through an example</button>
@@ -496,7 +497,7 @@ We now need to introduce the time value of money. Discounting reduces future cos
 Since the overwhelming majority of the costs fall in the first few years, discounting only reduces all-in costs from \$1.9 million to \$1.8 million. For human vaccines, where Stage III trials can get extremely expensive, this discounting can have a major effect on the present value of the incentive.
 </div>
 
-We use the <p class="italic-text">expected</p>  cost of the innovation attempt to be able to compare to the present value of the <p class="italic-text">expected</p> reward from the pull incentive, which is also discounted by time and the probability of success. That is, we are estimating the expected costs and returns from the firm's perspective at the time of entry.
+We use the *expected* cost of the innovation attempt to be able to compare to the present value of the *expected* reward from the pull incentive, which is also discounted by time and the probability of success. That is, we are estimating the expected costs and returns from the firm's perspective at the time of entry.
 
 <h3 id="sourcing_parameters">c. Sourcing Parameter Estimates</h3> 
 Data on the costs and risks of innovation can be difficult to find, but there are several types of sources we have found useful for gathering this information:
@@ -517,7 +518,7 @@ We now have a framework for calculating the expected costs firms face when pursu
 
 First, consider perhaps the simplest case: aiming to set an incentive size large enough to motivate one firm to attempt innovation. To accomplish this, the pull incentive needs to provide an expected reward greater than or equal to a firm’s expected cost of an innovation attempt.  In the case of a singular firm, the probability of receiving the pull incentive payout is the same as the probability of innovation success (we will discuss competition risk in the next section).  Therefore, the present value of the pull incentive would equal the firm’s expected costs multiplied by the reciprocal of their probability of success. 
 
-For example, for a livestock vaccine with a firm’s expected cost of \\$1.8 million and a 2.7% chance of success, a pull incentive would need to have a present value of \\$66.7 million. While it may be shocking that \\$66.7 million is more than an order of magnitude larger firm’s expected costs, remember that pull mechanisms are shifting the risks of development from the funder to the innovator. In this case, rather than the funder giving a \\$1.8 million grant up front with only a 2.7% chance of successful innovation, the funder commits to paying \\$66.7 million only if the innovation is successful. The funder has a 2.7% chance of paying \\$66.7 million; in the 97.3% of times the innovator is unsuccessful, the funder can repurpose those funds for other projects.
+For example, for a livestock vaccine with a firm’s expected cost of \\$1.8 million and a 2.7% chance of success, a pull incentive would need to have a present value of \\$66.7 million. While it may be shocking that \\$66.7 million is more than an order of magnitude larger firm’s expected costs, remember that pull mechanisms are shifting the risks of development from the funder to the innovator. In this case, rather than the funder spending an expected \\$1.8 million in up front funding with only a 2.7% chance of successful innovation, the funder commits to paying \\$66.7 million only if the innovation is successful. The funder has a 2.7% chance of paying \\$66.7 million; in the 97.3% chance that the innovator is unsuccessful, the funder can repurpose those funds for other projects.
 
 In many cases, the funder may want to create a pull fund that is large enough to incentivize multiple attempts simultaneously in order to have a higher probability of at least one successful innovation. In the next section, we discuss how to choose the target number of attempts.
 
@@ -525,7 +526,7 @@ In many cases, the funder may want to create a pull fund that is large enough to
 
 The key is to recognize that each additional firm attempting innovation increases the overall chances of success. Consider a case where any individual firm has a 10% chance of successfully developing a targeted product. If two firms make an attempt, the overall probability of at least one success increases to 19%, and with three firms, it increases to 27.1%. With multiple firms participating, our chances of success improve. 
 
-At the same time, attracting additional firms becomes increasingly expensive as they risk sharing the reward if several of them succeed. At the same time, attracting additional firms becomes increasingly expensive as they risk sharing the reward if several of them succeed. Consider the example where each attempt costs \\$1 million and has a 10% chance of success. For a single firm to participate, the reward needs to be at least \\$10 million (to offset the 10% chance of success). For two firms to participate, the reward needs to be higher - around \\$10.5 million - because each firm now faces the risk of having to split the reward if both succeed. For three firms, the required reward increases to about \\$11.1 million. This pattern continues: each additional firm requires a larger incentive to participate than the last because of the increasing risk of having to share the reward.
+At the same time, attracting additional firms becomes increasingly expensive as they risk sharing the reward if several of them succeed. At the same time, attracting additional firms becomes increasingly expensive as they risk sharing the reward if several of them succeed. Consider the example where each attempt has an expected cost of \\$1 million and has a 10% chance of success. For a single firm to participate, the reward needs to be at least \\$10 million (to offset the 10% chance of success). For two firms to participate, the reward needs to be higher - about \\$10.5 million - because each firm now faces the risk of having to split the reward if both succeed. For three firms, the required reward increases to about \\$11.1 million. This pattern continues: each additional firm requires a larger incentive to participate than the last because of the increasing risk of having to share the reward.
 
 This creates a fundamental tradeoff: the more firms that participate, the more likely we are to achieve the innovation's benefits—whether that's lives saved by a new vaccine or emissions reduced by green technologies—but increasing this probability becomes increasingly expensive. As a result, setting the right reward size means asking: what is the social value of increasing our chances of achieving these benefits, and how do these compare to the costs? During the COVID-19 pandemic, the massive daily cost of delay meant even small increases in the probability of success had enormous value, justifying efforts to attract many firms ([Ahuja et al 2021](https://www.aeaweb.org/articles?id=10.1257/pandp.20211103)). However, in other cases, the funder may only seek to incentivize a few of the best-suited firms to participate.
 
@@ -595,10 +596,10 @@ This creates a fundamental tradeoff: the more firms that participate, the more l
 
 <h3 id="cost_of_multiple_attempts">b. The Cost of Incentivizing Multiple Attempts</h3>
 
-The more firms that have already entered, the higher the marginal cost to induce an extra firm, because now firms face higher risk of splitting the prize. As the number of firms increases, the marginal cost approaches the cost of each additional attempt. For instance, if the probability of success per attempt is 5% and the present value cost of each attempt is \\$1,000,000 then a funder would need to increase the pull size by \\$580,000 to move from nine to ten attempts. In contrast, moving from 50 to 51 attempts requires an additional marginal cost of \$856,000.
+The more firms that have already entered, the higher the marginal cost to induce an extra firm, because now firms face higher risk of splitting the prize. As the number of firms increases, the marginal cost approaches the cost of each additional attempt. For instance, if the probability of success per attempt is 5% and the present value cost of each attempt is \\$1,000,000 then a funder would need to increase the pull size by \\$580,000 to move from nine to ten attempts. In contrast, moving from 50 to 51 attempts requires an additional marginal cost of \$856,000. The plot below shows the marginal cost of additional attempts as a percentage of the cost of an AMC aimed to incentivize a single entry, as discussed in (<a href="expected_costs">Section 4a</a>).
 
 <iframe 
-    src="marginal_cost_to_induce_entry.html" 
+    src="marginal_cost_scaled_to_one_attempt.html" 
     width="100%" 
     height="600" 
     style="border: none;">
@@ -645,7 +646,9 @@ The more firms that have already entered, the higher the marginal cost to induce
 
 </div>
 
- Now we can calculate the reward size needed in order to induce a given level of firm entry. The following graph shows the pull size as a function of the multiple of the cost of innovation, if there was no time delay between private investment and receiving payment. In the real world, including the cost of time will increase costs substantially: as we saw in the previous section, the nominal value will be far higher if revenues are delayed substantially. For example, if an <span class="tooltip-word">innovation attempt<span class="tooltip-text">Remember that an “attempt” in this case does not refer to the cost of an entire research program, which can often involve dozens of research attempts. The cost also only refers to the expected cost of a new attempt at the time of initiating, and not the full cost of seeing an attempt all the way through to completion, since most attempts fail well-before incurring the costs of, e.g. late-stage safety & efficacy trials</span></span> costs \\$1 million and each attempt has only a 5% chance of success, then the present value of the incentive needs to be at least \\$66 million to get at least an 80% chance of success. If the payments occurred ten years after the research begins (a realistic timeframe for novel drugs or vaccines) and firms have an 8% discount rate, then the nominal value of the incentive will have to be at least $142 million. 
+ Now we can calculate the reward size needed in order to induce a given level of firm entry. The following graph shows the pull size if there was no time delay between private investment and receiving payment. In the real world, including the cost of time will increase costs substantially: as we saw in the previous section, the nominal value will be far higher if revenues are delayed substantially. 
+ 
+ For example, if an <span class="tooltip-word">innovation attempt<span class="tooltip-text">Remember that an “attempt” in this case does not refer to the cost of an entire research program, which can often involve dozens of research attempts. The cost also only refers to the expected cost of a new attempt at the time of initiating, and not the full cost of seeing an attempt all the way through to completion, since most attempts fail well-before incurring the costs of, e.g. late-stage safety & efficacy trials</span></span> costs \\$1 million and each attempt has only a 5% chance of success, then the present value of the incentive needs to be at least \\$66 million to get at least an 80% chance of success. If the payments occurred ten years after the research begins (a realistic timeframe for novel drugs or vaccines) and firms have an 8% discount rate, then the nominal value of the incentive will have to be at least $142 million. 
 
 
 *Note: The expected cost of an attempt (used when considering firm participation) can be substantially lower than the full actualized development costs. For instance, if full development costs are $20 million but have only a 5% chance of being incurred, the expected cost is \\$1 million, as stated in the example above. This is one of the reasons pull mechanisms appear very large relative to expected costs.*
@@ -783,6 +786,61 @@ The net present value (NPV) directly quantifies the net societal value created b
 </div>
 
 Together, the BCR and NPV provide a balanced assessment of the pull mechanism's cost-effectiveness. This allows funders to make informed decisions about whether to proceed with the investment and how to optimize the target probability of success for maximum impact.
+
+<h2 id="conclusion">1. Conclusion</h2>
+Determining the right size for a pull mechanism involves carefully balancing multiple factors to create effective innovation incentives while ensuring the efficient use of resources. This guide has laid out a framework for systematically analyzing the key components that drive pull mechanism sizing in the context of pure pull funding programs. The core analysis can be summarized in a series of steps:
+
+**Step 1: Gather Information on Innovation Costs and Risks**
+<ul>
+    <li>Map out all development stages (R&D, testing, regulatory approval, etc.) </li>
+    <li>For each stage, estimate the direct costs, probability of success, and duration</li>
+</ul>
+
+**Step 2: Calculate Per-Attempt Expected Cost and Success Probability**
+<ul>
+    <li>Combine stage-level information to find: </li>
+        <ul>
+        <li>Expected cost per attempt (accounting for early failures)</li>
+        <li>Overall probability of success per attempt</li>
+        </ul>
+    <li>Apply appropriate discount rate to account for time value of money</li>
+</ul>
+
+**Step 3: Determine Program Size**
+<ul>
+    <li>Start with the base calculation of a pull mechanism to incentivize a single attempt: expected costs divided by the probability of success per attempt </li>
+    <li>Determine the desired overall target probability of achieving the innovation by considering:</li>
+        <ul>
+        <li>The social value of the innovation</li>
+        <li>The marginal cost of incentivizing additional attempts</li>
+        <li>Available budget constraints</li>
+        </ul>
+</ul>
+
+**Step 4: Factor in Additional Considerations**
+<ul>
+    <li>Convert the present value into nominal terms based on the expected payment structure timeline</li>
+    <li>Add program costs for:</li>
+        <ul>
+        <li>Program administration costs</li>
+        <li>Monitoring and verification</li>
+        </ul>
+    <li>Subtract the following from the incentive size:</li>
+        <ul>
+        <li>Expected private market revenue</li>
+        <li>Other funding sources</li>
+        </ul>
+</ul>
+
+While our framework provides a structured approach to sizing decisions, we've made several simplifying assumptions that practitioners should consider carefully:
+<ul>
+    <li>We assumed firms are identical. In reality, firms have different capabilities, and a pull mechanism will incentivize the best-suited firms to participate.</li>
+    <li>We assumed firms make decisions simultaneously and follow the same development timeline. In practice, firms may make innovation attempts sequentially. This could increase the probability of success of a pull mechanism over a longer timeframe. </li>
+    <li>Our base model treats attempts as independent, though the appendix explores the correlation between attempts and multiple attempts made by an individual firm.</li>
+    <li>Our model does not capture knowledge spillovers between attempts and firms nor the value of having multiple successful innovations rather than just one. </li>
+    </ul>
+
+Additional resources about pull mechanisms are available on the Market Shaping Acceleerator's website. We also encourage practitioners to contact us to discuss specific applications, as each situation requires careful consideration of context-specific factors that may influence optimal incentive design.
 
 
 <h2 id="appendix">Appendix</h2>
