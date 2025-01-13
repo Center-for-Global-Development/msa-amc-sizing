@@ -658,9 +658,9 @@ The more firms that have already entered, the higher the marginal cost to induce
     These large costs seem to beg the question: why not simply pay upfront for innovation (i.e. why not use “push” funding?). After all, paying upfront allows the funder to avoid needing to compensate firms for time delay. This piece is not the venue to get into the complete debate about push versus pull. Suffice to say there are several reasons why pull might be more effective, despite seeming more expensive:
 <p></p>
 <ol>
-    <li> The funder may not be able to identify which firms are the cheapest (i.e. firms have <em> asymmetric information</em>). Since push funding requires the funder to choose firms upfront, push funding may result in rewarding more expensive firms </li>
-    <li> The funder may not be able to identify a specific target product in advance, and thus may prefer a pull approach that is open to multiple different kinds of solutions </li>
-    <li> Push funding does not create incentives for firms to speedily commercialize their products. Many innovations look good on paper but fail to achieve traction in the market; pull funding could save funders money by avoiding payouts for these “false positives” </li>
+    <li> The funder may not be able to identify which firms are the cheapest (i.e. firms have <em> asymmetric information</em>). Since push funding requires the funder to choose firms upfront, push funding may result in rewarding more expensive firm.s </li>
+    <li> The funder may not be able to identify a specific target product in advance, and thus may prefer a pull approach that is open to multiple different kinds of solutions. </li>
+    <li> Push funding does not create incentives for firms to speedily commercialize their products. Many innovations look good on paper but fail to achieve traction in the market; pull funding could save funders money by avoiding payouts for these “false positives.” </li>
 </ol>
 
 The complete push v. pull debate deserves far more space than this dropdown can provide. Suffice to say that the need to compensate firms for a lengthy time delay is a reason one might prefer push funding, but other considerations may be decisive in favor of pull depending on the circumstances.
