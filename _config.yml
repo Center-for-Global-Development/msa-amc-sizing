@@ -3,7 +3,7 @@ plugins:
   - jekyll-remote-theme
 
 title: "How Much to Offer? A Practical Guide to Sizing Innovation Incentives"
-description: "This guide provides the theoretical framework and a technical step-by-step tutorial for estimating the appropriate size of pull funding mechanisms."
+description: "This guide provides the theoretical framework and a technical step-by-step tutorial for estimating the appropriate size of pull funding mechanisms designed to accelerate innovation."
 menu:
   - name: "Home"
     link: "/"

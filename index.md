@@ -91,15 +91,15 @@ title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
 <div class="takeaways-box">
     <h3> KEY TAKEAWAYS</h3>
     <ol>
-        <li><strong>When designing pull funding mechanisms, determining the right incentive size is critical. Larger incentives attract more firms and increase the chances of success, but too large an incentive wastes resources that could fund other valuable projects. This guide provides a practical framework for making this decision.</strong></li>
+        <li>When designing pull funding mechanisms, determining the right incentive size is critical. Larger incentives attract more firms and increase the chances of success, but too large an incentive wastes resources that could fund other valuable projects. This guide provides a practical framework for making this decision.</li>
         <li><strong>The incentive size needed to motivate firm participation depends on:</strong></li>
             <ol>
-                <li><strong>The costs and risks that firms face during technology development</strong>,  including R&D, testing, regulatory, and commercialization expenses, adjusted for the probability of failure at each stage</li>
-                <li><strong>The riskiness of the innovation</strong>: more technologically distant innovations require larger incentives to compensate firms for the high chance their R&D fails to yield any successful product. </li>
+                <li><strong>Development costs and risks:</strong> Firms face expenses including R&D, testing, regulatory approval, and commercialization, all adjusted for the probability of failure at each stage.</li>
+                <li><strong>Innovation risk:</strong>: More technologically distant innovations require larger incentives to compensate firms for the high likelihood of R&D failure. </li>
                 <li><strong>The time value of money</strong>, accounting for firms' discounting of future returns and the often lengthy development timelines for major innovations</li>
             </ol>
-        <li><strong>The most important factor in determining the optimal size of an innovation incentive is the social value of the innovation, which provides a ceiling on willingness to pay and determines the relative desirability of different funding opportunities. </strong></li>
-        <li><strong>While headline numbers for pull mechanisms often appear large, they reflect that firms must bear both the risks of development failure and the opportunity costs of capital over long development timelines. Understanding these components helps funders right-size their commitments. </strong></li>
+        <li>The most important factor in determining the optimal size of an innovation incentive is the <strong>social value of the innovation</strong><, which sets an upper limit on willingness to pay and helps prioritize funding opportunities. /li>
+        <li>While total funding commitments for pull mechanisms often appear large, they reflect that firms must bear both the risks of development failure and the opportunity costs of capital over long development timelines. Understanding these components helps funders right-size their commitments.</li>
     </ol>
 </div>
 
