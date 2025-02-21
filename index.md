@@ -147,6 +147,8 @@ To make this analysis tractable, we make some simplifying assumptions:
     <li>Benefits do not depend on the number of successful firms. The goal of the funder is to ensure that at least one firm is successful. </li>
 </ul>
 
+These simplifying assumptions allow us to focus on the key drivers of incentive size for a generic pull fund, but in practice, the design of the incentive mechanism itself is just as important. For example, while we assume a single reward structure, there may be value in allowing multiple winners—particularly if having several successful products improves supply security, fosters competition, or encourages diverse approaches. Additionally, rather than a single payout upon success, incentives could incorporate milestone payments to reduce firms’ capital constraints. The framework approach in this guide—calculating firms’ expected costs and expected payouts—can be applied to pull programs with these design features as well, but the specific treatment of these features is beyond the scope of this guide.
+
 *Note: Throughout this post, we use "firm" to refer to any profit-motivated innovator - whether a large company, research institution, startup, or university spinoff.*
 
 <h2 id="understanding_costs">3. Understanding Innovation Costs and Risks</h2>
@@ -510,7 +512,7 @@ Data on the costs and risks of innovation can be difficult to find, but there ar
 
 When using these sources, it is important to be aware of their potential limitations and biases. Published costs often only represent successful attempts. They may also be dated and need adjustment for inflation. Additionally, costs can vary significantly by sector, region, and specific technical challenges. Triangulating between multiple sources can provide a more complete picture. 
 
-Additionally, remember that we're trying to identify the threshold case — the point at which firms are just willing to participate. Firms with lower costs or higher probabilities of success than our estimates will find participation attractive, while those with higher costs or lower chances of success will not participate.
+Additionally, remember that we’re trying to identify the threshold case — the point at which firms are just willing to participate. For simplicity, our model assumes that firms are homogeneous, meaning they share the same cost structure and probability of success. In reality, firms will have a distribution of costs and probabilities, meaning some will find participation attractive at lower incentive levels, while others may require larger incentives. The characteristics we assign to the representative firm in our model should approximate this real-world threshold—capturing the point at which firms on the margin would choose to participate.
 
 <h2 id="program_size">4. Determining the Overall Program Size</h2>
 
@@ -656,7 +658,7 @@ The more firms that have already entered, the higher the marginal cost to induce
     These large costs seem to beg the question: why not simply pay upfront for innovation (i.e. why not use “push” funding?). After all, paying upfront allows the funder to avoid needing to compensate firms for time delay. This piece is not the venue to get into the complete debate about push versus pull. Suffice to say there are several reasons why pull might be more effective, despite seeming more expensive:
 <p></p>
 <ol>
-    <li> The funder may not be able to identify which firms are the cheapest (i.e. firms have <em> asymmetric information</em>). Since push funding requires the funder to choose firms upfront, push funding may result in rewarding more expensive firm.s </li>
+    <li> The funder may not be able to identify which firms are the cheapest (i.e. firms have <em> asymmetric information</em>). Since push funding requires the funder to choose firms upfront, push funding may result in rewarding more expensive firms. </li>
     <li> The funder may not be able to identify a specific target product in advance, and thus may prefer a pull approach that is open to multiple different kinds of solutions. </li>
     <li> Push funding does not create incentives for firms to speedily commercialize their products. Many innovations look good on paper but fail to achieve traction in the market; pull funding could save funders money by avoiding payouts for these “false positives.” </li>
 </ol>
