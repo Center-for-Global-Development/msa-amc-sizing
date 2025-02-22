@@ -852,7 +852,7 @@ The following button will walk the reader through a complete example from start 
 <button class="see-more-btn" onclick="toggleDetails('complete-example-details')">Show complete example</button>
 <div id="complete-example-details" class="details-box">
 
-<strong>Step 1 - Expected Costs and Risks</strong>
+<strong>Step 1 and 2 - Expected Costs and Risks</strong>
 
 <p>
 In previous examples, we used this table from <a href="https://curis.ku.dk/ws/portalfiles/portal/106806762/IFRO_Report_227.pdf">Jensen 2014</a>  to find the expected cost and risk per innovation attempt. Even though the all-in cost of seeing an attempt through from initiation to success is \$3.4 million, because the supermajority of attempts fail far before the test and approval phases, the expected cost at time of initiation is only \$1.904 million. After discounting using an 8.05% discount rate (to recognize the fact that costs borne in future years count “less” than costs incurred in the present, the “expected cost per attempt” becomes \$1,799,000 with a probability of success of 2.7%.
@@ -945,7 +945,7 @@ In previous examples, we used this table from <a href="https://curis.ku.dk/ws/po
     </tbody>
 </table>
 
-<strong>Step 2 - Calculating Needed Pull Size</strong>
+<strong>Step 3 - Calculating Needed Pull Size</strong>
 
 <p>
 $$ X \geq \frac{\ln(1-\theta)}{\theta \cdot \ln(1-p)} \cdot \mathbb{E}[c]$$
@@ -958,7 +958,7 @@ We can now plug in these numbers to our formulas shown above, using \$1,799,000 
     <embed style="border: none;" src="./example_sizing.html" dpi="300" width="90%" height="550px" />
   </div>
 
-<strong>Step 3 - Adding in Complications</strong>
+<strong>Step 4 - Adding in Complications</strong>
 <p>
 
 $$ V(X,k) \cdot p \cdot (1-p)^{\frac{n}{k} - 1} \geq \mathbb{E}[c]$$
@@ -977,7 +977,7 @@ If one wishes, one can now add in some of the complications from before, such as
 <em>Note: As a side note, when one adds in these correlations, we do need to adjust the value of the probability of success $p$ conditional on the innovation being possible. If our data says (e.g.) that these trials succeed 2.7% of the time, then the probability that the trials succeed conditional on being possible at all (using our parameters) becomes </em> $0.027 \div \frac{3}{4} \div \frac{2}{3} = 0.054 = 5.4\%$
 
 <p></p>
-<strong>Step 4 - Converting into Nominal Terms</strong>
+<strong>Converting into Nominal Terms</strong>
 
 <p>
 The above formula gives only the present value to the firm. But it does not tell us exactly how much money one needs to raise. To do so, we need to understand how long this innovation might take. More distant innovations will result in longer lags between research investment and ultimate payout, and thus require larger rewards in order to induce entry. Industry literature and expert interviews can give some bounds on this estimate. In this case, let us assume that research takes eight years from start to finish.
