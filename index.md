@@ -1,6 +1,6 @@
 ---
 layout: default
-title: How Much to Offer? A Practical Guide to Sizing Innovation Incentives
+title: A Practical Guide to Sizing Innovation Incentives
 ---
 <link rel="stylesheet" href="style.css">
 
