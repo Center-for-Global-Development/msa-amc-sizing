@@ -64,7 +64,7 @@ title: A Practical Guide to Sizing Innovation Incentives
             <li><a href="#program_size">Determining the Overall Program Size</a>
                 <ol> 
                     <li><a href="#number_of_attempts">Target Number of Attempts</a></li>
-                    <li><a href="#cost_of_multiple_attempts">The Cost of Incentivizng Multiple Attempts</a></li>
+                    <li><a href="#cost_of_multiple_attempts">The Cost of Incentivizing Multiple Attempts</a></li>
                 </ol>
             </li>
             <li><a href="#total_costs">Total Costs and Cost Effectiveness</a>
