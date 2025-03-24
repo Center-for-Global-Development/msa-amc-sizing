@@ -76,13 +76,13 @@ title: A Practical Guide to Sizing Innovation Incentives
             <li><a href="#conclusion">Conclusion</a></li>
             <li><a href="#appendix">Appendix</a>
                 <ol>
-                <li><a href="#complete_example">Complete Example</a></li>
                 <li><a href="#other-considerations">Other Sizing Considerations</a>
                         <ol>
                             <li><a href="#pipeline">Within and Across Firm Attempts</a></li>
                             <li><a href="#correlation-section">Correlated Probabilities</a></li>
                         </ol>
                     </li>
+                <li><a href="#complete_example">Complete Example</a></li>
                 </ol>
             </li>
         </ol>
@@ -844,8 +844,164 @@ Additional resources about pull mechanisms are available on the Market Shaping A
 
 
 <h2 id="appendix">Appendix</h2>
+<h3 id="other-considerations">a. Other Considerations</h3>
 
-<h3 id="complete_example">A full example</h3>
+<h4 id="pipeline">Within and across firm attempts: pipeline approaches to innovation</h4>
+
+The above analysis assumes a competitive market where each firm makes a single attempt. However, this assumption may be unrealistic, as in reality firms tend to make multiple attempts; why go through all the effort hiring researchers and expensive equipment only to make a single attempt?  Suppose research trials have a 2% success rate and a pull designer desires a 50% probability of at least one success: the above formula suggests that the funder now needs to incentivize at least 35 attempts. The notion that 35 attempts will be satisfied by 35 different firms seems unlikely: maybe five firms conducting seven attempts each is more plausible.
+
+As a result, we can consider how the model changes if one imposes constraints on the number of firms that are <span class="tooltip-word">capable of responding<span class="tooltip-text">In reality, there is no “hard cap” on the number of firms that exist in a market. After all, a large incentive can induce new firms to enter. We impose this limit not as a reflection of reality but rather to tractably illustrate the principle</span></span>. Intuitively, this restriction requires firms to initiate multiple attempts each. The marginal cost to the funder to induce that additional attempt will be higher than under the previous one-attempt-per-firm model as a firm now faces a risk of self-competition. Intuitively, the fewer possible firms in the market, the greater the premium the funder must pay. 
+
+<button class="see-more-btn" onclick="toggleDetails('monopoly-constraints')">Show math</button>
+<div id="monopoly-constraints" class="details-box">
+
+<table>
+    <thead>
+        <tr>
+            <th>Variable Name</th>
+            <th>Description </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$\theta$</td>
+            <td>Target probability of success </td>
+        </tr>
+        <tr>
+            <td>$n$</td>
+            <td>Number of attempts </td>
+        </tr>
+        <tr>
+            <td>$p$</td>
+            <td>Per-attempt probability of success</td>
+        </tr>
+        <tr>
+            <td>$X$</td>
+            <td>Present value of pull incentive</td>
+        </tr>
+        <tr>
+            <td>$\mathbb{E}[c]$</td>
+            <td>Present value of expected cost per innovation attempt</td>
+        </tr>
+    </tbody>
+</table>
+
+Consider an extreme case of a monopoly firm. The monopolist receives no additional reward for having multiple successes. As a result, a marginal attempt is only valuable when all other attempts fail (with probability $(1-p)^{n-1}$), but that one additional attempt succeeds (with probability $p$). Thus, we get the value equation of
+
+$$ X \cdot p \cdot (1-p)^{n-1} \geq \mathbb{E}[c]$$
+
+The number of attempts needed to achieve at least a $\theta$ probability of success does not change. As a result, we plug $n \geq \frac{\ln(1-\theta)}{\ln(1-p)}$ into the above equation, producing:
+
+$$ X \geq \frac{1-p}{p \cdot (1-\theta)} \cdot \mathbb{E}[c]$$
+
+We can see that for all $\theta > p$, the needed pull size for a monopolist exceeds the pull size for a competitive market (when $\theta \leq p$, one only needs to induce one attempt so the two cases are identical).
+<br>
+<br>
+In reality, neither a monopolist nor a perfectly fragmented market is likely. Some in-between world is far more probable. The extent of the premium rapidly declines as the number of firms increases. The following section details the math, though one is encouraged to skip to the charts and tables for the intuition.
+
+Assume $k$ firms in the market. Because of the homogeneity assumption, each firm will now undertake $\frac{n}{k}$ attempts. Let us now define $\mathbb{V}(X,k)$ as the present value of the pull size given the number of firms in the market. 
+
+$$ V(X,k) \cdot p \cdot (1-p)^{\frac{n}{k} - 1} \geq \mathbb{E}[c]$$
+
+In the above, a firm's marginal additional attempt is only valuable if the marginal attempt succeeds ($p$) and all other attempts by that firm ($(1-p)^{\frac{n}{k}-1}$) fails.
+
+$$\mathbb{V}(X, k) = \sum_{i=0}^{k-1} \frac{1}{i+1} \cdot \mathbb{P}(\text{successes} = i) \cdot X $$
+
+In other words, thev value of winning depends on the number of other firms that are successful. The term $\frac{1}{i+1}$ represents the share of $X$ received by the firm given $i$ other successful firms.
+
+$$
+\mathbb{P}(\text{successes} = i) = \binom{k-1}{i} \cdot \left(p^{\frac{n}{k}}\right)^i \cdot \left((1-p)^{\frac{n}{k}}\right)^{k-1-i}
+$$
+
+The above equation is simply an expansion of the binomial formula where the number of attempts per firm is $\frac{n}{k}$ and is equivalent to calculating the probability of any specific number of heads when one flips a weighted coin $k-1$ times when the probability of any given flip resolving as heads if $(1-p)^{\frac{n}{k}}$. In cases where the number of attempts is not divisible by the number of firms, we split proportionately. For example, if there are 27 desired attempts and only five firms, three firms will conduct five attempts each, while two firms will conduct six.
+
+In practice, this approach results in a higher needed pull size than the “one attempt per firm” model, but a lower pull size than the monopolist case. Intuitively, the more attempts per firm, the larger the price premium grows. That said, the result tails off so quickly after the monopolist case that this factor is rarely worth considering. For example, if the probability of success per attempt was 6% and the target probability was 50%, having only four firms results in a pull size 8.8% larger than if there were enough firms to have one attempt per firm, but 25% cheaper than if there were only a single firm. However, if the target probability was 66.67% instead, a four firm world requires a 15.8% premium over the one-firm-per-attempt, but a 59.3% discount from a monopolist situation. 
+
+ <div style = "text-align: left;">
+    <embed style="border: none;" src="./number_of_firms_sizing.html" dpi="300" width="100%" height="800px" />
+  </div>
+
+</div>
+
+<h4 id="correlation-section">Correlated probabilities of success</h4>
+
+The above analysis assumes that all attempts are independent, that is, that different innovation attempts are not related to each other and do not affect each other’s chances of succeeding. This assumption is transparently unrealistic, for two reasons. First, the innovation itself may be impossible (or at least impossible in the near future). No amount of separate attempts would allow ancient Roman scientists to construct a modern computer. This is akin to saying that there is an upper bound on the total probability that at least one attempt succeeds. Second, different attempts all made by the same firm are likely more correlated to each other than they are to attempts made by other firms.
+
+Unfortunately, the level of correlation between attempts is unobservable, and designers should use their discretion to incorporate this factor. In general, considering correlation between attempts will raise costs, generally on the magnitude of 10-50%. 
+
+<button class="see-more-btn" onclick="toggleDetails('correlation')">Show math</button>
+<div id="correlation" class="details-box">
+<table>
+    <thead>
+        <tr>
+            <th>Variable Name</th>
+            <th>Description </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$\theta$</td>
+            <td>Target probability of success </td>
+        </tr>
+        <tr>
+            <td>$n$</td>
+            <td>Number of attempts </td>
+        </tr>
+        <tr>
+            <td>$p$</td>
+            <td>Per-attempt probability of success</td>
+        </tr>
+        <tr>
+            <td>$X$</td>
+            <td>Present value of pull incentive</td>
+        </tr>
+        <tr>
+            <td>$\mathbb{E}[c]$</td>
+            <td>Present value of expected cost per innovation attempt</td>
+        </tr>
+        <tr>
+            <td>$\eta$</td>
+            <td>Global possibility parameter</td>
+        </tr>
+        <tr>
+            <td>$\gamma$</td>
+            <td>In-firm possibility parameter</td>
+        </tr>
+        <tr>
+            <td>$m$</td>
+            <td>Number of attempts per firm</td>
+        </tr>
+    </tbody>
+</table>
+
+We can thus introduce two sources of correlation: a global parameter that reflects the maximum probability of success given an arbitrarily large number of firms and attempts, and a local parameter that reflects the possibility that any given firm could possibly succeed. These changes effectively add an “impossibility ceiling” on the probability of success.
+
+In practice, introducing this two-stage correlation structure has two effects on the total pull size: 1) the marginal cost of increasing the target probability of success rises dramatically and 2) the marginal cost for having a concentrated market with few firms rises concurrently. 
+
+In the following equations, let  represent the global possibility parameter and  be the intra-firm possibility parameter. m is the number of attempts per firm.
+
+Set aside the global parameter for now and let us focus our efforts on the within-firm possibility parameter $\gamma$. 
+
+$$\mathbb{P}_{firm}(success \geq 1) = \gamma \cdot (1-(1-p)^m) $$
+
+The probability that all of a firm's attempts fail is the sum of the probability that the approach is fundamentally infeasible ($1 - \gamma$) and the probability that the approach is feasible ($\gamma$) but all of the attempts fail regardless ($(1-p)^m$). Putting together, one gets $$\mathbb{P}_{firm}(success \geq 1) = 1 - [(1-\gamma) + \gamma \cdot (1-p)^m]$$
+
+This equation simplifies to the previous equation. Now to introduce the global possibility parameter $\eta$.
+
+$$\mathbb{P}_{all}(success \geq 1) = \eta \cdot (1 - [1-\gamma \cdot (1-(1-p)^m)]^k) \geq \theta$$
+
+The goal is to get the probability of success to exceed the target threshold. With the new global possibility parameter, the probability that at least one firm succeeds is the probability that any given firm succeeds conditional on the innovation being possible (from Equation 4.1) multiplied by the possibility $\eta$ that the innovation is at all possible.
+
+$$m \geq \frac{\ln(1-\frac{1-(1-\frac{\theta}{\eta})^{\frac{1}{k}}}{\gamma})}{\ln(1-p)}$$
+
+Algebraic rearrangement of the second equation produces the third. There is no simplified form for the necessary pull size. Instead, one can insert the value of $m$ into the equation for the finite firms, replacing the $\frac{n}{k}$ term that represnts attempts per firm with the value for $m$ found in Equation 4.3.
+
+</div>
+
+In practice, introducing correlation substantially increases the needed pull size, as the number of attempts needed to reach the same probability of success increases dramatically. 
+
+
+<h3 id="complete_example">b. A full example</h3>
 
 The following button will walk the reader through a complete example from start to finish, using the case study of vaccines to reduce enteric methane emissions from cattle that the MSA has worked on over the last year.
 
@@ -1094,162 +1250,6 @@ Then divide the total needed present value (\$207.8 million) by the “effective
 </p>
 
 </div>
-
-<h3 id="other-considerations">b. Other Considerations</h3>
-
-<h4 id="pipeline">Within and across firm attempts: pipeline approaches to innovation</h4>
-
-The above analysis assumes a competitive market where each firm makes a single attempt. However, this assumption may be unrealistic, as in reality firms tend to make multiple attempts; why go through all the effort hiring researchers and expensive equipment only to make a single attempt?  Suppose research trials have a 2% success rate and a pull designer desires a 50% probability of at least one success: the above formula suggests that the funder now needs to incentivize at least 35 attempts. The notion that 35 attempts will be satisfied by 35 different firms seems unlikely: maybe five firms conducting seven attempts each is more plausible.
-
-As a result, we can consider how the model changes if one imposes constraints on the number of firms that are <span class="tooltip-word">capable of responding<span class="tooltip-text">In reality, there is no “hard cap” on the number of firms that exist in a market. After all, a large incentive can induce new firms to enter. We impose this limit not as a reflection of reality but rather to tractably illustrate the principle</span></span>. Intuitively, this restriction requires firms to initiate multiple attempts each. The marginal cost to the funder to induce that additional attempt will be higher than under the previous one-attempt-per-firm model as a firm now faces a risk of self-competition. Intuitively, the fewer possible firms in the market, the greater the premium the funder must pay. 
-
-<button class="see-more-btn" onclick="toggleDetails('monopoly-constraints')">Show math</button>
-<div id="monopoly-constraints" class="details-box">
-
-<table>
-    <thead>
-        <tr>
-            <th>Variable Name</th>
-            <th>Description </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>$\theta$</td>
-            <td>Target probability of success </td>
-        </tr>
-        <tr>
-            <td>$n$</td>
-            <td>Number of attempts </td>
-        </tr>
-        <tr>
-            <td>$p$</td>
-            <td>Per-attempt probability of success</td>
-        </tr>
-        <tr>
-            <td>$X$</td>
-            <td>Present value of pull incentive</td>
-        </tr>
-        <tr>
-            <td>$\mathbb{E}[c]$</td>
-            <td>Present value of expected cost per innovation attempt</td>
-        </tr>
-    </tbody>
-</table>
-
-Consider an extreme case of a monopoly firm. The monopolist receives no additional reward for having multiple successes. As a result, a marginal attempt is only valuable when all other attempts fail (with probability $(1-p)^{n-1}$), but that one additional attempt succeeds (with probability $p$). Thus, we get the value equation of
-
-$$ X \cdot p \cdot (1-p)^{n-1} \geq \mathbb{E}[c]$$
-
-The number of attempts needed to achieve at least a $\theta$ probability of success does not change. As a result, we plug $n \geq \frac{\ln(1-\theta)}{\ln(1-p)}$ into the above equation, producing:
-
-$$ X \geq \frac{1-p}{p \cdot (1-\theta)} \cdot \mathbb{E}[c]$$
-
-We can see that for all $\theta > p$, the needed pull size for a monopolist exceeds the pull size for a competitive market (when $\theta \leq p$, one only needs to induce one attempt so the two cases are identical).
-<br>
-<br>
-In reality, neither a monopolist nor a perfectly fragmented market is likely. Some in-between world is far more probable. The extent of the premium rapidly declines as the number of firms increases. The following section details the math, though one is encouraged to skip to the charts and tables for the intuition.
-
-Assume $k$ firms in the market. Because of the homogeneity assumption, each firm will now undertake $\frac{n}{k}$ attempts. Let us now define $\mathbb{V}(X,k)$ as the present value of the pull size given the number of firms in the market. 
-
-$$ V(X,k) \cdot p \cdot (1-p)^{\frac{n}{k} - 1} \geq \mathbb{E}[c]$$
-
-In the above, a firm's marginal additional attempt is only valuable if the marginal attempt succeeds ($p$) and all other attempts by that firm ($(1-p)^{\frac{n}{k}-1}$) fails.
-
-$$\mathbb{V}(X, k) = \sum_{i=0}^{k-1} \frac{1}{i+1} \cdot \mathbb{P}(\text{successes} = i) \cdot X $$
-
-In other words, thev value of winning depends on the number of other firms that are successful. The term $\frac{1}{i+1}$ represents the share of $X$ received by the firm given $i$ other successful firms.
-
-$$
-\mathbb{P}(\text{successes} = i) = \binom{k-1}{i} \cdot \left(p^{\frac{n}{k}}\right)^i \cdot \left((1-p)^{\frac{n}{k}}\right)^{k-1-i}
-$$
-
-The above equation is simply an expansion of the binomial formula where the number of attempts per firm is $\frac{n}{k}$ and is equivalent to calculating the probability of any specific number of heads when one flips a weighted coin $k-1$ times when the probability of any given flip resolving as heads if $(1-p)^{\frac{n}{k}}$. In cases where the number of attempts is not divisible by the number of firms, we split proportionately. For example, if there are 27 desired attempts and only five firms, three firms will conduct five attempts each, while two firms will conduct six.
-
-In practice, this approach results in a higher needed pull size than the “one attempt per firm” model, but a lower pull size than the monopolist case. Intuitively, the more attempts per firm, the larger the price premium grows. That said, the result tails off so quickly after the monopolist case that this factor is rarely worth considering. For example, if the probability of success per attempt was 6% and the target probability was 50%, having only four firms results in a pull size 8.8% larger than if there were enough firms to have one attempt per firm, but 25% cheaper than if there were only a single firm. However, if the target probability was 66.67% instead, a four firm world requires a 15.8% premium over the one-firm-per-attempt, but a 59.3% discount from a monopolist situation. 
-
- <div style = "text-align: left;">
-    <embed style="border: none;" src="./number_of_firms_sizing.html" dpi="300" width="100%" height="800px" />
-  </div>
-
-</div>
-
-<h4 id="correlation-section">Correlated probabilities of success</h4>
-
-The above analysis assumes that all attempts are independent, that is, that different innovation attempts are not related to each other and do not affect each other’s chances of succeeding. This assumption is transparently unrealistic, for two reasons. First, the innovation itself may be impossible (or at least impossible in the near future). No amount of separate attempts would allow ancient Roman scientists to construct a modern computer. This is akin to saying that there is an upper bound on the total probability that at least one attempt succeeds. Second, different attempts all made by the same firm are likely more correlated to each other than they are to attempts made by other firms.
-
-Unfortunately, the level of correlation between attempts is unobservable, and designers should use their discretion to incorporate this factor. In general, considering correlation between attempts will raise costs, generally on the magnitude of 10-50%. 
-
-<button class="see-more-btn" onclick="toggleDetails('correlation')">Show math</button>
-<div id="correlation" class="details-box">
-<table>
-    <thead>
-        <tr>
-            <th>Variable Name</th>
-            <th>Description </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>$\theta$</td>
-            <td>Target probability of success </td>
-        </tr>
-        <tr>
-            <td>$n$</td>
-            <td>Number of attempts </td>
-        </tr>
-        <tr>
-            <td>$p$</td>
-            <td>Per-attempt probability of success</td>
-        </tr>
-        <tr>
-            <td>$X$</td>
-            <td>Present value of pull incentive</td>
-        </tr>
-        <tr>
-            <td>$\mathbb{E}[c]$</td>
-            <td>Present value of expected cost per innovation attempt</td>
-        </tr>
-        <tr>
-            <td>$\eta$</td>
-            <td>Global possibility parameter</td>
-        </tr>
-        <tr>
-            <td>$\gamma$</td>
-            <td>In-firm possibility parameter</td>
-        </tr>
-        <tr>
-            <td>$m$</td>
-            <td>Number of attempts per firm</td>
-        </tr>
-    </tbody>
-</table>
-
-We can thus introduce two sources of correlation: a global parameter that reflects the maximum probability of success given an arbitrarily large number of firms and attempts, and a local parameter that reflects the possibility that any given firm could possibly succeed. These changes effectively add an “impossibility ceiling” on the probability of success.
-
-In practice, introducing this two-stage correlation structure has two effects on the total pull size: 1) the marginal cost of increasing the target probability of success rises dramatically and 2) the marginal cost for having a concentrated market with few firms rises concurrently. 
-
-In the following equations, let  represent the global possibility parameter and  be the intra-firm possibility parameter. m is the number of attempts per firm.
-
-Set aside the global parameter for now and let us focus our efforts on the within-firm possibility parameter $\gamma$. 
-
-$$\mathbb{P}_{firm}(success \geq 1) = \gamma \cdot (1-(1-p)^m) $$
-
-The probability that all of a firm's attempts fail is the sum of the probability that the approach is fundamentally infeasible ($1 - \gamma$) and the probability that the approach is feasible ($\gamma$) but all of the attempts fail regardless ($(1-p)^m$). Putting together, one gets $$\mathbb{P}_{firm}(success \geq 1) = 1 - [(1-\gamma) + \gamma \cdot (1-p)^m]$$
-
-This equation simplifies to the previous equation. Now to introduce the global possibility parameter $\eta$.
-
-$$\mathbb{P}_{all}(success \geq 1) = \eta \cdot (1 - [1-\gamma \cdot (1-(1-p)^m)]^k) \geq \theta$$
-
-The goal is to get the probability of success to exceed the target threshold. With the new global possibility parameter, the probability that at least one firm succeeds is the probability that any given firm succeeds conditional on the innovation being possible (from Equation 4.1) multiplied by the possibility $\eta$ that the innovation is at all possible.
-
-$$m \geq \frac{\ln(1-\frac{1-(1-\frac{\theta}{\eta})^{\frac{1}{k}}}{\gamma})}{\ln(1-p)}$$
-
-Algebraic rearrangement of the second equation produces the third. There is no simplified form for the necessary pull size. Instead, one can insert the value of $m$ into the equation for the finite firms, replacing the $\frac{n}{k}$ term that represnts attempts per firm with the value for $m$ found in Equation 4.3.
-
-</div>
-
-In practice, introducing correlation substantially increases the needed pull size, as the number of attempts needed to reach the same probability of success increases dramatically. 
 
 <iframe 
     src="complete_sizing_graph.html" 
