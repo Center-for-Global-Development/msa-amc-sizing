@@ -80,6 +80,7 @@ title: A Practical Guide to Sizing Innovation Incentives
                         <ol>
                             <li><a href="#pipeline">Within and Across Firm Attempts</a></li>
                             <li><a href="#correlation-section">Correlated Probabilities</a></li>
+                            <li><a href="#subsidy-passthrough-section">Competition & Subsidy Passthrough</a></li>
                         </ol>
                     </li>
                 <li><a href="#complete_example">Complete Example</a></li>
@@ -1043,7 +1044,7 @@ Let us start by assuming Cournot competition, where firms decide the amount of q
 <p>Installing a 10-20% premium on top of the existing model would be an over-simplification, though not a terribly inaccurate one. A small AMC where the probability of multiple successful winners is very low will need little premium. A large AMC where one targets a high probability of success (and thus a high probability of duplication) will need a larger premium. In the chart below, the y-axis represents the increase in relative payments incorporating passthrough to the previous estimates, which assumed 0% passthrough.</p>
 
 <div style = "text-align: left;">
-    <embed style="border: none;" src="./passthrough_chart.html" dpi="300" width="90%" height="800px" />
+    <embed style="border: none;" src="./passthrough_chart.html" dpi="300" width="90%" height="900px" />
   </div>
 
 
