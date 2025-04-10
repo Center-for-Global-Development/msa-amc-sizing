@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premium from incorporating passthrough</title>
+  <!-- Include Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body {
+      margin: 0; 
+      font-family: Georgia;
+    }
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    #graph-container {
+      width: 100%;
+      margin: auto;
+    }
+    figure {
+      margin: 0;
+      padding: 0;
+    }
+    .label-input-container {
+      display: flex;
+      align-items: center;
+      margin: 1rem 0;
+      font-family: Georgia;
+    }
+    .label-input-container label {
+      margin-right: 0.5rem;
+      font-weight: bold;
+    }
+    .label-input-container input {
+      padding: 0.25rem;
+      font-size: 1rem;
+      width: 5rem;
+      font-family: Georgia;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+    .buttons-container {
+      text-align: center;
+      margin: 1rem 0;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #800000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: Georgia;
+      margin-right: 1rem;
+    }
+    #error-message {
+      color: red;
+      font-weight: bold;
+      font-family: Georgia;
+      margin: 1rem 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1 style="text-align: center;">Premium from incorporating passthrough</h1>
+    <!-- Graph container -->
+    <div id="graph-container">
+      <div id="graph"></div>
+    </div>
+
+    <!-- Flip axes & Range toggle -->
+    <div class="buttons-container">
+      <button id="flip-button">Flip Axes</button>
+      <label style="display:inline-block; margin-left:1rem;">
+        <input type="checkbox" id="axis-range-toggle" />
+        Restrict range to 25-75%
+      </label>
+    </div>
+
+    <!-- Input fields -->
+    <div class="label-input-container">
+      <label for="p-input">Probability of success per attempt (%):</label>
+      <input type="number" id="p-input" step="any" value="3" placeholder="3 => 0.03"/>
+    </div>
+    <div class="label-input-container">
+      <label for="eta-input">Global Possibility (η, %):</label>
+      <input type="number" id="eta-input" step="any" value="90" placeholder="90 => 0.9"/>
+    </div>
+    <div class="label-input-container">
+      <label for="k-input">Number of Firms (k):</label>
+      <input type="number" id="k-input" step="1" value="10" placeholder="1..20"/>
+    </div>
+    <div class="label-input-container">
+      <label for="gamma-input">Per-Firm Possibility (γ, %):</label>
+      <input type="number" id="gamma-input" step="any" value="80" placeholder="80 => 0.8"/>
+    </div>
+
+    <!-- Submit button and error message -->
+    <div class="buttons-container">
+      <button id="submit-button">Submit</button>
+    </div>
+    <div id="error-message"></div>
+
+    <figure>
+      <figcaption style="text-align: center; margin-top: 10px; font-size: smaller;">
+        This chart compares the original marginal benefit calculation with the alternative calculation. The y-axis shows how much higher (in %) the alternative value is relative to the original.
+      </figcaption>
+    </figure>
+
+    <script>
+      // Basic helper functions
+      function combination(n, r) {
+        if (r > n) return 0;
+        let result = 1;
+        for (let i = 0; i < r; i++) {
+          result *= (n - i) / (i + 1);
+        }
+        return result;
+      }
+
+      function calculateProbabilityExactZ(z, numFirmsMin, minProb, numFirmsMax, maxProb) {
+        let probability = 0;
+        for (let k = 0; k <= Math.min(z, numFirmsMin); k++) {
+          const j = z - k;
+          if (j >= 0 && j <= numFirmsMax) {
+            const probMin = combination(numFirmsMin, k) * Math.pow(minProb, k) * Math.pow(1 - minProb, numFirmsMin - k);
+            const probMax = combination(numFirmsMax, j) * Math.pow(maxProb, j) * Math.pow(1 - maxProb, numFirmsMax - j);
+            probability += probMin * probMax;
+          }
+        }
+        return probability;
+      }
+
+      // Original marginal cost function
+      function marginalCostFunction(numFirmsMin, numFirmsMax, numAttemptsMin, numAttemptsSame, p, eta, gamma) {
+        const probMarginMatters = p * Math.pow(1 - p, numAttemptsSame - 1);
+        const minProb = 1 - Math.pow(1 - p, numAttemptsMin);
+        const maxProb = 1 - Math.pow(1 - p, numAttemptsMin + 1);
+        let cumulativeValue = 0;
+        for (let z = 0; z <= numFirmsMin + numFirmsMax; z++) {
+          const probability = calculateProbabilityExactZ(z, numFirmsMin, minProb, numFirmsMax, maxProb);
+          const val = probability * (1 / (z + 1)) * probMarginMatters;
+          cumulativeValue += val;
+        }
+        return 1 / cumulativeValue;
+      }
+
+      // Alternative marginal cost function with new calculation
+      function marginalCostFunctionAlt(numFirmsMin, numFirmsMax, numAttemptsMin, numAttemptsSame, p, eta, gamma) {
+        const probMarginMatters = p * Math.pow(1 - p, numAttemptsSame - 1);
+        const minProb = 1 - Math.pow(1 - p, numAttemptsMin);
+        const maxProb = 1 - Math.pow(1 - p, numAttemptsMin + 1);
+        let cumulativeValue = 0;
+        for (let z = 0; z <= numFirmsMin + numFirmsMax; z++) {
+          const probability = calculateProbabilityExactZ(z, numFirmsMin, minProb, numFirmsMax, maxProb);
+          // New calculation: note use of Math.pow for exponentiation
+          const val = probability * (4 / Math.pow(z + 2, 2)) * probMarginMatters;
+          cumulativeValue += val;
+        }
+        return 1 / cumulativeValue;
+      }
+
+      // Original outputMarginalBenefit function
+      function outputMarginalBenefit(theta, p, k, eta, gamma) {
+        if (theta / eta >= 1) return null;
+        const innerExpr = 1 - (1 - Math.pow(1 - theta / eta, 1 / k)) / gamma;
+        if (innerExpr <= 0 || innerExpr >= 1) return null;
+        const n = Math.log(innerExpr) / Math.log(1 - p);
+        const a = Math.floor(n);
+        const y = Math.ceil(k * (n - a));
+        const x = k - y;
+        const ceilingProbability = y / k;
+        const val1 = ceilingProbability * marginalCostFunction(
+          x,
+          Math.max(y - 1, 0),
+          a,
+          a + 1,
+          p,
+          eta,
+          gamma
+        );
+        const val2 = (1 - ceilingProbability) * marginalCostFunction(
+          Math.max(x - 1, 0),
+          y,
+          a,
+          a,
+          p,
+          eta,
+          gamma
+        );
+        return val1 + val2;
+      }
+
+      // Alternative outputMarginalBenefit using the alternative cost function
+      function outputMarginalBenefitAlt(theta, p, k, eta, gamma) {
+        if (theta / eta >= 1) return null;
+        const innerExpr = 1 - (1 - Math.pow(1 - theta / eta, 1 / k)) / gamma;
+        if (innerExpr <= 0 || innerExpr >= 1) return null;
+        const n = Math.log(innerExpr) / Math.log(1 - p);
+        const a = Math.floor(n);
+        const y = Math.ceil(k * (n - a));
+        const x = k - y;
+        const ceilingProbability = y / k;
+        const val1 = ceilingProbability * marginalCostFunctionAlt(
+          x,
+          Math.max(y - 1, 0),
+          a,
+          a + 1,
+          p,
+          eta,
+          gamma
+        );
+        const val2 = (1 - ceilingProbability) * marginalCostFunctionAlt(
+          Math.max(x - 1, 0),
+          y,
+          a,
+          a,
+          p,
+          eta,
+          gamma
+        );
+        return val1 + val2;
+      }
+
+      // Global theta values
+      const thetaValues = Array.from({ length: 100 }, (_, i) => 0.25 + i * 0.0074);
+
+      // Track flip state
+      let isFlipped = false;
+
+      // DOM elements
+      const graphDiv         = document.getElementById("graph");
+      const flipButton       = document.getElementById("flip-button");
+      const axisToggle       = document.getElementById("axis-range-toggle");
+      const pInput           = document.getElementById("p-input");
+      const etaInput         = document.getElementById("eta-input");
+      const kInput           = document.getElementById("k-input");
+      const gammaInput       = document.getElementById("gamma-input");
+      const submitButton     = document.getElementById("submit-button");
+      const errorMessageDiv  = document.getElementById("error-message");
+
+      // Main plotting function: compute % higher difference and update the graph
+      function updateGraph(p, eta, k, gamma, restrictRange) {
+        const originalBenefits = thetaValues.map(t => outputMarginalBenefit(t, p, k, eta, gamma));
+        const altBenefits = thetaValues.map(t => outputMarginalBenefitAlt(t, p, k, eta, gamma));
+        const diffPercent = thetaValues.map((t, i) => {
+          const orig = originalBenefits[i];
+          const alt = altBenefits[i];
+          if (orig === null || alt === null) return null;
+          return ((alt - orig) / orig) * 100;
+        });
+
+        let trace, layout;
+        if (!isFlipped) {
+          trace = {
+            x: thetaValues,
+            y: diffPercent,
+            mode: "lines",
+            line: { color: "#800000", width: 6 },
+            name: "% Higher (Alt vs Original)"
+          };
+          layout = {
+            font: { family: "Georgia", color: "black" },
+            xaxis: {
+              title: { text: "Target Probability of Success", font: { family: "Georgia", color: "black" } },
+              tickformat: ".0%",
+              range: restrictRange ? [0.25, 0.75] : [0.25, 0.99],
+              showline: true,
+              linecolor: "black",
+              linewidth: 4
+            },
+            yaxis: {
+              title: { text: "Percentage Higher (%)", font: { family: "Georgia", color: "black" } },
+              showline: true,
+              linecolor: "black",
+              linewidth: 4,
+              rangemode: "tozero"
+            },
+            plot_bgcolor: "#ffffff",
+            margin: { t: 80, b: 50, l: 60, r: 30 },
+            legend: {
+              orientation: "h",
+              xanchor: "center",
+              x: 0.5,
+              yanchor: "bottom",
+              y: 1.15
+            }
+          };
+        } else {
+          trace = {
+            x: diffPercent,
+            y: thetaValues,
+            mode: "lines",
+            line: { color: "#800000", width: 6 },
+            name: "% Higher (Alt vs Original)"
+          };
+          layout = {
+            font: { family: "Georgia", color: "black" },
+            xaxis: {
+              title: { text: "Percentage Higher (%)", font: { family: "Georgia", color: "black" } },
+              showline: true,
+              linecolor: "black",
+              linewidth: 4
+            },
+            yaxis: {
+              title: { text: "Target Probability of Success", font: { family: "Georgia", color: "black" } },
+              tickformat: ".0%",
+              range: restrictRange ? [0.25, 0.75] : [0.25, 0.99],
+              showline: true,
+              linecolor: "black",
+              linewidth: 4,
+              rangemode: "tozero"
+            },
+            plot_bgcolor: "#ffffff",
+            margin: { t: 80, b: 50, l: 60, r: 30 },
+            legend: {
+              orientation: "h",
+              xanchor: "center",
+              x: 0.5,
+              yanchor: "bottom",
+              y: 1.15
+            }
+          };
+        }
+        const config = { responsive: true };
+        Plotly.newPlot(graphDiv, [trace], layout, config);
+      }
+
+      // Input validation & parsing
+      function parseInputs() {
+        const rawP = parseFloat(pInput.value);
+        if (isNaN(rawP) || rawP < 1 || rawP > 25) return null;
+        const p = rawP / 100;
+
+        const rawEta = parseFloat(etaInput.value);
+        if (isNaN(rawEta) || rawEta < 50 || rawEta > 100) return null;
+        const eta = rawEta / 100;
+
+        const rawK = parseFloat(kInput.value);
+        if (isNaN(rawK) || rawK < 1 || rawK > 20) return null;
+        const k = Math.round(rawK);
+
+        const rawGamma = parseFloat(gammaInput.value);
+        if (isNaN(rawGamma) || rawGamma < 50 || rawGamma > 100) return null;
+        const gamma = rawGamma / 100;
+
+        const restrictRange = axisToggle.checked;
+        return { p, eta, k, gamma, restrictRange };
+      }
+
+      // Event handlers
+      flipButton.addEventListener("click", () => {
+        isFlipped = !isFlipped;
+        const inputs = parseInputs();
+        if (inputs) {
+          errorMessageDiv.innerText = "";
+          updateGraph(inputs.p, inputs.eta, inputs.k, inputs.gamma, inputs.restrictRange);
+        } else {
+          errorMessageDiv.innerText = "Please enter valid numbers before flipping axes.";
+        }
+      });
+
+      axisToggle.addEventListener("change", () => {
+        const inputs = parseInputs();
+        if (inputs) {
+          errorMessageDiv.innerText = "";
+          updateGraph(inputs.p, inputs.eta, inputs.k, inputs.gamma, inputs.restrictRange);
+        } else {
+          errorMessageDiv.innerText = "Please enter valid numbers before toggling the range.";
+        }
+      });
+
+      submitButton.addEventListener("click", () => {
+        const inputs = parseInputs();
+        if (!inputs) {
+          errorMessageDiv.innerText = "Please enter valid numbers in the required ranges.";
+        } else {
+          errorMessageDiv.innerText = "";
+          updateGraph(inputs.p, inputs.eta, inputs.k, inputs.gamma, inputs.restrictRange);
+        }
+      });
+
+      // Initial plot using default inputs
+      const initialInputs = parseInputs();
+      if (initialInputs) {
+        updateGraph(initialInputs.p, initialInputs.eta, initialInputs.k, initialInputs.gamma, initialInputs.restrictRange);
+      } else {
+        errorMessageDiv.innerText = "Invalid default inputs — please adjust and submit.";
+      }
+    </script>
+  </div>
+</body>
+</html>

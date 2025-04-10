@@ -171,7 +171,7 @@
         let cumulativeValue = 0;
         for (let z = 0; z <= numFirmsMin + numFirmsMax; z++) {
           const probability = calculateProbabilityExactZ(z, numFirmsMin, minProb, numFirmsMax, maxProb);
-          const val = probability * (1 / (z + 1)) * probMarginMatters;
+          const val = probability * 4 / Math.pow(z + 2, 2) * probMarginMatters;
           cumulativeValue += val;
         }
         return 1 / cumulativeValue;

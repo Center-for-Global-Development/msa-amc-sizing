@@ -1001,6 +1001,58 @@ Algebraic rearrangement of the second equation produces the third. There is no s
 In practice, introducing correlation substantially increases the needed pull size, as the number of attempts needed to reach the same probability of success increases dramatically. 
 
 
+<h4 id="subsidy-passthrough-section">Subsidy passthrough</h4>
+
+Our existing method estimating the appropriate size of an advance market commitment (AMC) assumes that the innovative firm receives the entirety of the subsidy pool, with no effect on the price of the novel good sold. For example, this model assumes that a three dollar per-unit subsidy would increase the profit per good sold by precisely three dollars.
+
+This assumption is transparently erroneous. Absent binding supply constraints, increasing the profitability per good sold will induce firms to produce more. Assuming a downward-sloping demand curve, greater supply will in turn induce lower prices. By driving prices lower, the firm captures only part of the subsidy, while consumers capture the rest. A three dollar per-unit subsidy will not increase profit per good sold by three dollars, but instead some unknown value less than three dollars. We consider the transmission of the subsidy to the consumer the problem of subsidy passthrough.
+
+In the existing model, doubling the number of firms cuts the profit per fim in half. A monopolist gets 100% of the total pool of money, a duopolist gets 50%, a triopolist 33.3%, etc. But, as above, this assumption is inaccurate for two reasons. First, competition induces firms to pass some of the subsidy onto the consumer, so a duopolist should get less than 50% of the profit of a monopolist. Second, competition induces firms to expand supply, by weakening the incentive for strategic withholding, which may increase total profits.
+
+Let us start by assuming Cournot competition, where firms decide the amount of quantity to produce and then the market sets the price. This model of competition hews more closely to reality for manufactured goods where capacity (e.g. the size of the factory) must be installed ahead of time; firms cannot costlessly and instantaneously ramp up their supply. The precise number depends on the exact slope of the supply and demand curve, but in general, the Cournot model produces a roughly 55% reduction in profit when moving from one to two firms. More generally, each of the k-firms will receive $\frac{4}{(k+1)^2}$ of the profit of a monopolist, instead of $\frac{1}{k}$.
+
+<button class="see-more-btn" onclick="toggleDetails('subsidy-passthrough')">Show math</button>
+<div id="subsidy-passthrough" class="details-box">
+
+<p>Assume a linear demand curve of the form $P(q) = a - b \cdot q$  where $P$ represents price, $a$ and $b$ are constants, and $q$ is the quantity set. The cost of production is constant at $c$ and the subsidy is $s$.</p>
+
+<p>Profit $\pi$ for a monopolist is set by the formula $\pi = (p - c + s) \cdot q$</p>
+
+<p>We can plug in the formula for p we found above and get $\pi = (a - b \cdot q - c + s) \cdot q$</p>
+
+<p>This expands out to $\pi = a \cdot q - b \cdot q^2 - c \cdot q + s \cdot q$ </p>
+
+<p>To maximize profit, we take the derivative of profit with respect to quantity, which is $\frac{d\pi}{dq} = a - 2 \cdot b \cdot q  - c + s$, and set equal to 0.</p>
+
+<p>In the end, we get $q = \frac{a - c + s}{2b}$</p>
+
+<p>Plug that value of $q$ into our formula for profit and we get $\pi = \frac{(a-c+s)^2}{4 \cdot b}$ </p>
+
+<p>How about for a duopolist? Much of the set up is the same, except that $q = q_1 + q_2$ and the firm can only control $q_1$. So we have $\pi_1 = (a - b \cdot (q_1 + q_2) - c + 2) \cdot q_1$ </p>
+
+<p>Because only $q_1$ is under our control, we take the derivative of $\pi$ with respect to $q_1$ and get $\frac{d\pi}{dq_1} = a -2 \cdot b \cdot q_1 - b \cdot q_2 - c + s = 0 $</p>
+
+<p>Since both firms are identical, we can now say $q_1 = q_2$. We can thus solve for $q_1 = \frac{a - c + 2}{3 \cdot b}$. Note that this results in a per-firm quantity $\frac{2}{3}$ of the monopolist quantity (and a total quantity that's $\frac{4}{3}$ as large).</p>
+
+<p>Plugging into the formula for profit, we get $\pi_q = \frac{(a-c+s)^2}{9 \cdot b}$. We can thus see that the profit is $\frac{4}{9}$ as large with the duopolist as with the monopolist firm.</p>
+
+<p>Extending to k-firms follows the same method. We just have $q = q_1 + q_2 + \ldots + q_k$ and $\pi_1 = (a - b \cdot (q_1 + q_2 + \ldots + q_k) - c + s)$. One can still take the derivative $\frac{d\pi}{dq_1} = a - 2 \cdot b \cdot q_1 - b \cdot q_2 - \ldots - b \cdot q_k - c + s = 0$. Since $q_1 = q_2 = \ldots = q_k$, we can see that a k-opolist receives $\frac{(a-c+s)^2}{(k+1)^2}$. The ratio of profit for a k-opolist to a monopolist is thus just $\frac{4}{(k+1)^2}$. A duopoist receives 44% of the profit, a triopolist receives 25%, etc.</p>
+
+<p>This result is not unique to linear demand functions. "Normal-looking" exponential or logarithmic demand functions that are standard in the literature all will produce very similar results. The sole exception will be "unusual" looking demand curves (e.g. perfectly elastic or inelastic demand, or step-wise functions, etc.)</p>
+
+<p>Installing a 10-20% premium on top of the existing model would be an over-simplification, though not a terribly inaccurate one. A small AMC where the probability of multiple successful winners is very low will need little premium. A large AMC where one targets a high probability of success (and thus a high probability of duplication) will need a larger premium. In the chart below, the y-axis represents the increase in relative payments incorporating passthrough to the previous estimates, which assumed 0% passthrough.</p>
+
+<div style = "text-align: left;">
+    <embed style="border: none;" src="./passthrough_chart.html" dpi="300" width="90%" height="800px" />
+  </div>
+
+
+</div>
+
+
+
+
+
 <h3 id="complete_example">b. A full example</h3>
 
 The following button will walk the reader through a complete example from start to finish, using the case study of vaccines to reduce enteric methane emissions from cattle that the MSA has worked on over the last year.
@@ -1156,7 +1208,7 @@ At this step, one also needs to include marginal costs of production and add tho
 </p>
 
 <p>
-Consider the above logistic chart of potential rollout. Cognizant that sales made in later years are less valuable to the company in present-value terms than sales made earlier, we can use computers to find the value of a per-unit subsidy such that the present value of all of these future payments exceeds \$207.8 million. To do so, one takes the number of doses projected to be sold each year and discount them (using the firm’s 8.05% discount rate) into “effective number of doses in current-year terms”. 
+Consider the above logistic chart of potential rollout. Cognizant that sales made in later years are less valuable to the company in present-value terms than sales made earlier, we can use computers to find the value of a per-unit subsidy such that the present value of all of these future payments exceeds \$227.8 million. To do so, one takes the number of doses projected to be sold each year and discount them (using the firm’s 8.05% discount rate) into “effective number of doses in current-year terms”. 
 </p>
 
 <table border="1" cellspacing="0" cellpadding="5">
@@ -1246,7 +1298,7 @@ Consider the above logistic chart of potential rollout. Cognizant that sales mad
 
 
 <p>
-Then divide the total needed present value (\$207.8 million) by the “effective present value of doses” and add in the \$2.25 to offset the cost of production to get a final answer of \$9.62/dose. We now have a total nominal price tag of \$887 million (multiplying the total subsidized doses by the total nominal cost). If we assume that the funder can earn a risk-free 2% interest rate on the money they put in escrow, the total amount of money they need to commit becomes <strong>\$653.8 million</strong>. Why is this value so much greater than the original \$207.8 million we found? Because the time value of money to the firm (8.05%) far exceeds the interest that the funder can get on the money they put in escrow (2%).
+Then divide the total needed present value (\$227.8 million) by the “effective present value of doses” and add in the \$2.25 to offset the cost of production to get a final answer of \$10.33/dose. We now have a total nominal price tag of \$952.4 million (multiplying the total subsidized doses by the total nominal cost). If we assume that the funder can earn a risk-free 2% interest rate on the money they put in escrow, the total amount of money they need to commit becomes <strong>\$702.1 million</strong>. Why is this value so much greater than the original \$227.8 million we found? Because the time value of money to the firm (8.05%) far exceeds the interest that the funder can get on the money they put in escrow (2%).
 </p>
 
 </div>
