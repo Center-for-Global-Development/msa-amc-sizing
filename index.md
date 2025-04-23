@@ -89,6 +89,11 @@ title: A Practical Guide to Sizing Innovation Incentives
         </ol>
 </nav>
 
+
+Contributing authors: William Arnesen & Claire McMahon, 2025
+
+---
+
 <div class="takeaways-box">
     <h3> KEY TAKEAWAYS</h3>
     <ol>
@@ -109,12 +114,15 @@ title: A Practical Guide to Sizing Innovation Incentives
 
 Funders using pull mechanisms face a crucial practical question: how large of an incentive should they offer? This guide provides a practical framework for answering that question, breaking down the complex factors that determine the optimal incentive size to attract serious development efforts.
 
-<span class="tooltip-word">Pull mechanisms<span class="tooltip-text">"Pull funding" is incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span> are funding tools that pay for successful outcomes. Unlike push funding, which pays for research inputs upfront, pull funding only pays out when specified goals are achieved - for instance, when a working technology is demonstrated or a product reaches the market. Pull mechanisms, which include prizes and <span class = "tooltip-word">advance market commitments<span class="tooltip-text">Advanced market commitments are agreements where governments or organizations commit to purchasing or subsidizing a product once it is successfully developed, guaranteeing a market for manufacturers.</span></span>, thus require the innovator to bear the costs and risks of developing the target technology. 
+<span class="tooltip-word">Pull mechanisms<span class="tooltip-text">"Pull funding" is incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span>, such as prizes and <span class = "tooltip-word">advance market commitments<span class="tooltip-text">Advanced market commitments are agreements where governments or organizations commit to purchasing or subsidizing a product once it is successfully developed, guaranteeing a market for manufacturers.</span></span> (AMCs), are funding tools that pay for successful outcomes. Unlike push funding, which pays for research inputs upfront, pull funding only pays out when specified goals are achieved - for instance, when a working technology is demonstrated or a product reaches the market. Pull mechanisms thus require the innovator to bear the costs and risks of developing the target technology. 
 
+This framework is a first-step, order-of-magnitude tool—particularly useful at the outset of a project, when funders are considering whether a pull mechanism could be viable, estimating the scale of funding needed, or determining what kind of institution (e.g., a philanthropic funder or a government agency) might be suited to support the effort. It’s built around simplifying assumptions and focused on innovations that proceed in discrete stages. 
 
-The framework in this piece focuses on providing an assessible guide to size pull mechanisms. Our approach draws from our experience evaluating incentive programs across sectors and builds on literature about pull incentives starting with <a href="https://www.aeaweb.org/articles?id=10.1257/pandp.20211103">Ahuja et. al 2021</a> and  <a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2021.4163">Kremer, Levin and Snyder 2022 </a>, among others.  While this approach continues to evolve as we learn from new applications, we believe it provides a useful starting point for funders considering pull mechanisms. The framework helps funders systematically assess development costs, technical risks, and market dynamics to determine appropriate incentive levels. For technical teams, we provide detailed mathematical models and real-world examples showing how to apply these principles to specific cases.
+Our approach draws from our experience evaluating pull mechanisms across sectors and builds on academic work by <a href="https://www.aeaweb.org/articles?id=10.1257/pandp.20211103">Ahuja et. al 2021</a> and <a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2021.4163">Kremer, Levin and Snyder 2022 </a>, among others. While grounded in theory, this is not an academic paper; it’s a practical explainer of our current best practices at the Market Shaping Accelerator. The model we present reflects a number of simplifying assumptions, some of which may not hold in every case.
 
-By breaking the sizing problem into a series of manageable steps, we aim to help funders and program designers develop more cost-effective and efficient innovation incentives. We begin with a conceptual framework for analyzing firm participation in pull mechanisms (<a href="#conceptual_framework">Section 2</a>), then examine how to estimate the key components of firms' costs and risks when pursuing innovation (<a href="#understanding_costs">Section 3</a>). Building on this foundation, we show how to determine optimal program size by analyzing incentives needed for different target probabilities of success (<a href="program_size">Section 4</a>). We then discuss how to evaluate cost-effectiveness and assess total program costs (<a href="total_costs">Section 5</a>). The appendix provides a detailed <a href="#complete_example">case study</a> of sizing an advance market commitment for methane-reducing livestock vaccines and extends our framework analysis to address important considerations like multiple attempts within firms and correlated probabilities of success.
+ The framework helps funders systematically assess development costs, technical risks, and market dynamics to determine appropriate incentive levels. For technical teams, we provide detailed mathematical models and real-world examples showing how to apply these principles to specific cases.
+
+The sections that follow break the sizing challenge into manageable steps: starting with defining a conceptual framework (<a href="#conceptual_framework">Section 2</a>), then estimating innovation costs and risks  (<a href="#understanding_costs">Section 3</a>), calculating the incentive size needed for a desired chance of success (<a href="program_size">Section 4</a>), and assessing total program costs and cost-effectiveness(<a href="total_costs">Section 5</a>). The appendix provides a full <a href="#complete_example">case study</a>  for methane-reducing livestock vaccines and extensions for more complex modeling scenarios. 
 
 <h2 id="conceptual_framework">2. Conceptual Framework</h2>
 
@@ -1313,26 +1321,3 @@ Then divide the total needed present value (\$227.8 million) by the “effective
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-William Arnesen & Claire McMahon, 2024
