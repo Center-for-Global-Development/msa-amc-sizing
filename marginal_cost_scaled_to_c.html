@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+          margin: 0; 
+          font-family: Georgia;
+        }
+        .wrapper {
+          max-width: 800px;
+          margin: 0 auto;   /* Center horizontally */
+          padding: 1rem;    /* Some internal padding */
+        }
+
+
+        #graph-container {
+            width: 100%;
+            margin: 0 auto;
+        }
+        #slider-container {
+            width: 100%;
+            text-align: center;
+        }
+        /* Styling for the slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Slider Track */
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #800000 var(--slider-pos, 50%), #ddd var(--slider-pos, 50%));
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-track {
+            background: #ddd;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-progress {
+            background: #800000;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        /* Slider Thumb */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -6px;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            border: none;
+            background-color: #800000;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+
+        /* Focus styles */
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        input[type="range"]:focus::-webkit-slider-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+        }
+
+        input[type="range"]:focus::-moz-range-thumb {
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class = "wrapper">
+    <h1 style="text-align: center;"></h1>
+    <div id="graph-container">
+        <div id="graph"></div>
+    </div>
+    <div id="slider-container">
+        <input type="range" id="p-slider" min="0.01" max="0.50" step="0.01" value="0.1" style="width: 100%;">
+        <label for="p-slider">Probability of success for a single attempt (p): <span id="p-value">10%</span></label><br>
+    </div>
+
+    <figcaption style="text-align: center; margin-top: 10px; font-size: smaller;">
+           The curve shows the marginal cost to the funder of inducing an additional attempt in the pull mechanism as a percentage of the cost of a pull mechanism that is sized to incentivize a single firm to enter.  As the number of firms increases, the marginal cost approaches the expected cost per attempt, which is reflected in the curve asymtoptically approaching the probability of success of an attempt.
+    </figcaption>
+
+    <script>
+        // JavaScript function to calculate marginal cost
+        function calculateMarginalCost(p, n) {
+            // Calculate the numerator
+            const q = 1 - p;
+            const qPowN = Math.pow(q,n);
+
+            const numerator = 1 - qPowN + n * qPowN * Math.log(q);
+            const denominator = Math.pow(1 - qPowN, 2);    
+
+            return 100 * numerator / denominator;
+        }
+
+        // Function to update slider color
+        function updateSliderColor(slider) {
+            const min = parseFloat(slider.min);
+            const max = parseFloat(slider.max);
+            const val = parseFloat(slider.value);
+            const percentage = ((val - min) * 100) / (max - min);
+            slider.style.setProperty('--slider-pos', percentage + '%');
+        }
+
+        // Initial settings
+        const nValues = Array.from({ length: 100 }, (_, i) => 1 + i); // Range from 1 to 100
+        const pSlider = document.getElementById("p-slider");
+        const pValue = document.getElementById("p-value");
+        const graphDiv = document.getElementById("graph");
+
+        // Function to update the graph
+        function updateGraph(p) {
+            const marginalCost = nValues.map(n => calculateMarginalCost(p,n));
+            const trace = {
+                x: nValues,
+                y: marginalCost,
+                mode: 'lines',
+                line: { color: '#800000', width: 4 },
+                name: 'Marginal cost to induce an extra attempt'
+            };
+            const layout = {
+                title: {
+                text: 'Marginal cost to <br> induce an extra attempt',
+                font: {
+                  family: 'Georgia',
+                  size: 24,                // Make the title bigger
+                  color: 'black'
+                }
+                },
+                xaxis: {
+                    title: {
+                      text: 'Number of attempts',
+                      standoff: 5,
+                      font: {
+                        family: 'Georgia',
+                        color: 'black'
+                      }
+                    },
+                    tickformat: '.0',
+                    range: [1, 40],
+                    showline: true,
+                    linecolor: 'black',
+                    linewidth: 2
+                },
+                yaxis: {
+                    title: {
+                      text: 'Marginal cost (as % of cost to incentivize a single attempt)',
+                      standoff: 5,
+                      font: {
+                        family: 'Georgia',
+                        color: 'black'
+                      }
+                    },
+                    range: [0, 100],
+                    showline: true,
+                    linecolor: 'black',
+                    linewidth: 2
+                },
+                plot_bgcolor: '#ffffff',
+                margin: { t: 40, b: 40, l: 40, r: 20 }
+            };
+            Plotly.newPlot(graphDiv, [trace], layout, { responsive: true });
+        }
+
+        // Initial setup
+        updateSliderColor(pSlider);
+        updateGraph(parseFloat(pSlider.value));
+
+        // Add event listener to slider
+        pSlider.addEventListener("input", (e) => {
+            const p = parseFloat(pSlider.value);
+            pValue.textContent = `${Math.round(p * 100)}%`;
+            updateGraph(p);
+            updateSliderColor(e.target);
+        });
+    </script>
+</div>
+</body>
+</html>
