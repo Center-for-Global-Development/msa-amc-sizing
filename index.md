@@ -1044,7 +1044,7 @@ Let us start by assuming Cournot competition, where firms decide the amount of q
 
 <p>Plugging into the formula for profit, we get $\pi_q = \frac{(a-c+s)^2}{9 \cdot b}$. We can thus see that the profit is $\frac{4}{9}$ as large with the duopolist as with the monopolist firm.</p>
 
-<p>Extending to k-firms follows the same method. We just have $q = q_1 + q_2 + \ldots + q_k$ and $\pi_1 = (a - b \cdot (q_1 + q_2 + \ldots + q_k) - c + s)$. One can still take the derivative $\frac{d\pi}{dq_1} = a - 2 \cdot b \cdot q_1 - b \cdot q_2 - \ldots - b \cdot q_k - c + s = 0$. Since $q_1 = q_2 = \ldots = q_k$, we can see that a k-opolist receives $\frac{(a-c+s)^2}{(k+1)^2}$. The ratio of profit for a k-opolist to a monopolist is thus just $\frac{4}{(k+1)^2}$. A duopoist receives 44% of the profit, a triopolist receives 25%, etc.</p>
+<p>Extending to k-firms follows the same method. We just have $q = q_1 + q_2 + \ldots + q_k$ and $\pi_1 = (a - b \cdot (q_1 + q_2 + \ldots + q_k) - c + s) \cdot q_1$. One can still take the derivative $\frac{d\pi}{dq_1} = a - 2 \cdot b \cdot q_1 - b \cdot q_2 - \ldots - b \cdot q_k - c + s = 0$. Since $q_1 = q_2 = \ldots = q_k$, we can see that a k-opolist receives $\frac{(a-c+s)^2}{(k+1)^2}$. The ratio of profit for a k-opolist to a monopolist is thus just $\frac{4}{(k+1)^2}$. A duopoist receives 44% of the profit, a triopolist receives 25%, etc.</p>
 
 <p>This result is not unique to linear demand functions. "Normal-looking" exponential or logarithmic demand functions that are standard in the literature all will produce very similar results. The sole exception will be "unusual" looking demand curves (e.g. perfectly elastic or inelastic demand, or step-wise functions, etc.)</p>
 
