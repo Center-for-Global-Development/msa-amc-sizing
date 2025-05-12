@@ -131,7 +131,7 @@ The size and structure of the <span class="tooltip-word">pull mechanism<span cla
 <h3 id="model_setup">a. Model Setup</h3>
 When designing an innovation incentive, we need a systematic way to think about what motivates firms to participate. Let's start with a simplified view.
 
-Imagine a pharmaceutical company considering whether to develop a new vaccine. They know development will require significant upfront investment in research, clinical trials, and manufacturing capacity. They also know there's a high chance of failure at each stage, and that other companies might succeed first.
+Imagine a pharmaceutical company considering whether to develop a new vaccine. They know development will require significant upfront investment in research, clinical trials, and manufacturing capacity. They also know there's a high chance of failure at each stage and that other companies might succeed first.
 
 To decide whether to invest, firms weigh their expected costs against potential rewards. If successful, they'll receive the incentive payment — but they might have to share it with other successful developers. If they fail, they bear all the costs with no return.
 
@@ -156,7 +156,7 @@ To make this analysis tractable, we make some simplifying assumptions:
 
 This model is deliberately structured to work with real-world data. We focus on innovation efforts that progress through discrete stages—like R&D, testing, and approval—because those can be sourced from past projects, expert interviews, or published literature. By structuring the model around commonly available parameters, we aim to make this a tool that funders can actually apply in practice. More complex dynamics—such as firm heterogeneity, market concentration, or correlated risks—can meaningfully affect outcomes, but are harder to parameterize. We include extensions for these cases in the appendix, where they can be explored as needed for specific applications.
 
-At the same time, the model reflects a particular design choice: a single, lump-sum prize. While this helps clarify the core mechanics of incentive sizing, it may not match every real-world objective. In many cases, it might be more appropriate to allow for multiple winners, offer milestone payments, or design around a different market structure. These variations can significantly affect firm behavior and program cost, and should be considered carefully when adapting the model to a specific context. We highlight some of these considerations—and ways to extend the model—in the appendix.
+At the same time, the model reflects a particular design choice: a single, lump-sum prize. While this helps clarify the core mechanics of incentive sizing, it may not match every real-world objective. In many cases, it might be more appropriate to allow for multiple winners, offer milestone payments, or design around a different market structure. These variations can significantly affect firm behavior and program cost, and should be considered carefully when adapting the model to a specific context.
 
 
 *Note: Throughout this post, we use "firm" to refer to any profit-motivated innovator - whether a large company, research institution, startup, or university spinoff.*
