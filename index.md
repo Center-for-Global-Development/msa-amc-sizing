@@ -137,26 +137,28 @@ To decide whether to invest, firms weigh their expected costs against potential 
 
 Our framework captures this decision-making process. We look at:
 <ul>
-    <li>The full cost of development, from research through commercialization </li>
-    <li>The probability of success at each stage of innovation </li>
-    <li>The time value of money between when costs are incurred and payments are received </li>
-    <li>The impact of competition on expected returns </li>
+    <li>the full cost of development, from research through commercialization </li>
+    <li>the probability of success at each stage of innovation </li>
+    <li>the time value of money between when costs are incurred and payments are received </li>
+    <li>the impact of competition on expected returns </li>
 </ul>
 
-From the funder’s perspective, the optimal size of the pull mechanism depends on the number of firms they want to entice to invest in the target innovation. Hence, our model captures the estimated number of firms that a funder would expect to invest based on the size of the incentive offered.
+ 
+From the funder’s perspective, the size of the pull mechanism principally depends on the number of firms they want to entice to invest in the target innovation. The following model then maps this desired number of investing firms into a necessary size.
+
 
 To make this analysis tractable, we make some simplifying assumptions:
 <ul>
-    <li>All firms are rational and risk-neutral: they participate if (and only if) expected benefits exceed costs. </li>
-    <li>Firms face one choice: whether to invest in a single innovation attempt. All firms make this decision and progress on research on the same timetable. </li>
-    <li>All innovation attempts are <span class="tooltip-word">identical<span class="tooltip-text">By identical, we mean that each attempt has the same probability of success, not that they are all pursuing the same method or approach</span></span> and <span class="tooltip-word">independent<span class="tooltip-text">By independence, we mean that each attempt is uncorrelated with any other attempt, much like how whether a flipped coin comes up heads does not depend on the outcome of the previous flip. We relax this assumption later by allowing different attempts to become correlated with each other</span></span>.</li>
+    <li>All firms are rational and risk-neutral: they participate if (and only if) expected revenue exceeds expected costs. </li>
+    <li>Firms face one choice: whether to invest in a single innovation attempt.</li>
+    <li>All innovation attempts are <span class="tooltip-word">identical<span class="tooltip-text">By identical, we mean that each attempt has the same probability of success, not that they are all pursuing the same method or approach</span></span>,<span class="tooltip-word">independent<span class="tooltip-text">By independence, we mean that each attempt is uncorrelated with any other attempt, much like how whether a flipped coin comes up heads does not depend on the outcome of the previous flip. We relax this assumption later by allowing different attempts to become correlated with each other</span></span>, and proceed along the same timetable.</li>
     <li>Successful firms share the reward <span class="tooltip-word">equally<span class="tooltip-text">For example, if only one firm succeeds, they receive the entire award. If two firms succeed, they each receive half the reward</span></span>.</li>
-    <li>Benefits do not depend on the number of successful firms. The goal of the funder is to ensure that at least one firm is successful. </li>
+    <li>Program benefits do not depend on the number of successful firms. The goal of the funder is for at least one firm to succeed. </li>
 </ul>
 
-This model is deliberately structured to work with real-world data. We focus on innovation efforts that progress through discrete stages—like R&D, testing, and approval—because those can be sourced from past projects, expert interviews, or published literature. By structuring the model around commonly available parameters, we aim to make this a tool that funders can actually apply in practice. More complex dynamics—such as firm heterogeneity, market concentration, or correlated risks—can meaningfully affect outcomes, but are harder to parameterize. We include extensions for these cases in the appendix, where they can be explored as needed for specific applications.
+This model has been deliberated kept simple to make it amenable to working with real-world data. We focus on innovation efforts that progress through discrete stages—like R&D, testing, and approval—because those can be sourced from past projects, expert interviews, or published literature. By structuring the model around commonly observable parameters, we aim to make this a tool that funders can actually apply in practice. More complex dynamics—such as firm heterogeneity, market concentration, or correlated risks—can meaningfully affect outcomes, but are harder to parameterize. We include extensions for these cases in the appendix, where they can be explored as needed for specific applications.
 
-At the same time, the model reflects a particular design choice: a single, lump-sum prize. While this helps clarify the core mechanics of incentive sizing, it may not match every real-world objective. In many cases, it might be more appropriate to allow for multiple winners, offer milestone payments, or design around a different market structure. These variations can significantly affect firm behavior and program cost, and should be considered carefully when adapting the model to a specific context.
+Another modeling choice has been to focus on a particularly simple funding mechanism: a single, lump-sum prize. While this helps clarify the core mechanics of incentive sizing, it may not match every real-world objective. In many cases, it might be more appropriate to allow for multiple winners, offer milestone payments, or design around a different market structure. These variations can significantly affect firm behavior and program cost, and should be considered carefully when adapting the model to a specific context.
 
 
 *Note: Throughout this post, we use "firm" to refer to any profit-motivated innovator - whether a large company, research institution, startup, or university spinoff.*
@@ -553,9 +555,9 @@ This creates a fundamental tradeoff: the more firms that participate, the more l
     <br>
     <br>
     <ol>
-    <li>All firms are rational and risk-neutral: they participate if (and only if) expected benefits exceed costs. </li>
-    <li>Firms face one choice: whether to invest in a single innovation attempt. All firms make this decision and progress on research on the same timetable. </li>
-    <li>All innovation attempts are <span class="tooltip-word">identical<span class="tooltip-text">By identical, we mean that each attempt has the same probability of success, not that they are all pursuing the same method or approach</span></span> and <span class="tooltip-word">independent<span class="tooltip-text">By independence, we mean that each attempt is uncorrelated with any other attempt, much like how whether a flipped coin comes up heads does not depend on the outcome of the previous flip. We relax this assumption later by allowing different attempts to become correlated with each other</span></span>.</li>
+    <li>All firms are rational and risk-neutral: they participate if (and only if) expected revenue exceeds expected cost. </li>
+    <li>Firms face one choice: whether to invest in a single innovation attempt. </li>
+    <li>All innovation attempts are <span class="tooltip-word">identical<span class="tooltip-text">By identical, we mean that each attempt has the same probability of success, not that they are all pursuing the same method or approach</span></span> and <span class="tooltip-word">independent<span class="tooltip-text">By independence, we mean that each attempt is uncorrelated with any other attempt, much like how whether a flipped coin comes up heads does not depend on the outcome of the previous flip. We relax this assumption later by allowing different attempts to become correlated with each other</span></span> and proceed along the same timetable.</li>
     <li>Successful firms share the reward <span class="tooltip-word">equally<span class="tooltip-text">For example, if only one firm succeeds, they receive the entire award. If two firms succeed, they each receive half the reward</span></span>.</li>
 </ol>
     <table>
