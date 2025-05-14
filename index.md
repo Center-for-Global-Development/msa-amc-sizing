@@ -74,18 +74,18 @@ title: A Practical Guide to Sizing Innovation Incentives
                 </ol>
             </li>
             <li><a href="#conclusion">Conclusion</a></li>
-            <li><a href="#appendix">Appendix</a>
+            <li><a href="#appendix">Appendix A: Beyond the Simple Model</a>
                 <ol>
-                <li><a href="#other-considerations">Other Sizing Considerations</a>
+                <li><a href="#other-considerations">Adding Complications</a>
                         <ol>
                             <li><a href="#pipeline">Within and Across Firm Attempts</a></li>
                             <li><a href="#correlation-section">Correlated Probabilities</a></li>
                             <li><a href="#subsidy-passthrough-section">Competition & Subsidy Passthrough</a></li>
                         </ol>
                     </li>
-                <li><a href="#complete_example">Complete Example</a></li>
                 </ol>
             </li>
+            <li><a href="#complete_example">Complete Example</a></li>
         </ol>
 </nav>
 
@@ -720,7 +720,7 @@ The complete push v. pull debate deserves far more space than this dropdown can 
     $$ \text{Pull size present value} \geq \frac{\ln(1 - \theta)}{\theta \cdot \ln(1 - p)} \cdot \mathbb{E}[c] $$
 </div>
 
-<h2 id="total_costs">5. Total Costs and Cost Effectiveness</h2>
+<h2 id="total_costs">5. Assessing Cost-Effectiveness</h2>
 
 <h3 id="additional_costs">a. Additional Cost Considerations</h3>
 
@@ -857,8 +857,8 @@ While our framework provides a structured approach to sizing decisions, we've ma
 Additional resources about pull mechanisms are available on the Market Shaping Acceleerator's website. We also welcome practitioners to contact us to discuss specific applications, as each situation requires careful consideration of context-specific factors that may influence optimal incentive design.
 
 
-<h2 id="appendix">Appendix</h2>
-<h3 id="other-considerations">a. Other Considerations</h3>
+<h2 id="appendix">Appendix A: Enriching the Simple Model</h2>
+<h3 id="other-considerations">a. Adding Complications</h3>
 
 <h4 id="pipeline">Within and across firm attempts: pipeline approaches to innovation</h4>
 
@@ -1067,7 +1067,7 @@ Let us start by assuming Cournot competition, where firms decide the amount of q
 
 
 
-<h3 id="complete_example">b. A full example</h3>
+<h2 id="complete_example">Appendix B: A Full Example</h3>
 
 The following button will walk the reader through a complete example from start to finish, using the case study of vaccines to reduce enteric methane emissions from cattle that the MSA has worked on over the last year.
 
