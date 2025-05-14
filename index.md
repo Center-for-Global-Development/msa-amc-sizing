@@ -97,14 +97,14 @@ Contributing authors: William Arnesen & Claire McMahon, 2025
 <div class="takeaways-box">
     <h3> KEY TAKEAWAYS</h3>
     <ol>
-        <li>When designing pull funding mechanisms, determining the right incentive size is critical. Larger incentives attract more firms and increase the chances of success, but too large an incentive wastes resources that could fund other valuable projects. This guide provides a practical framework for making this decision.</li>
+        <li>When designing pull funding mechanisms, determining the right incentive size is critical. Larger incentives attract more firms and increase the chances of success, but too large an incentive wastes funds that could be used for other projects. This guide provides a practical framework for making this decision.</li>
         <li>The incentive size needed to motivate firm participation depends on:</li>
-            <ol>
-                <li><strong>Development costs and risks:</strong> Firms face expenses including R&D, testing, regulatory approval, and commercialization, all adjusted for the probability of failure at each stage.</li>
+            <ol type="i">
+                <li><strong>Development costs:</strong> Firms face expenses including R&D, testing, regulatory approval, and commercialization, all adjusted for the probability of failure at each stage.</li>
                 <li><strong>Innovation risk</strong>: More technologically distant innovations require larger incentives to compensate firms for the high likelihood of R&D failure. </li>
                 <li><strong>The time value of money</strong>: Firms discount future returns, and long development timelines for major innovations reduce the present value of potential rewards.</li>
             </ol>
-        <li>The most important factor in determining the optimal size of an innovation incentive is the <strong>social value of the innovation</strong>, which sets an upper limit on willingness to pay and helps prioritize funding opportunities.</li>
+        <li>The <strong>social value of the innovation</strong> sets an upper limit on willingness to pay and helps for prioritizing funding opportunities.</li>
         <li>While total funding commitments for pull mechanisms often appear large, they reflect that firms must bear both the risks of development failure and the opportunity costs of capital over long development timelines. Understanding these components helps funders right-size their commitments.</li>
     </ol>
 </div>
