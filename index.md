@@ -89,9 +89,6 @@ title: A Practical Guide to Sizing Innovation Incentives
         </ol>
 </nav>
 
-
-Contributing authors: William Arnesen & Claire McMahon, 2025
-
 ---
 
 <div class="takeaways-box">
@@ -1323,6 +1320,8 @@ Then divide the total needed present value (\$227.8 million) by the “effective
     height="900" 
     style="border: none;">
 </iframe>
+
+Contributing authors: William Arnesen & Claire McMahon, 2025
 
 
 
