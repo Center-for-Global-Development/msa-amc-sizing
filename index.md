@@ -224,10 +224,10 @@ First, we need to understand the costs and risks that firms incur when trying to
 Since estimates of success rates vary substantially, designers should be careful that the data source for success rates and costs are consistent. Some sources may estimate a higher success rate because they exclude earlier stages. Or they may estimate the success rate of an entire research program, which includes multiple concurrent attempts, resulting in both a higher success rate but also a higher cost. These alternative approaches are not wrong, but one needs to be careful that the costs and success rates represent the same activities.
 
 
-<button class="see-more-btn" onclick="toggleDetails('rdsuccess-details')">Show example</button>
+<button class="see-more-btn" onclick="toggleDetails('rdsuccess-details')">Continue example</button>
 <div id="rdsuccess-details" class="details-box">
 
-Using the same data as before, we can assign probabilities to each step. 
+Using the same data on chicken vaccine development as before, we can assign probabilities to each step. 
 <br>
 <table>
     <thead>
@@ -270,11 +270,9 @@ Using the same data as before, we can assign probabilities to each step.
 
 **iii. Firm’s hurdle rate of return.** Firms expect to make a profit and, all else equal, prefer investments that pay money today rather than in the future. Since pull mechanisms require firms to spend money in the present in the hope of future payment, firms will not participate unless adequately compensated for that delay. In general, the more a funder wishes to delay payments (e.g. the technology requires many years to develop and commercialize), the greater the premium the funder must pay to induce entry. MSA currently uses annual discount rates of 8-10%, depending on the sector involved. For long-dated AMCs, i.e. AMCs for technological innovations that may take ten years or more to pay off, including discount rates can more than double nominal costs.
 
-<button class="see-more-btn" onclick="toggleDetails('discountratesizing-details')">How discounting affects AMC sizing</button>
+<button class="see-more-btn" onclick="toggleDetails('discountratesizing-details')">How discounting affects AMC sizing (new example)</button>
 <div id="discountratesizing-details" class="details-box">
 
-
-Suppose, a firm has a 10% hurdle rate. If the payout is delayed ten years, then the funder will need to pay \$259 in year 10 to induce \$100 in private spending in year 0. 
 
 
   <table>
@@ -308,6 +306,8 @@ Suppose, a firm has a 10% hurdle rate. If the payout is delayed ten years, then 
     </tbody>
 </table>
 
+Suppose, a firm has a 10% hurdle rate. If the payout is delayed ten years, then the funder will need to pay \$259 in year 10 to induce \$100 in private spending in year 0. 
+
 Formally, if $r$ is the firm hurdle rate and $t$ is the number of years between upfront payment, the nominal value of  the pull commitment to induce \$1 in spending is $$(1+r)^t$$. 
 
  <div style = "text-align: left;">
@@ -323,15 +323,12 @@ Innovation often requires multiple steps, including research and development, te
 When sizing the pull mechanism, we consider the firm's perspective of expected costs at the time of entry, not the total cost of a successful innovation. The expected costs faced by the firm at the time of entry are the cumulative, probability-weighted costs across all development phases, properly discounted for the time value of money. Therefore, the expected cost of an innovation attempt will be less than the total cost of successful innovation.
 
 
-<button class="see-more-btn" onclick="toggleDetails('optionvalue-details')">Walking through an example</button>
+<button class="see-more-btn" onclick="toggleDetails('optionvalue-details')">See continued example</button>
 <div id="optionvalue-details" class="details-box">
 
-Research and development is typically a staged process in which your idea may fail at any given step, allowing one to terminate the process. Let us say the following: k is the number of innovation steps, and P is a vector representing the probability of advancing from one stage to the next where $P = \{p_0,p_1,p_2, ... , p_k\}$. Let $C$ be a vector representing the cost at each stage $C = \{c_0,c_1,c_2, ... , c_k\}$.
+Research and development is typically a staged process in which your idea may fail at any given step, allowing one to terminate the process.
 
-Without consideration of the time value of money, the cost of development is $$\sum_{i=1}^{k} c_i \prod_{j=1}^{i} p_{j-1}$$
-
-
-Consider the case of the vaccine considered previously. We first need to decompose into annual costs and probabilities of failure so we can calculate expected costs.
+Consider the case of the chicken vaccine considered previously. We first need to decompose into annual costs and probabilities of failure so we can calculate expected costs. In cases where a stage takes multiple years, we assume that costs and probabilities of success are equal in all three years (e.g. a three-year, $30 million stage with an overall probability of success of 50% would have annual nominal costs of $10 million and an annual probability of success of 79.4%).
 
 <table>
     <thead>
@@ -349,7 +346,7 @@ Consider the case of the vaccine considered previously. We first need to decompo
             <td>R&amp;D</td>
             <td>649.7</td>
             <td>955</td>
-            <td>58.40%</td>
+            <td>58.4%</td>
             <td>100%</td>
             <td>955 </td>
         </tr>
@@ -357,16 +354,16 @@ Consider the case of the vaccine considered previously. We first need to decompo
             <td>R&amp;D</td>
             <td>649.7</td>
             <td>955</td>
-            <td>58.40%</td>
-            <td>58.40%</td>
+            <td>58.4%</td>
+            <td>58.4%</td>
             <td>554 </td>
         </tr>
         <tr>
             <td>R&amp;D</td>
             <td>649.7</td>
             <td>955</td>
-            <td>58.40%</td>
-            <td>34.10%</td>
+            <td>58.4%</td>
+            <td>34.1%</td>
             <td>321 </td>
         </tr>
         <tr>
@@ -374,31 +371,31 @@ Consider the case of the vaccine considered previously. We first need to decompo
             <td>137</td>
             <td>201</td>
             <td>75%</td>
-            <td>19.50%</td>
+            <td>19.5%</td>
             <td>39 </td>
         </tr>
         <tr>
             <td>Test</td>
             <td>104</td>
             <td>153</td>
-            <td>44.70%</td>
-            <td>14.60%</td>
+            <td>44.7%</td>
+            <td>14.6%</td>
             <td>22 </td>
         </tr>
         <tr>
             <td>Test</td>
             <td>104</td>
             <td>153</td>
-            <td>44.70%</td>
-            <td>6.60%</td>
+            <td>44.7%</td>
+            <td>6.6%</td>
             <td>10 </td>
         </tr>
         <tr>
             <td>Approval</td>
             <td>48</td>
             <td>71</td>
-            <td>90%</td>
-            <td>3.00%</td>
+            <td>9%</td>
+            <td>3%</td>
             <td>2 </td>
         </tr>
         <tr>
@@ -406,7 +403,7 @@ Consider the case of the vaccine considered previously. We first need to decompo
             <td>-</td>
             <td>-</td>
             <td>100%</td>
-            <td>2.70%</td>
+            <td>2.7%</td>
             <td>-</td>
         </tr>
     </tbody>
@@ -434,7 +431,7 @@ We now need to introduce the time value of money. Discounting reduces future cos
         <tr>
             <td>R&amp;D</td>
             <td>955</td>
-            <td>58.40%</td>
+            <td>58.4%</td>
             <td>100%</td>
             <td>955</td>
             <td>955 </td>
@@ -442,16 +439,16 @@ We now need to introduce the time value of money. Discounting reduces future cos
         <tr>
             <td>R&amp;D</td>
             <td>955</td>
-            <td>58.40%</td>
-            <td>58.40%</td>
+            <td>58.4%</td>
+            <td>58.4%</td>
             <td>554</td>
             <td>513 </td>
         </tr>
         <tr>
             <td>R&amp;D</td>
             <td>955</td>
-            <td>58.40%</td>
-            <td>34.10%</td>
+            <td>58.4%</td>
+            <td>34.1%</td>
             <td>321</td>
             <td>275 </td>
         </tr>
@@ -459,31 +456,31 @@ We now need to introduce the time value of money. Discounting reduces future cos
             <td>Patent</td>
             <td>201</td>
             <td>75%</td>
-            <td>19.50%</td>
+            <td>19.5%</td>
             <td>39</td>
             <td>31 </td>
         </tr>
         <tr>
             <td>Test</td>
             <td>153</td>
-            <td>44.70%</td>
-            <td>14.60%</td>
+            <td>44.7%</td>
+            <td>14.6%</td>
             <td>22</td>
             <td>16 </td>
         </tr>
         <tr>
             <td>Test</td>
             <td>153</td>
-            <td>44.70%</td>
-            <td>6.60%</td>
+            <td>44.7%</td>
+            <td>6.6%</td>
             <td>10</td>
             <td>7 </td>
         </tr>
         <tr>
             <td>Approval</td>
             <td>71</td>
-            <td>90%</td>
-            <td>3.00%</td>
+            <td>9%</td>
+            <td>3%</td>
             <td>2</td>
             <td>1.3 </td>
         </tr>
@@ -491,7 +488,7 @@ We now need to introduce the time value of money. Discounting reduces future cos
             <td>Release</td>
             <td>-</td>
             <td>100%</td>
-            <td>2.70%</td>
+            <td>2.7%</td>
             <td>-</td>
             <td>0 </td>
         </tr>
@@ -507,6 +504,11 @@ We now need to introduce the time value of money. Discounting reduces future cos
 </table>
 
 Since the overwhelming majority of the costs fall in the first few years, discounting only reduces all-in costs from \$1.9 million to \$1.8 million. For human vaccines, where Stage III trials can get extremely expensive, this discounting can have a major effect on the present value of the incentive.
+
+Formally, we can say the following: k is the number of innovation steps, and P is a vector representing the probability of advancing from one stage to the next where $P = \{p_0,p_1,p_2, ... , p_k\}$. Let $C$ be a vector representing the cost at each stage $C = \{c_0,c_1,c_2, ... , c_k\}$.
+
+Without consideration of the time value of money, the cost of development is $$\sum_{i=1}^{k} c_i \prod_{j=1}^{i} p_{j-1}$$
+
 </div>
 
 We use the *expected* cost of the innovation attempt to be able to compare to the present value of the *expected* reward from the pull incentive, which is also discounted by time and the probability of success. That is, we are estimating the expected costs and returns from the firm's perspective at the time of entry.
@@ -522,7 +524,7 @@ Data on the costs and risks of innovation can be difficult to find, but there ar
 
 When using these sources, it is important to be aware of their potential limitations and biases. Published costs often only represent successful attempts. They may also be dated and need adjustment for inflation. Additionally, costs can vary significantly by sector, region, and specific technical challenges. Triangulating between multiple sources can provide a more complete picture. 
 
-Additionally, remember that we’re trying to identify the threshold case — the point at which firms are just willing to participate. For simplicity, our model assumes that firms are homogeneous, meaning they share the same cost structure and probability of success. In reality, firms will have a distribution of costs and probabilities, meaning some will find participation attractive at lower incentive levels, while others may require larger incentives. The characteristics we assign to the representative firm in our model should approximate this real-world threshold—capturing the point at which firms on the margin would choose to participate.
+Additionally, remember that the goal is to identify the threshold case — the point at which firms are just willing to participate. For simplicity, our model assumes that firms are homogeneous, meaning they share the same cost structure and probability of success. In reality, firms will have a distribution of costs and probabilities, meaning some will find participation attractive at lower incentive levels, while others may require larger incentives. The characteristics we assign to the representative firm in our model should approximate this real-world threshold—capturing the point at which firms on the margin would choose to participate.
 
 <h2 id="program_size">4. Determining the Overall Program Size</h2>
 
