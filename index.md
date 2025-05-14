@@ -56,7 +56,7 @@ title: A Practical Guide to Sizing Innovation Incentives
             <li>
                 <a href="#understanding_costs">Understanding Innovation Costs and Risks</a>
                 <ol>
-                    <li><a href="#key_components">Key components</a></li>
+                    <li><a href="#key_components">Key Components</a></li>
                     <li><a href="#expected_costs">Calculating Firms' Expected Costs</a></li>
                     <li><a href="#sourcing_parameters">Sourcing Parameter Estimates</a></li>
                 </ol>
@@ -85,7 +85,7 @@ title: A Practical Guide to Sizing Innovation Incentives
                     </li>
                 </ol>
             </li>
-            <li><a href="#complete_example">Complete Example</a></li>
+            <li><a href="#complete_example">Appendix B: A Complete Example</a></li>
         </ol>
 </nav>
 
