@@ -612,7 +612,7 @@ This creates a fundamental tradeoff: the more firms that participate, the more l
 The more firms that have already entered, the higher the marginal cost to induce an extra firm, because now firms face higher risk of splitting the prize. As the number of firms increases, the marginal cost to induce a marginal new attempt approaches the expected cost of each additional attempt. For instance, if the probability of success per attempt is 10% and the present value cost of each attempt is \\$100,000 then a funder would need to increase the pull size by \\$66,000 to move from nine to ten attempts. In contrast, moving from 39 to 40 attempts requires an additional marginal cost of \$95,000. The plot below shows the marginal cost of adding additional attempts as a multiple of the expected cost of an individual attempt.
 
 <iframe 
-    src="marginal_cost_scaled_to_induce_entry.html" 
+    src="marginal_cost_to_induce_entry.html" 
     width="100%" 
     height="600" 
     style="border: none;">
