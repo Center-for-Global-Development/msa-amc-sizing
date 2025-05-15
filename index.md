@@ -1064,7 +1064,7 @@ Let us start by assuming Cournot competition, where firms decide the amount of q
 
 
 
-<h2 id="complete_example">Appendix B: A Full Example</h3>
+<h2 id="complete_example">Appendix B: A Full Example</h2>
 
 The following button will walk the reader through a complete example from start to finish, using the case study of vaccines to reduce enteric methane emissions from cattle that the MSA has worked on over the last year.
 
