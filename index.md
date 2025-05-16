@@ -50,6 +50,7 @@ title: A Practical Guide to Sizing Innovation Incentives
             <li>
                 <a href="#conceptual_framework">Conceptual Framework</a>
                 <ol>
+                    <li><a href="#firm_decision_making">Firm Decision Making</a></li>
                     <li><a href="#model_setup">Model Setup</a></li>
                 </ol>
             </li>
@@ -63,6 +64,7 @@ title: A Practical Guide to Sizing Innovation Incentives
             </li>
             <li><a href="#program_size">Determining the Overall Program Size</a>
                 <ol> 
+                    <li><a href="#simplest_version">Simplest Version</a></li>
                     <li><a href="#number_of_attempts">Target Number of Attempts</a></li>
                     <li><a href="#cost_of_multiple_attempts">The Cost of Incentivizing Multiple Attempts</a></li>
                 </ol>
@@ -75,15 +77,11 @@ title: A Practical Guide to Sizing Innovation Incentives
             </li>
             <li><a href="#conclusion">Conclusion</a></li>
             <li><a href="#appendix">Appendix A: Beyond the Simple Model</a>
-                <ol>
-                <li><a href="#other-considerations">Adding Complications</a>
-                        <ol>
-                            <li><a href="#pipeline">Within and Across Firm Attempts</a></li>
-                            <li><a href="#correlation-section">Correlated Probabilities</a></li>
-                            <li><a href="#subsidy-passthrough-section">Competition & Subsidy Passthrough</a></li>
-                        </ol>
-                    </li>
-                </ol>
+                    <ol>
+                        <li><a href="#pipeline">Within and Across Firm Attempts</a></li>
+                        <li><a href="#correlation-section">Correlated Probabilities</a></li>
+                        <li><a href="#subsidy-passthrough-section">Competition & Subsidy Passthrough</a></li>
+                     </ol>
             </li>
             <li><a href="#complete_example">Appendix B: A Complete Example</a></li>
         </ol>
@@ -125,7 +123,7 @@ The sections that follow break the sizing challenge into manageable steps: start
 
 The size and structure of the <span class="tooltip-word">pull mechanism<span class="tooltip-text">"Pull incentives" are incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span> will dictate the answer to these questions and, hence, determine how many firms try their hand at innovation. Increasing the amount of effort firms put into innovation or increasing the expected number of firms that choose to participate in pull mechanisms increases the probability that at least one attempt yields success. To determine the appropriate reward size, the designer of the <span class="tooltip-word">pull mechanism<span class="tooltip-text">"Pull incentives" are incentive-based funding that rewards firms after achieving specific results or delivering a successful product. Since funders do not pay upfront, pull mechanisms place risk of technological success on the innovators.</span></span>, therefore, needs to consider the tradeoff between increasing the probability that firms succeed at innovation and the cost of the pull mechanism.
 
-<h3 id="model_setup">a. Model Setup</h3>
+<h3 id="firm_decision_making">a. Firm Decision Making</h3>
 When designing an innovation incentive, we need a systematic way to think about what motivates firms to participate. Let's start with a simplified view.
 
 Imagine a pharmaceutical company considering whether to develop a new vaccine. They know development will require significant upfront investment in research, clinical trials, and manufacturing capacity. They also know there's a high chance of failure at each stage and that other companies might succeed first.
@@ -137,18 +135,18 @@ Our framework captures this decision-making process. We look at:
     <li>the full cost of development, from research through commercialization </li>
     <li>the probability of success at each stage of innovation </li>
     <li>the time value of money between when costs are incurred and payments are received </li>
-    <li>the impact of competition on expected returns </li>
+    <li>the impact of competition on expected returns. </li>
 </ul>
 
  
 From the funder’s perspective, the size of the pull mechanism principally depends on the number of firms they want to entice to invest in the target innovation. The following model then maps this desired number of investing firms into a necessary size.
 
-
+<h3 id="model_setup">b. Model Setup</h3>
 To make this analysis tractable, we make some simplifying assumptions:
 <ul>
     <li>All firms are rational and risk-neutral: they participate if (and only if) expected revenue exceeds expected costs. </li>
     <li>Firms face one choice: whether to invest in a single innovation attempt.</li>
-    <li>All innovation attempts are <span class="tooltip-word">identical<span class="tooltip-text">By identical, we mean that each attempt has the same probability of success, not that they are all pursuing the same method or approach</span></span>,<span class="tooltip-word">independent<span class="tooltip-text">By independence, we mean that each attempt is uncorrelated with any other attempt, much like how whether a flipped coin comes up heads does not depend on the outcome of the previous flip. We relax this assumption later by allowing different attempts to become correlated with each other</span></span>, and proceed along the same timetable.</li>
+    <li>All innovation attempts are <span class="tooltip-word">identical<span class="tooltip-text">By identical, we mean that each attempt has the same probability of success, not that they are all pursuing the same method or approach</span></span>,<span class="tooltip-word"> independent<span class="tooltip-text">By independence, we mean that each attempt is uncorrelated with any other attempt, much like how whether a flipped coin comes up heads does not depend on the outcome of the previous flip. We relax this assumption later by allowing different attempts to become correlated with each other</span></span>, and proceed along the same timetable.</li>
     <li>Successful firms share the reward <span class="tooltip-word">equally<span class="tooltip-text">For example, if only one firm succeeds, they receive the entire award. If two firms succeed, they each receive half the reward</span></span>.</li>
     <li>Program benefits do not depend on the number of successful firms. The goal of the funder is for at least one firm to succeed. </li>
 </ul>
@@ -607,7 +605,7 @@ This creates a fundamental tradeoff: the more firms that participate, the more l
     Future sections will relax some of these assumptions and build out a complete model.
 </div>
 
-<h3 id="cost_of_multiple_attempts">b. The Cost of Incentivizing Multiple Attempts</h3>
+<h3 id="cost_of_multiple_attempts">c. The Cost of Incentivizing Multiple Attempts</h3>
 
 The more firms that have already entered, the higher the marginal cost to induce an extra firm, because now firms face higher risk of splitting the prize. As the number of firms increases, the marginal cost to induce a marginal new attempt approaches the expected cost of each additional attempt. For instance, if the probability of success per attempt is 10% and the present value cost of each attempt is \\$100,000 then a funder would need to increase the pull size by \\$66,000 to move from nine to ten attempts. In contrast, moving from 39 to 40 attempts requires an additional marginal cost of \$95,000. The plot below shows the marginal cost of adding additional attempts as a multiple of the expected cost of an individual attempt.
 
@@ -855,9 +853,8 @@ Additional resources about pull mechanisms are available on the Market Shaping A
 
 
 <h2 id="appendix">Appendix A: Enriching the Simple Model</h2>
-<h3 id="other-considerations">a. Adding Complications</h3>
 
-<h4 id="pipeline">Within and across firm attempts: pipeline approaches to innovation</h4>
+<h3 id="pipeline">a. Within and across firm attempts: pipeline approaches to innovation</h3>
 
 The above analysis assumes a competitive market where each firm makes a single attempt. However, this assumption may be unrealistic, as in reality firms tend to make multiple attempts; why go through all the effort hiring researchers and expensive equipment only to make a single attempt?  Suppose research trials have a 2% success rate and a pull designer desires a 50% probability of at least one success: the above formula suggests that the funder now needs to incentivize at least 35 attempts. The notion that 35 attempts will be satisfied by 35 different firms seems unlikely: maybe five firms conducting seven attempts each is more plausible.
 
@@ -934,7 +931,7 @@ In practice, this approach results in a higher needed pull size than the “one 
 
 </div>
 
-<h4 id="correlation-section">Correlated probabilities of success</h4>
+<h3 id="correlation-section">b. Correlated probabilities of success</h3>
 
 The above analysis assumes that all attempts are independent, that is, that different innovation attempts are not related to each other and do not affect each other’s chances of succeeding. This assumption is transparently unrealistic, for two reasons. First, the innovation itself may be impossible (or at least impossible in the near future). No amount of separate attempts would allow ancient Roman scientists to construct a modern computer. This is akin to saying that there is an upper bound on the total probability that at least one attempt succeeds. Second, different attempts all made by the same firm are likely more correlated to each other than they are to attempts made by other firms.
 
@@ -1012,7 +1009,7 @@ Algebraic rearrangement of the second equation produces the third. There is no s
 In practice, introducing correlation substantially increases the needed pull size, as the number of attempts needed to reach the same probability of success increases dramatically. 
 
 
-<h4 id="subsidy-passthrough-section">Subsidy passthrough</h4>
+<h3 id="subsidy-passthrough-section">c. Subsidy passthrough</h3>
 
 Our existing method estimating the appropriate size of an advance market commitment (AMC) assumes that the innovative firm receives the entirety of the subsidy pool, with no effect on the price of the novel good sold. For example, this model assumes that a three dollar per-unit subsidy would increase the profit per good sold by precisely three dollars.
 
