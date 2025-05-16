@@ -89,7 +89,7 @@ title: A Practical Guide to Sizing Innovation Incentives
 
 --
 
-<h4> Contributing authors: William Arnesen & Claire McMahon, 2025 </h4>
+Contributing authors: William Arnesen & Claire McMahon, 2025
 
 ---
 
