@@ -87,9 +87,6 @@ title: A Practical Guide to Sizing Innovation Incentives
         </ol>
 </nav>
 
---
-
-
 <div class="takeaways-box">
     <h3> KEY TAKEAWAYS</h3>
     <ol>
